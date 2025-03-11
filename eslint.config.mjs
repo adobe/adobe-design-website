@@ -10,7 +10,8 @@ export default defineConfig([
       "node_modules/*",
       "helix-importer-ui",
       "scripts/*",
-      "eslint.config.mjs"
+      "eslint.config.mjs",
+      "**/*.test.js"
     ]),
     {
       files: ["**/*.{js}"],
