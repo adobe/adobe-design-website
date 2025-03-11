@@ -1,4 +1,3 @@
-// eslint-disable-next-line import/no-unresolved
 import { toClassName } from '../../scripts/aem.js';
 
 export default async function decorate(block) {
