@@ -32,7 +32,7 @@
   text-overflow: unset;
   overflow: unset;
   white-space: unset;
-  transition: background-color 0.2s;
+  transition: background-color 200ms;
 }
 
 .tabs .tabs-list button p {

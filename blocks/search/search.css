@@ -17,7 +17,7 @@
   background-color: var(--background-color);
   color: var(--text-color);
   font-size: var(--body-font-size-s);
-  transition: border-color 0.2s;
+  transition: border-color 200ms;
 }
 
 .search .search-box input:hover {
