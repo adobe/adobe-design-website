@@ -11,7 +11,7 @@ This project contains code that is featured in the [AEM Block Collection](https:
 
 ```sh
 npm i
-npm run start
+npm start
 ```
 
 ## Local development
@@ -31,5 +31,5 @@ npm run lint
 To run Jest, ensure you've got the application running locally, and then:
 
 ```sh
-npm run test
+npm test
 ```
