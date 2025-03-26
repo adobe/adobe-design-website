@@ -1,13 +1,13 @@
-const puppeteer = require('puppeteer');
+const { launchBrowser } = require('../../tests/helpers.js');
 
 describe('Cards Block', () => {
   let browser;
   let page;
 
   beforeAll(async () => {
-    browser = await puppeteer.launch();
+    browser = await launchBrowser();
     page = await browser.newPage();
-    await page.goto('http://localhost:3000/pattern-library/');
+    await page.goto(`${global.BASE_URL}pattern-library/`);
   });
 
   afterAll(async () => {

@@ -26,6 +26,8 @@ export default defineConfig([
       languageOptions: {
         globals: {
           ...globals.browser,
+          ...globals.jest,
+          ...globals.node,
         },
         parser: babelParser,
         sourceType: "module",
@@ -50,9 +52,4 @@ export default defineConfig([
         "max-len": 0,
       },
     },
-    {
-      env: {
-        jest: true,
-      }
-    }
 ]);
