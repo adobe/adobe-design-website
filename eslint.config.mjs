@@ -49,5 +49,10 @@ export default defineConfig([
         "no-use-before-define": 1,
         "max-len": 0,
       },
+    },
+    {
+      env: {
+        jest: true,
+      }
     }
 ]);
