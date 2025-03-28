@@ -1,13 +1,13 @@
-const puppeteer = require('puppeteer');
+const { launchBrowser } = require('./helpers.js');
 
 describe('Pattern Library Page', () => {
     let browser;
     let page;
 
     beforeAll(async () => {
-        browser = await puppeteer.launch();
+        browser = await launchBrowser();
         page = await browser.newPage();
-        await page.goto('https://main--adobe-design-website--adobe.aem.live/pattern-library/');
+        await page.goto(`${global.BASE_URL}pattern-library/`);
     });
 
     afterAll(async () => {

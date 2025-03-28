@@ -26,6 +26,8 @@ export default defineConfig([
       languageOptions: {
         globals: {
           ...globals.browser,
+          ...globals.jest,
+          ...globals.node,
         },
         parser: babelParser,
         sourceType: "module",
@@ -49,5 +51,5 @@ export default defineConfig([
         "no-use-before-define": 1,
         "max-len": 0,
       },
-    }
+    },
 ]);
