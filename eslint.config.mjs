@@ -50,6 +50,7 @@ export default defineConfig([
         "no-console": 1,
         "no-use-before-define": 1,
         "max-len": 0,
+        "eol-last": ["error", "always"]
       },
     },
 ]);
