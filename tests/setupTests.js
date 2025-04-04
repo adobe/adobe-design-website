@@ -1,4 +1,4 @@
-const puppeteer = require('puppeteer');
+const { launchBrowser } = require('./helpers.js');
 const { toExist } = require('./helpers.js');
 
 
@@ -8,9 +8,7 @@ let page;
 const BASE_URL = process.env.BASE_URL || 'http://localhost:3000/';
 
 beforeAll(async () => {
-  browser = await puppeteer.launch({
-    args: ['--no-sandbox', '--disable-setuid-sandbox'],
-  });
+  browser = await launchBrowser();
   page = await browser.newPage();
   await page.goto(BASE_URL);
 

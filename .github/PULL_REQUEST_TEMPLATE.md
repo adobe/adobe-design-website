@@ -8,8 +8,8 @@
 - Story: [ADB-XX](https://sparkbox.atlassian.net/browse/ADB-XX)
 
 ## Test URLs:
-- Before: https://main--aem-block-collection--adobe.hlx.page
-- After: https://<branch>--aem-block-collection--adobe.hlx.page
+- Before: https://main--adobe-design-website--adobe.aem.page/
+- After: https://<branch>--adobe-design-website--adobe.aem.page/
 
 ## Checklist
 <!-- Delete anything irrelevant to this PR -->
