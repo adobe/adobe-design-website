@@ -15,98 +15,293 @@
 
   /* ** COLOR ** */
 
-  /* color */
-  --background-color: white;
-  --light-color: #f8f8f8;
-  --dark-color: #505050;
-  --text-color: #131313;
-  --link-color: #3b63fb;
-  --link-hover-color: #1d3ecf;
+  /* spectrum colors */
+  --spectrum-white-rgb: 255, 255, 255;
+  --spectrum-white: rgba(var(--spectrum-white-rgb));
+
+  --spectrum-black-rgb: 0, 0, 0;
+  --spectrum-black: rgba(var(--spectrum-black-rgb));
+
+  --spectrum-transparent-white-100: rgba(var(--spectrum-white-rgb), 0.11);
+  --spectrum-transparent-white-200: rgba(var(--spectrum-white-rgb), 0.14);
+  --spectrum-transparent-white-900: rgba(var(--spectrum-white-rgb), 0.94);
+
+  --spectrum-transparent-black-300: rgba(var(--spectrum-black-rgb), 0.15);
+  --spectrum-transparent-black-800: rgba(var(--spectrum-black-rgb), 0.84);
+
+  --spectrum-blue-300: rgba(203, 226, 254);
+  --spectrum-blue-500: rgb(142, 185, 252);
+  --spectrum-blue-800: rgb(75, 117, 255);
+  --spectrum-blue-900: rgb(59, 99, 251);
+  --spectrum-blue-1400: rgb(12, 31, 105);
+
+  --spectrum-gray-25: rgb(255, 255, 255);
+  --spectrum-gray-50: rgb(248, 248, 248);
+  --spectrum-gray-300: rgb(218, 218, 218);
+  --spectrum-gray-400: rgb(198, 198, 198);
+  --spectrum-gray-500: rgb(143, 143, 143);
+  --spectrum-gray-600: rgb(113, 113, 113);
+  --spectrum-gray-700: rgb(80, 80, 80);
+  --spectrum-gray-800: rgb(41, 41, 41);
+  --spectrum-gray-900: rgb(19, 19, 19);
+  --spectrum-gray-1000: rgb(0, 0, 0);
+
+  --spectrum-indigo-400: rgb(192, 201, 255);
+  --spectrum-indigo-500: rgb(167, 178, 255);
+  --spectrum-indigo-1000: rgb(99, 56, 238);
+
+  --spectrum-cyan-400: rgb(138, 213, 255);
+  --spectrum-cyan-500: rgb(92, 192, 255);
+  --spectrum-cyan-600: rgb(48, 167, 254);
+  --spectrum-cyan-1400: rgb(0, 43, 59);
+
+  --spectrum-green-300: rgb(173, 238, 197);
+  --spectrum-green-400: rgb(107, 227, 162);
+  --spectrum-green-600: rgb(18, 184, 103);
+  --spectrum-green-1400: rgb(0, 46, 34);
+
+  --spectrum-fuchsia-400: rgb(247, 181, 255);
+  --spectrum-fuchsia-1400: rgb(72, 0, 88);
+
+  --spectrum-seafoam-1400: rgb(0, 46, 40);
+  --spectrum-red-1400: rgb(80, 16, 6);
+  --spectrum-brown-1400: rgb(52, 37, 13);
+  --spectrum-orange-1400: rgb(73, 24, 0);
+
+  --mobile-yellow: #f1cf5f;
+
+  @media (prefers-color-scheme: dark) {
+    --spectrum-blue-300: rgba(12, 33, 117);
+    --spectrum-blue-500: rgb(26, 58, 195);
+    --spectrum-blue-800: rgb(64, 105, 253);
+    --spectrum-blue-900: rgb(86, 129, 255);
+    --spectrum-blue-1400: rgb(213, 231, 254);
+
+    --spectrum-gray-25: rgb(17, 17, 17);
+    --spectrum-gray-50: rgb(27, 27, 27);
+    --spectrum-gray-300: rgb(57, 57, 57);
+    --spectrum-gray-400: rgb(68, 68, 68);
+    --spectrum-gray-500: rgb(109, 109, 109);
+    --spectrum-gray-600: rgb(138, 138, 138);
+    --spectrum-gray-700: rgb(175, 175, 175);
+    --spectrum-gray-800: rgb(219, 219, 219);
+    --spectrum-gray-900: rgb(242, 242, 242);
+    --spectrum-gray-1000: rgb(255, 255, 255);
+
+    --spectrum-indigo-400: rgb(62, 12, 174);
+    --spectrum-indigo-500: rgb(79, 30, 209);
+    --spectrum-indigo-1000: rgb(139, 141, 254);
+
+    --spectrum-cyan-400: rgb(0, 64, 88);
+    --spectrum-cyan-500: rgb(0, 82, 113);
+    --spectrum-cyan-600: rgb(3, 99, 140);
+    --spectrum-cyan-1400: rgb(195, 236, 252);
+
+    --spectrum-green-300: rgb(0, 51, 38);
+    --spectrum-green-400: rgb(0, 68, 48);
+    --spectrum-green-600: rgb(3, 106, 67);
+    --spectrum-green-1400: rgb(189, 241, 208);
+
+    --spectrum-fuchsia-400: rgb(102, 9, 120);
+    --spectrum-fuchsia-1400: rgb(251, 219, 255);
+
+    --spectrum-seafoam-1400: rgb(186, 241, 222);
+    --spectrum-red-1400: rgb(255, 222, 219);
+    --spectrum-brown-1400: rgb(242, 227, 206);
+    --spectrum-orange-1400: rgb(255, 225, 178);
+  }
+
+  /* functional colors */
+  --color-background-default: var(--spectrum-gray-50);
+  --color-background: var(--color-background-default);
+
+  --color-text: var(--spectrum-gray-800);
+  --color-text-dark: var(--spectrum-gray-900);
+  --color-text-link: var(--spectrum-blue-900);
+  --color-text-link-hover: var(--color-text-link);
+
+  @media (prefers-color-scheme: dark) {
+    --color-background-default: var(--spectrum-gray-25);
+  }
 
   /* gradients */
+  --gradient-green: linear-gradient(
+    180deg,
+    var(--spectrum-green-300) 0%,
+    var(--color-background) 100%
+  );
+  --gradient-blue: linear-gradient(
+    180deg,
+    var(--spectrum-blue-500) 0%,
+    var(--color-background) 100%
+  );
+  --gradient-cyan-500: linear-gradient(
+    180deg,
+    var(--gradient-cyan-500) -47.5%,
+    var(--color-background) 100%
+  );
+  --gradient-cyan-600: linear-gradient(
+    95deg,
+    var(--gradient-cyan-600) 11.17%,
+    var(--color-background) 97.52%
+  );
+
+  --gradient-indigo-100: linear-gradient(
+    180deg,
+    var(--gradient-indigo-100) 0%,
+    var(--color-background100%)
+  );
+  --gradient-indigo-200: linear-gradient(
+    180deg,
+    var(--gradient-indigo-200) 0%,
+    var(--color-background) 100%
+  );
+  --gradient-indigo-400: linear-gradient(
+    180deg,
+    var(--gradient-indigo-400) 0%,
+    var(--color-background) 100%
+  );
+  --gradient-indigo-500: linear-gradient(
+    180deg,
+    var(--gradient-indigo-500) 0%,
+    var(--color-background) 100%
+  );
+
+  --gradient-indigo-dark: var(--gradient-indigo-500);
+  --gradient-indigo-light: var(--gradient-indigo-400);
+
+  --gradient-multitone: linear-gradient(
+    271deg,
+    #eb1000 -38.76%,
+    #4b75ff 118.78%
+  );
+
+  --gradient-background: linear-gradient(
+    180deg,
+    transparent 0%,
+    var(--color-background) 100%
+  );
+
+  @media (prefers-color-scheme: dark) {
+    --gradient-blue: linear-gradient(
+      180deg,
+      var(--spectrum-blue-300) 0%,
+      var(--color-background) 100%
+    );
+
+    --gradient-indigo-dark: var(--gradient-indigo-100);
+    --gradient-indigo-light: var(--gradient-indigo-200);
+  }
 
   /* ** ELEVATION ** */
   --spectrum-drop-shadow-color-100-rgb: 0, 0, 0;
-	--spectrum-drop-shadow-color-100-opacity: 0.36;
-	--spectrum-drop-shadow-color-100: rgba(var(--spectrum-drop-shadow-color-100-rgb), var(--spectrum-drop-shadow-color-100-opacity));
+  --spectrum-drop-shadow-color-100-opacity: 0.36;
+  --spectrum-drop-shadow-color-100: rgba(
+    var(--spectrum-drop-shadow-color-100-rgb),
+    var(--spectrum-drop-shadow-color-100-opacity)
+  );
 
-	--spectrum-drop-shadow-color-200-rgb: 0, 0, 0;
-	--spectrum-drop-shadow-color-200-opacity: 0.48;
-	--spectrum-drop-shadow-color-200: rgba(var(--spectrum-drop-shadow-color-200-rgb), var(--spectrum-drop-shadow-color-200-opacity));
+  --spectrum-drop-shadow-color-200-rgb: 0, 0, 0;
+  --spectrum-drop-shadow-color-200-opacity: 0.48;
+  --spectrum-drop-shadow-color-200: rgba(
+    var(--spectrum-drop-shadow-color-200-rgb),
+    var(--spectrum-drop-shadow-color-200-opacity)
+  );
 
-	--spectrum-drop-shadow-color-300-rgb: 0, 0, 0;
-	--spectrum-drop-shadow-color-300-opacity: 0.6;
-	--spectrum-drop-shadow-color-300: rgba(var(--spectrum-drop-shadow-color-300-rgb), var(--spectrum-drop-shadow-color-300-opacity));
+  --spectrum-drop-shadow-color-300-rgb: 0, 0, 0;
+  --spectrum-drop-shadow-color-300-opacity: 0.6;
+  --spectrum-drop-shadow-color-300: rgba(
+    var(--spectrum-drop-shadow-color-300-rgb),
+    var(--spectrum-drop-shadow-color-300-opacity)
+  );
 
   @media (prefers-color-scheme: dark) {
     -spectrum-drop-shadow-color-100-rgb: 0, 0, 0;
     --spectrum-drop-shadow-color-100-opacity: 0.12;
-    --spectrum-drop-shadow-color-100: rgba(var(--spectrum-drop-shadow-color-100-rgb), var(--spectrum-drop-shadow-color-100-opacity));
+    --spectrum-drop-shadow-color-100: rgba(
+      var(--spectrum-drop-shadow-color-100-rgb),
+      var(--spectrum-drop-shadow-color-100-opacity)
+    );
 
     --spectrum-drop-shadow-color-200-rgb: 0, 0, 0;
     --spectrum-drop-shadow-color-200-opacity: 0.16;
-    --spectrum-drop-shadow-color-200: rgba(var(--spectrum-drop-shadow-color-200-rgb), var(--spectrum-drop-shadow-color-200-opacity));
+    --spectrum-drop-shadow-color-200: rgba(
+      var(--spectrum-drop-shadow-color-200-rgb),
+      var(--spectrum-drop-shadow-color-200-opacity)
+    );
 
     --spectrum-drop-shadow-color-300-rgb: 0, 0, 0;
     --spectrum-drop-shadow-color-300-opacity: 0.2;
-    --spectrum-drop-shadow-color-300: rgba(var(--spectrum-drop-shadow-color-300-rgb), var(--spectrum-drop-shadow-color-300-opacity));
+    --spectrum-drop-shadow-color-300: rgba(
+      var(--spectrum-drop-shadow-color-300-rgb),
+      var(--spectrum-drop-shadow-color-300-opacity)
+    );
   }
 
   --spectrum-drop-shadow-x-100: 0;
-	--spectrum-drop-shadow-x-200: 0;
-	--spectrum-drop-shadow-x-300: 0;
-	--spectrum-drop-shadow-y-100: 1px;
-	--spectrum-drop-shadow-y-200: 2px;
-	--spectrum-drop-shadow-y-300: 6px;
+  --spectrum-drop-shadow-x-200: 0;
+  --spectrum-drop-shadow-x-300: 0;
+  --spectrum-drop-shadow-y-100: 1px;
+  --spectrum-drop-shadow-y-200: 2px;
+  --spectrum-drop-shadow-y-300: 6px;
 
-	--spectrum-drop-shadow-blur-100: 6px;
-	--spectrum-drop-shadow-blur-200: 8px;
-	--spectrum-drop-shadow-blur-300: 16px;
+  --spectrum-drop-shadow-blur-100: 6px;
+  --spectrum-drop-shadow-blur-200: 8px;
+  --spectrum-drop-shadow-blur-300: 16px;
 
   --spectrum-drop-shadow-color: var(--spectrum-drop-shadow-color-100);
 
-  --spectrum-drop-shadow-emphasized-default-color: var(--spectrum-drop-shadow-color-100);
-	--spectrum-drop-shadow-emphasized-hover-color: var(--spectrum-drop-shadow-color-200);
-	--spectrum-drop-shadow-elevated-color: var(--spectrum-drop-shadow-color-200);
+  --spectrum-drop-shadow-emphasized-default-color: var(
+    --spectrum-drop-shadow-color-100
+  );
+  --spectrum-drop-shadow-emphasized-hover-color: var(
+    --spectrum-drop-shadow-color-200
+  );
+  --spectrum-drop-shadow-elevated-color: var(--spectrum-drop-shadow-color-200);
 
   --spectrum-drop-shadow-dragged-color: var(--spectrum-drop-shadow-color-300);
 
   --spectrum-drop-shadow-x: var(--spectrum-drop-shadow-x-100);
-	--spectrum-drop-shadow-y: var(--spectrum-drop-shadow-y-100);
-	--spectrum-drop-shadow-blur: var(--spectrum-drop-shadow-blur-100);
+  --spectrum-drop-shadow-y: var(--spectrum-drop-shadow-y-100);
+  --spectrum-drop-shadow-blur: var(--spectrum-drop-shadow-blur-100);
 
-	--spectrum-drop-shadow-emphasized-default-x: var(--spectrum-drop-shadow-x-100);
-	--spectrum-drop-shadow-emphasized-default-y: var(--spectrum-drop-shadow-y-100);
-	--spectrum-drop-shadow-emphasized-default-blur: var(--spectrum-drop-shadow-blur-100);
+  --spectrum-drop-shadow-emphasized-default-x: var(
+    --spectrum-drop-shadow-x-100
+  );
+  --spectrum-drop-shadow-emphasized-default-y: var(
+    --spectrum-drop-shadow-y-100
+  );
+  --spectrum-drop-shadow-emphasized-default-blur: var(
+    --spectrum-drop-shadow-blur-100
+  );
 
-	--spectrum-drop-shadow-emphasized-hover-x: var(--spectrum-drop-shadow-x-200);
-	--spectrum-drop-shadow-emphasized-hover-y: var(--spectrum-drop-shadow-y-200);
-	--spectrum-drop-shadow-emphasized-hover-blur: var(--spectrum-drop-shadow-blur-200);
+  --spectrum-drop-shadow-emphasized-hover-x: var(--spectrum-drop-shadow-x-200);
+  --spectrum-drop-shadow-emphasized-hover-y: var(--spectrum-drop-shadow-y-200);
+  --spectrum-drop-shadow-emphasized-hover-blur: var(
+    --spectrum-drop-shadow-blur-200
+  );
 
-	--spectrum-drop-shadow-elevated-x: var(--spectrum-drop-shadow-x-200);
-	--spectrum-drop-shadow-elevated-y: var(--spectrum-drop-shadow-y-200);
-	--spectrum-drop-shadow-elevated-blur: var(--spectrum-drop-shadow-blur-200);
+  --spectrum-drop-shadow-elevated-x: var(--spectrum-drop-shadow-x-200);
+  --spectrum-drop-shadow-elevated-y: var(--spectrum-drop-shadow-y-200);
+  --spectrum-drop-shadow-elevated-blur: var(--spectrum-drop-shadow-blur-200);
 
-	--spectrum-drop-shadow-dragged-x: var(--spectrum-drop-shadow-x-300);
-	--spectrum-drop-shadow-dragged-y: var(--spectrum-drop-shadow-y-300);
-	--spectrum-drop-shadow-dragged-blur: var(--spectrum-drop-shadow-blur-300);
+  --spectrum-drop-shadow-dragged-x: var(--spectrum-drop-shadow-x-300);
+  --spectrum-drop-shadow-dragged-y: var(--spectrum-drop-shadow-y-300);
+  --spectrum-drop-shadow-dragged-blur: var(--spectrum-drop-shadow-blur-300);
 
   /* these custom properties can be applied to a `box-shadow` property */
 
-  --drop-shadow-emphasized:
-    var(--spectrum-drop-shadow-emphasized-default-x)
+  --drop-shadow-emphasized: var(--spectrum-drop-shadow-emphasized-default-x)
     var(--spectrum-drop-shadow-emphasized-default-y)
     var(--spectrum-drop-shadow-emphasized-default-blur)
     var(--spectrum-drop-shadow-emphasized-default-color);
 
-  --drop-shadow-emphasized-hover:
-    var(--spectrum-drop-shadow-emphasized-hover-x)
+  --drop-shadow-emphasized-hover: var(--spectrum-drop-shadow-emphasized-hover-x)
     var(--spectrum-drop-shadow-emphasized-hover-y)
     var(--spectrum-drop-shadow-emphasized-hover-blur)
     var(--spectrum-drop-shadow-emphasized-hover-color);
 
-  --drop-shadow-elevated:
-    var(--spectrum-drop-shadow-elevated-x)
+  --drop-shadow-elevated: var(--spectrum-drop-shadow-elevated-x)
     var(--spectrum-drop-shadow-elevated-y)
     var(--spectrum-drop-shadow-elevated-blur)
     var(--spectrum-drop-shadow-elevated-color);
@@ -115,39 +310,162 @@
 
   /* assumes base 16px font */
   --spectrum-spacing-50: 0.125rem; /* 2px */
-	--spectrum-spacing-75: 0.25rem; /* 4px */
+  --spectrum-spacing-75: 0.25rem; /* 4px */
   --spectrum-spacing-100: 0.5rem; /* 8px */
   --spectrum-spacing-200: 0.75rem; /* 12px */
-	--spectrum-spacing-300: 1rem; /* 16px */
-	--spectrum-spacing-400: 1.5rem; /* 24px */
-	--spectrum-spacing-500: 2rem; /* 32px */
-	--spectrum-spacing-600: 2.5rem; /* 40px */
-	--spectrum-spacing-700: 3rem; /* 48px */
-	--spectrum-spacing-800: 4rem; /* 64px */
-	--spectrum-spacing-900: 5rem; /* 80px */
-	--spectrum-spacing-1000: 6rem; /* 96px */
+  --spectrum-spacing-300: 1rem; /* 16px */
+  --spectrum-spacing-400: 1.5rem; /* 24px */
+  --spectrum-spacing-500: 2rem; /* 32px */
+  --spectrum-spacing-600: 2.5rem; /* 40px */
+  --spectrum-spacing-700: 3rem; /* 48px */
+  --spectrum-spacing-800: 4rem; /* 64px */
+  --spectrum-spacing-900: 5rem; /* 80px */
+  --spectrum-spacing-1000: 6rem; /* 96px */
 
   /* ** STATES ** */
-	--spectrum-focus-indicator-thickness: 2px;
-	--spectrum-focus-indicator-gap: 0.125rem;
-	--spectrum-side-focus-indicator: 4px;
+  --spectrum-focus-indicator-thickness: 2px;
+  --spectrum-focus-indicator-gap: 0.125rem;
+  --spectrum-side-focus-indicator: 4px;
+  --spectrum-focus-indicator-color: var(--spectrum-blue-800);
+  --spectrum-static-white-focus-indicator-color: var(--spectrum-white);
+  --spectrum-static-black-focus-indicator-color: var(--spectrum-black);
+
+  --spectrum-overlay-color: var(--spectrum-black);
+  --spectrum-overlay-opacity: 0.4;
+
+  --spectrum-opacity-disabled: 0.3;
+
+  @media (prefers-color-scheme: dark) {
+    --spectrum-overlay-opacity: 0.6;
+  }
 
   /* ** BORDER ** */
-	--spectrum-border-width-100: 1px;
-	--spectrum-border-width-200: 2px;
-	--spectrum-border-width-400: 4px;
+  --spectrum-border-width-100: 1px;
+  --spectrum-border-width-200: 2px;
+  --spectrum-border-width-400: 4px;
 
   /* ** CORNER ROUNDING ** */
+  --spectrum-corner-radius-0: 0px;
+  --spectrum-corner-radius-75: 3px;
+  --spectrum-corner-radius-100: 4px;
+  --spectrum-corner-radius-200: 5px;
+  --spectrum-corner-radius-300: 6px;
+  --spectrum-corner-radius-400: 7px;
+  --spectrum-corner-radius-500: 8px;
+  --spectrum-corner-radius-600: 9px;
+  --spectrum-corner-radius-700: 10px;
+  --spectrum-corner-radius-800: 16px;
+  --spectrum-corner-radius-1000: 0.5;
+
+  --spectrum-corner-radius-none: var(--spectrum-corner-radius-0);
+  --spectrum-corner-radius-small-default: var(--spectrum-corner-radius-100);
+  --spectrum-corner-radius-medium-default: var(--spectrum-corner-radius-500);
+  --spectrum-corner-radius-large-default: var(--spectrum-corner-radius-700);
+  --spectrum-corner-radius-extra-large-default: var(
+    --spectrum-corner-radius-800
+  );
+  --spectrum-corner-radius-full: var(--spectrum-corner-radius-1000);
+  --spectrum-corner-radius-small-size-small: var(--spectrum-corner-radius-75);
+  --spectrum-corner-radius-small-size-medium: var(--spectrum-corner-radius-100);
+  --spectrum-corner-radius-small-size-large: var(--spectrum-corner-radius-200);
+  --spectrum-corner-radius-small-size-extra-large: var(
+    --spectrum-corner-radius-300
+  );
+  --spectrum-corner-radius-medium-size-extra-small: var(
+    --spectrum-corner-radius-300
+  );
+  --spectrum-corner-radius-medium-size-small: var(--spectrum-corner-radius-400);
+  --spectrum-corner-radius-medium-size-medium: var(
+    --spectrum-corner-radius-500
+  );
+  --spectrum-corner-radius-medium-size-large: var(--spectrum-corner-radius-600);
+  --spectrum-corner-radius-medium-size-extra-large: var(
+    --spectrum-corner-radius-700
+  );
 
   /* ** TYPOGRAPHY ** */
 
   /* fonts */
   --body-font-family: roboto, roboto-fallback, sans-serif;
   --heading-font-family: roboto-condensed, roboto-condensed-fallback, sans-serif;
+  --spectrum-sans-serif-font-family: Adobe Clean;
+  --spectrum-serif-font-family: Adobe Clean Serif;
+
+  --spectrum-sans-font-family-stack: adobe-clean,
+    var(--spectrum-sans-serif-font-family), "Source Sans Pro", -apple-system,
+    BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu, "Trebuchet MS",
+    "Lucida Grande", sans-serif;
+  --spectrum-sans-serif-font: var(--spectrum-sans-font-family-stack);
+
+  --spectrum-serif-font-family-stack: adobe-clean-serif,
+    var(--spectrum-serif-font-family), "Source Serif Pro", Georgia, serif;
+  --spectrum-serif-font: var(--spectrum-serif-font-family-stack);
+
+  --spectrum-code-font-family-stack: "Source Code Pro", Monaco, monospace;
+
+  --spectrum-font-family: var(--spectrum-sans-font-family-stack);
+  --spectrum-font-style: var(--spectrum-default-font-style);
+  --spectrum-font-size: var(--spectrum-font-size-100);
+
+  --spectrum-default-font-family: var(--body-font-family);
+  --spectrum-letter-spacing: 0em;
+  --spectrum-text-align-start: start;
+  --spectrum-text-align-center: center;
+  --spectrum-text-align-end: end;
+
+  --spectrum-light-font-weight: 300;
+  --spectrum-regular-font-weight: 400;
+  --spectrum-medium-font-weight: 500;
+  --spectrum-bold-font-weight: 700;
+  --spectrum-extra-bold-font-weight: 800;
+  --spectrum-black-font-weight: 900;
+
+  --spectrum-italic-font-style: italic;
+  --spectrum-default-font-style: normal;
+
+  /* font size - delete unused */
+  --spectrum-font-size-25: 12px;
+  --spectrum-font-size-50: 13px;
+  --spectrum-font-size-75: 15px;
+  --spectrum-font-size-100: 17px;
+  --spectrum-font-size-200: 19px;
+  --spectrum-font-size-300: 22px;
+  --spectrum-font-size-400: 24px;
+  --spectrum-font-size-500: 27px;
+  --spectrum-font-size-600: 31px;
+  --spectrum-font-size-700: 34px;
+  --spectrum-font-size-800: 39px;
+  --spectrum-font-size-900: 44px;
+  --spectrum-font-size-1000: 49px;
+  --spectrum-font-size-1100: 55px;
+  --spectrum-font-size-1200: 62px;
+  --spectrum-font-size-1300: 70px;
+  --spectrum-font-size-1400: 79px;
+  --spectrum-font-size-1500: 88px;
 
   /* body */
+  --spectrum-body-size-xxxl: var(--spectrum-font-size-600);
+  --spectrum-body-size-xxl: var(--spectrum-font-size-500);
+  --spectrum-body-size-xl: var(--spectrum-font-size-400);
+  --spectrum-body-size-l: var(--spectrum-font-size-300);
+  --spectrum-body-size-m: var(--spectrum-font-size-200);
+  --spectrum-body-size-s: var(--spectrum-font-size-100);
+  --spectrum-body-size-xs: var(--spectrum-font-size-75);
+  --spectrum-body-size-xxs: var(--spectrum-font-size-50);
+
+  --spectrum-body-line-height: var(--spectrum-line-height-200);
 
   /* headings */
+  --spectrum-heading-size-xxxl: var(--spectrum-font-size-1300);
+  --spectrum-heading-size-xxl: var(--spectrum-font-size-1100);
+  --spectrum-heading-size-xl: var(--spectrum-font-size-900);
+  --spectrum-heading-size-l: var(--spectrum-font-size-700);
+  --spectrum-heading-size-m: var(--spectrum-font-size-500);
+  --spectrum-heading-size-s: var(--spectrum-font-size-400);
+  --spectrum-heading-size-xs: var(--spectrum-font-size-300);
+  --spectrum-heading-size-xxs: var(--spectrum-font-size-100);
+  --spectrum-heading-cjk-size-xxxxl: var(--spectrum-font-size-1400);
+  --spectrum-heading-size-xxxxl: var(--spectrum-font-size-1500);
 
   /* functional */
 
@@ -173,47 +491,51 @@
 
   /* ** ANIMATION ** */
   --spectrum-animation-duration-0: 0ms;
-	--spectrum-animation-duration-100: 130ms;
-	--spectrum-animation-duration-200: 160ms;
-	--spectrum-animation-duration-300: 190ms;
-	--spectrum-animation-duration-400: 220ms;
-	--spectrum-animation-duration-500: 250ms;
-	--spectrum-animation-duration-600: 300ms;
-	--spectrum-animation-duration-700: 350ms;
-	--spectrum-animation-duration-800: 400ms;
-	--spectrum-animation-duration-900: 450ms;
-	--spectrum-animation-duration-1000: 500ms;
-	--spectrum-animation-duration-2000: 1000ms;
-	--spectrum-animation-duration-4000: 2000ms;
-	--spectrum-animation-duration-6000: 3000ms;
+  --spectrum-animation-duration-100: 130ms;
+  --spectrum-animation-duration-200: 160ms;
+  --spectrum-animation-duration-300: 190ms;
+  --spectrum-animation-duration-400: 220ms;
+  --spectrum-animation-duration-500: 250ms;
+  --spectrum-animation-duration-600: 300ms;
+  --spectrum-animation-duration-700: 350ms;
+  --spectrum-animation-duration-800: 400ms;
+  --spectrum-animation-duration-900: 450ms;
+  --spectrum-animation-duration-1000: 500ms;
+  --spectrum-animation-duration-2000: 1000ms;
+  --spectrum-animation-duration-4000: 2000ms;
+  --spectrum-animation-duration-6000: 3000ms;
 
-	--spectrum-animation-linear: cubic-bezier(0, 0, 1, 1);
+  --spectrum-animation-linear: cubic-bezier(0, 0, 1, 1);
 
-	--spectrum-animation-ease-in-out: cubic-bezier(0.45, 0, 0.4, 1);
-	--spectrum-animation-ease-in: cubic-bezier(0.5, 0, 1, 1);
-	--spectrum-animation-ease-out: cubic-bezier(0, 0, 0.4, 1);
-	--spectrum-animation-ease-linear: cubic-bezier(0, 0, 1, 1);
+  --spectrum-animation-ease-in-out: cubic-bezier(0.45, 0, 0.4, 1);
+  --spectrum-animation-ease-in: cubic-bezier(0.5, 0, 1, 1);
+  --spectrum-animation-ease-out: cubic-bezier(0, 0, 0.4, 1);
+  --spectrum-animation-ease-linear: cubic-bezier(0, 0, 1, 1);
 
   /* ** LEGACY STYLES ** */
 
-    /* body sizes */
-    --body-font-size-m: 22px;
-    --body-font-size-s: 19px;
-    --body-font-size-xs: 17px;
+  /* colors */
+  --light-color: var(--spectrum-gray-50);
+  --dark-color: var(--spectrum-gray-500);
 
-    /* heading sizes */
-    --heading-font-size-xxl: 55px;
-    --heading-font-size-xl: 44px;
-    --heading-font-size-l: 34px;
-    --heading-font-size-m: 27px;
-    --heading-font-size-s: 24px;
-    --heading-font-size-xs: 22px;
+  /* body sizes */
+  --body-font-size-m: 22px;
+  --body-font-size-s: 19px;
+  --body-font-size-xs: 17px;
 
-    /* nav heights */
-    --nav-height: 64px;
-    --breadcrumbs-height: 34px;
-    --header-height: var(--nav-height);
-  }
+  /* heading sizes */
+  --heading-font-size-xxl: 55px;
+  --heading-font-size-xl: 44px;
+  --heading-font-size-l: 34px;
+  --heading-font-size-m: 27px;
+  --heading-font-size-s: 24px;
+  --heading-font-size-xs: 22px;
+
+  /* nav heights */
+  --nav-height: 64px;
+  --breadcrumbs-height: 34px;
+  --header-height: var(--nav-height);
+}
 
 @media (width >= 900px) {
   :root {
