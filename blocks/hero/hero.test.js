@@ -21,6 +21,7 @@ describe('Hero Block', () => {
     const sources = await page.$$('.hero-wrapper picture source');
     expect(sources.length).toBe(3);
 
+    await page.waitForSelector('.hero-wrapper picture img[loading="eager"]');
     const img = await page.$('.hero-wrapper picture img[loading="eager"]');
     expect(img).toExist();
   });
