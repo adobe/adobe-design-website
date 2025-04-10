@@ -1,0 +1,27 @@
+:root {
+  /* ** BREAKPOINTS ** */
+
+  /* ** COLOR ** */
+
+  /* color */
+    --background-color: pink;
+
+  /* gradients */
+
+  /* ** ELEVATION ** */
+
+  /* ** SPACING ** */
+
+  /* ** TYPOGRAPHY ** */
+
+  /* fonts */
+  --body-font-family: roboto, roboto-fallback, sans-serif;
+  --heading-font-family: roboto-condensed, roboto-condensed-fallback, sans-serif;
+
+  /* body */
+
+  /* headings */
+
+  /* functional */
+
+}
