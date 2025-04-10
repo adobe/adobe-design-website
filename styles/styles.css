@@ -13,8 +13,8 @@
 body {
   display: none;
   margin: 0;
-  background-color: var(--background-color);
-  color: var(--text-color);
+  background-color: var(--color-background-default);
+  color: var(--color-text);
   font-family: var(--body-font-family);
   font-size: var(--body-font-size-m);
   line-height: 1.6;
@@ -101,13 +101,13 @@ button {
 
 /* links */
 a:any-link {
-  color: var(--link-color);
+  color: var(--color-text-link);
   text-decoration: none;
   overflow-wrap: break-word;
 }
 
 a:hover {
-  color: var(--link-hover-color);
+  color: var(--color-text-link-hover);
   text-decoration: underline;
 }
 
@@ -127,8 +127,8 @@ button {
   line-height: 1.25;
   text-align: center;
   text-decoration: none;
-  background-color: var(--link-color);
-  color: var(--background-color);
+  background-color: var(--color-text-link);
+  color: var(--color-background-default);
   cursor: pointer;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -139,7 +139,7 @@ a.button:hover,
 a.button:focus,
 button:hover,
 button:focus {
-  background-color: var(--link-hover-color);
+  background-color: var(--color-text-link-hover);
   cursor: pointer;
 }
 
@@ -153,7 +153,7 @@ a.button.secondary,
 button.secondary {
   background-color: unset;
   border: 2px solid currentcolor;
-  color: var(--text-color);
+  color: var(--color-text);
 }
 
 main img {

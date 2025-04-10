@@ -32,7 +32,7 @@ body.modal-open {
   .modal dialog {
     width: calc(100vw - 64px);
   }
-  
+
   .modal dialog .modal-content {
     max-height: calc(100dvh - (2 * var(--header-height)) - 64px);
     padding: 32px;
@@ -51,7 +51,7 @@ body.modal-open {
   border-radius: 0;
   padding: 0;
   background-color: transparent;
-  color: var(--text-color);
+  color: var(--color-text);
   line-height: 0;
 }
 

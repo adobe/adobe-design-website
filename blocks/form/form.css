@@ -63,8 +63,8 @@
   padding: 0.5em;
   border-radius: 4px;
   border: 1px solid var(--dark-color);
-  background-color: var(--background-color);
-  color: var(--text-color);
+  background-color: var(--color-background-default);
+  color: var(--color-text);
   font-size: var(--body-font-size-s);
   transition: border-color 200ms;
 }
@@ -76,13 +76,13 @@
 .form input:hover,
 .form select:hover,
 .form textarea:hover {
-  border: 1px solid var(--text-color);
+  border: 1px solid var(--color-text);
 }
 
 .form input:focus,
 .form select:focus,
 .form textarea:focus {
-  outline: 2px solid var(--link-color);
+  outline: 2px solid var(--color-text-link);
   outline-offset: 2px;
 }
 
@@ -152,16 +152,16 @@
   top: 2px;
   left: 2px;
   border-radius: 50%;
-  background-color: var(--background-color);
+  background-color: var(--color-background-default);
   transition: transform 200ms;
 }
 
 .form .toggle-wrapper input:checked + .slider {
-  background-color: var(--link-color);
+  background-color: var(--color-text-link);
 }
 
 .form .toggle-wrapper input:focus + .slider {
-  outline: 2px solid var(--link-color);
+  outline: 2px solid var(--color-text-link);
   outline-offset: 2px;
 }
 

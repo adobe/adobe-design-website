@@ -41,8 +41,8 @@
 
 
 .tabs .tabs-list button[aria-selected='true'] {
-  border-bottom: 1px solid var(--background-color);
-  background-color: var(--background-color);
+  border-bottom: 1px solid var(--color-background-default);
+  background-color: var(--color-background-default);
   cursor: initial;
 }
 
