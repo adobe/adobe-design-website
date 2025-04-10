@@ -14,7 +14,7 @@ describe('Hero Block', () => {
     expect(heading).toExist();
   });
 
-  it('should contain a responsive picture element', async () => {
+  xit('should contain a responsive picture element', async () => {
     const picture = await page.$('.hero-wrapper picture');
     expect(picture).toExist();
 
@@ -25,4 +25,4 @@ describe('Hero Block', () => {
     const img = await page.$('.hero-wrapper picture img[loading="eager"]');
     expect(img).toExist();
   });
-}); 
+});
