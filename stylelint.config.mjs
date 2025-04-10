@@ -3,7 +3,9 @@ export default {
   plugins: ["stylelint-stylus"],
   rules: {
     "alpha-value-notation": null,
+    "color-function-alias-notation": null,
     "color-hex-length": "long",
+    "custom-property-empty-line-before": null,
     "declaration-block-no-redundant-longhand-properties": null,
     "declaration-empty-line-before": null,
     "function-linear-gradient-no-nonstandard-direction": null,
