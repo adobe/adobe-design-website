@@ -219,6 +219,21 @@ export default async function decorate(block) {
     }
   }
 
+  // simple theme toggle
+  const themeSelectLabel = document.createElement('label');
+  themeSelectLabel.for = 'color-scheme';
+  themeSelectLabel.innerText = 'Choose theme:';
+  themeSelectLabel.style = 'margin-right: 0.25rem';
+  const themeToggle = document.createElement('select');
+  themeToggle.innerHTML = `
+    <option value="system" selected>System</option>
+    <option value="light">Light</option>
+    <option value="dark">Dark</option>
+  `;
+  themeToggle.id = 'color-scheme';
+  navTools.append(themeSelectLabel);
+  navTools.append(themeToggle);
+
   // hamburger for mobile
   const hamburger = document.createElement('div');
   hamburger.classList.add('nav-hamburger');
