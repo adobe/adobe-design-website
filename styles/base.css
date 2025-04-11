@@ -67,8 +67,6 @@
   --spectrum-brown-1400: rgb(52 37 13);
   --spectrum-orange-1400: rgb(73 24 0);
 
-  --mobile-yellow: #f1cf5f;
-
   &:has(#color-scheme option[value="dark"]:checked) {
     --spectrum-blue-300: rgb(12 33 117);
     --spectrum-blue-500: rgb(26 58 195);
