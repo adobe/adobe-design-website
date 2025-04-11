@@ -3,7 +3,7 @@
 :root {
   color-scheme: var(--color-scheme, light);
 
-  &:has(#color-scheme option[value="system"]:checked) {
+  &:has(#color-scheme option[value="dark"]:checked) {
     --color-scheme: dark;
   }
 
