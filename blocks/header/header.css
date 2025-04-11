@@ -1,6 +1,6 @@
 /* header and nav layout */
 header .nav-wrapper {
-  background-color: var(--background-color);
+  background-color: var(--color-background-default);
   width: 100%;
   z-index: 2;
   position: fixed;
@@ -68,7 +68,7 @@ header nav .nav-hamburger button {
   border: 0;
   border-radius: 0;
   padding: 0;
-  background-color: var(--background-color);
+  background-color: var(--color-background-default);
   color: inherit;
   overflow: initial;
   text-overflow: initial;
@@ -310,7 +310,7 @@ header .breadcrumbs ol li:not(:last-child)::after {
 
 /* stylelint-disable-next-line no-descending-specificity */
 header .breadcrumbs ol li[aria-current] {
-  color: var(--text-color);
+  color: var(--color-text);
 }
 
 @media (width >= 900px) {
