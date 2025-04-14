@@ -123,10 +123,14 @@ async function loadLazy(doc) {
   const element = hash ? doc.getElementById(hash.substring(1)) : false;
   if (hash && element) element.scrollIntoView();
 
+  // loads our lazy styles and important root variables
+  loadCSS(`${window.hlx.codeBasePath}/styles/base.css`);
+  loadCSS(`${window.hlx.codeBasePath}/styles/lazy-styles.css`);
+
+  // loads the header and footer components, along with their stylesheets
   loadHeader(doc.querySelector('header'));
   loadFooter(doc.querySelector('footer'));
 
-  loadCSS(`${window.hlx.codeBasePath}/styles/lazy-styles.css`);
   loadFonts();
 }
 
@@ -138,6 +142,8 @@ function loadDelayed() {
   // eslint-disable-next-line import/no-cycle
   window.setTimeout(() => import('./delayed.js'), 3000);
   // load anything that can be postponed to the latest here
+
+  loadCSS(`${window.hlx.codeBasePath}/styles/styles.css`);
 }
 
 async function loadPage() {

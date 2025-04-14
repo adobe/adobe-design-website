@@ -30,7 +30,6 @@
     import { sampleRUM } from '/scripts/aem.js';
     sampleRUM('404', { source: document.referrer });
   </script>
-  <link rel="stylesheet" href="/styles/styles.css">
   <style>
     main.error {
       min-height: calc(100vh - var(--header-height));
@@ -42,11 +41,14 @@
       width: 100%;
     }
 
+    main.error .error-number {
+      fill:  var(--color-text);
+    }
+
     main.error .error-number text {
       font-family: var(--fixed-font-family);
     }
   </style>
-  <link rel="stylesheet" href="/styles/lazy-styles.css">
 </head>
 
 <body>

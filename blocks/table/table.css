@@ -57,7 +57,7 @@
 
 /* striped variant */
 .table.striped tbody tr:nth-child(odd) {
-  background-color: var(--light-color);
+  background-color: var(--spectrum-gray-50);
 }
 
 /* bordered variant */
