@@ -309,6 +309,8 @@ function decorateTemplateAndTheme() {
   if (template) addClasses(document.body, template);
   const theme = getMetadata('theme');
   if (theme) addClasses(document.body, theme);
+  const color = getMetadata('color');
+  if (color) document.querySelector(":root").style.setProperty("--color-background", `var(--${color})`);
 }
 
 /**

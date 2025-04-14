@@ -11,9 +11,9 @@
  */
 
 body {
+  background: var(--page-background);
   display: none;
   margin: 0;
-  background-color: var(--color-background);
   color: var(--color-text);
   font-family: var(--body-font-family);
   font-size: var(--body-font-size-m);
@@ -307,3 +307,9 @@ main .section.highlight {
    max-width: 100rem;
   }
  }
+
+ /* ** Page Themes ** */
+
+.theme-green {
+  --page-background: var(--gradient-green);
+}

@@ -209,7 +209,6 @@
     var(--spectrum-cyan-600) 11.17%,
     var(--color-background) 97.52%
   );
-
   --gradient-indigo-100: linear-gradient(
     180deg,
     var(--spectrum-indigo-100) 0%,
@@ -560,6 +559,9 @@
   --spectrum-animation-ease-in: cubic-bezier(0.5, 0, 1, 1);
   --spectrum-animation-ease-out: cubic-bezier(0, 0, 0.4, 1);
   --spectrum-animation-ease-linear: cubic-bezier(0, 0, 1, 1);
+
+  /* ** PAGE LEVEL ** */
+  --page-background: var(--color-background);
 
   /* ** LEGACY STYLES ** */
 
