@@ -17,7 +17,7 @@
 
   /* **Note:** CSS Custom properties are not supported within media queries.
   As of now, this is simply reference, in preparation for the release of CSS `env()`.
-  Additionally, generalized breakpoints should be used only for full-page layout shifts
+  Additionally, generalized breakpoints should be used only for full-page layout shifts.
   Each component should have control over its own responsiveness
   relative to container size, not screen size.
   */
@@ -254,6 +254,12 @@
 
     --gradient-indigo-dark: var(--gradient-indigo-100);
     --gradient-indigo-light: var(--gradient-indigo-200);
+
+    --gradient-multitone: linear-gradient(
+      268deg,
+      #DF4DF5 -9.27%,
+      #F03823 105.57%
+    );
   }
 
   @media (prefers-color-scheme: dark) {
@@ -266,6 +272,12 @@
 
       --gradient-indigo-dark: var(--gradient-indigo-100);
       --gradient-indigo-light: var(--gradient-indigo-200);
+
+      --gradient-multitone: linear-gradient(
+        268deg,
+        #DF4DF5 -9.27%,
+        #F03823 105.57%
+      );
     }
   }
 

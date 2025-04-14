@@ -313,3 +313,23 @@ main .section.highlight {
 .theme-green {
   --page-background: var(--gradient-green);
 }
+
+.theme-blue {
+  --page-background: var(--gradient-blue);
+}
+
+.theme-cyan-500 {
+  --page-background: var(--gradient-cyan-500);
+}
+
+.theme-cyan-600 {
+  --page-background: var(--gradient-cyan-600);
+}
+
+.theme-indigo-dark {
+  --page-background: var(--gradient-indigo-dark);
+}
+
+.theme-indigo-light {
+  --page-background: var(--gradient-indigo-dark);
+}
