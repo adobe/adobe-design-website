@@ -22,12 +22,12 @@
 }
 
 .accordion details[open] summary {
-  background-color: var(--light-color);
+  background-color: var(--spectrum-gray-50);
 }
 
 .accordion details summary:focus,
 .accordion details summary:hover {
-  background-color: var(--light-color);
+  background-color: var(--spectrum-gray-50);
 }
 
 .accordion details summary::-webkit-details-marker {
@@ -57,5 +57,5 @@
 
 .accordion details[open] .accordion-item-body {
   border-top: 1px solid #dadada;
-  background-color: var(--color-background-default);
+  background-color: var(--color-background);
 }

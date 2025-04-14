@@ -14,7 +14,7 @@ body.modal-open {
   max-width: 900px;
   max-height: calc(100dvh - (2 * var(--header-height)));
   padding: 0;
-  border: 1px solid var(--dark-color);
+  border: 1px solid var(--spectrum-gray-500);
 }
 
 .modal dialog .modal-content {

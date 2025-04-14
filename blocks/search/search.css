@@ -13,8 +13,8 @@
   margin: 0;
   padding: 0.5em;
   border-radius: 4px;
-  border: 1px solid var(--dark-color);
-  background-color: var(--color-background-default);
+  border: 1px solid var(--color-text);
+  background-color: var(--color-background);
   color: var(--color-text);
   font-size: var(--body-font-size-s);
   transition: border-color 200ms;

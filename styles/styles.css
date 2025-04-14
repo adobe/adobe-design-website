@@ -13,7 +13,7 @@
 body {
   display: none;
   margin: 0;
-  background-color: var(--color-background-default);
+  background-color: var(--color-background);
   color: var(--color-text);
   font-family: var(--body-font-family);
   font-size: var(--body-font-size-m);
@@ -55,7 +55,7 @@ h6 {
   font-family: var(--heading-font-family);
   font-weight: 600;
   line-height: 1.25;
-  scroll-margin: 40px;
+  scroll-margin: 2.5rem;
 }
 
 h1 { font-size: var(--heading-font-size-xxl); }
@@ -81,15 +81,15 @@ pre {
 }
 
 pre {
-  padding: 16px;
-  border-radius: 8px;
-  background-color: var(--light-color);
+  padding: 1rem;
+  border-radius: var(--corner-radius-default);
+  background-color: var(--color-background);
   overflow-x: auto;
   white-space: pre;
 }
 
 main > div {
-  margin: 40px 16px;
+  margin: 2.5rem 1rem;
 }
 
 input,
@@ -117,9 +117,9 @@ button {
   box-sizing: border-box;
   display: inline-block;
   max-width: 100%;
-  margin: 12px 0;
+  margin: 0.75rem 0;
   border: 2px solid transparent;
-  border-radius: 2.4em;
+  border-radius: var(--corner-radius-button);
   padding: 0.5em 1.2em;
   font-family: var(--body-font-family);
   font-style: normal;
@@ -128,7 +128,7 @@ button {
   text-align: center;
   text-decoration: none;
   background-color: var(--color-text-link);
-  color: var(--color-background-default);
+  color: var(--color-background);
   cursor: pointer;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -145,7 +145,7 @@ button:focus {
 
 button:disabled,
 button:disabled:hover {
-  background-color: var(--light-color);
+  opacity: var(--spectrum-opacity-disabled);
   cursor: unset;
 }
 
@@ -164,8 +164,8 @@ main img {
 
 .icon {
   display: inline-block;
-  height: 24px;
-  width: 24px;
+  height: 1.5rem;
+  width: 1.5rem;
 }
 
 .icon img {
@@ -175,13 +175,13 @@ main img {
 
 /* sections */
 main > .section {
-  margin: 40px 0;
+  margin: 2.5rem 0;
 }
 
 main > .section > div {
-  max-width: 1200px;
+  max-width: 75rem;
   margin: auto;
-  padding: 0 24px;
+  padding: 0 1.5rem;
 }
 
 main > .section:first-of-type {
@@ -190,14 +190,14 @@ main > .section:first-of-type {
 
 @media (width >= 900px) {
   main > .section > div {
-    padding: 0 32px;
+    padding: 0 2rem;
   }
 }
 
 /* section metadata */
 main .section.light,
 main .section.highlight {
-  background-color: var(--light-color);
+  background-color: var(--color-background);
   margin: 0;
-  padding: 40px 0;
+  padding: 2.5rem 0;
 }
