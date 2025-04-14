@@ -14,11 +14,13 @@ describe('Hero Block', () => {
     expect(heading).toExist();
   });
 
-  xit('should contain a responsive picture element', async () => {
-    const picture = await page.$('.hero-wrapper picture');
+  it("should contain a responsive picture element", async () => {
+    await page.waitForSelector(".hero-wrapper picture");
+    const picture = await page.$(".hero-wrapper picture");
     expect(picture).toExist();
 
-    const sources = await page.$$('.hero-wrapper picture source');
+    await page.waitForSelector(".hero-wrapper picture source");
+    const sources = await page.$$(".hero-wrapper picture source");
     expect(sources.length).toBe(3);
 
     await page.waitForSelector('.hero-wrapper picture img[loading="eager"]');
