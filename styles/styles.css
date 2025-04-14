@@ -127,8 +127,8 @@ button {
   line-height: 1.25;
   text-align: center;
   text-decoration: none;
-  background-color: var(--color-text-link);
-  color: var(--color-background);
+  background-color: var(--color-background-button);
+  color: var(--color-text-button);
   cursor: pointer;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -139,7 +139,7 @@ a.button:hover,
 a.button:focus,
 button:hover,
 button:focus {
-  background-color: var(--color-text-link-hover);
+  background-color: var(--color-background-button-hover);
   cursor: pointer;
 }
 
