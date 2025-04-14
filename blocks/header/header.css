@@ -30,7 +30,8 @@ header nav[aria-expanded='true'] {
   min-height: 100dvh;
 }
 
-@media (width >= 900px) {
+@media (min-width: 48rem) {
+  /* !! min-width MQ needs refactor */
   header nav {
     display: flex;
     justify-content: space-between;
@@ -128,7 +129,8 @@ header nav[aria-expanded='true'] .nav-hamburger-icon::after {
   transform: rotate(-45deg);
 }
 
-@media (width >= 900px) {
+@media (min-width: 48rem) {
+  /* !! min-width MQ needs refactor */
   header nav .nav-hamburger {
     display: none;
     visibility: hidden;
@@ -181,7 +183,8 @@ header nav .nav-sections ul > li > ul > li {
   font-weight: 400;
 }
 
-@media (width >= 900px) {
+@media (min-width: 48rem) {
+  /* !! min-width MQ needs refactor */
   header nav .nav-sections {
     display: block;
     visibility: visible;
@@ -313,10 +316,11 @@ header .breadcrumbs ol li[aria-current] {
   color: var(--color-text);
 }
 
-@media (width >= 900px) {
+@media (min-width: 48rem) {
+  /* !! min-width MQ needs refactor */
   header .breadcrumbs {
     display: block;
-    max-width: 1264px;
-    padding: 0 32px;
+    max-width: 79rem;
+    padding: 0 2rem;
   }
 }

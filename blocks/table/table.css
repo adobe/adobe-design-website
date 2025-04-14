@@ -10,13 +10,15 @@
   font-size: var(--body-font-size-xs);
 }
 
-@media (width >= 600px) {
+@media (min-width: 37.5rem) {
+  /* !! min-width MQ needs refactor */
   .table table {
     font-size: var(--body-font-size-s);
   }
 }
 
-@media (width >= 900px) {
+@media (min-width: 48rem) {
+  /* !! min-width MQ needs refactor */
   .table table {
     font-size: var(--body-font-size-m);
   }
