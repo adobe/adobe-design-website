@@ -184,33 +184,33 @@
   );
   --gradient-cyan-500: linear-gradient(
     180deg,
-    var(--gradient-cyan-500) -47.5%,
+    var(--spectrum-cyan-500) -47.5%,
     var(--color-background) 100%
   );
   --gradient-cyan-600: linear-gradient(
     95deg,
-    var(--gradient-cyan-600) 11.17%,
+    var(--spectrum-cyan-600) 11.17%,
     var(--color-background) 97.52%
   );
 
   --gradient-indigo-100: linear-gradient(
     180deg,
-    var(--gradient-indigo-100) 0%,
+    var(--spectrum-indigo-100) 0%,
     var(--color-background) 100%
   );
   --gradient-indigo-200: linear-gradient(
     180deg,
-    var(--gradient-indigo-200) 0%,
+    var(--spectrum-indigo-200) 0%,
     var(--color-background) 100%
   );
   --gradient-indigo-400: linear-gradient(
     180deg,
-    var(--gradient-indigo-400) 0%,
+    var(--spectrum-indigo-400) 0%,
     var(--color-background) 100%
   );
   --gradient-indigo-500: linear-gradient(
     180deg,
-    var(--gradient-indigo-500) 0%,
+    var(--spectrum-indigo-500) 0%,
     var(--color-background) 100%
   );
 
