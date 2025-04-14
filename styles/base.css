@@ -438,7 +438,7 @@
   --spectrum-corner-radius-600: 9px;
   --spectrum-corner-radius-700: 10px;
   --spectrum-corner-radius-800: 16px;
-  --spectrum-corner-radius-1000: 50%;
+  --spectrum-corner-radius-1000: 9999px;
 
   --corner-radius-default: var(--spectrum-corner-radius-500);
   --corner-radius-button: var(--spectrum-corner-radius-800);
