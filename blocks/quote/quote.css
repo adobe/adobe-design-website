@@ -1,12 +1,13 @@
 .quote blockquote {
   margin: 0 auto;
-  padding: 0 24px;
-  max-width: 900px;
+  padding: 0 1.5rem;
+  max-width: 48rem;
 }
 
-@media (width >= 900px) {
+@media (min-width: 48rem) {
+  /* !! min-width MQ needs refactor */
   .quote blockquote {
-    padding: 0 32px;
+    padding: 0 2rem;
   }
 }
 

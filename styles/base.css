@@ -15,6 +15,20 @@
 
   /* ** BREAKPOINTS ** */
 
+  /* **Note:** CSS Custom properties are not supported within media queries.
+  As of now, this is simply reference, in preparation for the release of CSS `env()`.
+  Additionally, generalized breakpoints should be used only for full-page layout shifts.
+  Each component should have control over its own responsiveness
+  relative to container size, not screen size.
+  */
+
+  /*
+  breakpoint-small: 22.5rem -360px
+  breakpoint-medium: 48rem - 768px
+  breakpoint-large: 80rem - 1280px
+  breakpoint-xl: 105rem - 1680px
+  */
+
   /* ** COLOR ** */
 
   /* spectrum colors */
@@ -195,7 +209,6 @@
     var(--spectrum-cyan-600) 11.17%,
     var(--color-background) 97.52%
   );
-
   --gradient-indigo-100: linear-gradient(
     180deg,
     var(--spectrum-indigo-100) 0%,
@@ -241,6 +254,12 @@
 
     --gradient-indigo-dark: var(--gradient-indigo-100);
     --gradient-indigo-light: var(--gradient-indigo-200);
+
+    --gradient-multitone: linear-gradient(
+      268deg,
+      #DF4DF5 -9.27%,
+      #F03823 105.57%
+    );
   }
 
   @media (prefers-color-scheme: dark) {
@@ -253,6 +272,12 @@
 
       --gradient-indigo-dark: var(--gradient-indigo-100);
       --gradient-indigo-light: var(--gradient-indigo-200);
+
+      --gradient-multitone: linear-gradient(
+        268deg,
+        #DF4DF5 -9.27%,
+        #F03823 105.57%
+      );
     }
   }
 
@@ -413,7 +438,7 @@
   --spectrum-corner-radius-600: 9px;
   --spectrum-corner-radius-700: 10px;
   --spectrum-corner-radius-800: 16px;
-  --spectrum-corner-radius-1000: 50%;
+  --spectrum-corner-radius-1000: 9999px;
 
   --corner-radius-default: var(--spectrum-corner-radius-500);
   --corner-radius-button: var(--spectrum-corner-radius-800);
@@ -547,6 +572,9 @@
   --spectrum-animation-ease-out: cubic-bezier(0, 0, 0.4, 1);
   --spectrum-animation-ease-linear: cubic-bezier(0, 0, 1, 1);
 
+  /* ** PAGE LEVEL ** */
+  --page-background: var(--color-background);
+
   /* ** LEGACY STYLES ** */
 
   /* refactor these out as possible */
@@ -570,7 +598,8 @@
   --header-height: var(--nav-height);
 }
 
-@media (width >= 900px) {
+@media (min-width: 48rem) {
+  /* !! min-width MQ needs refactor */
   :root {
     /* body sizes */
     --body-font-size-m: 18px;

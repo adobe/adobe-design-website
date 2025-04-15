@@ -19,7 +19,8 @@
   display: block;
 }
 
-@media (width >= 900px) {
+@media (min-width: 48rem) {
+  /* !! min-width MQ needs refactor */
   .columns > div {
     align-items: center;
     flex-direction: unset;

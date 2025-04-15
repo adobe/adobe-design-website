@@ -28,7 +28,8 @@ body.modal-open {
   margin-top: 44px;
 }
 
-@media (width >= 900px) {
+@media (min-width: 48rem) {
+  /* !! min-width MQ needs refactor */
   .modal dialog {
     width: calc(100vw - 64px);
   }

@@ -13,8 +13,10 @@ footer .footer p {
   margin: 0;
 }
 
-@media (width >= 900px) {
+@media (min-width: 48rem) {
+  /* !! min-width MQ needs refactor */
+
   footer .footer > div {
-    padding: 40px 32px 24px;
+    padding: 2.5rem 2rem 1.5rem;
   }
 }
