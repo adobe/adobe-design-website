@@ -21,7 +21,7 @@ describe('Modal Block', () => {
       await page.waitForSelector('dialog[open]', { visible: true });
     });
 
-    it('should open a modal with proper structure', async () => {
+    it('opens the modal with the correct structure and closes modal', async () => {
       const dialog = await page.$('dialog[open]');
       expect(dialog).toExist();
 
@@ -30,6 +30,13 @@ describe('Modal Block', () => {
 
       const modalContent = await page.$('.modal-content');
       expect(modalContent).toExist();
+
+      await closeButton.click();
+      await page.waitForFunction(() => !document.querySelector('dialog[open]'));
+
+      const dialogAfterClose = await page.$('dialog[open]');
+      expect(dialogAfterClose).toBeNull();
     });
   });
+
 }); 
