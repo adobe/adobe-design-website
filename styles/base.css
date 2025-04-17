@@ -23,7 +23,7 @@
   */
 
   /*
-  breakpoint-small: 22.5rem -360px
+  breakpoint-small: 22.5rem - 360px
   breakpoint-medium: 48rem - 768px
   breakpoint-large: 80rem - 1280px
   breakpoint-xl: 105rem - 1680px
@@ -464,86 +464,118 @@
   /* ** TYPOGRAPHY ** */
 
   /* fonts */
-  --body-font-family: roboto, roboto-fallback, sans-serif;
-  --heading-font-family: roboto-condensed, roboto-condensed-fallback, sans-serif;
+  --spectrum-display-font-family: Adobe Clean Display;
+  --spectrum-display-font-family-stack: adobe-clean-display, var(--spectrum-display-font-family), "Source Sans Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu, "Trebuchet MS", "Lucida Grande", sans-serif;
+  --spectrum-display-font: var(--spectrum-display-font-family-stack);
+
   --spectrum-sans-serif-font-family: Adobe Clean;
-  --spectrum-serif-font-family: Adobe Clean Serif;
-
   --spectrum-sans-font-family-stack: adobe-clean,
-    var(--spectrum-sans-serif-font-family), "Source Sans Pro", -apple-system,
-    BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu, "Trebuchet MS",
-    "Lucida Grande", sans-serif;
+  var(--spectrum-sans-serif-font-family), "Source Sans Pro", -apple-system,
+  BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu, "Trebuchet MS",
+  "Lucida Grande", sans-serif;
   --spectrum-sans-serif-font: var(--spectrum-sans-font-family-stack);
-
+  
+  --spectrum-serif-font-family: Adobe Clean Serif;
   --spectrum-serif-font-family-stack: adobe-clean-serif,
     var(--spectrum-serif-font-family), "Source Serif Pro", Georgia, serif;
   --spectrum-serif-font: var(--spectrum-serif-font-family-stack);
 
-  --spectrum-code-font-family-stack: "Source Code Pro", Monaco, monospace;
-
-  --spectrum-font-family: var(--spectrum-sans-font-family-stack);
-  --spectrum-font-style: var(--spectrum-default-font-style);
-  --spectrum-font-size: var(--spectrum-font-size-100);
-
-  --spectrum-default-font-family: var(--body-font-family);
-  --spectrum-letter-spacing: 0;
   --spectrum-text-align-start: start;
   --spectrum-text-align-center: center;
   --spectrum-text-align-end: end;
 
-  --spectrum-light-font-weight: 300;
   --spectrum-regular-font-weight: 400;
   --spectrum-medium-font-weight: 500;
   --spectrum-bold-font-weight: 700;
   --spectrum-extra-bold-font-weight: 800;
   --spectrum-black-font-weight: 900;
 
-  --spectrum-italic-font-style: italic;
-  --spectrum-default-font-style: normal;
+  /* font size */
+  --spectrum-font-size-100: 14px;
+  --spectrum-font-size-200: 16px;
+  --spectrum-font-size-300: 18px;
+  --spectrum-font-size-400: 20px;
+  --spectrum-font-size-500: 22px;
+  --spectrum-font-size-600: 25px;
+  --spectrum-font-size-700: 28px;
+  --spectrum-font-size-750: 30px;
+  --spectrum-font-size-800: 32px;
+  --spectrum-font-size-900: 36px;
+  --spectrum-font-size-1000: 40px;
+  --spectrum-font-size-1100: 45px;
+  --spectrum-font-size-1200: 51px;
 
-  /* font size - delete unused */
-  --spectrum-font-size-25: 12px;
-  --spectrum-font-size-50: 13px;
-  --spectrum-font-size-75: 15px;
-  --spectrum-font-size-100: 17px;
-  --spectrum-font-size-200: 19px;
-  --spectrum-font-size-300: 22px;
-  --spectrum-font-size-400: 24px;
-  --spectrum-font-size-500: 27px;
-  --spectrum-font-size-600: 31px;
-  --spectrum-font-size-700: 34px;
-  --spectrum-font-size-800: 39px;
-  --spectrum-font-size-900: 44px;
-  --spectrum-font-size-1000: 49px;
-  --spectrum-font-size-1100: 55px;
-  --spectrum-font-size-1200: 62px;
-  --spectrum-font-size-1300: 70px;
-  --spectrum-font-size-1400: 79px;
-  --spectrum-font-size-1500: 88px;
+  /* heading */
+  --heading-font-family: var(--spectrum-display-font);
+  --heading-line-height: 1.25;
+
+  --spectrum-heading-size-xl: var(--spectrum-font-size-1000);
+  --spectrum-heading-weight-xl: var(--spectrum-black-font-weight);
+  
+  --spectrum-heading-size-m: var(--spectrum-font-size-750);
+  --spectrum-heading-weight-m: var(--spectrum-black-font-weight);
+  
+  --spectrum-heading-size-s: var(--spectrum-font-size-700);
+  --spectrum-heading-weight-s: var(--spectrum-extra-bold-font-weight);
+  
+  @media (min-width: 80rem) {
+    --spectrum-heading-size-xl: var(--spectrum-font-size-1200);
+    --spectrum-heading-size-m: var(--spectrum-font-size-1000);
+    --spectrum-heading-size-s: var(--spectrum-font-size-900);
+  }
+
+  /* title */
+  --title-font-family: var(--spectrum-sans-serif-font);
+  --title-line-height: 1.3;
+
+  --spectrum-title-size-xl: var(--spectrum-font-size-500);
+  --spectrum-title-weight-xl: var(--spectrum-extra-bold-font-weight);
+  
+  --spectrum-title-size-m: var(--spectrum-font-size-300);
+  --spectrum-title-weight-m: var(--spectrum-bold-font-weight);
+  
+  --spectrum-title-size-s: var(--spectrum-font-size-200);
+  --spectrum-title-weight-s: var(--spectrum-bold-font-weight);
+  
+  --spectrum-title-size-xs: var(--spectrum-font-size-100);
+  --spectrum-title-weight-xs: var(--spectrum-bold-font-weight);
+  
+  @media (min-width: 80rem) {
+    --spectrum-title-size-xl: var(--spectrum-font-size-600);
+    --spectrum-title-size-m: var(--spectrum-font-size-400);
+    --spectrum-title-size-s: var(--spectrum-font-size-300);
+    --spectrum-title-size-xs: var(--spectrum-font-size-200);
+  }
+
+  /* detail */
+  --detail-font-family: var(--spectrum-sans-serif-font);
+  --detail-line-height: 1.25;
+  --detail-font-weight: var(--spectrum-medium-font-weight);
+
+  --spectrum-detail-size-l: var(--spectrum-font-size-300);
+  --spectrum-detail-size-m: var(--spectrum-font-size-200);
+  --spectrum-detail-size-s: var(--spectrum-font-size-100);
+
+  @media (min-width: 80rem) {
+    --spectrum-detail-size-l: var(--spectrum-font-size-500);
+    --spectrum-detail-size-m: var(--spectrum-font-size-300);
+    --spectrum-detail-size-s: var(--spectrum-font-size-100);
+  }
 
   /* body */
-  --spectrum-body-size-xxxl: var(--spectrum-font-size-600);
-  --spectrum-body-size-xxl: var(--spectrum-font-size-500);
-  --spectrum-body-size-xl: var(--spectrum-font-size-400);
-  --spectrum-body-size-l: var(--spectrum-font-size-300);
-  --spectrum-body-size-m: var(--spectrum-font-size-200);
-  --spectrum-body-size-s: var(--spectrum-font-size-100);
-  --spectrum-body-size-xs: var(--spectrum-font-size-75);
-  --spectrum-body-size-xxs: var(--spectrum-font-size-50);
+  --body-font-family: var(--spectrum-sans-serif-font);
+  --body-line-height: 1.5;
+  --body-font-weight: var(--spectrum-regular-font-weight);
 
-  --spectrum-body-line-height: var(--spectrum-line-height-200);
+  --spectrum-body-size-m: var(--spectrum-font-size-300);
+  --spectrum-body-size-s: var(--spectrum-font-size-200);
+  --spectrum-body-size-xs: var(--spectrum-font-size-100);
 
-  /* headings */
-  --spectrum-heading-size-xxxl: var(--spectrum-font-size-1300);
-  --spectrum-heading-size-xxl: var(--spectrum-font-size-1100);
-  --spectrum-heading-size-xl: var(--spectrum-font-size-900);
-  --spectrum-heading-size-l: var(--spectrum-font-size-700);
-  --spectrum-heading-size-m: var(--spectrum-font-size-500);
-  --spectrum-heading-size-s: var(--spectrum-font-size-400);
-  --spectrum-heading-size-xs: var(--spectrum-font-size-300);
-  --spectrum-heading-size-xxs: var(--spectrum-font-size-100);
-  --spectrum-heading-cjk-size-xxxxl: var(--spectrum-font-size-1400);
-  --spectrum-heading-size-xxxxl: var(--spectrum-font-size-1500);
+  @media (min-width: 80rem) {
+    --spectrum-body-size-m: var(--spectrum-font-size-300);
+    --spectrum-body-size-s: var(--spectrum-font-size-200);
+    --spectrum-body-size-xs: var(--spectrum-font-size-100);
+  }
 
   /* functional */
 
@@ -597,39 +629,8 @@
 
   /* refactor these out as possible */
 
-  /* body sizes */
-  --body-font-size-m: 22px;
-  --body-font-size-s: 19px;
-  --body-font-size-xs: 17px;
-
-  /* heading sizes */
-  --heading-font-size-xxl: 55px;
-  --heading-font-size-xl: 44px;
-  --heading-font-size-l: 34px;
-  --heading-font-size-m: 27px;
-  --heading-font-size-s: 24px;
-  --heading-font-size-xs: 22px;
-
   /* nav heights */
   --nav-height: 64px;
   --breadcrumbs-height: 34px;
   --header-height: var(--nav-height);
-}
-
-@media (min-width: 48rem) {
-  /* !! min-width MQ needs refactor */
-  :root {
-    /* body sizes */
-    --body-font-size-m: 18px;
-    --body-font-size-s: 16px;
-    --body-font-size-xs: 14px;
-
-    /* heading sizes */
-    --heading-font-size-xxl: 45px;
-    --heading-font-size-xl: 36px;
-    --heading-font-size-l: 28px;
-    --heading-font-size-m: 22px;
-    --heading-font-size-s: 20px;
-    --heading-font-size-xs: 18px;
-  }
 }
