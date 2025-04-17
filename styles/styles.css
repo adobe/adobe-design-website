@@ -16,8 +16,9 @@ body {
   margin: 0;
   color: var(--color-text);
   font-family: var(--body-font-family);
-  font-size: var(--body-font-size-m);
-  line-height: 1.6;
+  line-height: 1.5;
+  font-weight: var(--spectrum-body-font-weight);
+  font-size: var(--spectrum-body-size-m);
 }
 
 body.appear {
@@ -53,18 +54,52 @@ h5,
 h6 {
   margin-top: 0.8em;
   margin-bottom: 0.25em;
-  font-family: var(--heading-font-family);
-  font-weight: 600;
-  line-height: 1.25;
   scroll-margin: 2.5rem;
 }
 
-h1 { font-size: var(--heading-font-size-xxl); }
-h2 { font-size: var(--heading-font-size-xl); }
-h3 { font-size: var(--heading-font-size-l); }
-h4 { font-size: var(--heading-font-size-m); }
-h5 { font-size: var(--heading-font-size-s); }
-h6 { font-size: var(--heading-font-size-xs); }
+h1,
+h2,
+h3 {
+  font-family: var(--heading-font-family);
+  line-height: var(--heading-line-height);
+}
+
+h4,
+h5,
+h6 {
+  font-family: var(--title-font-family);
+  line-height: var(--title-line-height);
+}
+
+h1 {
+  font-size: var(--spectrum-heading-size-xl);
+  font-weight: var(--spectrum-heading-weight-xl);
+}
+
+h2 {
+  font-size: var(--spectrum-heading-size-m);
+  font-weight: var(--spectrum-heading-weight-m);
+}
+
+h3 {
+  font-size: var(--spectrum-heading-size-s);
+  font-weight: var(--spectrum-heading-weight-s);
+}
+
+h4 {
+  font-size: var(--spectrum-title-size-xl);
+  font-weight: var(--spectrum-title-weight-xl);
+}
+
+h5 {
+  font-size: var(--spectrum-title-size-m);
+  font-weight: var(--spectrum-title-weight-m);
+}
+
+h6 {
+  font-size: var(--spectrum-title-size-s);
+  font-weight: var(--spectrum-title-weight-s);
+}
 
 p,
 dl,
@@ -78,7 +113,7 @@ blockquote {
 
 code,
 pre {
-  font-size: var(--body-font-size-s);
+  font-size: var(--spectrum-body-size-s);
 }
 
 pre {
@@ -124,9 +159,9 @@ button {
   padding: 0.5em 1.2em;
   font-family: var(--body-font-family);
   font-style: normal;
-  font-weight: 500;
+  font-weight: var(--spectrum-medium-font-weight);
   line-height: 1.25;
-  text-align: center;
+  text-align: var(--spectrum-text-align-center);
   text-decoration: none;
   background-color: var(--color-background-button);
   color: var(--color-text-button);
