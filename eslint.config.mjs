@@ -11,7 +11,6 @@ export default defineConfig([
       "helix-importer-ui",
       "scripts/*",
       "eslint.config.mjs",
-      "**/*.test.js"
     ]),
     {
       files: ["**/*.{js}"],
@@ -28,6 +27,7 @@ export default defineConfig([
           ...globals.browser,
           ...globals.jest,
           ...globals.node,
+          page: "readonly",
         },
         parser: babelParser,
         sourceType: "module",
@@ -47,10 +47,16 @@ export default defineConfig([
         "no-param-reassign": [2, {
             props: false,
         }],
-        "no-console": 1,
+        "no-console": "error",
         "no-use-before-define": 1,
         "max-len": 0,
         "eol-last": ["error", "always"]
+      },
+    },
+    {
+      files: ["**/*.test.js"],
+      rules: {
+        "no-console": ["warn", { allow: ["log", "warn", "error"] }],
       },
     },
 ]);
