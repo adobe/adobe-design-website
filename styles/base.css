@@ -76,10 +76,16 @@
   --spectrum-fuchsia-400: rgb(247 181 255);
   --spectrum-fuchsia-1400: rgb(72 0 88);
 
+  --spectrum-orange-400: rgb(255 193 94);
+  --spectrum-orange-1400: rgb(73 24 0);
+
+  --spectrum-seafoam-400: rgb(92 225 194);
   --spectrum-seafoam-1400: rgb(0 46 40);
+
+  --spectrum-turquoise-200: rgb(209 245 245);
+
   --spectrum-red-1400: rgb(80 16 6);
   --spectrum-brown-1400: rgb(52 37 13);
-  --spectrum-orange-1400: rgb(73 24 0);
 
   &:has(#color-scheme option[value="dark"]:checked) {
     --spectrum-blue-300: rgb(12 33 117);
@@ -116,10 +122,16 @@
     --spectrum-fuchsia-400: rgb(102 9 120);
     --spectrum-fuchsia-1400: rgb(251 219 255);
 
+    --spectrum-orange-400: rgb(106 36 0);
+    --spectrum-orange-1400: rgb(255 225 178);
+
+    --spectrum-seafoam-400: rgb(0 67 59);
     --spectrum-seafoam-1400: rgb(186 241 222);
+
+    --spectrum-turquoise-200: rgb(0 37 41);
+
     --spectrum-red-1400: rgb(255 222 219);
     --spectrum-brown-1400: rgb(242 227 206);
-    --spectrum-orange-1400: rgb(255 225 178);
   }
 
   @media (prefers-color-scheme: dark) {
@@ -158,10 +170,17 @@
       --spectrum-fuchsia-400: rgb(102 9 120);
       --spectrum-fuchsia-1400: rgb(251 219 255);
 
+      --spectrum-orange-400: rgb(106 36 0);
+      --spectrum-orange-1400: rgb(255 225 178);
+
+      --spectrum-seafoam-400: rgb(0 67 59);
       --spectrum-seafoam-1400: rgb(186 241 222);
+
+      --spectrum-turquoise-200: rgb(0 37 41);
+
       --spectrum-red-1400: rgb(255 222 219);
       --spectrum-brown-1400: rgb(242 227 206);
-      --spectrum-orange-1400: rgb(255 225 178);
+
     }
   }
 
@@ -198,6 +217,11 @@
     180deg,
     var(--spectrum-blue-500) 0%,
     var(--color-background) 100%
+  );
+  --gradient-seafoam: linear-gradient(
+    180deg,
+    var(--spectrum-seafoam-400) 0%,
+    var(--spectrum-turquoise-200) 100%
   );
   --gradient-cyan-500: linear-gradient(
     180deg,
@@ -239,6 +263,12 @@
     #4b75ff 118.78%
   );
 
+  --gradient-multitone-pink: linear-gradient(
+    268deg,
+    #DF4DF5 -9.27%,
+    #F03823 105.57%
+  );
+
   --gradient-background: linear-gradient(
     180deg,
     transparent 0%,
@@ -254,12 +284,6 @@
 
     --gradient-indigo-dark: var(--gradient-indigo-100);
     --gradient-indigo-light: var(--gradient-indigo-200);
-
-    --gradient-multitone: linear-gradient(
-      268deg,
-      #DF4DF5 -9.27%,
-      #F03823 105.57%
-    );
   }
 
   @media (prefers-color-scheme: dark) {
@@ -272,12 +296,6 @@
 
       --gradient-indigo-dark: var(--gradient-indigo-100);
       --gradient-indigo-light: var(--gradient-indigo-200);
-
-      --gradient-multitone: linear-gradient(
-        268deg,
-        #DF4DF5 -9.27%,
-        #F03823 105.57%
-      );
     }
   }
 

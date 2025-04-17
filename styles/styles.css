@@ -318,6 +318,10 @@ main .section.highlight {
   --page-background: var(--gradient-blue);
 }
 
+.theme-seafoam {
+  --page-background: var(--gradient-seafoam);
+}
+
 .theme-cyan-500 {
   --page-background: var(--gradient-cyan-500);
 }
