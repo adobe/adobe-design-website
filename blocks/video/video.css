@@ -1,7 +1,7 @@
 .video {
-  text-align: center;
-  max-width: 900px;
-  margin: 24px auto;
+  text-align: var(--spectrum-text-align-center);
+  max-width: 56.25rem;
+  margin: 1.5rem auto;
 }
 
 .video[data-embed-loaded='false']:not(.placeholder) {

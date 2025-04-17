@@ -46,8 +46,8 @@
 .form label,
 .form fieldset > legend {
   margin-bottom: 0.25em;
-  font-size: var(--body-font-size-s);
-  font-weight: 700;
+  font-size: var(--spectrum-body-size-s);
+  font-weight: var(--spectrum-bold-font-weight);
 }
 
 .form .selection-wrapper label {
@@ -67,7 +67,7 @@
   border: 1px solid var(--spectrum-gray-500);
   background-color: var(--color-background);
   color: var(--color-text);
-  font-size: var(--body-font-size-s);
+  font-size: var(--spectrum-body-size-s);
   transition: border-color 200ms;
 }
 
