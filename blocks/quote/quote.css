@@ -1,9 +1,6 @@
 .quote blockquote {
-  --color-text: light-dark(var(--spectrum-gray-700), var(--spectrum-gray-900));
-  --color-border: light-dark(
-    var(--spectrum-gray-400),
-    var(--spectrum-gray-700)
-  );
+  --color-text: var(--spectrum-gray-700);
+  --color-border: var(--spectrum-gray-400);
   position: relative;
   margin: var(--spectrum-spacing-800) auto;
   padding-block: 4.5rem;
