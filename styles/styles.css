@@ -127,23 +127,9 @@ p,
 dl,
 ol,
 ul,
-pre,
 blockquote {
   margin-top: 0.8em;
   margin-bottom: 0.25em;
-}
-
-code,
-pre {
-  font-size: var(--spectrum-body-size-s);
-}
-
-pre {
-  padding: 1rem;
-  border-radius: var(--corner-radius-default);
-  background-color: var(--color-background);
-  overflow-x: auto;
-  white-space: pre;
 }
 
 main > div {
