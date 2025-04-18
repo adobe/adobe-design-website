@@ -48,17 +48,6 @@ footer .footer[data-block-status="loaded"] {
 
 h1,
 h2,
-h3,
-h4,
-h5,
-h6 {
-  margin-top: 0.8em;
-  margin-bottom: 0.25em;
-  scroll-margin: 2.5rem;
-}
-
-h1,
-h2,
 h3 {
   font-family: var(--heading-font-family);
   line-height: var(--heading-line-height);
@@ -99,6 +88,39 @@ h5 {
 h6 {
   font-size: var(--spectrum-title-size-s);
   font-weight: var(--spectrum-title-weight-s);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin-top: 0.8em;
+  margin-bottom: 0.25em;
+  scroll-margin: 2.5rem;
+}
+
+:root:has(#color-scheme option[value="dark"]:checked) h1,
+:root:has(#color-scheme option[value="dark"]:checked) h2,
+:root:has(#color-scheme option[value="dark"]:checked) h3,
+:root:has(#color-scheme option[value="dark"]:checked) h4,
+:root:has(#color-scheme option[value="dark"]:checked) h5,
+:root:has(#color-scheme option[value="dark"]:checked) h6 {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:has(#color-scheme option[value="dark"]:checked) h1,
+  :root:has(#color-scheme option[value="dark"]:checked) h2,
+  :root:has(#color-scheme option[value="dark"]:checked) h3,
+  :root:has(#color-scheme option[value="dark"]:checked) h4,
+  :root:has(#color-scheme option[value="dark"]:checked) h5,
+  :root:has(#color-scheme option[value="dark"]:checked) h6 {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
 }
 
 p,
