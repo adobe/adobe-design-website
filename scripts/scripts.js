@@ -30,18 +30,6 @@ function buildHeroBlock(main) {
   }
 }
 
-/**
- * load fonts.css and set a session storage flag
- */
-// async function loadFonts() {
-//   await loadCSS(`${window.hlx.codeBasePath}/styles/fonts.css`);
-//   try {
-//     if (!window.location.hostname.includes('localhost')) sessionStorage.setItem('fonts-loaded', 'true');
-//   } catch (e) {
-//     // do nothing
-//   }
-// }
-
 function autolinkModals(doc) {
   doc.addEventListener('click', async (e) => {
     const origin = e.target.closest('a');
@@ -98,15 +86,6 @@ async function loadEager(doc) {
   }
 
   sampleRUM.enhance();
-
-  // try {
-  //   /* if desktop (proxy for fast connection) or fonts already loaded, load fonts.css */
-  //   if (window.innerWidth >= 900 || sessionStorage.getItem('fonts-loaded')) {
-  //     loadFonts();
-  //   }
-  // } catch (e) {
-  //   // do nothing
-  // }
 }
 
 /**
@@ -130,9 +109,6 @@ async function loadLazy(doc) {
   // loads the header and footer components, along with their stylesheets
   loadHeader(doc.querySelector('header'));
   loadFooter(doc.querySelector('footer'));
-
-  // Fetching fonts with Typekit
-  // loadFonts();
 }
 
 /**

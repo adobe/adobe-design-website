@@ -480,10 +480,12 @@
     var(--spectrum-serif-font-family), "Source Serif Pro", Georgia, serif;
   --spectrum-serif-font: var(--spectrum-serif-font-family-stack);
 
+  /* text align */
   --spectrum-text-align-start: start;
   --spectrum-text-align-center: center;
   --spectrum-text-align-end: end;
 
+  /* font weight */
   --spectrum-regular-font-weight: 400;
   --spectrum-medium-font-weight: 500;
   --spectrum-bold-font-weight: 700;
