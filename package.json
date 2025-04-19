@@ -1,8 +1,8 @@
 {
-  "name": "@adobe/aem-block-collection",
+  "name": "@adobe/adobe-design-website",
   "private": true,
-  "version": "1.0.0",
-  "description": "Block collection for AEM",
+  "version": "0.1.0",
+  "description": "Redesigned website for adobe.design",
   "scripts": {
     "lint:scripts": "eslint .",
     "lint:styles": "stylelint 'blocks/**/*.css' 'styles/*.css'",
@@ -13,14 +13,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/adobe/aem-block-collection.git"
+    "url": "git+https://github.com/adobe/adobe-design-website.git"
   },
   "author": "Adobe",
   "license": "Apache License 2.0",
   "bugs": {
-    "url": "https://github.com/adobe/aem-block-collection/issues"
+    "url": "https://github.com/adobe/adobe-design-website/issues"
   },
-  "homepage": "https://github.com/adobe/aem-block-collection#readme",
+  "homepage": "adobe.design",
   "devDependencies": {
     "@babel/eslint-parser": "^7.26.8",
     "@eslint/js": "^9.22.0",
