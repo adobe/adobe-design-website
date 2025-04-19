@@ -169,7 +169,7 @@ button {
   font-style: normal;
   font-weight: var(--spectrum-medium-font-weight);
   line-height: 1.25;
-  text-align: var(--spectrum-text-align-center);
+  text-align: center;
   text-decoration: none;
   background-color: var(--color-background-button);
   color: var(--color-text-button);
