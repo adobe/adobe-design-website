@@ -469,15 +469,11 @@
   --spectrum-display-font: var(--spectrum-display-font-family-stack);
 
   --spectrum-sans-serif-font-family: Adobe Clean;
-  --spectrum-sans-font-family-stack: adobe-clean,
-  var(--spectrum-sans-serif-font-family), "Source Sans Pro", -apple-system,
-  BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu, "Trebuchet MS",
-  "Lucida Grande", sans-serif;
+  --spectrum-sans-font-family-stack: adobe-clean, var(--spectrum-sans-serif-font-family), "Source Sans Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu, "Trebuchet MS", "Lucida Grande", sans-serif;
   --spectrum-sans-serif-font: var(--spectrum-sans-font-family-stack);
   
   --spectrum-serif-font-family: Adobe Clean Serif;
-  --spectrum-serif-font-family-stack: adobe-clean-serif,
-    var(--spectrum-serif-font-family), "Source Serif Pro", Georgia, serif;
+  --spectrum-serif-font-family-stack: adobe-clean-serif, var(--spectrum-serif-font-family), "Source Serif Pro", Georgia, serif;
   --spectrum-serif-font: var(--spectrum-serif-font-family-stack);
 
   /* font weight */

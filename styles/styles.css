@@ -351,28 +351,28 @@ main .section.highlight {
   }
  }
 
- .util-heading-xl {
+.util-heading-xl {
   font-family: var(--heading-font-family);
   line-height: var(--heading-line-height);
   font-size: var(--spectrum-heading-size-xl);
   font-weight: var(--spectrum-heading-weight-xl);
- }
+}
 
- .util-heading-m {
+.util-heading-m {
   font-family: var(--heading-font-family);
   line-height: var(--heading-line-height);
   font-size: var(--spectrum-heading-size-m);
   font-weight: var(--spectrum-heading-weight-m);
- }
+}
 
- .util-heading-s {
+.util-heading-s {
   font-family: var(--heading-font-family);
   line-height: var(--heading-line-height);
   font-size: var(--spectrum-heading-size-s);
   font-weight: var(--spectrum-heading-weight-s);
- }
+}
 
- .util-title-xl {
+.util-title-xl {
   font-family: var(--title-font-family);
   line-height: var(--title-line-height);
   font-size: var(--spectrum-title-size-xl);
@@ -384,7 +384,7 @@ main .section.highlight {
   line-height: var(--title-line-height);
   font-size: var(--spectrum-title-size-m);
   font-weight: var(--spectrum-title-weight-m);
- }
+}
 
 .util-title-s {
   font-family: var(--title-font-family);
@@ -398,58 +398,58 @@ main .section.highlight {
   line-height: var(--detail-line-height);
   font-size: var(--spectrum-detail-size-l);
   font-weight: var(--detail-font-weight);
- }
+}
 
 .util-detail-m {
   font-family: var(--detail-font-family);
   line-height: var(--detail-line-height);
   font-size: var(--spectrum-detail-size-m);
   font-weight: var(--detail-font-weight);
- }
+}
 
 .util-detail-s {
   font-family: var(--detail-font-family);
   line-height: var(--detail-line-height);
   font-size: var(--spectrum-detail-size-s);
   font-weight: var(--detail-font-weight);
- }
+}
 
 .util-body-m {
   font-family: var(--body-font-family);
   line-height: var(--body-line-height);
   font-size: var(--spectrum-body-size-m);
   font-weight: var(--body-font-weight);
- }
+}
 
 .util-body-s {
   font-family: var(--body-font-family);
   line-height: var(--body-line-height);
   font-size: var(--spectrum-body-size-s);
   font-weight: var(--body-font-weight);
- }
+}
 
 .util-body-xs {
   font-family: var(--body-font-family);
   line-height: var(--body-line-height);
   font-size: var(--spectrum-body-size-xs);
   font-weight: var(--body-font-weight);
- }
+}
 
- .util-medium-font-weight {
+.util-medium-font-weight {
   font-weight: var(--spectrum-medium-font-weight);
- }
+}
 
- .util-bold-font-weight {
+.util-bold-font-weight {
   font-weight: var(--spectrum-bold-font-weight);
- }
+}
 
- .util-extra-bold-font-weight {
+.util-extra-bold-font-weight {
   font-weight: var(--spectrum-extra-bold-font-weight);
- }
+}
 
- .util-black-font-weight {
+.util-black-font-weight {
   font-weight: var(--spectrum-black-font-weight);
- }
+}
 
  /* ** Page Themes ** */
 
