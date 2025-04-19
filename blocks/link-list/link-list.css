@@ -1,6 +1,6 @@
 .link-list {
-  --color-text: light-dark(#191919, #f2f2f2);
-  --color-border: light-dark(#c6c6c6, #505050);
+  --color-text: var(--spectrum-gray-900);
+  --color-border: var(--spectrum-gray-400);
   --icon-size: 1.25rem;
 
   & ul {
@@ -61,9 +61,17 @@
 }
 
 .link-list-item__job-title {
-  font-weight: bolder;
+  font-size: var(--spectrum-title-size-m);
+  font-weight: var(--spectrum-title-weight-m);
+  line-height: var(--title-line-height);
+}
+
+.link-list-item__job-department {
+  font-size: var(--spectrum-detail-size-s);
+  font-weight: var(--detail-font-weight);
+  line-height: var(--detail-line-height);
 }
 
 .link-list-item__job-location {
-  font-weight: lighter;
+  font-size: var(--spectrum-body-size-xs);
 }
