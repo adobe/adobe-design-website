@@ -16,7 +16,7 @@
   overflow-x: auto;
   padding-block-end: 1rem;
   padding-inline-start: 0;
-
+  scrollbar-width: none; /* Firefox */
   border-bottom: 1px solid var(--spectrum-gray-700);
   transition: padding-inline-start 100ms ease-in-out;
 }
