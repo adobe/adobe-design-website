@@ -12,12 +12,18 @@
 }
 
 .quote__quotation {
-  font-size: 1.75rem;
+  font-size: 1.25rem;
   margin: 0;
-}
 
-@media (min-width: 48rem) {
-  .quote__quotation {
+  @media (min-width: 48rem) {
+    font-size: 1.75rem;
+  }
+
+  @media (min-width: 80rem) {
+    font-size: 2rem;
+  }
+
+  @media (min-width: 105rem) {
     font-size: 2.25rem;
   }
 }
