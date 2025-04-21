@@ -1,0 +1,79 @@
+.filter-group-wrapper {
+  padding-right: 0 !important;
+
+  @media (min-width: 76rem) {
+    padding: 0 2rem !important;
+  }
+}
+
+.filter-group {
+  margin-block: 1.5rem;
+}
+
+.filter-group__list {
+  display: flex;
+  gap: 0.5rem;
+  overflow-x: auto;
+  padding-block-end: 1rem;
+  padding-inline-start: 0;
+
+  border-bottom: 1px solid var(--spectrum-gray-700);
+  transition: padding-inline-start 100ms ease-in-out;
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.filter-group__list::-webkit-scrollbar {
+  display: none;
+}
+
+.filter-group__list:has(.filter-group__button:first-child:focus) {
+  padding-inline-start: 0.5rem;
+}
+
+.filter-group__label {
+  margin-block-end: 0.5rem;
+  color: var(--spectrum-gray-700);
+  font-size: 1rem;
+}
+
+.filter-group__button {
+  --background-color: light-dark(
+    rgb(from var(--spectrum-black) r g b / 0.15),
+    rgb(from var(--spectrum-gray-800) r g b / 0.15)
+  );
+  display: inline-flex;
+  align-items: center;
+  font-size: 1rem;
+  justify-content: center;
+  padding: 0.625rem 1rem;
+  border-radius: var(--spectrum-corner-radius-600);
+  background-color: var(--background-color);
+  color: var(--spectrum-gray-800);
+  transition: all 100ms ease-in-out;
+  flex-shrink: 0;
+
+  & p {
+    margin: 0;
+  }
+}
+
+.filter-group__button:hover {
+  background-color: var(--background-color);
+  color: var(--spectrum-gray-800);
+  cursor: pointer;
+}
+
+.filter-group__button:focus,
+.filter-group__button:focus-visible {
+  background-color: var(--background-color);
+  outline: 2px solid var(--spectrum-focus-indicator-color);
+  outline-offset: 2px;
+  color: inherit;
+}
+
+.filter-group__button--selected,
+.filter-group__button--selected:focus,
+.filter-group__button--selected:hover {
+  background-color: light-dark(var(--spectrum-gray-800), var(--spectrum-white));
+  color: light-dark(var(--spectrum-white), var(--spectrum-black));
+}
