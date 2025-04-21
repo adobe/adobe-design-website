@@ -1,20 +1,30 @@
 export default async function decorate(block) {
-  const [quotation, attribution] = [...block.children].map((c) => c.firstElementChild);
+  const [quotation, attribution, attributionUrl] = [...block.children].map((c) => c.firstElementChild);
   const blockquote = document.createElement('blockquote');
-  // decorate quotation
-  quotation.className = 'quote-quotation';
-  blockquote.append(quotation);
-  // decoration attribution
+
+  const quoteText = document.createElement('p');
+  quoteText.className = 'quote__quotation';
+  quoteText.innerHTML = quotation.innerText;
+  blockquote.append(quoteText);
+
   if (attribution) {
-    attribution.className = 'quote-attribution';
-    blockquote.append(attribution);
-    const ems = attribution.querySelectorAll('em');
-    ems.forEach((em) => {
-      const cite = document.createElement('cite');
-      cite.innerHTML = em.innerHTML;
-      em.replaceWith(cite);
-    });
+    const attributionText = document.createElement('p');
+    attributionText.className = 'quote__attribution util-detail-s';
+    const cite = document.createElement('cite');
+    
+    if (attributionUrl) {
+      const link = document.createElement('a');
+      link.href = attributionUrl.textContent;
+      link.textContent = attribution.textContent;
+      cite.append(link);
+    } else {
+      cite.textContent = attribution.textContent;
+    }
+    
+    attributionText.append(cite);
+    blockquote.append(attributionText);
   }
+
   block.innerHTML = '';
   block.append(blockquote);
 }
