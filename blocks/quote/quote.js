@@ -4,7 +4,7 @@ export default async function decorate(block) {
 
   const quoteText = document.createElement('p');
   quoteText.className = 'quote__quotation';
-  quoteText.innerHTML = quotation.innerHTML;
+  quoteText.innerHTML = quotation.innerText;
   blockquote.append(quoteText);
 
   if (attribution) {
