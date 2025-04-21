@@ -10,32 +10,32 @@ describe('Quote Block', () => {
   });
 
   it('should render the quote text', async () => {
-    await page.waitForSelector('.quote-quotation');
-    const quoteText = await page.$('.quote-quotation');
+    await page.waitForSelector('.quote__quotation');
+    const quoteText = await page.$('.quote__quotation');
     expect(quoteText).toExist();
   });
 
   it('should render the attribution when present', async () => {
-    await page.waitForSelector('.quote-attribution');
-    const attribution = await page.$('.quote-attribution');
+    await page.waitForSelector('.quote__attribution');
+    const attribution = await page.$('.quote__attribution');
     expect(attribution).toExist();
   });
 
   it('should render the attribution with cite element', async () => {
-    await page.waitForSelector('.quote-attribution cite');
-    const cite = await page.$('.quote-attribution cite');
+    await page.waitForSelector('.quote__attribution cite');
+    const cite = await page.$('.quote__attribution cite');
     expect(cite).toExist();
   });
 
-  it('should render the attribution text in a paragraph', async () => {
-    await page.waitForSelector('.quote-attribution cite p');
-    const attributionText = await page.$('.quote-attribution cite p');
-    expect(attributionText).toExist();
+  it('should render the attribution with utility class', async () => {
+    await page.waitForSelector('.quote__attribution.util-detail-s');
+    const attribution = await page.$('.quote__attribution.util-detail-s');
+    expect(attribution).toExist();
   });
 
   it('should render attribution link when URL is provided', async () => {
-    await page.waitForSelector('.quote-attribution cite p a');
-    const attributionLink = await page.$('.quote-attribution cite p a');
+    await page.waitForSelector('.quote__attribution cite a');
+    const attributionLink = await page.$('.quote__attribution cite a');
     if (attributionLink) {
       expect(attributionLink).toExist();
     }
