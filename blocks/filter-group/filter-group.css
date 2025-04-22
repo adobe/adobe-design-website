@@ -1,3 +1,5 @@
+/* !important added to override system styles to maintain cutoff 
+effect on filter buttons to indicate horizontal scroll */
 .filter-group-wrapper {
   padding-right: 0 !important;
 
@@ -62,7 +64,7 @@
   color: var(--spectrum-gray-800);
   cursor: pointer;
 }
-
+//TODO: unify focus styles
 .filter-group__button:focus,
 .filter-group__button:focus-visible {
   background-color: var(--background-color);
