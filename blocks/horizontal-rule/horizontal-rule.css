@@ -1,8 +1,8 @@
-.horizontal-row-container {
+.horizontal-rule-container {
   overflow-x: hidden;
 }
 
-.horizontal-row {
+.horizontal-rule hr {
   position: relative;
   inset-inline: -50vw;
   width: 150vw;
