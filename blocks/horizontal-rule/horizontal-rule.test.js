@@ -1,11 +1,11 @@
-describe('Horizontal Row Block', () => {
+describe('Horizontal Rule Block', () => {
   beforeAll(async () => {
     await page.goto(`${global.BASE_URL}pattern-library/`);
   });
 
-  it('should render the horizontal row', async () => {
-    await page.waitForSelector('.horizontal-row');
-    const horizontalRow = await page.$('.horizontal-row');
+  it('should render the horizontal rule', async () => {
+    await page.waitForSelector('.horizontal-rule');
+    const horizontalRow = await page.$('.horizontal-rule');
     expect(horizontalRow).toExist();
   });
 });
