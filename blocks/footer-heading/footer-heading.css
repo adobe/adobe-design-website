@@ -1,0 +1,13 @@
+.footer-heading {
+  & p {
+    margin: 0;
+  }
+}
+
+.footer-heading__link,
+.footer-heading a {
+  display: block;
+  max-width: 9.5rem;
+  color: var(--color-text-dark);
+  margin-bottom: 1rem;
+}

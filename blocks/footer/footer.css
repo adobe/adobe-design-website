@@ -1,22 +1,103 @@
-footer {
-  background-color: var(--spectrum-gray-50);
-  font-size: var(--spectrum-body-size-xs);
+:root {
+  --color-background-footer: var(--spectrum-white);
+
+  &:has(#color-scheme option[value="dark"]:checked) {
+    --color-background-footer: var(--spectrum-gray-50);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    &:has(#color-scheme option[value="system"]:checked) {
+      --color-background-footer: var(--spectrum-gray-50);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+  }
 }
 
-footer .footer > div {
-  margin: auto;
-  max-width: 1200px;
-  padding: 40px 24px 24px;
+.footer-content {
+  width: 100%;
+  padding: 0;
+  background-color: var(--color-background-footer);
+  color: var(--color-text-dark);
 }
 
-footer .footer p {
-  margin: 0;
+/* padding is on the elements instead of the container so we don't have to add more nested divs */
+.footer-heading {
+  padding: 3rem var(--spacing-page-gutters) 0.5rem;
+}
+
+.footer-links {
+  padding: 0.5rem var(--spacing-page-gutters) 3rem;
 }
 
 @media (min-width: 48rem) {
-  /* !! min-width MQ needs refactor */
+  @supports (display: grid) {
+    .footer-content .section {
+      display: grid;
+      grid-template-columns: repeat(12, [col] 1fr);
+      grid-column-gap: 1rem;
+      grid-row-gap: 1rem;
+      align-items: stretch;
+      justify-items: stretch;
+    }
 
-  footer .footer > div {
-    padding: 2.5rem 2rem 1.5rem;
+    .footer-heading,
+    .footer-links {
+      min-height: 0;
+      min-width: 0;
+    }
+
+    .footer-heading,
+    .footer-links {
+      padding: 4rem var(--spacing-page-gutters) 6rem;
+    }
+
+    .footer-heading {
+      grid-column: span 7;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .footer-links {
+      grid-column: 9 / span 5;
+    }
+
+    .footer-copyright {
+      grid-column: span 12;
+      width: 100%;
+    }
+
+    .footer-copyright__content {
+      margin: 0 auto;
+      max-width: var(--spacing-page-max-width);
+    }
+  }
+}
+
+@media (min-width: 100rem) {
+  .footer-content .section {
+    display: flex;
+    flex-wrap: wrap;
+    grid-template-columns: unset;
+    grid-column-gap: unset;
+    grid-row-gap: unset;
+  }
+
+  .footer-heading,
+  .footer-links {
+    margin: 0;
+  }
+
+  .footer-heading {
+    width: calc(0.7 * var(--spacing-page-max-width));
+    margin-inline-start: auto;
+  }
+
+  .footer-links {
+    width: calc(0.3 * var(--spacing-page-max-width));
+    margin-inline-end: auto;
   }
 }
