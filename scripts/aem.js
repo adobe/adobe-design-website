@@ -356,6 +356,20 @@ function wrapTextNodes(block) {
 }
 
 /**
+ * Converts '<hr>' text nodes into horizontal rule elements
+ * @param {Element} element container element
+ */
+function decorateHorizontalRules(element) {
+  element.querySelectorAll('p').forEach((p) => {
+    if (p.textContent.trim() === '<hr>') {
+      const hr = document.createElement('hr');
+      hr.className = 'horizontal-rule';
+      p.replaceWith(hr);
+    }
+  });
+}
+
+/**
  * Add <img> for icon, prefixed with codeBasePath and optional prefix.
  * @param {Element} [span] span element with icon classes
  * @param {string} [prefix] prefix to be added to icon src
@@ -658,4 +672,5 @@ export {
   toClassName,
   waitForFirstImage,
   wrapTextNodes,
+  decorateHorizontalRules,
 };
