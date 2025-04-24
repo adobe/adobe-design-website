@@ -1,19 +1,22 @@
 export default async function decorate(block) {
-    const label = document.createElement('label');
-    label.className = 'filter-group__label';
+    const wrapper = block.closest('.filter-group-wrapper');
+
+    const label = document.createElement('div');
+    label.className = 'filter-group__label util-body-s';
     label.textContent = 'Filter articles:';
-    label.setAttribute('for', 'filter-group');
+    label.id = 'filter-group-label';
 
     const filterGroup = document.createElement('div');
     filterGroup.className = 'filter-group__list';
     filterGroup.setAttribute('role', 'group');
     filterGroup.setAttribute('aria-label', 'Filter options');
+    filterGroup.setAttribute('aria-describedby', 'filter-group-label');
     filterGroup.id = 'filter-group';
 
     const filters = [...block.children].map((child) => child.firstElementChild);
     filters.forEach((filter, i) => {
         const button = document.createElement('button');
-        button.className = 'filter-group__button';
+        button.className = 'filter-group__button util-detail-m';
         button.textContent = filter.textContent;
         button.setAttribute('type', 'button');
         
@@ -34,7 +37,5 @@ export default async function decorate(block) {
         filter.remove();
     });
 
-    block.innerHTML = '';
-    block.append(label);
-    block.append(filterGroup);
+    wrapper.replaceChildren(label, filterGroup);
 }
