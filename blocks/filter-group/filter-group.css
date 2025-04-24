@@ -18,6 +18,10 @@ effect on filter buttons to indicate horizontal scroll */
   scrollbar-width: none; /* Firefox */
   border-bottom: 1px solid var(--spectrum-gray-700);
   transition: padding-inline-start 100ms ease-in-out;
+
+  @media (min-width: 80rem) {
+    border-bottom: none;
+  }
 }
 
 /* Hide scrollbar for Chrome, Safari and Opera */
@@ -25,7 +29,8 @@ effect on filter buttons to indicate horizontal scroll */
   display: none;
 }
 
-.filter-group__list:has(.filter-group__button:first-child:focus) {
+/* Adds left padding on focus to avoid outline cutoff*/
+.filter-group__list:has(.filter-group__button:first-child:focus-visible) {
   padding-inline-start: 0.5rem;
 }
 
@@ -38,7 +43,9 @@ effect on filter buttons to indicate horizontal scroll */
   --color-background-button-filters-default: var(
     --spectrum-transparent-black-300
   );
-  --color-background-button-filters-hover: var(--spectrum-gray-200);
+  --color-background-button-filters-hover: var(
+    --spectrum-transparent-black-400
+  );
   --color-background-button-filters-disabled: var(--spectrum-gray-100);
   --color-text-button-filters-disabled: var(--spectrum-gray-400);
   display: inline-flex;
@@ -63,19 +70,52 @@ effect on filter buttons to indicate horizontal scroll */
     opacity: 1;
   }
 
-  /*TODO:Unify Focus Styles */
-  &:focus,
+  /*TODO:Unify Button Focus Styles */
   &:focus-visible {
     background-color: var(--color-background-button-filters-default);
     outline: 2px solid var(--spectrum-focus-indicator-color);
     outline-offset: 2px;
     color: inherit;
   }
+
+  &:focus:not(:focus-visible) {
+    outline: none;
+  }
+}
+
+.filter-group__button--selected {
+  --color-background-button-filters-selected: var(--color-text-dark);
+  background-color: var(--color-background-button-filters-selected);
+  color: var(--spectrum-gray-50);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  &:hover {
+    background-color: var(--color-background-button-filters-selected);
+    color: var(--spectrum-gray-50);
+    opacity: 0.8;
+  }
+
+  /*TODO:Unify Button Focus Styles */
+  &:focus-visible {
+    background-color: var(--color-background-button-filters-selected);
+    outline: 2px solid var(--spectrum-focus-indicator-color);
+    outline-offset: 2px;
+    color: var(--spectrum-gray-50);
+  }
+
+  &:focus:not(:focus-visible) {
+    background-color: var(--color-background-button-filters-selected);
+    outline: none;
+  }
 }
 
 :root:has(#color-scheme option[value="dark"]:checked) .filter-group__button {
   --color-background-button-filters-default: var(
     --spectrum-transparent-white-200
+  );
+  --color-background-button-filters-hover: var(
+    --spectrum-transparent-white-500
   );
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -92,6 +132,9 @@ effect on filter buttons to indicate horizontal scroll */
     --color-background-button-filters-default: var(
       --spectrum-transparent-white-200
     );
+    --color-background-button-filters-hover: var(
+      --spectrum-transparent-white-500
+    );
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 
@@ -99,31 +142,5 @@ effect on filter buttons to indicate horizontal scroll */
       -webkit-font-smoothing: unset;
       -moz-osx-font-smoothing: unset;
     }
-  }
-}
-
-.filter-group__button--selected {
-  --color-background-button-filters-selected: var(--color-text-dark);
-  --color-background-button-filters-selected-hover: var(--spectrum-black);
-  background-color: var(--color-background-button-filters-selected);
-  color: var(--spectrum-gray-50);
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-
-  &:hover {
-    background-color: var(--color-background-button-filters-selected-hover);
-    color: var(--spectrum-gray-50);
-  }
-}
-
-:root:has(#color-scheme option[value="dark"]:checked)
-  .filter-group__button--selected {
-  --color-background-button-filters-selected-hover: var(--spectrum-white);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root:has(#color-scheme option[value="system"]:checked)
-    .filter-group__button--selected {
-    --color-background-button-filters-selected-hover: var(--spectrum-white);
   }
 }
