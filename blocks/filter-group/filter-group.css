@@ -2,14 +2,11 @@
 effect on filter buttons to indicate horizontal scroll */
 .filter-group-wrapper {
   padding-right: 0 !important;
+  margin: 1.5rem auto !important;
 
   @media (min-width: 76rem) {
     padding: 0 2rem !important;
   }
-}
-
-.filter-group {
-  margin-block: 1.5rem;
 }
 
 .filter-group__list {
@@ -34,48 +31,99 @@ effect on filter buttons to indicate horizontal scroll */
 
 .filter-group__label {
   margin-block-end: 0.5rem;
-  color: var(--spectrum-gray-700);
-  font-size: 1rem;
+  color: var(--color-text-dark);
 }
 
 .filter-group__button {
-  --background-color: light-dark(
-    rgb(from var(--spectrum-black) r g b / 0.15),
-    rgb(from var(--spectrum-gray-800) r g b / 0.15)
+  --color-background-button-filters-default: var(
+    --spectrum-transparent-black-300
   );
+  --color-background-button-filters-hover: var(--spectrum-gray-200);
+  --color-background-button-filters-disabled: var(--spectrum-gray-100);
+  --color-text-button-filters-disabled: var(--spectrum-gray-400);
   display: inline-flex;
   align-items: center;
-  font-size: 1rem;
   justify-content: center;
   padding: 0.625rem 1rem;
   border-radius: var(--spectrum-corner-radius-600);
-  background-color: var(--background-color);
-  color: var(--spectrum-gray-800);
-  transition: all 100ms ease-in-out;
+  background-color: var(--color-background-button-filters-default);
+  color: var(--color-text-dark);
   flex-shrink: 0;
 
-  & p {
-    margin: 0;
+  &:hover {
+    background-color: var(--color-background-button-filters-hover);
+    color: var(--color-text-dark);
+    cursor: pointer;
+  }
+
+  &:is(:disabled, :disabled:hover) {
+    background-color: var(--color-background-button-filters-disabled);
+    color: var(--color-text-button-filters-disabled);
+    cursor: not-allowed;
+    opacity: 1;
+  }
+
+  /*TODO:Unify Focus Styles */
+  &:focus,
+  &:focus-visible {
+    background-color: var(--color-background-button-filters-default);
+    outline: 2px solid var(--spectrum-focus-indicator-color);
+    outline-offset: 2px;
+    color: inherit;
   }
 }
 
-.filter-group__button:hover {
-  background-color: var(--background-color);
-  color: var(--spectrum-gray-800);
-  cursor: pointer;
-}
-//TODO: unify focus styles
-.filter-group__button:focus,
-.filter-group__button:focus-visible {
-  background-color: var(--background-color);
-  outline: 2px solid var(--spectrum-focus-indicator-color);
-  outline-offset: 2px;
-  color: inherit;
+:root:has(#color-scheme option[value="dark"]:checked) .filter-group__button {
+  --color-background-button-filters-default: var(
+    --spectrum-transparent-white-200
+  );
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  &.filter-group__button--selected {
+    -webkit-font-smoothing: unset;
+    -moz-osx-font-smoothing: unset;
+  }
 }
 
-.filter-group__button--selected,
-.filter-group__button--selected:focus,
-.filter-group__button--selected:hover {
-  background-color: light-dark(var(--spectrum-gray-800), var(--spectrum-white));
-  color: light-dark(var(--spectrum-white), var(--spectrum-black));
+@media (prefers-color-scheme: dark) {
+  :root:has(#color-scheme option[value="system"]:checked)
+    .filter-group__button {
+    --color-background-button-filters-default: var(
+      --spectrum-transparent-white-200
+    );
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+
+    &.filter-group__button--selected {
+      -webkit-font-smoothing: unset;
+      -moz-osx-font-smoothing: unset;
+    }
+  }
+}
+
+.filter-group__button--selected {
+  --color-background-button-filters-selected: var(--color-text-dark);
+  --color-background-button-filters-selected-hover: var(--spectrum-black);
+  background-color: var(--color-background-button-filters-selected);
+  color: var(--spectrum-gray-50);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  &:hover {
+    background-color: var(--color-background-button-filters-selected-hover);
+    color: var(--spectrum-gray-50);
+  }
+}
+
+:root:has(#color-scheme option[value="dark"]:checked)
+  .filter-group__button--selected {
+  --color-background-button-filters-selected-hover: var(--spectrum-white);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:has(#color-scheme option[value="system"]:checked)
+    .filter-group__button--selected {
+    --color-background-button-filters-selected-hover: var(--spectrum-white);
+  }
 }
