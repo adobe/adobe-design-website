@@ -362,9 +362,12 @@ function wrapTextNodes(block) {
 function decorateHorizontalRules(element) {
   element.querySelectorAll('p').forEach((p) => {
     if (p.textContent.trim() === '<hr>') {
+      const wrapper = document.createElement('div');
+      wrapper.className = 'horizontal-rule-wrapper';
       const hr = document.createElement('hr');
       hr.className = 'horizontal-rule';
-      p.replaceWith(hr);
+      wrapper.appendChild(hr);
+      p.parentElement.replaceWith(wrapper);
     }
   });
 }
