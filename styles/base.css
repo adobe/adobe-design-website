@@ -190,7 +190,6 @@
 
       --spectrum-red-1400: rgb(255 222 219);
       --spectrum-brown-1400: rgb(242 227 206);
-
     }
   }
 
@@ -275,8 +274,8 @@
 
   --gradient-multitone-pink: linear-gradient(
     268deg,
-    #DF4DF5 -9.27%,
-    #F03823 105.57%
+    #df4df5 -9.27%,
+    #f03823 105.57%
   );
 
   --gradient-background: linear-gradient(
@@ -482,11 +481,15 @@
   --spectrum-display-font: var(--spectrum-display-font-family-stack);
 
   --spectrum-sans-serif-font-family: Adobe Clean;
-  --spectrum-sans-font-family-stack: adobe-clean, var(--spectrum-sans-serif-font-family), "Source Sans Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu, "Trebuchet MS", "Lucida Grande", sans-serif;
+  --spectrum-sans-font-family-stack: adobe-clean,
+    var(--spectrum-sans-serif-font-family), "Source Sans Pro", -apple-system,
+    BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu, "Trebuchet MS",
+    "Lucida Grande", sans-serif;
   --spectrum-sans-serif-font: var(--spectrum-sans-font-family-stack);
-  
+
   --spectrum-serif-font-family: Adobe Clean Serif;
-  --spectrum-serif-font-family-stack: adobe-clean-serif, var(--spectrum-serif-font-family), "Source Serif Pro", Georgia, serif;
+  --spectrum-serif-font-family-stack: adobe-clean-serif,
+    var(--spectrum-serif-font-family), "Source Serif Pro", Georgia, serif;
   --spectrum-serif-font: var(--spectrum-serif-font-family-stack);
 
   /* font weight */

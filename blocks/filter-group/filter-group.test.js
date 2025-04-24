@@ -71,7 +71,11 @@ describe('Filter Group Block', () => {
     await page.waitForSelector('.filter-group__label');
     const label = await page.$('.filter-group__label');
     
-    const forAttribute = await label.evaluate(el => el.getAttribute('for'));
-    expect(forAttribute).toBe('filter-group');
+    const id = await label.evaluate(el => el.id);
+    expect(id).toBe('filter-group-label');
+
+    const filterGroup = await page.$('.filter-group__list');
+    const describedBy = await filterGroup.evaluate(el => el.getAttribute('aria-describedby'));
+    expect(describedBy).toBe('filter-group-label');
   });
 });
