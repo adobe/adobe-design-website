@@ -202,13 +202,10 @@
   /* functional colors */
   --color-background-default: var(--spectrum-gray-50);
   --color-background: var(--color-background-default);
-  --color-background-button: var(--spectrum-blue-900);
-  --color-background-button-hover: rgb(39 77 234);
 
   --color-text: var(--spectrum-gray-800);
   --color-text-dark: var(--spectrum-gray-900);
 
-  --color-text-button: var(--spectrum-white);
   --color-text-link: var(--spectrum-blue-900);
   --color-text-link-hover: var(--color-text-link);
 
@@ -474,7 +471,6 @@
   --spectrum-corner-radius-1000: 9999px;
 
   --corner-radius-default: var(--spectrum-corner-radius-500);
-  --corner-radius-button: var(--spectrum-corner-radius-800);
 
   /* ** TYPOGRAPHY ** */
 
