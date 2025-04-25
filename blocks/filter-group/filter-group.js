@@ -1,6 +1,6 @@
 export default async function decorate(block) {
     const wrapper = block.parentElement;
-    wrapper.classList.add('.filter-group-wrapper');
+    wrapper.classList.add('filter-group-wrapper');
 
     const label = document.createElement('div');
     label.className = 'filter-group__label util-body-s';

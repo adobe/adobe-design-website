@@ -4,8 +4,8 @@ describe('Fragment Block', () => {
   });
 
   it('should render the fragment block', async () => {
-    await page.waitForSelector('.fragment-wrapper');
-    const fragment = await page.$('.fragment-wrapper');
+    await page.waitForSelector('.fragment');
+    const fragment = await page.$('.fragment');
     expect(fragment).toExist();
   });
-}); 
+});

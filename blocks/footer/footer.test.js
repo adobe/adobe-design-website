@@ -4,8 +4,8 @@ describe('Footer Block', () => {
   });
 
   it('should render the footer block', async () => {
-    await page.waitForSelector('.footer-wrapper');
-    const footer = await page.$('.footer-wrapper');
+    await page.waitForSelector('.footer');
+    const footer = await page.$('.footer');
     expect(footer).toExist();
   });
-}); 
+});
