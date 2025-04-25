@@ -1,10 +1,11 @@
-.hero-container .hero-wrapper {
+.hero-container {
   max-width: unset;
   padding: 0;
 }
 
 .hero {
   position: relative;
+  max-width: unset;
   padding: 2.5rem 1.5rem;
   min-height: 18.75rem;
 }
