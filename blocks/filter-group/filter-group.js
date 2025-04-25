@@ -1,5 +1,5 @@
 export default async function decorate(block) {
-    const wrapper = block.closest('.filter-group-wrapper');
+    const wrapper = block.closest('.filter-group');
 
     const label = document.createElement('div');
     label.className = 'filter-group__label util-body-s';
@@ -19,7 +19,7 @@ export default async function decorate(block) {
         button.className = 'filter-group__button util-detail-m';
         button.textContent = filter.textContent;
         button.setAttribute('type', 'button');
-        
+
         // Set initial selected state
         if (i === 0) {
             button.classList.add('filter-group__button--selected');
