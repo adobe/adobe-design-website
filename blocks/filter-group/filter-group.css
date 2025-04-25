@@ -13,7 +13,7 @@ effect on filter buttons to indicate horizontal scroll */
   display: flex;
   gap: 0.5rem;
   overflow-x: auto;
-  padding-block-end: 1rem;
+  padding-block: 0.5rem 1rem;
   padding-inline-start: 0;
   scrollbar-width: none; /* Firefox */
   border-bottom: 1px solid var(--spectrum-gray-700);
@@ -53,6 +53,7 @@ effect on filter buttons to indicate horizontal scroll */
   justify-content: center;
   padding: 0.625rem 1rem;
   border-radius: var(--spectrum-corner-radius-600);
+  border: none;
   background-color: var(--color-background-button-filters-default);
   color: var(--color-text-dark);
   flex-shrink: 0;
@@ -88,8 +89,6 @@ effect on filter buttons to indicate horizontal scroll */
   --color-background-button-filters-selected: var(--color-text-dark);
   background-color: var(--color-background-button-filters-selected);
   color: var(--spectrum-gray-50);
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
   transition: all var(--spectrum-animation-duration-100) ease;
 
   &:hover {
@@ -119,13 +118,6 @@ effect on filter buttons to indicate horizontal scroll */
   --color-background-button-filters-hover: var(
     --spectrum-transparent-white-500
   );
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-
-  &.filter-group__button--selected {
-    -webkit-font-smoothing: unset;
-    -moz-osx-font-smoothing: unset;
-  }
 }
 
 @media (prefers-color-scheme: dark) {
@@ -137,12 +129,5 @@ effect on filter buttons to indicate horizontal scroll */
     --color-background-button-filters-hover: var(
       --spectrum-transparent-white-500
     );
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-
-    &.filter-group__button--selected {
-      -webkit-font-smoothing: unset;
-      -moz-osx-font-smoothing: unset;
-    }
   }
 }
