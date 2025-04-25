@@ -416,18 +416,20 @@ main > .section:first-of-type {
 }
 
 .horizontal-rule {
-  position: relative;
-  inset-inline: -50vw;
-  width: 150vw;
   height: 0;
   border: none;
   border-block-start: 1px solid var(--spectrum-gray-400);
   margin-block: 4rem;
-  overflow-x: hidden;
 
   @media (min-width: 48rem) {
     margin-block: 6.5rem;
   }
+}
+
+.horizontal-rule--full {
+  position: relative;
+  inset-inline: -50vw;
+  width: 150vw;
 }
 
 /* section metadata */

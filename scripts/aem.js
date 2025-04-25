@@ -356,16 +356,17 @@ function wrapTextNodes(block) {
 }
 
 /**
- * Converts '<hr>' text nodes into horizontal rule elements
+ * Converts '<hr>' and '<hr-fw>' text nodes into horizontal rule elements
  * @param {Element} element container element
  */
 function decorateHorizontalRules(element) {
   element.querySelectorAll('p').forEach((p) => {
-    if (p.textContent.trim() === '<hr>') {
+    const content = p.textContent.trim();
+    if (content === '<hr>' || content === '<hr-fw>') {
       const wrapper = document.createElement('div');
       wrapper.className = 'horizontal-rule-wrapper';
       const hr = document.createElement('hr');
-      hr.className = 'horizontal-rule';
+      hr.className = content === '<hr-fw>' ? 'horizontal-rule horizontal-rule--full' : 'horizontal-rule';
       wrapper.appendChild(hr);
       p.parentElement.replaceWith(wrapper);
     }
