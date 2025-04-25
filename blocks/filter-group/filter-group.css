@@ -13,7 +13,7 @@ effect on filter buttons to indicate horizontal scroll */
   display: flex;
   gap: 0.5rem;
   overflow-x: auto;
-  padding-block-end: 1rem;
+  padding-block: 0.5rem 1rem;
   padding-inline-start: 0;
   scrollbar-width: none; /* Firefox */
   border-bottom: 1px solid var(--spectrum-gray-700);
