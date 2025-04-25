@@ -421,7 +421,11 @@ main > .section:first-of-type {
   border-block-start: 1px solid var(--spectrum-gray-400);
   margin-block: 4rem;
 
-  @media (min-width: 48rem) {
+  @media (min-width: 80rem) {
+    margin-block: 5rem;
+  }
+
+  @media (min-width: 105rem) {
     margin-block: 6.5rem;
   }
 }
