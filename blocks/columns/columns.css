@@ -1,33 +1,33 @@
-.columns > div {
+.columns > div > div {
   display: flex;
   flex-direction: column;
 }
 
-.columns img {
+.columns > div img {
   width: 100%;
 }
 
-.columns > div > div {
+.columns > div > div > div {
   order: 1;
 }
 
-.columns > div > .columns-img-col {
+.columns > div > div > .columns-img-col {
   order: 0;
 }
 
-.columns > div > .columns-img-col img {
+.columns > div > div > .columns-img-col img {
   display: block;
 }
 
 @media (min-width: 48rem) {
   /* !! min-width MQ needs refactor */
-  .columns > div {
+  .columns > div > div {
     align-items: center;
     flex-direction: unset;
     gap: 24px;
   }
 
-  .columns > div > div {
+  .columns > div > div > div {
     flex: 1;
     order: unset;
   }
