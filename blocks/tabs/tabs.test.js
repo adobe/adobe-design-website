@@ -4,8 +4,8 @@ describe('Tabs Block', () => {
   });
 
   it('should render the tabs wrapper', async () => {
-    await page.waitForSelector('.tabs-wrapper');
-    const tabsWrapper = await page.$('.tabs-wrapper');
+    await page.waitForSelector('.tabs');
+    const tabsWrapper = await page.$('.tabs');
     expect(tabsWrapper).toExist();
   });
-}); 
+});
