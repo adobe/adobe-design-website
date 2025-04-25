@@ -56,7 +56,7 @@
   --spectrum-blue-500: rgb(142 185 252);
   --spectrum-blue-800: rgb(75 117 255);
   --spectrum-blue-900: rgb(59 99 251);
-  --spectrum-blue-1000: rgb(39, 77, 234);
+  --spectrum-blue-1000: rgb(39 77 234);
   --spectrum-blue-1400: rgb(12 31 105);
 
   --spectrum-gray-25: rgb(255 255 255);
@@ -105,7 +105,7 @@
     --spectrum-blue-500: rgb(26 58 195);
     --spectrum-blue-800: rgb(64 105 253);
     --spectrum-blue-900: rgb(86 129 255);
-    --spectrum-blue-1000: rgb(105, 149, 254);
+    --spectrum-blue-1000: rgb(105 149 254);
     --spectrum-blue-1400: rgb(213 231 254);
 
     --spectrum-gray-25: rgb(17 17 17);
@@ -156,7 +156,7 @@
       --spectrum-blue-500: rgb(26 58 195);
       --spectrum-blue-800: rgb(64 105 253);
       --spectrum-blue-900: rgb(86 129 255);
-      --spectrum-blue-1000: rgb(105, 149, 254);
+      --spectrum-blue-1000: rgb(105 149 254);
       --spectrum-blue-1400: rgb(213 231 254);
 
       --spectrum-gray-25: rgb(17 17 17);
