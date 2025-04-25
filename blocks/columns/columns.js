@@ -1,8 +1,8 @@
 export default function decorate(block) {
+  const blockWrapper = block.parentElement;
+  blockWrapper.classList.add('columns-wrapper');
+
   const cols = [...block.firstElementChild.children];
-  // removing the duplicate nested columns class
-  // this component will be updated later
-  block.classList.remove(`columns`);
   block.classList.add(`columns-${cols.length}-cols`);
 
   // setup image columns

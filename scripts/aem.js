@@ -557,12 +557,10 @@ async function loadBlock(block) {
 function decorateBlock(block) {
   const shortBlockName = block.classList[0];
   if (shortBlockName) {
-    block.classList.add('block');
+    block.classList.add('block', `${shortBlockName}`);
     block.dataset.blockName = shortBlockName;
     block.dataset.blockStatus = 'initialized';
     wrapTextNodes(block);
-    const blockWrapper = block.parentElement;
-    blockWrapper.classList.add(`${shortBlockName}`);
     const section = block.closest('.section');
     if (section) section.classList.add(`${shortBlockName}-container`);
   }
