@@ -210,15 +210,21 @@
   --color-text-dark: var(--spectrum-gray-900);
 
   --color-text-link: var(--spectrum-blue-900);
-  --color-text-link-hover: var(--color-text-link);
+  --color-text-link-hover: var(--spectrum-blue-1000);
 
   &:has(#color-scheme option[value="dark"]:checked) {
     --color-background-default: var(--spectrum-gray-25);
+
+    --color-text-link: var(--spectrum-blue-800);
+    --color-text-link-hover: var(--spectrum-blue-900);
   }
 
   @media (prefers-color-scheme: dark) {
     &:has(#color-scheme option[value="system"]:checked) {
       --color-background-default: var(--spectrum-gray-25);
+
+      --color-text-link: var(--spectrum-blue-800);
+      --color-text-link-hover: var(--spectrum-blue-900);
     }
   }
 

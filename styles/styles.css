@@ -355,8 +355,8 @@ a:hover {
 }
 
 .button--ghost {
-  --color-button-text-ghost: var(--spectrum-blue-900);
-  --color-button-text-ghost-hover: var(--color-button-text-ghost);
+  --color-button-text-ghost: var(--color-text-link);
+  --color-button-text-ghost-hover: var(--color-text-link-hover);
 
   padding: 0;
   border-radius: 0;
