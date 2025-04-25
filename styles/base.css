@@ -56,6 +56,7 @@
   --spectrum-blue-500: rgb(142 185 252);
   --spectrum-blue-800: rgb(75 117 255);
   --spectrum-blue-900: rgb(59 99 251);
+  --spectrum-blue-1000: rgb(39 77 234);
   --spectrum-blue-1400: rgb(12 31 105);
 
   --spectrum-gray-25: rgb(255 255 255);
@@ -104,6 +105,7 @@
     --spectrum-blue-500: rgb(26 58 195);
     --spectrum-blue-800: rgb(64 105 253);
     --spectrum-blue-900: rgb(86 129 255);
+    --spectrum-blue-1000: rgb(105 149 254);
     --spectrum-blue-1400: rgb(213 231 254);
 
     --spectrum-gray-25: rgb(17 17 17);
@@ -154,6 +156,7 @@
       --spectrum-blue-500: rgb(26 58 195);
       --spectrum-blue-800: rgb(64 105 253);
       --spectrum-blue-900: rgb(86 129 255);
+      --spectrum-blue-1000: rgb(105 149 254);
       --spectrum-blue-1400: rgb(213 231 254);
 
       --spectrum-gray-25: rgb(17 17 17);
@@ -202,23 +205,26 @@
   /* functional colors */
   --color-background-default: var(--spectrum-gray-50);
   --color-background: var(--color-background-default);
-  --color-background-button: var(--spectrum-blue-900);
-  --color-background-button-hover: rgb(39 77 234);
 
   --color-text: var(--spectrum-gray-800);
   --color-text-dark: var(--spectrum-gray-900);
 
-  --color-text-button: var(--spectrum-white);
   --color-text-link: var(--spectrum-blue-900);
-  --color-text-link-hover: var(--color-text-link);
+  --color-text-link-hover: var(--spectrum-blue-1000);
 
   &:has(#color-scheme option[value="dark"]:checked) {
     --color-background-default: var(--spectrum-gray-25);
+
+    --color-text-link: var(--spectrum-blue-800);
+    --color-text-link-hover: var(--spectrum-blue-900);
   }
 
   @media (prefers-color-scheme: dark) {
     &:has(#color-scheme option[value="system"]:checked) {
       --color-background-default: var(--spectrum-gray-25);
+
+      --color-text-link: var(--spectrum-blue-800);
+      --color-text-link-hover: var(--spectrum-blue-900);
     }
   }
 
@@ -474,7 +480,6 @@
   --spectrum-corner-radius-1000: 9999px;
 
   --corner-radius-default: var(--spectrum-corner-radius-500);
-  --corner-radius-button: var(--spectrum-corner-radius-800);
 
   /* ** TYPOGRAPHY ** */
 
