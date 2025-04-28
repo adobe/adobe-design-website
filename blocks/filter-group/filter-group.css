@@ -1,6 +1,6 @@
-/* !important added to override system styles to maintain cutoff 
+/* !important added to override system styles to maintain cutoff
 effect on filter buttons to indicate horizontal scroll */
-.filter-group-wrapper {
+.filter-group {
   padding-right: 0 !important;
   margin: 1.5rem auto !important;
 

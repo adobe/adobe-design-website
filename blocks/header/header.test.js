@@ -4,8 +4,8 @@ describe('Header Block', () => {
   });
 
   it('should render the header wrapper', async () => {
-    await page.waitForSelector('.header-wrapper');
-    const headerWrapper = await page.$('.header-wrapper');
+    await page.waitForSelector('.header');
+    const headerWrapper = await page.$('.header');
     expect(headerWrapper).toExist();
   });
-}); 
+});

@@ -4,9 +4,9 @@ describe('Columns Block', () => {
     await page.goto(`${global.BASE_URL}pattern-library/`);
   });
 
-  it('should render the columns wrapper', async () => {
-    await page.waitForSelector('.columns-wrapper');
-    const columnsWrapper = await page.$('.columns-wrapper');
+  it('should render the columns', async () => {
+    await page.waitForSelector('.columns');
+    const columnsWrapper = await page.$('.columns');
     expect(columnsWrapper).toExist();
   });
 
@@ -17,4 +17,4 @@ describe('Columns Block', () => {
     const divsInColumns = await page.$$('.columns > div');
     expect(divsInColumns.length).toBeGreaterThan(1);
   });
-}); 
+});

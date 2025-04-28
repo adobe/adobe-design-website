@@ -4,8 +4,8 @@ describe('Accordion Block', () => {
   });
 
   it('should render the accordion wrapper', async () => {
-    await page.waitForSelector('.accordion-wrapper');
-    const accordionWrapper = await page.$('.accordion-wrapper');
+    await page.waitForSelector('.accordion');
+    const accordionWrapper = await page.$('.accordion');
     expect(accordionWrapper).toExist();
   });
-}); 
+});

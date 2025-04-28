@@ -1,4 +1,7 @@
 export default function decorate(block) {
+  const blockWrapper = block.parentElement;
+  blockWrapper.classList.add('columns-wrapper');
+
   const cols = [...block.firstElementChild.children];
   block.classList.add(`columns-${cols.length}-cols`);
 
