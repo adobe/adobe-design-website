@@ -33,6 +33,31 @@ body {
   }
 }
 
+/* ** Global Focus Styles ** */
+
+:is(a, button, input, textarea, summary, select) {
+  --outline-size: max(2px, 0.08em);
+  --outline-style: solid;
+  --outline-color: var(--spectrum-focus-indicator-color);
+  --outline-offset: 2px;
+}
+
+:is(a, button, input, textarea, summary, select):focus {
+  outline: var(--outline-size) var(--outline-style) var(--outline-color);
+  outline-offset: var(--outline-offset, var(--outline-size));
+}
+
+:is(a, button, input, textarea, summary, select):focus-visible {
+  outline: var(--outline-size) var(--outline-style) var(--outline-color);
+  outline-offset: var(--outline-offset, var(--outline-size));
+}
+
+:is(a, button, input, textarea, summary, select):focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* ** Performance ** */
+
 body.appear {
   display: block;
 }
@@ -181,12 +206,6 @@ a:hover {
     color: var(--color-button-text-disabled);
     cursor: unset;
   }
-
-  &:focus,
-  &:focus-visible {
-    outline: 2px solid var(--spectrum-focus-indicator-color);
-    outline-offset: 2px;
-  }
 }
 
 .button--primary {
@@ -194,7 +213,7 @@ a:hover {
   --color-button-background-primary-hover: rgb(from var(--spectrum-black) r g b / 93%);
   --color-button-background-primary-disabled: rgb(from var(--spectrum-black) r g b / 9%);
   --color-button-text-primary: var(--spectrum-white);
-  
+
   background-color: var(--color-button-background-primary);
   color: var(--color-button-text-primary);
 
@@ -242,7 +261,7 @@ a:hover {
     background-color: var(--color-button-background-primary-outline-hover);
     color: var(--color-button-text-primary-outline-hover);
   }
-  
+
   &:disabled,
   &:disabled:hover {
     border-color: var(--color-button-border-primary-outline-disabled);
@@ -289,7 +308,7 @@ a:hover {
     background-color: var(--color-button-background-static-black-hover);
     color: var(--color-button-text-static-black-hover);
   }
-  
+
   &:disabled,
   &:disabled:hover {
     border-color: var(--color-button-border-static-black-disabled);
@@ -308,13 +327,13 @@ a:hover {
 
   border: 2px solid var(--color-button-border-static-white);
   color: var(--color-button-text-static-white);
-  
+
   &:hover {
     border-color: var(--color-button-border-static-white-hover);
     background-color: var(--color-button-background-static-white-hover);
     color: var(--color-button-text-static-white-hover);
   }
-  
+
   &:disabled,
   &:disabled:hover {
     border-color: var(--color-button-border-static-white-disabled);
