@@ -72,16 +72,9 @@ effect on filter buttons to indicate horizontal scroll */
     opacity: 1;
   }
 
-  /*TODO:Unify Button Focus Styles */
   &:focus-visible {
     background-color: var(--color-background-button-filters-default);
-    outline: 2px solid var(--spectrum-focus-indicator-color);
-    outline-offset: 2px;
     color: inherit;
-  }
-
-  &:focus:not(:focus-visible) {
-    outline: none;
   }
 }
 
@@ -97,17 +90,13 @@ effect on filter buttons to indicate horizontal scroll */
     opacity: 0.9;
   }
 
-  /*TODO:Unify Button Focus Styles */
   &:focus-visible {
     background-color: var(--color-background-button-filters-selected);
-    outline: 2px solid var(--spectrum-focus-indicator-color);
-    outline-offset: 2px;
     color: var(--spectrum-gray-50);
   }
 
   &:focus:not(:focus-visible) {
     background-color: var(--color-background-button-filters-selected);
-    outline: none;
   }
 }
 
