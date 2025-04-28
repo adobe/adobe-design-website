@@ -299,6 +299,7 @@ a:hover {
   --color-button-text-static-black: rgb(from var(--spectrum-black) r g b / 84%);
   --color-button-text-static-black-hover: rgb(from var(--spectrum-black) r g b / 93%);
   --color-button-text-static-black-disabled: rgb(from var(--spectrum-black) r g b / 22%);
+  --outline-color: rgb(from var(--spectrum-black) r g b / 84%);
 
   border: 2px solid var(--color-button-border-static-black);
   color: var(--color-button-text-static-black);
@@ -324,6 +325,7 @@ a:hover {
   --color-button-text-static-white: rgb(from var(--spectrum-white) r g b / 85%);
   --color-button-text-static-white-hover: rgb(from var(--spectrum-white) r g b / 94%);
   --color-button-text-static-white-disabled: rgb(from var(--spectrum-white) r g b / 21%);
+  --outline-color: rgb(from var(--spectrum-white) r g b / 85%);
 
   border: 2px solid var(--color-button-border-static-white);
   color: var(--color-button-text-static-white);
