@@ -171,7 +171,7 @@ a:hover {
   text-decoration: underline;
 }
 
-/* buttons */
+/* ** Button ** */
 .button {
   --color-button-text-disabled: rgb(from var(--spectrum-black) r g b / 22%);
 
@@ -179,9 +179,7 @@ a:hover {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-width: 3rem;
   max-width: 100%;
-  min-height: 3rem;
   padding: 0.5rem 1.25rem;
   border: none;
   border-radius: 1.5rem;
@@ -194,9 +192,7 @@ a:hover {
   line-height: 1.3;
   text-align: center;
   text-decoration: none;
-  overflow: hidden;
   white-space: nowrap;
-  text-overflow: ellipsis;
   cursor: pointer;
 
   &:hover {
@@ -381,8 +377,6 @@ a:hover {
   --color-button-text-ghost: var(--color-text-link);
   --color-button-text-ghost-hover: var(--color-text-link-hover);
 
-  padding: 0;
-  border-radius: 0;
   color: var(--color-button-text-ghost);
   font-size: var(--spectrum-font-size-200);
   font-weight: var(--spectrum-medium-font-weight);
