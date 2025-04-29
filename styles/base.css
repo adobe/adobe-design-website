@@ -438,6 +438,21 @@
   --spectrum-spacing-900: 5rem; /* 80px */
   --spectrum-spacing-1000: 6rem; /* 96px */
 
+  --spacing-page-max-width: 97.5rem;
+
+  /* smallest screens */
+  --spacing-page-gutters: 1.25rem;
+
+  @media (min-width: 22.5rem) {
+    /* breakpoint small - large */
+    --spacing-page-gutters: 2rem;
+  }
+
+  @media (min-width: 100rem) {
+    /* breakpoint-xl, content should max-width */
+    --spacing-page-gutters: 0;
+  }
+
   /* ** STATES ** */
   --spectrum-focus-indicator-thickness: 2px;
   --spectrum-focus-indicator-gap: 0.125rem;
