@@ -40,6 +40,8 @@ effect on filter buttons to indicate horizontal scroll */
 }
 
 .filter-group__button {
+  --border-radius-button-filters: var(--spectrum-corner-radius-600);
+  --focus-border-radius: var(--border-radius-button-filters);
   --color-background-button-filters-default: var(
     --spectrum-transparent-black-300
   );
@@ -48,11 +50,12 @@ effect on filter buttons to indicate horizontal scroll */
   );
   --color-background-button-filters-disabled: var(--spectrum-gray-100);
   --color-text-button-filters-disabled: var(--spectrum-gray-400);
+
   display: inline-flex;
   align-items: center;
   justify-content: center;
   padding: 0.625rem 1rem;
-  border-radius: var(--spectrum-corner-radius-600);
+  border-radius: var(--border-radius-button-filters);
   border: none;
   background-color: var(--color-background-button-filters-default);
   color: var(--color-text-dark);
