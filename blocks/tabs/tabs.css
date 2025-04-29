@@ -21,6 +21,8 @@
 }
 
 .tabs .tabs-list button {
+  --focus-outline-offset: -2px;
+
   flex: 0 0 max-content;
   margin: 0;
   border: 1px solid var(--spectrum-gray-300);
@@ -35,6 +37,11 @@
   overflow: unset;
   white-space: unset;
   transition: background-color 200ms;
+
+  &:focus,
+  &:focus-visible {
+    border-radius: var(--focus-border-radius);
+  }
 }
 
 .tabs .tabs-list button p {
