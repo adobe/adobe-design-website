@@ -3,15 +3,11 @@
 
   &:has(#color-scheme option[value="dark"]:checked) {
     --color-background-footer: var(--spectrum-gray-50);
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
   }
 
   @media (prefers-color-scheme: dark) {
     &:has(#color-scheme option[value="system"]:checked) {
       --color-background-footer: var(--spectrum-gray-50);
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
     }
   }
 }
