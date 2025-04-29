@@ -607,11 +607,11 @@ main .section.highlight {
 .util-contained-width {
   /* consistent, responsive page width utility */
   max-width: 100%;
-  margin-inline: var(--spacing-page-gutters);
+  margin-inline: var(--page-gutters);
 
   @media (min-width: 100rem) {
    margin-inline: auto;
-   max-width: var(--spacing-page-max-width);
+   max-width: var(--page-max-width);
   }
 }
 
@@ -715,6 +715,10 @@ main .section.highlight {
 
 .util-black-font-weight {
   font-weight: var(--spectrum-black-font-weight);
+}
+
+.util-constrained-text {
+  max-width: var(--page-constrained-text);
 }
 
 /* ** Page Themes ** */
