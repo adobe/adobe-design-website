@@ -1,6 +1,4 @@
 import {
-  createOptimizedPicture,
-  decorateIcons,
   fetchPlaceholders,
 } from '../../scripts/aem.js';
 
@@ -22,49 +20,6 @@ function findNextHeading(el) {
   return h;
 }
 
-function highlightTextElements(terms, elements) {
-  elements.forEach((element) => {
-    if (!element || !element.textContent) return;
-
-    const matches = [];
-    const { textContent } = element;
-    terms.forEach((term) => {
-      let start = 0;
-      let offset = textContent.toLowerCase().indexOf(term.toLowerCase(), start);
-      while (offset >= 0) {
-        matches.push({ offset, term: textContent.substring(offset, offset + term.length) });
-        start = offset + term.length;
-        offset = textContent.toLowerCase().indexOf(term.toLowerCase(), start);
-      }
-    });
-
-    if (!matches.length) {
-      return;
-    }
-
-    matches.sort((a, b) => a.offset - b.offset);
-    let currentIndex = 0;
-    const fragment = matches.reduce((acc, { offset, term }) => {
-      if (offset < currentIndex) return acc;
-      const textBefore = textContent.substring(currentIndex, offset);
-      if (textBefore) {
-        acc.appendChild(document.createTextNode(textBefore));
-      }
-      const markedTerm = document.createElement('mark');
-      markedTerm.textContent = term;
-      acc.appendChild(markedTerm);
-      currentIndex = offset + term.length;
-      return acc;
-    }, document.createDocumentFragment());
-    const textAfter = textContent.substring(currentIndex);
-    if (textAfter) {
-      fragment.appendChild(document.createTextNode(textAfter));
-    }
-    element.innerHTML = '';
-    element.appendChild(fragment);
-  });
-}
-
 export async function fetchData(source) {
   const response = await fetch(source);
   if (!response.ok) {
@@ -83,39 +38,28 @@ export async function fetchData(source) {
   return json.data;
 }
 
-function renderResult(result, searchTerms, titleTag) {
+function renderResult(result) {
   const li = document.createElement('li');
+  li.className = 'search__results-item';
+
   const a = document.createElement('a');
   a.href = result.path;
-  if (result.image) {
-    const wrapper = document.createElement('div');
-    wrapper.className = 'search-result-image';
-    const pic = createOptimizedPicture(result.image, '', false, [{ width: '375' }]);
-    wrapper.append(pic);
-    a.append(wrapper);
-  }
-  if (result.title) {
-    const title = document.createElement(titleTag);
-    title.className = 'search-result-title';
-    const link = document.createElement('a');
-    link.href = result.path;
-    link.textContent = result.title;
-    highlightTextElements(searchTerms, [link]);
-    title.append(link);
-    a.append(title);
-  }
-  if (result.description) {
-    const description = document.createElement('p');
-    description.textContent = result.description;
-    highlightTextElements(searchTerms, [description]);
-    a.append(description);
-  }
-  li.append(a);
+  
+  const title = document.createElement('div');
+  title.className = 'search__results-title util-title-xs';
+  title.textContent = result.title;
+  
+  const description = document.createElement('div');
+  description.className = 'search__results-description util-body-s';
+  description.textContent = result.description;
+  
+  a.append(title, description);
+  li.appendChild(a);
   return li;
 }
 
 function clearSearchResults(block) {
-  const searchResults = block.querySelector('.search-results');
+  const searchResults = block.querySelector('.search__results');
   searchResults.innerHTML = '';
 }
 
@@ -129,20 +73,16 @@ function clearSearch(block) {
   }
 }
 
-async function renderResults(block, config, filteredData, searchTerms) {
+async function renderResults(block, config, filteredData) {
   clearSearchResults(block);
-  const searchResults = block.querySelector('.search-results');
-  const headingTag = searchResults.dataset.h;
+  const searchResults = block.querySelector('.search__results');
 
   if (filteredData.length) {
-    searchResults.classList.remove('no-results');
-    filteredData.forEach((result) => {
-      const li = renderResult(result, searchTerms, headingTag);
-      searchResults.append(li);
-    });
+    searchResults.classList.remove('search__results--no-results');
+    filteredData.forEach((result) => searchResults.append(renderResult(result)));
   } else {
     const noResultsMessage = document.createElement('li');
-    searchResults.classList.add('no-results');
+    searchResults.classList.add('search__results--no-results');
     noResultsMessage.textContent = config.placeholders.searchNoResults || 'No results found.';
     searchResults.append(noResultsMessage);
   }
@@ -189,7 +129,7 @@ function filterData(searchTerms, data) {
 }
 
 async function handleSearch(e, block, config) {
-  const searchValue = e.target.value;
+  const searchValue = e.target.value.trim();
   searchParams.set('q', searchValue);
   if (window.history.replaceState) {
     const url = new URL(window.location.href);
@@ -201,6 +141,7 @@ async function handleSearch(e, block, config) {
     clearSearch(block);
     return;
   }
+
   const searchTerms = searchValue.toLowerCase().split(/\s+/).filter((term) => !!term);
 
   const data = await fetchData(config.source);
@@ -210,49 +151,88 @@ async function handleSearch(e, block, config) {
 
 function searchResultsContainer(block) {
   const results = document.createElement('ul');
-  results.className = 'search-results';
+  results.className = 'search__results';
   results.dataset.h = findNextHeading(block);
   return results;
 }
 
-function searchInput(block, config) {
-  const input = document.createElement('input');
-  input.setAttribute('type', 'search');
-  input.className = 'search-input';
+function searchBox(block, config) {
+  const box = document.createElement('div');
+  box.classList.add('search__box');
 
+  const inputWrapper = document.createElement('div');
+  inputWrapper.className = 'search__input-wrapper';
+
+  const searchInput = document.createElement('input');
+  searchInput.setAttribute('type', 'search');
+  searchInput.className = 'search__input';
   const searchPlaceholder = config.placeholders.searchPlaceholder || 'Search...';
-  input.placeholder = searchPlaceholder;
-  input.setAttribute('aria-label', searchPlaceholder);
+  searchInput.placeholder = searchPlaceholder;
+  searchInput.setAttribute('aria-label', searchPlaceholder);
 
-  input.addEventListener('input', (e) => {
+  const searchIconInInput = document.createElement('span');
+  searchIconInInput.classList.add('icon', 'icon-search', 'search__icon-search');
+  searchIconInInput.innerHTML = `
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20">
+      <path fill="currentColor" d="M16.9,15.5c2.4-3.2,2.2-7.7-0.7-10.6c-3.1-3.1-8.1-3.1-11.3,0c-3.1,3.2-3.1,8.3,0,11.4
+        c2.9,2.9,7.5,3.1,10.6,0.6c0,0.1,0,0.1,0,0.1l4.2,4.2c0.5,0.4,1.1,0.4,1.5,0c0.4-0.4,0.4-1,0-1.4L16.9,15.5
+        C16.9,15.5,16.9,15.5,16.9,15.5L16.9,15.5z M14.8,6.3c2.3,2.3,2.3,6.1,0,8.5c-2.3,2.3-6.1,2.3-8.5,0C4,12.5,4,8.7,6.3,6.3
+        C8.7,4,12.5,4,14.8,6.3z"/>
+    </svg>
+  `;
+
+  const toggleButton = document.createElement('button');
+  toggleButton.classList.add('icon', 'icon-search', 'search__icon-search', 'search__toggle-search');
+  toggleButton.setAttribute('aria-label', 'Toggle search');
+  toggleButton.innerHTML = searchIconInInput.innerHTML;
+
+  const resultsContainer = document.createElement('div');
+  resultsContainer.className = 'search__results-container';
+  const searchResults = searchResultsContainer(block);
+  resultsContainer.appendChild(searchResults);
+
+  inputWrapper.append(searchInput, searchIconInInput);
+  box.append(inputWrapper, toggleButton, resultsContainer);
+
+  toggleButton.addEventListener('click', () => {
+    box.classList.toggle('search__box--expanded');
+    if (box.classList.contains('search__box--expanded')) {
+      searchInput.focus();
+    } else {
+      searchInput.value = '';
+      clearSearch(block);
+    }
+  });
+
+  searchInput.addEventListener('input', (e) => {
     handleSearch(e, block, config);
   });
 
-  input.addEventListener('keyup', (e) => { if (e.code === 'Escape') { clearSearch(block); } });
+  searchInput.addEventListener('keyup', (e) => {
+    if (e.code === 'Escape') {
+      box.classList.remove('search__box--expanded');
+      searchInput.value = '';
+      clearSearch(block);
+    }
+    if (e.code === 'Enter') {
+      window.location.href = `/search-results?q=${encodeURIComponent(searchInput.value)}`;
+    }
+  });
 
-  return input;
-}
-
-function searchIcon() {
-  const icon = document.createElement('span');
-  icon.classList.add('icon', 'icon-search');
-  return icon;
-}
-
-function searchBox(block, config) {
-  const box = document.createElement('div');
-  box.classList.add('search-box');
-  box.append(
-    searchIcon(),
-    searchInput(block, config),
-  );
+  document.addEventListener('click', (e) => {
+    if (!box.contains(e.target) && box.classList.contains('search__box--expanded')) {
+      box.classList.remove('search__box--expanded');
+      clearSearch(block);
+    }
+  });
 
   return box;
 }
 
 export default async function decorate(block) {
   const placeholders = await fetchPlaceholders();
-  const source = block.querySelector('a[href]') ? block.querySelector('a[href]').href : '/query-index.json';
+  //TODO: Handle Search Functionality
+  const source = block.querySelector('a[href]') ? block.querySelector('a[href]').href : 'sample-search-data/query-index.json';
   block.innerHTML = '';
   block.append(
     searchBox(block, { source, placeholders }),
@@ -264,6 +244,4 @@ export default async function decorate(block) {
     input.value = searchParams.get('q');
     input.dispatchEvent(new Event('input'));
   }
-
-  decorateIcons(block);
 }
