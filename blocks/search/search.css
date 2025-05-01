@@ -27,7 +27,7 @@
   opacity: 1;
 
   @media (min-width: 48rem) {
-    width: 300px;
+    width: 18.75rem;
   }
 }
 
@@ -70,7 +70,7 @@
   cursor: pointer;
   background: none;
   border: none;
-  padding: 4px;
+  padding: 0.25rem;
   box-sizing: border-box;
   width: 1.75rem;
   height: 1.75rem;
@@ -95,8 +95,8 @@
 .search__results-container {
   position: absolute;
   top: calc(100% + 0.8rem);
-  right: 2em;
-  width: 300px;
+  right: 2rem;
+  width: 18.75rem;
   background: var(--spectrum-gray-25);
   border-radius: 0.625rem;
   box-shadow: var(--drop-shadow-emphasized);
@@ -122,11 +122,11 @@
   position: relative;
 
   &:first-child {
-    border-radius: 8px 8px 0 0;
+    border-radius: 0.5rem 0.5rem 0 0;
   }
 
   &:last-child {
-    border-radius: 0 0 8px 8px;
+    border-radius: 0 0 0.5rem 0.5rem;
 
     & > a {
       border-bottom: none;
