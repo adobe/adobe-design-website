@@ -17,6 +17,7 @@
   padding: 0;
   background-color: var(--color-background-footer);
   color: var(--color-text-dark);
+  overflow-x: hidden;
 }
 
 /* padding is on the elements instead of the container so we don't have to add more nested divs */
