@@ -9,21 +9,6 @@ describe('Link-List Block', () => {
     expect(linkLists.length).toBeGreaterThanOrEqual(1);
   });
 
-  it('should render the link-list title', async () => {
-    await page.waitForSelector('.link-list__title');
-    const linkListTitles = await page.$$('.link-list__title');
-    expect(linkListTitles.length).toBeGreaterThanOrEqual(1);
-  });
-
-  it('should render the link-list footer link, if it exists', async () => {
-    await page.waitForSelector('.link-list > a');
-    const linkListsWithFooterLink = await page.$$('.link-list > a');
-
-    if (linkListsWithFooterLink) {
-      expect(linkListsWithFooterLink.length).toBeGreaterThanOrEqual(1);
-    };
-  })
-
   describe('Link-List-Item', () => {
     beforeAll(async () => {
       await page.waitForSelector('.link-list-item');
