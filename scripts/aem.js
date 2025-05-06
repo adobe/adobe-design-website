@@ -374,6 +374,53 @@ function decorateHorizontalRules(element) {
 }
 
 /**
+ * Converts '<layout>' text nodes into containers to allow for nesting of blocks within layouts
+ * @param {Element} element container element
+ */
+function decorateLayouts(element) {
+  // find all '<layout>' text nodes regardless of layout type
+  const layoutStarters = Array.from(element.querySelectorAll('p'))
+    .filter((p) => p.textContent.trim().startsWith('<layout'));
+
+  for (const layoutStarter of layoutStarters) {
+    const layoutWrapper = layoutStarter.parentNode;
+    let currentElement = layoutWrapper.nextElementSibling;
+    let layoutEnder = null;
+    const elementsToContain = [];
+
+    while (currentElement) {
+      if (currentElement.textContent.includes('</layout>')) {
+        // ensure only the <p> containing the layout ender is removed at the end of this iteration
+        // there may be a layout starter in the same <div>
+        layoutEnder = Array.from(currentElement.querySelectorAll('p'))
+          .find((p) => p.textContent.trim() === '</layout>');
+        break;
+      };
+
+      // TODO: support other layout types
+      // apply 50/50 layout for two-up
+      if (layoutStarter.textContent.endsWith('two-up>'))
+        currentElement.classList.add('grid-item', 'grid-item--50');
+
+      elementsToContain.push(currentElement);
+      currentElement = currentElement.nextSibling;
+    };
+
+    // only creates a layout container for valid <layout></layout> pairs
+    if (layoutEnder) {
+      const layoutContainer = document.createElement('div');
+      layoutContainer.className = 'grid-container';
+
+      elementsToContain.forEach((e) => layoutContainer.appendChild(e));
+      layoutWrapper.after(layoutContainer);
+
+      layoutStarter.remove();
+      layoutEnder.remove();
+    };
+  };
+};
+
+/**
  * Add <img> for icon, prefixed with codeBasePath and optional prefix.
  * @param {Element} [span] span element with icon classes
  * @param {string} [prefix] prefix to be added to icon src
@@ -674,4 +721,5 @@ export {
   waitForFirstImage,
   wrapTextNodes,
   decorateHorizontalRules,
+  decorateLayouts,
 };

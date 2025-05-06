@@ -3,6 +3,7 @@ import {
   loadHeader,
   loadFooter,
   decorateHorizontalRules,
+  decorateLayouts,
   decorateIcons,
   decorateSections,
   decorateBlocks,
@@ -61,10 +62,11 @@ function buildAutoBlocks(main) {
 // eslint-disable-next-line import/prefer-default-export
 export function decorateMain(main) {
   decorateHorizontalRules(main),
-  decorateIcons(main);
-  buildAutoBlocks(main);
-  decorateSections(main);
-  decorateBlocks(main);
+  decorateIcons(main),
+  buildAutoBlocks(main),
+  decorateSections(main),
+  decorateBlocks(main),
+  decorateLayouts(main);
 }
 
 /**
