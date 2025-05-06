@@ -600,9 +600,7 @@ main .section.highlight {
 }
 
 .grid-item--50 {
-  @media (min-width: 22.5rem) {
-    grid-column: span 4;
-  }
+  grid-column: span 8;
 
   @media (min-width: 48rem) {
     grid-column: span 6;
