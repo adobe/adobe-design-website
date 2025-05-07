@@ -103,7 +103,7 @@ effect on filter buttons to indicate horizontal scroll */
   }
 }
 
-:root:has(#color-scheme option[value="dark"]:checked) .filter-group__button {
+:root:has(#color-scheme:checked) .filter-group__button {
   --color-background-button-filters-default: var(
     --spectrum-transparent-white-200
   );
@@ -112,14 +112,3 @@ effect on filter buttons to indicate horizontal scroll */
   );
 }
 
-@media (prefers-color-scheme: dark) {
-  :root:has(#color-scheme option[value="system"]:checked)
-    .filter-group__button {
-    --color-background-button-filters-default: var(
-      --spectrum-transparent-white-200
-    );
-    --color-background-button-filters-hover: var(
-      --spectrum-transparent-white-500
-    );
-  }
-}
