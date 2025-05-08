@@ -1,6 +1,9 @@
 import { createOptimizedPicture } from '../../scripts/aem.js';
 
 export default function decorate(block) {
+  const cardContainer = document.createElement('div');
+  cardContainer.className = 'card-container';
+  
   const card = document.createElement('div');
   card.className = 'card';
 
@@ -30,5 +33,6 @@ export default function decorate(block) {
   );
 
   block.textContent = '';
-  block.replaceWith(card);
+  cardContainer.append(card);
+  block.replaceWith(cardContainer);
 }
