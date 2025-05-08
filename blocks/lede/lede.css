@@ -1,0 +1,17 @@
+.lede p {
+    font-family: var(--spectrum-serif-font-family-stack);
+    font-size: var(--spectrum-font-size-400);
+    font-weight: var(--spectrum-bold-font-weight);
+
+    @media (min-width: 48rem) {
+        font-size: var(--spectrum-font-size-700);
+    }
+
+    @media (min-width: 80rem) {
+        font-size: var(--spectrum-font-size-800);
+    }
+
+    @media (min-width: 105rem) {
+        font-size: var(--spectrum-font-size-900);
+    }
+}
