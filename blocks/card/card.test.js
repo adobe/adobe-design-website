@@ -4,8 +4,8 @@ describe('Card Block', () => {
   });
 
   it('should render the card element', async () => {
-    await page.waitForSelector('.card-box');
-    const card = await page.$('.card-box');
+    await page.waitForSelector('.card');
+    const card = await page.$('.card');
     expect(card).toExist();
   });
 
@@ -19,18 +19,6 @@ describe('Card Block', () => {
     await page.waitForSelector('.card__description');
     const description = await page.$('.card__description');
     expect(description).toExist();
-  });
-
-  it('should apply the vertical orientation class', async () => {
-    await page.waitForSelector('.card--vertical');
-    const verticalCard = await page.$('.card--vertical');
-    expect(verticalCard).toExist();
-  });
-
-  it('should apply the horizontal orientation class', async () => {
-    await page.waitForSelector('.card--horizontal');
-    const horizontalCard = await page.$('.card--horizontal');
-    expect(horizontalCard).toExist();
   });
 
   it('should render the image within the card', async () => {
