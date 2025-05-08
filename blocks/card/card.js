@@ -2,11 +2,11 @@ import { createOptimizedPicture } from '../../scripts/aem.js';
 
 export default function decorate(block) {
   const card = document.createElement('div');
-  card.className = 'card-box';
+  card.className = 'card';
 
   const row = block.firstElementChild;
   if (row) {
-    const [cardImage, cardBody, cardOrientation] = row.children;
+    const [cardImage, cardBody] = row.children;
 
     if (cardImage) {
       const img = cardImage.querySelector('img');
@@ -23,13 +23,6 @@ export default function decorate(block) {
       if (descriptionElement) descriptionElement.className = 'card__description util-body-xs';
       card.append(cardBody);
     }
-
-    if (cardOrientation) {
-      const orientation = cardOrientation.textContent.trim();
-      if (orientation === 'horizontal' || orientation === 'vertical') {
-        card.classList.add(`card--${orientation}`);
-      }
-    }
   }
 
   card.querySelectorAll('picture > img').forEach((img) => 
@@ -37,5 +30,5 @@ export default function decorate(block) {
   );
 
   block.textContent = '';
-  block.append(card);
+  block.replaceWith(card);
 }
