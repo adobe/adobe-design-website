@@ -10,8 +10,11 @@
   display: flex;
   flex-direction: column;
   gap: 1rem;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 
   .button {
+    width: 100%;
     align-self: center;
 
     svg {
@@ -23,6 +26,10 @@
     padding: 2.5rem;
     flex-direction: row;
     gap: 2rem;
+
+    .button {
+      width: unset;
+    }
   }
   
   @container callout-container (min-width: 44rem) {
@@ -35,7 +42,7 @@
   }
 }
 
-.callout--link {
+.callout--with-link {
   &:hover {
     color: var(--spectrum-white);
     text-decoration: none;

@@ -1,3 +1,14 @@
+const PAPER_PLANE_ICON_SVG = `
+  <svg xmlns="http://www.w3.org/2000/svg" width="26" height="27" fill="none" viewBox="0 0 26 26">
+    <mask id="a" width="26" height="26" x="0" y="0" maskUnits="userSpaceOnUse" style="mask-type:alpha">
+      <path fill="#FFF" d="M24.414 2.085a.975.975 0 0 0-1.047-.216l-21.45 8.462a.973.973 0 0 0-.118 1.757l8.132 4.543 4.578 8.076a.977.977 0 0 0 1.755-.127l8.37-21.45a.975.975 0 0 0-.22-1.045ZM19.72 5.403l-9.246 9.298-5.927-3.312L19.72 5.403Zm-4.526 16.558-3.336-5.885 9.267-9.317-5.93 15.202Z"/>
+    </mask>
+    <g mask="url(#a)">
+      <path fill="#fff" fill-opacity=".85" d="M0 .5h26v26H0z"/>
+    </g>
+  </svg>
+`;
+
 export default async function decorate(block) {
   const calloutData = {
     title: block.children[0].children[0].textContent.trim(),
@@ -12,15 +23,15 @@ export default async function decorate(block) {
 
   // Create container element
   const calloutContainer = document.createElement('div');
-  calloutContainer.classList = 'callout-container';
+  calloutContainer.classList.add('callout-container');
 
   // Populate callout content
   const calloutContent = document.createElement('div');
-  calloutContent.classList = 'callout__content';
+  calloutContent.classList.add('callout__content');
 
   // ...remove any automatic heading tag from title text
   const calloutTitle = document.createElement('span');
-  calloutTitle.classList = 'callout__title';
+  calloutTitle.classList.add('callout__title');
   calloutTitle.textContent = calloutData.title;
   calloutContent.append(calloutTitle);
 
@@ -32,27 +43,20 @@ export default async function decorate(block) {
   });
 
   if (calloutData.url && calloutData.buttonLabel) {
-    // The callout is non-interactive, but has a link button
+    // The callout has a button; the rest of the block is not interactive 
     calloutBlock = document.createElement('div');
     calloutButton = document.createElement('a');
-    calloutButton.classList = 'button button--static-white';
+    calloutButton.classList.add('button', 'button--static-white');
     calloutButton.href = calloutData.url;
     calloutButton.innerHTML = `
-      <svg width="26" height="27" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <mask id="mask0_1480_1486" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="26" height="26">
-        <path d="M24.4136 2.08485C24.1381 1.81063 23.728 1.72685 23.3675 1.86903L1.91747 10.3305C1.56708 10.4676 1.32842 10.7964 1.30301 11.1722C1.27761 11.5479 1.4706 11.9047 1.79941 12.0875L9.93075 16.6311L14.5087 24.7066C14.6826 25.0126 15.0076 25.2005 15.3567 25.2005C15.3796 25.2005 15.4037 25.1992 15.4265 25.1979C15.8023 25.1713 16.1286 24.9301 16.2644 24.5797L24.6332 3.12968C24.7741 2.76913 24.6878 2.3578 24.4136 2.08485ZM19.7203 5.4034L10.4735 14.7005L4.54667 11.3892L19.7203 5.4034ZM15.1942 21.9606L11.8579 16.076L21.1248 6.75863L15.1942 21.9606Z" fill="#FFFFFF"/>
-      </mask>
-      <g mask="url(#mask0_1480_1486)">
-        <rect y="0.5" width="26" height="26" fill="white" fill-opacity="0.85"/>
-      </g>
-      </svg>
+      ${PAPER_PLANE_ICON_SVG}
       <span>${calloutData.buttonLabel}</span>
     `;
     if (calloutData.altText) calloutButton.title = calloutData.altText;
   } else if (calloutData.url && !calloutData.buttonLabel) {
     // The callout as a whole is interactive
     calloutBlock = document.createElement('a');
-    calloutBlock.classList = 'callout--link';
+    calloutBlock.classList.add('callout--with-link');
     calloutBlock.href = calloutData.url;
     if (calloutData.altText) calloutButton.title = calloutData.altText;
   } else {
