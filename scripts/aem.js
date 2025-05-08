@@ -362,16 +362,63 @@ function wrapTextNodes(block) {
 function decorateHorizontalRules(element) {
   element.querySelectorAll('p').forEach((p) => {
     const content = p.textContent.trim();
-    if (content === '<hr>' || content === '<hr fw>') {
+    if (content === '-hr-' || content === '-hr fw-') {
       const wrapper = document.createElement('div');
       wrapper.className = 'horizontal-rule-wrapper';
       const hr = document.createElement('hr');
-      hr.className = content === '<hr fw>' ? 'horizontal-rule horizontal-rule--full' : 'horizontal-rule';
+      hr.className = content === '-hr fw-' ? 'horizontal-rule horizontal-rule--full' : 'horizontal-rule';
       wrapper.appendChild(hr);
       p.parentElement.replaceWith(wrapper);
     }
   });
 }
+
+/**
+ * Converts '<layout>' text nodes into containers to allow for nesting of blocks within layouts
+ * @param {Element} element container element
+ */
+function decorateLayouts(element) {
+  // find all '<layout>' text nodes regardless of layout type
+  const layoutOpeningTags = Array.from(element.querySelectorAll('p'))
+    .filter((p) => p.textContent.trim().startsWith('-layout'));
+
+  for (const layoutOpeningTag of layoutOpeningTags) {
+    const layoutWrapper = layoutOpeningTag.parentNode;
+    let currentElement = layoutWrapper.nextElementSibling;
+    let layoutClosingTag = null;
+    const elementsToContain = [];
+
+    while (currentElement) {
+      if (currentElement.textContent.includes('-end layout-')) {
+        // ensure only the <p> containing the layout ender is removed at the end of this iteration
+        // there may be a layout starter in the same <div>
+        layoutClosingTag = Array.from(currentElement.querySelectorAll('p'))
+          .find((p) => p.textContent.trim() === '-end layout-');
+        break;
+      };
+
+      // TODO: support other layout types
+      // apply 50/50 layout for two-up
+      if (layoutOpeningTag.textContent.endsWith('two-up-'))
+        currentElement.classList.add('grid-item', 'grid-item--50');
+
+      elementsToContain.push(currentElement);
+      currentElement = currentElement.nextSibling;
+    };
+
+    // only creates a layout container for valid <layout></layout> pairs
+    if (layoutClosingTag) {
+      const layoutContainer = document.createElement('div');
+      layoutContainer.className = 'grid-container';
+
+      elementsToContain.forEach((e) => layoutContainer.appendChild(e));
+      layoutWrapper.after(layoutContainer);
+
+      layoutOpeningTag.remove();
+      layoutClosingTag.remove();
+    };
+  };
+};
 
 /**
  * Add <img> for icon, prefixed with codeBasePath and optional prefix.
@@ -674,4 +721,5 @@ export {
   waitForFirstImage,
   wrapTextNodes,
   decorateHorizontalRules,
+  decorateLayouts,
 };
