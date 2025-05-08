@@ -4,8 +4,8 @@ describe('Cards Block', () => {
   });
 
   it('should render the cards wrapper', async () => {
-    await page.waitForSelector('.cards');
-    const cardsWrapper = await page.$('.cards');
+    await page.waitForSelector('.card');
+    const cardsWrapper = await page.$('.card');
     expect(cardsWrapper).toExist();
   });
 });
