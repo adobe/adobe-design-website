@@ -622,7 +622,7 @@
   --spectrum-body-size-m: var(--spectrum-font-size-300);
   --spectrum-body-size-s: var(--spectrum-font-size-200);
   --spectrum-body-size-xs: var(--spectrum-font-size-100);
-  
+
   @media (min-width: 80rem) {
     --spectrum-body-size-xl: var(--spectrum-font-size-600);
     --spectrum-body-size-l: var(--spectrum-font-size-500);
