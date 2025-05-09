@@ -4,7 +4,7 @@
   position: relative;
   margin: var(--spectrum-spacing-800) auto;
   padding-block: 4.5rem;
-  font-family: var(--spectrum-serif-font-family);
+  font-family: var(--spectrum-serif-font);
   line-height: 1.4;
   letter-spacing: 0;
   color: var(--color-text);
