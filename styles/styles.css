@@ -540,6 +540,14 @@ main > .section > .grid-container {
   align-self: center;
 }
 
+.grid-item--100 {
+  grid-column: span 8;
+
+  @media (min-width: 48rem) {
+    grid-column: span 12;
+  }
+}
+
 .grid-item--66 {
   grid-column: span 8;
 
