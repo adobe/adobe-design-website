@@ -4,7 +4,7 @@ export default function decorate(block) {
 
   const row = block.firstElementChild;
   if (row) {
-    const [title, department, location, jobId] = row.children;
+    const [title, subheading, detail, jobId] = row.children;
     
     const contentWrapper = document.createElement('div');
     contentWrapper.className = 'job-listing__content';
@@ -16,18 +16,18 @@ export default function decorate(block) {
       contentWrapper.append(titleEl);
     }
 
-    if (department) {
-      const departmentEl = document.createElement('p');
-      departmentEl.className = 'job-listing__department util-detail-m';
-      departmentEl.textContent = department.textContent;
-      contentWrapper.append(departmentEl);
+    if (subheading) {
+      const subheadingEl = document.createElement('p');
+      subheadingEl.className = 'job-listing__subheading util-detail-m';
+      subheadingEl.textContent = subheading.textContent;
+      contentWrapper.append(subheadingEl);
     }
 
-    if (location) {
-      const locationEl = document.createElement('p');
-      locationEl.className = 'job-listing__location util-body-xs';
-      locationEl.textContent = location.textContent;
-      contentWrapper.append(locationEl);
+    if (detail) {
+      const detailEl = document.createElement('p');
+      detailEl.className = 'job-listing__detail util-body-xs';
+      detailEl.textContent = detail.textContent;
+      contentWrapper.append(detailEl);
     }
 
     jobListing.append(contentWrapper);

@@ -53,7 +53,7 @@
   }
 }
 
-.job-listing__department {
+.job-listing__subheading {
   font-size: var(--spectrum-detail-size-s);
   margin: 0.25rem 0 0;
 
@@ -62,7 +62,7 @@
   }
 }
 
-.job-listing__location {
+.job-listing__detail {
   font-size: var(--spectrum-body-size-xs);
   margin: 0.25rem 0 0;
 
