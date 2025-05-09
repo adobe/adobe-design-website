@@ -30,8 +30,7 @@ header nav[aria-expanded="true"] {
   min-height: 100dvh;
 }
 
-@media (min-width: 48rem) {
-  /* !! min-width MQ needs refactor */
+@media (min-width: 65.5rem) {
   header nav {
     display: flex;
     justify-content: space-between;
@@ -129,8 +128,7 @@ header nav[aria-expanded="true"] .nav-hamburger-icon::after {
   transform: rotate(-45deg);
 }
 
-@media (min-width: 48rem) {
-  /* !! min-width MQ needs refactor */
+@media (min-width: 65.5rem) {
   header nav .nav-hamburger {
     display: none;
     visibility: hidden;
@@ -183,8 +181,7 @@ header nav .nav-sections ul > li > ul > li {
   font-weight: var(--spectrum-regular-font-weight);
 }
 
-@media (min-width: 48rem) {
-  /* !! min-width MQ needs refactor */
+@media (min-width: 65.5rem) {
   header nav .nav-sections {
     display: block;
     visibility: visible;
@@ -316,8 +313,7 @@ header .breadcrumbs ol li[aria-current] {
   color: var(--color-text);
 }
 
-@media (min-width: 48rem) {
-  /* !! min-width MQ needs refactor */
+@media (min-width: 65.5rem) {
   header .breadcrumbs {
     display: block;
     max-width: 79rem;
@@ -438,15 +434,15 @@ header .breadcrumbs ol li[aria-current] {
   transition: color 200ms ease-in-out;
   color: var(--color-text);
 
-  .theme-toggle:hover ~ & {
+  .theme-toggle:hover > & {
     color: var(--spectrum-switch-label-color-hover);
   }
 
-  .theme-toggle:active ~ & {
+  .theme-toggle:active > & {
     color: var(--spectrum-switch-label-color-down);
   }
 
-  .theme-toggle__input:focus-visible ~ & {
+  .theme-toggle__input:focus-visible > & {
     color: var(--spectrum-switch-label-color-focus);
   }
 }
