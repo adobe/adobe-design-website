@@ -1,9 +1,10 @@
 import { fetchPlaceholders, getMetadata } from '../../scripts/aem.js';
 import { loadFragment } from '../fragment/fragment.js';
 import { buildSkipLink } from '../../blocks-helpers/skipLinks.js';
+import { buildNavToolbar } from './nav-toolbar.js';
 
 // media query match that indicates mobile/tablet width
-const isDesktop = window.matchMedia('(min-width: 48rem)');
+const isDesktop = window.matchMedia('(min-width: 65.5rem)');
 
 function closeOnEscape(e) {
   if (e.code === 'Escape') {
@@ -218,27 +219,9 @@ export default async function decorate(block) {
   }
 
   const navTools = nav.querySelector('.nav-tools');
-  if (navTools) {
-    const search = navTools.querySelector('a[href*="search"]');
-    if (search && search.textContent === '') {
-      search.setAttribute('aria-label', 'Search');
-    }
-  }
+  const toolbar = buildNavToolbar();
 
-  // simple theme toggle
-  const themeSelectLabel = document.createElement('label');
-  themeSelectLabel.for = 'color-scheme';
-  themeSelectLabel.innerText = 'Choose theme:';
-  themeSelectLabel.style = 'margin-right: 0.25rem';
-  const themeToggle = document.createElement('select');
-  themeToggle.innerHTML = `
-    <option value="system" selected>System</option>
-    <option value="light">Light</option>
-    <option value="dark">Dark</option>
-  `;
-  themeToggle.id = 'color-scheme';
-  navTools.append(themeSelectLabel);
-  navTools.append(themeToggle);
+  navTools.replaceWith(toolbar);
 
   // hamburger for mobile
   const hamburger = document.createElement('div');
