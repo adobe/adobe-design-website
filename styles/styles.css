@@ -698,6 +698,24 @@ main > .section > .grid-container {
   font-weight: var(--spectrum-heading-weight-s);
 }
 
+.util-heading-quote {
+  font-family: var(--spectrum-serif-font-family-stack);
+  font-size: var(--spectrum-font-size-400);
+  font-weight: var(--spectrum-medium-font-weight);
+
+  @media (min-width: 48rem) {
+    font-size: var(--spectrum-font-size-700);
+  }
+
+  @media (min-width: 80rem) {
+    font-size: var(--spectrum-font-size-800);
+  }
+
+  @media (min-width: 105rem) {
+    font-size: var(--spectrum-font-size-900);
+  }
+}
+
 .util-title-xxxl {
   font-family: var(--title-font-family);
   line-height: var(--title-line-height);
