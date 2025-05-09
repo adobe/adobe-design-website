@@ -1,3 +1,5 @@
+import { cleanText } from '../../blocks-helpers/textHelpers.js';
+
 const PAPER_PLANE_ICON_SVG = `
   <svg xmlns="http://www.w3.org/2000/svg" width="26" height="27" fill="none" viewBox="0 0 26 26">
     <mask id="a" width="26" height="26" x="0" y="0" maskUnits="userSpaceOnUse" style="mask-type:alpha">
@@ -36,14 +38,16 @@ export default async function decorate(block) {
   calloutContent.append(calloutTitle);
 
   // ...remove semantic tags from description text
-  [...calloutData.description].forEach((textNode) => {
-    const calloutDescriptionPart = document.createElement('span');
-    calloutDescriptionPart.textContent = textNode.textContent.trim();
-    calloutContent.append(calloutDescriptionPart);
-  });
+  cleanText(...calloutData.description, calloutContent);
+
+  // [...calloutData.description].forEach((textNode) => {
+  //   const calloutDescriptionPart = document.createElement('span');
+  //   calloutDescriptionPart.textContent = textNode.textContent.trim();
+  //   calloutContent.append(calloutDescriptionPart);
+  // });
 
   if (calloutData.url && calloutData.buttonLabel) {
-    // The callout has a button; the rest of the block is not interactive 
+    // The callout has a button; the rest of the block is not interactive
     calloutBlock = document.createElement('div');
     calloutButton = document.createElement('a');
     calloutButton.classList.add('button', 'button--static-white');
