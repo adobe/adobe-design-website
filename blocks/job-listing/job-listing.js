@@ -6,26 +6,26 @@ export default function decorate(block) {
   if (row) {
     const [title, subheading, detail, jobId] = row.children;
     
-    const contentWrapper = document.createElement('div');
+    const contentWrapper = document.createElement('span');
     contentWrapper.className = 'job-listing__content';
     
     if (title) {
-      const titleEl = document.createElement('h2');
-      titleEl.className = 'job-listing__title util-title-xl';
+      const titleEl = document.createElement('span');
+      titleEl.className = 'job-listing__title';
       titleEl.textContent = title.textContent;
       contentWrapper.append(titleEl);
     }
 
     if (subheading) {
-      const subheadingEl = document.createElement('p');
-      subheadingEl.className = 'job-listing__subheading util-detail-m';
+      const subheadingEl = document.createElement('span');
+      subheadingEl.className = 'job-listing__subheading';
       subheadingEl.textContent = subheading.textContent;
       contentWrapper.append(subheadingEl);
     }
 
     if (detail) {
-      const detailEl = document.createElement('p');
-      detailEl.className = 'job-listing__detail util-body-xs';
+      const detailEl = document.createElement('span');
+      detailEl.className = 'job-listing__detail';
       detailEl.textContent = detail.textContent;
       contentWrapper.append(detailEl);
     }
