@@ -3,7 +3,7 @@ export default async function decorate(block) {
   const blockquote = document.createElement('blockquote');
 
   const quoteText = document.createElement('p');
-  quoteText.className = 'quote__quotation';
+  quoteText.className = 'quote__quotation util-heading-quote';
   quoteText.innerHTML = quotation.innerText;
   blockquote.append(quoteText);
 
