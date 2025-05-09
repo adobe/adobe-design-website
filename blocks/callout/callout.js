@@ -40,12 +40,6 @@ export default async function decorate(block) {
   // ...remove semantic tags from description text
   cleanText(...calloutData.description, calloutContent);
 
-  // [...calloutData.description].forEach((textNode) => {
-  //   const calloutDescriptionPart = document.createElement('span');
-  //   calloutDescriptionPart.textContent = textNode.textContent.trim();
-  //   calloutContent.append(calloutDescriptionPart);
-  // });
-
   if (calloutData.url && calloutData.buttonLabel) {
     // The callout has a button; the rest of the block is not interactive
     calloutBlock = document.createElement('div');

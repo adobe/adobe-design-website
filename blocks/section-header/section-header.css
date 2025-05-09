@@ -1,3 +1,25 @@
 .section-header {
+  grid-row-gap: 1.25rem;
+}
 
+main > .section > .grid-container {
+  /* remove default margin-bottom as section headings sit close to content */
+  margin-block-end: 1.25rem;
+}
+
+.section-header__description {
+  margin: 0;
+  margin-block-start: 0;
+}
+
+@media (min-width: 48rem) {
+  .section-header__button {
+    height: fit-content;
+    width: fit-content;
+  }
+
+  .section-header__description + .section-header__button {
+    margin-inline-start: auto;
+    grid-column: 9 / span 4;
+  }
 }
