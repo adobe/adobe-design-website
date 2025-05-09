@@ -12,13 +12,13 @@ describe('Job-List Block', () => {
   describe('Job-List', () => {
     beforeAll(async () => {
       await page.waitForSelector('.job-list');
-      await page.waitForSelector('.job-list__department');
+      await page.waitForSelector('.job-list__heading');
       await page.waitForSelector('.job-list__listings');
     });
 
-    it('should have department title with utility class', async () => {
-      const hasDepartment = await page.$('.job-list__department');
-      expect(hasDepartment).toExist();
+    it('should have heading with utility class', async () => {
+      const hasHeading = await page.$('.job-list__heading');
+      expect(hasHeading).toExist();
     });
 
     it('should have listings container with job listings', async () => {

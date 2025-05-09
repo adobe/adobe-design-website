@@ -21,11 +21,11 @@ describe('Job-Listing Block', () => {
       const hasTitle = await page.$('.job-list .job-listing__title');
       expect(hasTitle).toExist();
 
-      const hasDepartment = await page.$('.job-list .job-listing__department');
-      expect(hasDepartment).toExist();
+      const hasSubheading = await page.$('.job-list .job-listing__subheading');
+      expect(hasSubheading).toExist();
 
-      const hasLocation = await page.$('.job-list .job-listing__location');
-      expect(hasLocation).toExist();
+      const hasDetail = await page.$('.job-list .job-listing__detail');
+      expect(hasDetail).toExist();
     });
 
     it('should link to the correct job posting URL', async () => {
