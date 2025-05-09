@@ -1,9 +1,9 @@
 export default function decorate(block) {
   const jobList = document.createElement('div');
-  jobList.className = 'job-list grid-container';
+  jobList.classList.add('job-list', 'grid-container');
 
   const [headingRow, ...jobRows] = [...block.children];
-  
+
   if (headingRow) {
     const heading = document.createElement('h2');
     heading.className = 'job-list__heading util-heading-s grid-item grid-item--33';
@@ -16,13 +16,13 @@ export default function decorate(block) {
 
   jobRows.forEach(row => {
     const [title, subheading, detail, jobId] = row.children;
-    
+
     const jobListing = document.createElement('a');
     jobListing.className = 'job-listing';
-    
+
     const contentWrapper = document.createElement('span');
     contentWrapper.className = 'job-listing__content';
-    
+
     if (title) {
       const titleEl = document.createElement('span');
       titleEl.className = 'job-listing__title';
