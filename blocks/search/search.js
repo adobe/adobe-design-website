@@ -4,6 +4,8 @@ import {
 
 const searchParams = new URLSearchParams(window.location.search);
 
+const SEARCH_INPUT_ICON = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" focusable="false" aria-hidden="true" roll="img"><path fill="currentColor" d="M16.9 15.5c2.4-3.2 2.2-7.7-.7-10.6-3.1-3.1-8.1-3.1-11.3 0-3.1 3.2-3.1 8.3 0 11.4 2.9 2.9 7.5 3.1 10.6.6v.1l4.2 4.2c.5.4 1.1.4 1.5 0 .4-.4.4-1 0-1.4l-4.3-4.3zm-2.1-9.2c2.3 2.3 2.3 6.1 0 8.5-2.3 2.3-6.1 2.3-8.5 0C4 12.5 4 8.7 6.3 6.3c2.4-2.3 6.2-2.3 8.5 0z"/></svg>`;
+
 function findNextHeading(el) {
   let preceedingEl = el.parentElement.previousElement || el.parentElement.parentElement;
   let h = 'H2';
@@ -44,15 +46,15 @@ function renderResult(result) {
 
   const a = document.createElement('a');
   a.href = result.path;
-  
+
   const title = document.createElement('div');
   title.className = 'search__results-title util-title-xs';
   title.textContent = result.title;
-  
+
   const description = document.createElement('div');
   description.className = 'search__results-description util-body-s';
   description.textContent = result.description;
-  
+
   a.append(title, description);
   li.appendChild(a);
   return li;
@@ -165,24 +167,19 @@ function searchBox(block, config) {
 
   const searchInput = document.createElement('input');
   searchInput.setAttribute('type', 'search');
+  searchInput.setAttribute('autocomplete', 'off');
   searchInput.className = 'search__input';
-  const searchPlaceholder = config.placeholders.searchPlaceholder || 'Search...';
+  const searchPlaceholder = config.placeholders.searchPlaceholder || 'Search';
   searchInput.placeholder = searchPlaceholder;
   searchInput.setAttribute('aria-label', searchPlaceholder);
 
   const searchIconInInput = document.createElement('span');
-  searchIconInInput.classList.add('icon', 'icon-search', 'search__icon-search');
-  searchIconInInput.innerHTML = `
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20">
-      <path fill="currentColor" d="M16.9,15.5c2.4-3.2,2.2-7.7-0.7-10.6c-3.1-3.1-8.1-3.1-11.3,0c-3.1,3.2-3.1,8.3,0,11.4
-        c2.9,2.9,7.5,3.1,10.6,0.6c0,0.1,0,0.1,0,0.1l4.2,4.2c0.5,0.4,1.1,0.4,1.5,0c0.4-0.4,0.4-1,0-1.4L16.9,15.5
-        C16.9,15.5,16.9,15.5,16.9,15.5L16.9,15.5z M14.8,6.3c2.3,2.3,2.3,6.1,0,8.5c-2.3,2.3-6.1,2.3-8.5,0C4,12.5,4,8.7,6.3,6.3
-        C8.7,4,12.5,4,14.8,6.3z"/>
-    </svg>
-  `;
+  searchIconInInput.classList.add('icon', 'search__search-icon');
+  searchIconInInput.innerHTML = SEARCH_INPUT_ICON;
 
   const toggleButton = document.createElement('button');
-  toggleButton.classList.add('icon', 'icon-search', 'search__icon-search', 'search__toggle-search');
+  toggleButton.classList.add('search__button');
+  toggleButton.setAttribute('type', 'button');
   toggleButton.setAttribute('aria-label', 'Toggle search');
   toggleButton.innerHTML = searchIconInInput.innerHTML;
 
@@ -191,11 +188,14 @@ function searchBox(block, config) {
   const searchResults = searchResultsContainer(block);
   resultsContainer.appendChild(searchResults);
 
-  inputWrapper.append(searchInput, searchIconInInput);
+  searchInput.append(searchIconInInput);
+  inputWrapper.append(searchInput);
+
   box.append(inputWrapper, toggleButton, resultsContainer);
 
   toggleButton.addEventListener('click', () => {
     box.classList.toggle('search__box--expanded');
+    toggleButton.toggleAttribute('aria-expanded');
     if (box.classList.contains('search__box--expanded')) {
       searchInput.focus();
     } else {
@@ -211,12 +211,13 @@ function searchBox(block, config) {
   searchInput.addEventListener('keyup', (e) => {
     if (e.code === 'Escape') {
       box.classList.remove('search__box--expanded');
+      toggleButton.toggleAttribute('aria-expanded');
       searchInput.value = '';
       clearSearch(block);
     }
-    if (e.code === 'Enter') {
-      window.location.href = `/search-results?q=${encodeURIComponent(searchInput.value)}`;
-    }
+    // if (e.code === 'Enter') {
+    //   window.location.href = `/search-results?q=${encodeURIComponent(searchInput.value)}`;
+    // }
   });
 
   document.addEventListener('click', (e) => {
@@ -231,8 +232,8 @@ function searchBox(block, config) {
 
 export default async function decorate(block) {
   const placeholders = await fetchPlaceholders();
-  //TODO: Handle Search Functionality
-  const source = block.querySelector('a[href]') ? block.querySelector('a[href]').href : 'sample-search-data/query-index.json';
+  //!! TODO: handle search functionality
+  const source = block.querySelector('a[href]') ? block.querySelector('a[href]').href : './sample-search-data/query-index.json';
   block.innerHTML = '';
   block.append(
     searchBox(block, { source, placeholders }),

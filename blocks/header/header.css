@@ -10,8 +10,8 @@ header nav {
   box-sizing: border-box;
   display: grid;
   grid-template:
-    'hamburger brand tools' var(--nav-height)
-    'sections sections sections' 1fr / auto 1fr auto;
+    "hamburger brand tools" var(--nav-height)
+    "sections sections sections" 1fr / auto 1fr auto;
   align-items: center;
   gap: 0 24px;
   margin: auto;
@@ -21,17 +21,16 @@ header nav {
   font-family: var(--body-font-family);
 }
 
-header nav[aria-expanded='true'] {
+header nav[aria-expanded="true"] {
   grid-template:
-    'hamburger brand' var(--nav-height)
-    'sections sections' 1fr
-    'tools tools' var(--nav-height) / auto 1fr;
+    "hamburger brand" var(--nav-height)
+    "sections sections" 1fr
+    "tools tools" var(--nav-height) / auto 1fr;
   overflow-y: auto;
   min-height: 100dvh;
 }
 
-@media (min-width: 48rem) {
-  /* !! min-width MQ needs refactor */
+@media (min-width: 65.5rem) {
   header nav {
     display: flex;
     justify-content: space-between;
@@ -40,7 +39,7 @@ header nav[aria-expanded='true'] {
     padding: 0 32px;
   }
 
-  header nav[aria-expanded='true'] {
+  header nav[aria-expanded="true"] {
     min-height: 0;
     overflow: visible;
   }
@@ -87,33 +86,33 @@ header nav .nav-hamburger-icon::after {
 
 header nav .nav-hamburger-icon::before,
 header nav .nav-hamburger-icon::after {
-  content: '';
+  content: "";
   position: absolute;
   background: currentcolor;
 }
 
-header nav[aria-expanded='false'] .nav-hamburger-icon,
-header nav[aria-expanded='false'] .nav-hamburger-icon::before,
-header nav[aria-expanded='false'] .nav-hamburger-icon::after {
+header nav[aria-expanded="false"] .nav-hamburger-icon,
+header nav[aria-expanded="false"] .nav-hamburger-icon::before,
+header nav[aria-expanded="false"] .nav-hamburger-icon::after {
   height: 2px;
   border-radius: 2px;
   background: currentcolor;
 }
 
-header nav[aria-expanded='false'] .nav-hamburger-icon::before {
+header nav[aria-expanded="false"] .nav-hamburger-icon::before {
   top: -6px;
 }
 
-header nav[aria-expanded='false'] .nav-hamburger-icon::after {
+header nav[aria-expanded="false"] .nav-hamburger-icon::after {
   top: 6px;
 }
 
-header nav[aria-expanded='true'] .nav-hamburger-icon {
+header nav[aria-expanded="true"] .nav-hamburger-icon {
   height: 22px;
 }
 
-header nav[aria-expanded='true'] .nav-hamburger-icon::before,
-header nav[aria-expanded='true'] .nav-hamburger-icon::after {
+header nav[aria-expanded="true"] .nav-hamburger-icon::before,
+header nav[aria-expanded="true"] .nav-hamburger-icon::after {
   top: 3px;
   left: 1px;
   transform: rotate(45deg);
@@ -123,14 +122,13 @@ header nav[aria-expanded='true'] .nav-hamburger-icon::after {
   border-radius: 2px;
 }
 
-header nav[aria-expanded='true'] .nav-hamburger-icon::after {
+header nav[aria-expanded="true"] .nav-hamburger-icon::after {
   top: unset;
   bottom: 3px;
   transform: rotate(-45deg);
 }
 
-@media (min-width: 48rem) {
-  /* !! min-width MQ needs refactor */
+@media (min-width: 65.5rem) {
   header nav .nav-hamburger {
     display: none;
     visibility: hidden;
@@ -159,7 +157,7 @@ header nav .nav-sections {
   visibility: hidden;
 }
 
-header nav[aria-expanded='true'] .nav-sections {
+header nav[aria-expanded="true"] .nav-sections {
   display: block;
   visibility: visible;
   align-self: start;
@@ -183,15 +181,14 @@ header nav .nav-sections ul > li > ul > li {
   font-weight: var(--spectrum-regular-font-weight);
 }
 
-@media (min-width: 48rem) {
-  /* !! min-width MQ needs refactor */
+@media (min-width: 65.5rem) {
   header nav .nav-sections {
     display: block;
     visibility: visible;
     white-space: nowrap;
   }
 
-  header nav[aria-expanded='true'] .nav-sections {
+  header nav[aria-expanded="true"] .nav-sections {
     align-self: unset;
   }
 
@@ -202,7 +199,7 @@ header nav .nav-sections ul > li > ul > li {
   }
 
   header nav .nav-sections .nav-drop::after {
-    content: '';
+    content: "";
     display: inline-block;
     position: absolute;
     top: 0.5em;
@@ -215,7 +212,7 @@ header nav .nav-sections ul > li > ul > li {
     border-width: 2px 2px 0 0;
   }
 
-  header nav .nav-sections .nav-drop[aria-expanded='true']::after {
+  header nav .nav-sections .nav-drop[aria-expanded="true"]::after {
     top: unset;
     bottom: 0.5em;
     transform: rotate(315deg);
@@ -237,7 +234,7 @@ header nav .nav-sections ul > li > ul > li {
     position: relative;
   }
 
-  header nav .nav-sections > ul > li[aria-expanded='true'] > ul {
+  header nav .nav-sections > ul > li[aria-expanded="true"] > ul {
     display: block;
     position: absolute;
     left: -24px;
@@ -250,7 +247,7 @@ header nav .nav-sections ul > li > ul > li {
   }
 
   header nav .nav-sections > ul > li > ul::before {
-    content: '';
+    content: "";
     position: absolute;
     top: -8px;
     left: 16px;
@@ -307,7 +304,7 @@ header .breadcrumbs ol li {
 }
 
 header .breadcrumbs ol li:not(:last-child)::after {
-  content: '/';
+  content: "/";
   padding-left: 1ch;
 }
 
@@ -316,11 +313,316 @@ header .breadcrumbs ol li[aria-current] {
   color: var(--color-text);
 }
 
-@media (min-width: 48rem) {
-  /* !! min-width MQ needs refactor */
+@media (min-width: 65.5rem) {
   header .breadcrumbs {
     display: block;
     max-width: 79rem;
     padding: 0 2rem;
+  }
+}
+
+/* !! new styles start here */
+
+.nav-toolbar {
+  display: flex;
+  flex-direction: row;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+.theme-toggle {
+  --spectrum-component-size-minimum-perspective-down: 1.5rem;
+  --spectrum-component-size-difference-down: -2px;
+
+  --spectrum-switch-label-color-default: var(--spectrum-gray-800);
+  --spectrum-switch-label-color-hover: var(--spectrum-gray-900);
+  --spectrum-switch-label-color-down: var(--spectrum-gray-900);
+  --spectrum-switch-label-color-focus: var(--spectrum-gray-900);
+  --spectrum-switch-label-color-disabled: var(--spectrum-gray-400);
+  --spectrum-switch-border-width: 2px;
+
+  --spectrum-switch-border-color-default: var(--spectrum-gray-600);
+  --spectrum-switch-border-color-hover: var(--spectrum-gray-900);
+  --spectrum-switch-border-color-down: var(--spectrum-gray-900);
+  --spectrum-switch-border-color-focus: var(--spectrum-gray-900);
+  --spectrum-switch-border-color-disabled: var(--spectrum-gray-400);
+
+  --spectrum-switch-border-color-selected-default: var(--spectrum-gray-800);
+  --spectrum-switch-border-color-selected-hover: var(--spectrum-gray-900);
+  --spectrum-switch-border-color-selected-down: var(--spectrum-gray-900);
+  --spectrum-switch-border-color-selected-focus: var(--spectrum-gray-900);
+
+  --spectrum-switch-background-color: var(--spectrum-gray-200);
+  --spectrum-switch-background-color-disabled: var(--spectrum-gray-25);
+
+  --spectrum-switch-background-color-selected-default: var(--spectrum-blue-900);
+  --spectrum-switch-background-color-selected-hover: var(--spectrum-blue-900);
+  --spectrum-switch-background-color-selected-down: var(--spectrum-blue-900);
+  --spectrum-switch-background-color-selected-focus: var(--spectrum-blue-900);
+  --spectrum-switch-background-color-selected-disabled: var(
+    --spectrum-gray-400
+  );
+
+  --spectrum-switch-focus-indicator-thickness: var(
+    --spectrum-focus-indicator-thickness
+  );
+  --spectrum-switch-focus-indicator-color: var(
+    --spectrum-focus-indicator-color
+  );
+  --spectrum-switch-focus-indicator-gap: var(--spectrum-focus-indicator-gap);
+
+  --spectrum-switch-handle-background-color-default: var(--spectrum-gray-50);
+  --spectrum-switch-handle-background-color-hover: var(--spectrum-gray-50);
+  --spectrum-switch-handle-background-color-down: var(--spectrum-gray-50);
+  --spectrum-switch-handle-background-color-focus: var(--spectrum-gray-50);
+  --spectrum-switch-handle-background-color-disabled: var(--spectrum-gray-50);
+  --switch-handle-border-color: var(--spectrum-gray-600);
+
+  --spectrum-switch-handle-background-color-selected: var(--spectrum-gray-50);
+  --spectrum-switch-handle-background-color-selected-disabled: var(
+    --spectrum-gray-25
+  );
+
+  --switch-handle-border-color--selected: var(--spectrum-blue-900);
+
+  --spectrum-switch-handle-size: 1.125rem;
+  --spectrum-switch-handle-selected-size: var(--spectrum-switch-handle-size);
+
+  --spectrum-switch-min-height: 2rem;
+  --spectrum-switch-control-width: 2rem;
+  --spectrum-switch-control-height: 1.125rem;
+  --spectrum-switch-control-label-spacing: 1rem;
+  --spectrum-switch-spacing-top-to-control: 2rem;
+  --spectrum-switch-spacing-top-to-label: 1rem;
+  --spectrum-switch-spacing-bottom-to-label: 1rem;
+
+  --spectrum-switch-border-radius: var(--spectrum-corner-radius-1000);
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 1rem;
+  position: relative;
+  min-block-size: var(--spectrum-switch-min-height);
+  max-inline-size: 100%;
+  vertical-align: top;
+}
+
+.theme-toggle__input {
+  margin: 0;
+  box-sizing: border-box;
+  padding: 0;
+
+  position: absolute;
+  inline-size: 100%;
+  block-size: 100%;
+  inset-block-start: 0;
+  inset-inline-start: 0;
+  opacity: 0;
+  z-index: 1;
+
+  cursor: pointer;
+
+  &:disabled,
+  &[disabled] {
+    cursor: default;
+  }
+}
+
+.theme-toggle__label {
+  margin-right: 0.25rem;
+  transition: color 200ms ease-in-out;
+  color: var(--color-text);
+
+  .theme-toggle:hover > & {
+    color: var(--spectrum-switch-label-color-hover);
+  }
+
+  .theme-toggle:active > & {
+    color: var(--spectrum-switch-label-color-down);
+  }
+
+  .theme-toggle__input:focus-visible > & {
+    color: var(--spectrum-switch-label-color-focus);
+  }
+}
+
+.theme-toggle__switch {
+  display: inline-block;
+  box-sizing: border-box;
+
+  /* positions the pseudo elements relative to this one */
+  position: relative;
+
+  inline-size: var(--spectrum-switch-control-width);
+
+  margin-inline: 0;
+  flex-grow: 0;
+  flex-shrink: 0;
+
+  vertical-align: middle;
+
+  transition: background var(--spectrum-animation-duration-100) ease-in-out,
+    border var(--spectrum-animation-duration-100) ease-in-out;
+
+  block-size: var(--spectrum-switch-control-height);
+
+  inset-inline-start: 0;
+  inset-inline-end: 0;
+
+  background-color: var(--spectrum-switch-background-color);
+  border-radius: var(--spectrum-switch-border-radius);
+
+  .theme-toggle:hover & {
+    border-color: var(--spectrum-switch-border-color-hover);
+  }
+
+  .theme-toggle:active & {
+    border-color: var(--spectrum-switch-border-color-down);
+  }
+
+  .theme-toggle__input:focus-visible + & {
+    border-color: var(--spectrum-switch-border-color-focus);
+  }
+
+  .theme-toggle__input:checked + & {
+    background-color: var(--spectrum-switch-background-color-selected-default);
+    border-color: var(--spectrum-switch-border-color-selected-default);
+  }
+
+  .theme-toggle:hover & {
+    background-color: var(--spectrum-switch-background-color-selected-hover);
+    border-color: var(--spectrum-switch-border-color-selected-hover);
+  }
+
+  .theme-toggle:active & {
+    background-color: var(--spectrum-switch-background-color-selected-down);
+    border-color: var(--spectrum-switch-border-color-selected-down);
+  }
+
+  .theme-toggle__input:checked:focus-visible + & {
+    background-color: var(--spectrum-switch-background-color-selected-focus);
+    border-color: var(--spectrum-switch-border-color-selected-focus);
+  }
+
+  /* :before is used for the handle of the switch */
+  &::before {
+    display: block;
+    position: absolute;
+    content: "";
+    box-sizing: border-box;
+    border: 2px solid var(--switch-handle-border-color);
+
+    transition: background var(--spectrum-animation-duration-100) ease-in-out,
+      border var(--spectrum-animation-duration-100) ease-in-out,
+      transform var(--spectrum-animation-duration-100) ease-in-out,
+      box-shadow var(--spectrum-animation-duration-100) ease-in-out;
+
+    inline-size: var(--spectrum-switch-handle-size);
+    block-size: var(--spectrum-switch-handle-size);
+    inset-inline-start: calc(
+      var(--spectrum-switch-control-height) - var(--spectrum-switch-handle-size)
+    );
+
+    background-color: var(--spectrum-switch-handle-background-color-default);
+    border-radius: var(--spectrum-switch-border-radius);
+
+    .theme-toggle:hover & {
+      background-color: var(--spectrum-switch-handle-background-color-hover);
+    }
+
+    .theme-toggle:active & {
+      background-color: var(--spectrum-switch-handle-background-color-down);
+    }
+
+    .theme-toggle__input:focus-visible + & {
+      background-color: var(--spectrum-switch-handle-background-color-focus);
+    }
+
+    .theme-toggle:hover & {
+      background-color: var(--spectrum-switch-handle-background-color-selected);
+    }
+
+    .theme-toggle:active .theme-toggle__input:not(:disabled) + & {
+      transform: perspective(
+          var(--spectrum-component-size-minimum-perspective-down)
+        )
+        translateZ(var(--spectrum-component-size-difference-down));
+    }
+
+    .theme-toggle:active .theme-toggle__input:not(:disabled):checked + & {
+      /* Add down state without overriding translateX */
+      transform: translateX(calc(100% + var(--spectrum-switch-border-width)))
+        perspective(var(--spectrum-component-size-minimum-perspective-down))
+        translateZ(var(--spectrum-component-size-difference-down));
+    }
+  }
+
+  /* :after is used for the track of the switch and the focus */
+  &::after {
+    border-radius: var(--spectrum-switch-border-radius);
+    content: "";
+    display: block;
+    position: absolute;
+    inset-inline-start: 0;
+    inset-inline-end: 0;
+    inset-block-end: 0;
+    inset-block-start: 0;
+    margin: 0;
+
+    transition: opacity var(--spectrum-animation-duration-100) ease-out,
+      outline-offset var(--spectrum-animation-duration-100) ease-out,
+      border var(--spectrum-animation-duration-100) ease-in-out;
+  }
+}
+
+.theme-toggle__input:focus-visible + .theme-toggle__switch::after {
+  outline: var(--spectrum-switch-focus-indicator-thickness) solid
+    var(--spectrum-switch-focus-indicator-color);
+  outline-offset: var(--spectrum-switch-focus-indicator-gap);
+}
+
+.theme-toggle__input:checked + .theme-toggle__switch::before {
+  --switch-handle-border-color: var(--switch-handle-border-color--selected);
+
+  background-color: var(--spectrum-switch-handle-background-color-selected);
+
+  inline-size: var(--spectrum-switch-handle-selected-size);
+  block-size: var(--spectrum-switch-handle-selected-size);
+  inset-inline-start: -0.375rem;
+
+  transform: translateX(calc(100% + var(--spectrum-switch-border-width)));
+}
+
+/* disabled */
+.theme-toggle .theme-toggle__input:disabled,
+.theme-toggle .theme-toggle__input[disabled],
+.theme-toggle:hover .theme-toggle__input:disabled,
+.theme-toggle:hover .theme-toggle__input[disabled] {
+  & + .theme-toggle__switch {
+    background-color: var(--spectrum-switch-background-color-disabled);
+    border-color: var(--spectrum-switch-border-color-disabled);
+
+    &::before {
+      background-color: var(--spectrum-switch-handle-background-color-disabled);
+    }
+  }
+
+  & ~ .theme-toggle__label {
+    color: var(--spectrum-switch-label-color-disabled);
+  }
+
+  &:checked + .theme-toggle__switch {
+    background-color: var(--spectrum-switch-background-color-selected-disabled);
+
+    &::before {
+      background-color: var(
+        --spectrum-switch-handle-background-color-selected-disabled
+      );
+    }
+  }
+
+  & ~ .theme-toggle__label {
+    color: var(--spectrum-switch-label-color-disabled);
   }
 }

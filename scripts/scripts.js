@@ -107,6 +107,7 @@ async function loadLazy(doc) {
   // loads our standard styles and important root variables
   loadCSS(`${window.hlx.codeBasePath}/styles/base.css`);
   loadCSS(`${window.hlx.codeBasePath}/styles/styles.css`);
+  loadCSS(`${window.hlx.codeBasePath}/blocks/search/search.css`)
 
   // loads the header and footer components, along with their stylesheets
   loadHeader(doc.querySelector('header'));
