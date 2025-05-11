@@ -38,7 +38,7 @@ export default async function decorate(block) {
   calloutContent.append(calloutTitle);
 
   // ...remove semantic tags from description text
-  cleanText(...calloutData.description, calloutContent);
+  cleanText(calloutData.description, calloutContent);
 
   if (calloutData.url && calloutData.buttonLabel) {
     // The callout has a button; the rest of the block is not interactive

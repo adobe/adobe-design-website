@@ -7,6 +7,7 @@ export default async function decorate(block) {
     url: block.children[2]?.children[0]?.children[0]?.textContent?.trim(),
     buttonLabel: block.children[2]?.children[1]?.children[0]?.textContent?.trim(),
     altText: block.children[2]?.children[2]?.children[0]?.textContent?.trim(),
+    hideButtonOnSmallScreens: block.children[2]?.children[3]?.children[0]?.textContent?.trim(),
   };
 
   // create the block
@@ -43,6 +44,11 @@ export default async function decorate(block) {
       "grid-item",
       "grid-item--33"
     );
+
+    if (sectionHeaderData.hideButtonOnSmallScreens) {
+      sectionHeaderButton.classList.add("section-header__button--hide-at-small");
+    }
+
     sectionHeaderButton.href = sectionHeaderData.url;
     sectionHeaderButton.innerText = sectionHeaderData.buttonLabel;
 
