@@ -428,6 +428,14 @@ a:hover {
   }
 }
 
+.button--hide-at-large {
+  /* supports change in button location */
+  /* review section header styles for detail */
+  @media (min-width: 48rem) {
+    display: none;
+  }
+}
+
 /* ** Images ** */
 
 main img {

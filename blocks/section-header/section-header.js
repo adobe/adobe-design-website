@@ -45,10 +45,13 @@ export default async function decorate(block) {
       "grid-item--33"
     );
 
+    // see if there is text in the optional fourth link Block column
+    // if yes, hide cta button on small screens
     if (sectionHeaderData.hideButtonOnSmallScreens) {
       sectionHeaderButton.classList.add("section-header__button--hide-at-small");
     }
 
+    // build the rest of the button
     sectionHeaderButton.href = sectionHeaderData.url;
     sectionHeaderButton.innerText = sectionHeaderData.buttonLabel;
 
