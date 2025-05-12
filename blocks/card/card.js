@@ -1,36 +1,27 @@
-import { createOptimizedPicture } from '../../scripts/aem.js';
+import { cleanText } from '../../blocks-helpers/textHelpers.js';
 
 export default function decorate(block) {
+  const cardData = {
+    img: block.children[0].firstElementChild.firstElementChild,
+    textContent: block.children[1].children[0].children,
+    url: block.children[2].textContent.trim()
+  };
+
   const cardContainer = document.createElement('div');
   cardContainer.className = 'card-container';
   
-  const card = document.createElement('div');
+  const card = document.createElement('a');
   card.className = 'card';
 
-  const row = block.firstElementChild;
-  if (row) {
-    const [cardImage, cardBody] = row.children;
+  cardData.img.classList.add('card__image');
+  card.append(cardData.img);
 
-    if (cardImage) {
-      const img = cardImage.querySelector('img');
-      if (img) {
-        img.className = 'card__image';
-        card.append(img);
-      }
-    }
-
-    if (cardBody) {
-      cardBody.className = 'card__body';
-      const [titleElement, descriptionElement] = cardBody.children;
-      if (titleElement) titleElement.className = 'card__title util-title-s';
-      if (descriptionElement) descriptionElement.className = 'card__description util-body-xs';
-      card.append(cardBody);
-    }
-  }
-
-  card.querySelectorAll('picture > img').forEach((img) => 
-    img.closest('picture').replaceWith(createOptimizedPicture(img.src, img.alt, false, [{ width: '750' }]))
-  );
+  const cardContent = document.createElement('div');
+  cardContent.classList.add('card__content');
+  cleanText(cardData.textContent, cardContent);
+  cardContent.children[0].classList.add('card__title', 'util-title-s');
+  cardContent.children[1].classList.add('card__description','util-body-s');
+  card.append(cardContent);
 
   block.textContent = '';
   cardContainer.append(card);
