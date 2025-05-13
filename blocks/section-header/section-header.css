@@ -1,0 +1,41 @@
+.section-header {
+  grid-row-gap: 0.75rem;
+
+  @media (min-width: 80rem) {
+    grid-row-gap: 1rem;
+  }
+}
+
+main > .section > .grid-container {
+  /* remove default margin-bottom as section headings sit close to content */
+  margin-block-end: 2rem;
+
+  @media (min-width: 80rem) {
+    margin-block-end: 2.5rem;
+  }
+}
+
+.section-header__description {
+  margin: 0;
+  margin-block-start: 0;
+}
+
+.section-header__button--hide-at-small {
+  display: none;
+
+  @media (min-width: 48rem) {
+    display: flex;
+  }
+}
+
+@media (min-width: 48rem) {
+  .section-header__button {
+    height: fit-content;
+    width: fit-content;
+  }
+
+  .section-header__description + .section-header__button {
+    margin-inline-start: auto;
+    grid-column: 9 / span 4;
+  }
+}

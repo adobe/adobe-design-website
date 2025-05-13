@@ -428,6 +428,14 @@ a:hover {
   }
 }
 
+.button--hide-at-large {
+  /* supports change in button location */
+  /* review section header styles for detail */
+  @media (min-width: 48rem) {
+    display: none;
+  }
+}
+
 /* ** Images ** */
 
 main img {
@@ -538,6 +546,14 @@ main > .section > .grid-container {
   min-height: 0;
   min-width: 0;
   align-self: center;
+}
+
+.grid-item--100 {
+  grid-column: span 8;
+
+  @media (min-width: 48rem) {
+    grid-column: span 12;
+  }
 }
 
 .grid-item--66 {
