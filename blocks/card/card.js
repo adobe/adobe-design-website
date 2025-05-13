@@ -14,6 +14,7 @@ export default function decorate(block) {
   card.className = 'card';
 
   cardData.img.classList.add('card__image');
+  cardData.img.setAttribute('alt', '');
   card.append(cardData.img);
 
   const cardContent = document.createElement('div');
