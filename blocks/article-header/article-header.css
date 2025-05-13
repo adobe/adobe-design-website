@@ -24,6 +24,8 @@
 .article-header__eyebrow {
   text-decoration: underline;
   color: var(--color-text);
+  width: fit-content;
+  line-height: 1.6;
 
   &:hover {
     text-decoration: none;
