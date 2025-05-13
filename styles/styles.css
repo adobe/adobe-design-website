@@ -11,7 +11,11 @@
  */
 
 body {
-  background: var(--page-background);
+  background-color: var(--color-background);
+  background-size: 100% 34.5rem;
+  background-position: top;
+  background-repeat: no-repeat;
+  background-image: var(--page-background);
   display: none;
   margin: 0;
   color: var(--color-text);
@@ -24,6 +28,16 @@ body {
 :root:has(#color-scheme:checked) body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+main > .section {
+  max-width: var(--page-max-width);
+  margin-inline: var(--page-gutters);
+
+  @media (min-width: 100rem) {
+    margin-inline: auto;
+    max-width: var(--page-max-width);
+  }
 }
 
 /* ** Global Focus Styles ** */
@@ -126,30 +140,6 @@ h5 {
 h6 {
   font-size: var(--spectrum-title-size-s);
   font-weight: var(--spectrum-title-weight-s);
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  margin-top: 0.8em;
-  margin-bottom: 0.25em;
-  scroll-margin: 2.5rem;
-}
-
-p,
-dl,
-ol,
-ul,
-blockquote {
-  margin-top: 0.8em;
-  margin-bottom: 0.25em;
-}
-
-main > div {
-  margin: 2.5rem 1rem;
 }
 
 input,
@@ -436,48 +426,7 @@ a:hover {
   }
 }
 
-/* ** Images ** */
-
-main img {
-  max-width: 100%;
-  width: auto;
-  height: auto;
-}
-
-.icon {
-  display: inline-block;
-  height: 1.5rem;
-  width: 1.5rem;
-}
-
-.icon img {
-  height: 100%;
-  width: 100%;
-}
-
-/* ** Sections ** */
-main > .section {
-  margin: 2.5rem 0;
-}
-
-main > .section > div {
-  max-width: 75rem;
-  margin: auto;
-  padding: 0 1.5rem;
-}
-
-main > .section:first-of-type {
-  margin-top: 0;
-}
-
-@media (min-width: 48rem) {
-  /* !! min-width MQ needs refactor */
-  main > .section > div {
-    padding: 0 2rem;
-  }
-}
-
-/*Horizontal Rule*/
+/* **Horizontal Rule** */
 
 .horizontal-rule-wrapper {
   overflow: hidden;
@@ -502,14 +451,6 @@ main > .section:first-of-type {
   position: relative;
   inset-inline: -50vw;
   width: 150vw;
-}
-
-/* section metadata */
-main .section.light,
-main .section.highlight {
-  background-color: var(--color-background);
-  margin: 0;
-  padding: 2.5rem 0;
 }
 
 /* ** Grid Layout Styles **  */
@@ -657,7 +598,7 @@ main > .section > .grid-container {
 
   @media (min-width: 100rem) {
     margin-inline: auto;
-    max-width: var(--spacing-page-max-width);
+    max-width: var(--page-max-width);
   }
 }
 
