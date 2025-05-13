@@ -4,9 +4,9 @@ import { prepURL } from '../../blocks-helpers/prepURL.js';
 export default async function decorate(block) {
   // parse data into an object
   const articleHeaderData = {
-    title: block.children[0]?.children[0]?.children[0]?.textContent?.trim(),
+    title: block.children?.[0]?.children?.[0]?.children?.[0]?.textContent?.trim(),
     subtitle:
-      block.children[1]?.children[0]?.children[0]?.textContent?.trim(),
+      block.children?.[1]?.children?.[0]?.children?.[0]?.textContent?.trim(),
     author: getMetadata('author'),
     pubDate: getMetadata('publication-date'),
     tag: getMetadata('tag'),

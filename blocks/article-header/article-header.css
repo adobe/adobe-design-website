@@ -2,15 +2,13 @@
   display: flex;
   flex-direction: column;
   max-width: 66rem;
-  margin-left: auto;
-  margin-right: auto;
-  margin-block-start: 2rem;
-  margin-block-end: 2rem;
-  gap: 1.25rem;
+  margin-inline: auto;
+  margin-block: 2rem;
+  gap: 1rem;
 
   @media (min-width: 48rem) {
-    margin-block-start: 4rem;
-    margin-block-end: 4rem;
+    margin-block: 4rem;
+    gap: 1.25rem;
   }
 
   h1,
