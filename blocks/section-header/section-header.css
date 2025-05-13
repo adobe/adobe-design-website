@@ -21,8 +21,11 @@ main > .section > .grid-container {
 }
 
 .section-header__button--hide-at-small {
-  /* see media query below for display change */
   display: none;
+
+  @media (min-width: 48rem) {
+    display: flex;
+  }
 }
 
 @media (min-width: 48rem) {
@@ -34,9 +37,5 @@ main > .section > .grid-container {
   .section-header__description + .section-header__button {
     margin-inline-start: auto;
     grid-column: 9 / span 4;
-  }
-
-  .section-header__button--hide-at-small {
-      display: flex;
   }
 }
