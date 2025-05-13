@@ -26,5 +26,5 @@ export default function decorate(block) {
 
   block.textContent = '';
   cardContainer.append(card);
-  block.replaceWith(cardContainer);
+  block.parentElement.replaceWith(cardContainer);
 }
