@@ -1,4 +1,4 @@
-import { cleanText } from '../../blocks-helpers/textHelpers.js';
+import { cleanText } from '../../blocks-helpers/cleanText.js';
 
 export default function decorate(block) {
   const cardData = {
