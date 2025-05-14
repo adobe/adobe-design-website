@@ -208,9 +208,11 @@ a:hover {
     from var(--spectrum-black) r g b / 9%
   );
   --color-button-text-primary: var(--spectrum-white);
-
   background-color: var(--color-button-background-primary);
   color: var(--color-button-text-primary);
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 
   &:hover {
     background-color: var(--color-button-background-primary-hover);
@@ -455,7 +457,11 @@ a:hover {
 
 /* ** Grid Layout Styles **  */
 main > .section > .grid-container {
-  margin-block: 4rem;
+  margin-block: 2rem;
+
+  @media (min-width: 48rem) {
+    margin-block: 4rem;
+  }
 }
 
 .grid-container {
