@@ -16,6 +16,10 @@ import {
   sampleRUM,
 } from './aem.js';
 
+import {
+  debounce
+} from './helpers.js';
+
 /**
  * Builds hero block and prepends to main in a new section.
  * @param {Element} main The container element
@@ -93,6 +97,19 @@ async function loadEager(doc) {
 }
 
 /**
+ * Replaces the header if a user reloads the page.
+ * @function
+ * @param {Element} doc - The container element
+ */
+const reloadHeader = (headerElement) => {
+  // remove the current header
+  headerElement.innerHTML= '';
+
+  // build it again
+  loadHeader(headerElement);
+}
+
+/**
  * Loads everything that doesn't need to be delayed.
  * @param {Element} doc The container element
  */
@@ -112,7 +129,13 @@ async function loadLazy(doc) {
   loadCSS(`${window.hlx.codeBasePath}/blocks/search/search.css`)
 
   // loads the header and footer components, along with their stylesheets
-  loadHeader(doc.querySelector('header'));
+  const headerElement = doc.querySelector('header');
+
+  loadHeader(headerElement);
+
+  // supports rerendering of the responsive navigation
+  window.addEventListener("resize", debounce(() => reloadHeader(headerElement)));
+
   loadFooter(doc.querySelector('footer'));
 }
 

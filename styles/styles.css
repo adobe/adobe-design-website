@@ -25,6 +25,11 @@ body {
   font-size: var(--spectrum-body-size-m);
 }
 
+body.js-no-scroll {
+  overflow: hidden;
+  height: 100vh;
+}
+
 :root:has(#color-scheme:checked) body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -82,25 +87,18 @@ body.appear {
   display: block;
 }
 
-header {
-  height: var(--header-height);
-}
-
 header .header,
 footer .footer {
   visibility: hidden;
 }
 
+header {
+  height: var(--page-nav-height);
+}
+
 header .header[data-block-status="loaded"],
 footer .footer[data-block-status="loaded"] {
   visibility: visible;
-}
-
-@media (min-width: 48rem) {
-  /* !! min-width MQ needs refactor */
-  body[data-breadcrumbs] {
-    --header-height: calc(var(--nav-height) + var(--breadcrumbs-height));
-  }
 }
 
 /* ** Typography ** */
