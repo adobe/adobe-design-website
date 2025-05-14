@@ -23,7 +23,7 @@ export default function decorate(block) {
 
   // add the description to a paragraph tag
   const headingDescription = document.createElement('p');
-  const headingDescriptionText = block.children[1].children[0].innerText;;
+  const headingDescriptionText = block.children[1].children[0].innerText;
 
   headingDescription.innerHTML = headingDescriptionText;
 

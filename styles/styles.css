@@ -76,7 +76,7 @@ body.appear {
 }
 
 header {
-  height: var(--header-height);
+  height: var(--page-nav-height);
 }
 
 header .header,
@@ -92,7 +92,7 @@ footer .footer[data-block-status="loaded"] {
 @media (min-width: 48rem) {
   /* !! min-width MQ needs refactor */
   body[data-breadcrumbs] {
-    --header-height: calc(var(--nav-height) + var(--breadcrumbs-height));
+    --page-nav-height: calc(var(--page-nav-height) + var(--breadcrumbs-height));
   }
 }
 

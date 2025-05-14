@@ -8,4 +8,10 @@ describe('Header Block', () => {
     const headerWrapper = await page.$('.header');
     expect(headerWrapper).toExist();
   });
+
+  it('should render the nav heading block', async () => {
+    await page.waitForSelector('.nav-heading');
+    const nav = await page.$('.nav-heading');
+    expect(nav).toExist();
+  });
 });

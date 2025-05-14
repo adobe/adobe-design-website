@@ -596,6 +596,7 @@
   --page-background: var(--color-background);
   --page-max-width: 97.5rem;
   --page-constrained-text: 75ch;
+  --page-nav-height: 4rem;
 
   /* smallest screens */
   --page-gutters: 1.25rem;
@@ -609,13 +610,4 @@
     /* breakpoint-xl, content should max-width */
     --page-gutters: 0;
   }
-
-  /* ** LEGACY STYLES ** */
-
-  /* refactor these out as possible */
-
-  /* nav heights */
-  --nav-height: 64px;
-  --breadcrumbs-height: 34px;
-  --header-height: var(--nav-height);
 }
