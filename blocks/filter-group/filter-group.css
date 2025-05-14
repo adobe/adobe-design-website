@@ -29,9 +29,10 @@ effect on filter buttons to indicate horizontal scroll */
   display: none;
 }
 
-/* Adds left padding on focus to avoid outline cutoff*/
-.filter-group__list:has(.filter-group__button:first-child:focus-visible) {
-  padding-inline-start: 0.5rem;
+/* Adds left padding on focus to avoid outline cutoff on the first element. */
+.filter-group__list:has(.filter-group__button:focus-visible) {
+  /* Max focus outline size plus its outline offset. */
+  padding-inline-start: 4px;
 }
 
 .filter-group__label {
