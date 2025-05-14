@@ -1,5 +1,11 @@
 import { logoSVG } from './logosvg.js';
 
+/**
+ * loads and decorates the footer heading
+ * @param {Element} block The block element
+ * @returns {Element}
+ */
+
 export default function decorate(block) {
   block.parentElement.classList.add('footer-heading');
 
