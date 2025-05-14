@@ -22,9 +22,8 @@ export default function decorate(block) {
   cleanText(cardData.textContent, cardContent);
   cardContent.children[0].classList.add('card__title', 'util-title-s');
   cardContent.children[1].classList.add('card__description','util-body-s');
-  card.append(cardContent);
 
-  block.textContent = '';
+  card.append(cardContent);
   cardContainer.append(card);
   block.parentElement.replaceWith(cardContainer);
 }

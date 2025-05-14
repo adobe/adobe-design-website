@@ -5,11 +5,9 @@
 
 .card {
   --card-color-background: var(--spectrum-white);
-  --card-min-width: 18rem;
 
   display: flex;
   flex-direction: column;
-  min-width: var(--card-min-width);
   box-shadow: var(--drop-shadow-emphasized);
   border-radius: 1rem;
   background-color: var(--card-color-background);
