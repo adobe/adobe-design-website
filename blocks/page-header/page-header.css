@@ -9,16 +9,12 @@
     gap: 4rem;
   }
 
-  @media (min-width: 80rem) {
-    gap: 2rem;
-  }
-
   .page-header__title {
     margin-block-start: 0;
   }
 
   .page-header__title,
-  .page-header__featured-content {
+  .page-header__byline {
     margin-block-end: 1.5rem;
 
     @media (min-width: 48rem) {
@@ -42,7 +38,7 @@
     }
   }
 
-  .page-header__description--featured {
+  .page-header__description--with-byline {
     @media (min-width: 22.5rem) {
       margin-block-end: 1rem;
     }
@@ -56,11 +52,11 @@
     }
   }
 
-  .page-header__featured-subtitle {
+  .page-header-byline__author {
     margin-block-end: 0.25rem;
   }
 
-  .page-header__featured-description {
+  .page-header-byline__title {
     margin-block-end: 0;
   }
 
@@ -95,7 +91,7 @@
       font-size: var(--spectrum-body-size-l);
     }
 
-    .page-header__description--featured {
+    .page-header__description--with-byline {
       font-size: var(--spectrum-title-size-xxxl);
     }
   }
@@ -109,7 +105,7 @@
       font-size: var(--spectrum-body-size-xl);
     }
 
-    .page-header__description--featured {
+    .page-header__description--with-byline {
       font-size: var(--spectrum-title-size-xl);
     }
   }
@@ -119,7 +115,7 @@
       font-size: var(--spectrum-heading-size-xl);
     }
 
-    .page-header__description--featured {
+    .page-header__description--with-byline {
       font-size: var(--spectrum-title-size-xxl);
     }
   }

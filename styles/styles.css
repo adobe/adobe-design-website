@@ -457,7 +457,11 @@ a:hover {
 
 /* ** Grid Layout Styles **  */
 main > .section > .grid-container {
-  margin-block: 2rem;
+  margin-block: 1.25rem;
+
+  @media (min-width: 22.5rem) {
+    margin-block: 2rem;
+  }
 
   @media (min-width: 48rem) {
     margin-block: 4rem;

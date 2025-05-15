@@ -4,7 +4,7 @@ export default async function decorate(block) {
     title: block.children?.[0]?.children?.[0]?.children?.[0]?.textContent?.trim(),
     image: block.children?.[1]?.children?.[0]?.firstElementChild,
     description: block.children?.[2]?.children?.[0]?.children?.[0]?.innerHTML,
-    featuredSubtitle: block.children?.[3]?.children?.[0]?.children?.[0]?.textContent?.trim(),
+    byline: block.children?.[3]?.children?.[0]?.children?.[0]?.textContent?.trim(),
     featuredDescription: block.children?.[3]?.children?.[1]?.children?.[0]?.textContent?.trim(),
     anchorNode: block.children?.[4]?.children?.[0]?.firstChild?.firstChild,
     buttonStyle: block.children?.[4]?.children?.[1]?.children?.[0]?.textContent?.trim().toLowerCase(),
@@ -16,7 +16,7 @@ export default async function decorate(block) {
   pageHeader.classList.add("page-header", "grid-container");
 
   const pageHeaderContent = document.createElement("div");
-  pageHeaderContent.classList.add("page-header", "grid-item", "grid-item--50");
+  pageHeaderContent.classList.add("page-header__content", "grid-item", "grid-item--50");
 
   // there should always be a title, so create it as an h1
   const pageTitle = document.createElement("h1");
@@ -29,10 +29,10 @@ export default async function decorate(block) {
     const pageDescription = document.createElement("div");
     pageDescription.classList.add("page-header__description");
 
-    // if there is a featured subtitle, the description uses
+    // if there is a byline, the description uses
     // a different font class, for visual hierarchy
-    pageHeaderData.featuredSubtitle
-    ? pageDescription.classList.add("util-title-m", "page-header__description--featured")
+    pageHeaderData.byline
+    ? pageDescription.classList.add("util-title-m", "page-header__description--with-byline")
     : pageDescription.classList.add("util-body-m");
 
     pageDescription.innerText = pageHeaderData.description;
@@ -40,25 +40,25 @@ export default async function decorate(block) {
   }
 
   // if there is a an author block, build that
-  if (pageHeaderData.featuredSubtitle) {
-    const featuredSubtitleWrapper = document.createElement("div");
-    featuredSubtitleWrapper.classList.add("page-header__featured-content");
+  if (pageHeaderData.byline) {
+    const bylineWrapper = document.createElement("div");
+    bylineWrapper.classList.add("page-header__byline", "page-header-byline");
 
-    const featuredSubtitle = document.createElement("div");
-    featuredSubtitle.classList.add("page-header__featured-subtitle", "util-detail-l");
-    featuredSubtitle.innerText = pageHeaderData.featuredSubtitle;
+    const byline = document.createElement("div");
+    byline.classList.add("page-header-byline__author", "util-detail-l");
+    byline.innerText = pageHeaderData.byline;
 
-    featuredSubtitleWrapper.append(featuredSubtitle);
+    bylineWrapper.append(byline);
 
     if (pageHeaderData.featuredDescription) {
       const featuredDescription = document.createElement("div");
-      featuredDescription.classList.add("page-header__featured-description", "util-body-xs");
+      featuredDescription.classList.add("page-header-byline__title", "util-body-xs");
       featuredDescription.innerText = pageHeaderData.featuredDescription;
 
-      featuredSubtitleWrapper.append(featuredDescription);
+      bylineWrapper.append(featuredDescription);
     }
 
-    pageHeaderContent.append(featuredSubtitleWrapper);
+    pageHeaderContent.append(bylineWrapper);
   }
 
   // if there's a link, build a button
