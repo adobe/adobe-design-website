@@ -368,7 +368,7 @@ function decorateHorizontalRules(element) {
       const hr = document.createElement('hr');
       hr.className = content === '-hr fw-' ? 'horizontal-rule horizontal-rule--full' : 'horizontal-rule';
       wrapper.appendChild(hr);
-      p.parentElement.replaceWith(wrapper);
+      p.replaceWith(wrapper);
     }
   });
 }
@@ -407,6 +407,8 @@ function decorateLayouts(element) {
       layoutContainer.classList.add('grid-container');
       if (layoutOpeningTag.textContent.includes('spacious'))
         layoutContainer.classList.add('grid-container--large-gap');
+      if (layoutOpeningTag.textContent.includes('scrolling'))
+        layoutContainer.classList.add('grid-container--with-scroll');
 
       elementsToContain.forEach((e, idx) => {
         const gridItemContainer = document.createElement('div');

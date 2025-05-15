@@ -461,6 +461,7 @@ main > .section > .grid-container {
 .grid-container {
   /* flexbox fallback */
   display: flex;
+  gap: 1rem;
 
   @media (min-width: 22.5rem) {
     flex-wrap: wrap;
@@ -482,10 +483,30 @@ main > .section > .grid-container {
 }
 
 .grid-container--large-gap {
+  gap: 4rem;
+
   @supports (display: grid) {
     @media (min-width: 22.5rem) {
       grid-column-gap: 4rem;
       grid-row-gap: 4rem;
+    }
+  }
+}
+
+.grid-container--with-scroll {
+  overflow-x: scroll;
+
+  @media (min-width: 36rem) {
+    overflow-x: unset;
+  }
+
+  @supports (display: grid) {
+    grid-auto-flow: column;
+    grid-auto-columns: var(--horizontal-scroll-block-width);
+
+    @media (min-width: 36rem) {
+      grid-auto-flow: unset;
+      grid-auto-columns: unset;
     }
   }
 }
@@ -507,8 +528,18 @@ main > .section > .grid-container {
 .grid-item--66 {
   grid-column: span 8;
 
-  @media (min-width: 48rem) {
-    grid-column: span 8;
+  .grid-container--with-scroll & {
+    grid-column: unset;
+    width: var(--horizontal-scroll-block-width);
+
+    @media (min-width: 36rem) {
+      grid-column: span 8;
+      width: unset;
+    }
+
+    @media (min-width: 48rem) {
+      grid-column: span 8;
+    }
   }
 }
 
@@ -518,6 +549,20 @@ main > .section > .grid-container {
   @media (min-width: 48rem) {
     grid-column: span 6;
   }
+
+  .grid-container--with-scroll & {
+    grid-column: unset;
+    width: var(--horizontal-scroll-block-width);
+
+    @media (min-width: 36rem) {
+      grid-column: span 8;
+      width: unset;
+    }
+
+    @media (min-width: 48rem) {
+      grid-column: span 6;
+    }
+  }
 }
 
 .grid-item--33 {
@@ -526,6 +571,20 @@ main > .section > .grid-container {
   @media (min-width: 48rem) {
     grid-column: span 4;
   }
+
+  .grid-container--with-scroll & {
+    grid-column: unset;
+    width: var(--horizontal-scroll-block-width);
+
+    @media (min-width: 36rem) {
+      grid-column: span 8;
+      width: unset;
+    }
+
+    @media (min-width: 48rem) {
+      grid-column: span 4;
+    }
+  }
 }
 
 .grid-item--30 {
@@ -533,6 +592,16 @@ main > .section > .grid-container {
 
   @media (min-width: 22.5rem) {
     grid-column: span 4;
+  }
+
+  .grid-container--with-scroll & {
+    grid-column: unset;
+    width: var(--horizontal-scroll-block-width);
+
+    @media (min-width: 36rem) {
+      grid-column: span 4;
+      width: unset;
+    }
   }
 }
 
@@ -545,6 +614,20 @@ main > .section > .grid-container {
 
   @media (min-width: 48rem) {
     grid-column: span 3;
+  }
+
+  .grid-container--with-scroll & {
+    grid-column: unset;
+    width: var(--horizontal-scroll-block-width);
+
+    @media (min-width: 36rem) {
+      grid-column: span 4;
+      width: unset;
+    }
+
+    @media (min-width: 48rem) {
+      grid-column: span 3;
+    }
   }
 }
 
