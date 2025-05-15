@@ -469,26 +469,54 @@ main > .section > .grid-container {
 }
 
 .grid-container {
-  max-width: 100%;
+  /* flexbox fallback */
+  display: flex;
+  gap: 1rem;
 
   @media (min-width: 22.5rem) {
-    /* flexbox fallback */
-    display: flex;
     flex-wrap: wrap;
   }
 
   @supports (display: grid) {
-    @media (min-width: 22.5rem) {
-      display: grid;
-      grid-template-columns: repeat(8, [col] 1fr);
-      grid-column-gap: 4rem;
-      grid-row-gap: 4rem;
-    }
+    display: grid;
+    max-width: 100%;
+    grid-template-columns: repeat(8, [col] 1fr);
+    grid-column-gap: 1rem;
+    grid-row-gap: 1rem;
 
     @media (min-width: 48rem) {
       grid-template-columns: repeat(12, [col] 1fr);
+      grid-column-gap: 1.5rem;
+      grid-row-gap: 1.5rem;
+    }
+  }
+}
+
+.grid-container--large-gap {
+  gap: 4rem;
+
+  @supports (display: grid) {
+    @media (min-width: 22.5rem) {
       grid-column-gap: 4rem;
       grid-row-gap: 4rem;
+    }
+  }
+}
+
+.grid-container--with-scroll {
+  overflow-x: scroll;
+
+  @media (min-width: 36rem) {
+    overflow-x: unset;
+  }
+
+  @supports (display: grid) {
+    grid-auto-flow: column;
+    grid-auto-columns: var(--horizontal-scroll-block-width);
+
+    @media (min-width: 36rem) {
+      grid-auto-flow: unset;
+      grid-auto-columns: unset;
     }
   }
 }
@@ -510,8 +538,18 @@ main > .section > .grid-container {
 .grid-item--66 {
   grid-column: span 8;
 
-  @media (min-width: 48rem) {
-    grid-column: span 8;
+  .grid-container--with-scroll & {
+    grid-column: unset;
+    width: var(--horizontal-scroll-block-width);
+
+    @media (min-width: 36rem) {
+      grid-column: span 8;
+      width: unset;
+    }
+
+    @media (min-width: 48rem) {
+      grid-column: span 8;
+    }
   }
 }
 
@@ -521,6 +559,20 @@ main > .section > .grid-container {
   @media (min-width: 48rem) {
     grid-column: span 6;
   }
+
+  .grid-container--with-scroll & {
+    grid-column: unset;
+    width: var(--horizontal-scroll-block-width);
+
+    @media (min-width: 36rem) {
+      grid-column: span 8;
+      width: unset;
+    }
+
+    @media (min-width: 48rem) {
+      grid-column: span 6;
+    }
+  }
 }
 
 .grid-item--33 {
@@ -529,21 +581,63 @@ main > .section > .grid-container {
   @media (min-width: 48rem) {
     grid-column: span 4;
   }
+
+  .grid-container--with-scroll & {
+    grid-column: unset;
+    width: var(--horizontal-scroll-block-width);
+
+    @media (min-width: 36rem) {
+      grid-column: span 8;
+      width: unset;
+    }
+
+    @media (min-width: 48rem) {
+      grid-column: span 4;
+    }
+  }
 }
 
 .grid-item--30 {
-  grid-column: span 4;
+  grid-column: span 8;
 
-  @media (min-width: 48rem) {
-    grid-column: span 3;
+  @media (min-width: 22.5rem) {
+    grid-column: span 4;
+  }
+
+  .grid-container--with-scroll & {
+    grid-column: unset;
+    width: var(--horizontal-scroll-block-width);
+
+    @media (min-width: 36rem) {
+      grid-column: span 4;
+      width: unset;
+    }
   }
 }
 
 .grid-item--25 {
-  grid-column: span 4;
+  grid-column: span 8;
+
+  @media (min-width: 22.5rem) {
+    grid-column: span 4;
+  }
 
   @media (min-width: 48rem) {
     grid-column: span 3;
+  }
+
+  .grid-container--with-scroll & {
+    grid-column: unset;
+    width: var(--horizontal-scroll-block-width);
+
+    @media (min-width: 36rem) {
+      grid-column: span 4;
+      width: unset;
+    }
+
+    @media (min-width: 48rem) {
+      grid-column: span 3;
+    }
   }
 }
 

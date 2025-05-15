@@ -368,17 +368,17 @@ function decorateHorizontalRules(element) {
       const hr = document.createElement('hr');
       hr.className = content === '-hr fw-' ? 'horizontal-rule horizontal-rule--full' : 'horizontal-rule';
       wrapper.appendChild(hr);
-      p.parentElement.replaceWith(wrapper);
+      p.replaceWith(wrapper);
     }
   });
 }
 
 /**
- * Converts '<layout>' text nodes into containers to allow for nesting of blocks within layouts
+ * Converts '-layout-' and '-end layout-' text nodes into containers to allow for nesting of blocks within layouts
  * @param {Element} element container element
  */
 function decorateLayouts(element) {
-  // find all '<layout>' text nodes regardless of layout type
+  // find all '-layout-' text nodes regardless of layout type
   const layoutOpeningTags = Array.from(element.querySelectorAll('p'))
     .filter((p) => p.textContent.trim().startsWith('-layout'));
 
@@ -397,21 +397,47 @@ function decorateLayouts(element) {
         break;
       };
 
-      // TODO: support other layout types
-      // apply 50/50 layout for two-up
-      if (layoutOpeningTag.textContent.endsWith('two-up-'))
-        currentElement.classList.add('grid-item', 'grid-item--50');
-
       elementsToContain.push(currentElement);
       currentElement = currentElement.nextSibling;
     };
 
-    // only creates a layout container for valid <layout></layout> pairs
+    // only creates a layout container for valid layout opening and closing tag pairs
     if (layoutClosingTag) {
       const layoutContainer = document.createElement('div');
-      layoutContainer.className = 'grid-container';
+      layoutContainer.classList.add('grid-container');
 
-      elementsToContain.forEach((e) => layoutContainer.appendChild(e));
+      // layout modifiers
+      if (layoutOpeningTag.textContent.includes('spacious'))
+        layoutContainer.classList.add('grid-container--large-gap');
+      if (layoutOpeningTag.textContent.includes('scrolling'))
+        layoutContainer.classList.add('grid-container--with-scroll');
+
+      elementsToContain.forEach((e, idx) => {
+        const gridItemContainer = document.createElement('div');
+        gridItemContainer.classList.add('grid-item');
+        gridItemContainer.append(e);
+
+        // apply two-up layout
+        if (layoutOpeningTag.textContent.endsWith('two-up-'))
+          gridItemContainer.classList.add('grid-item--50');
+
+        // apply three-up layout
+        if (layoutOpeningTag.textContent.endsWith('three-up-'))
+          gridItemContainer.classList.add('grid-item--30');
+
+        // apply 70/30 layout
+        if (layoutOpeningTag.textContent.endsWith('70-30-')) {
+          (idx % 2 === 0)
+            ? gridItemContainer.classList.add('grid-item--66')
+            : gridItemContainer.classList.add('grid-item--33');
+        };
+
+        // apply four-up layout
+        if (layoutOpeningTag.textContent.endsWith('four-up-'))
+          gridItemContainer.classList.add('grid-item--25');
+
+        layoutContainer.append(gridItemContainer);
+      });
       layoutWrapper.after(layoutContainer);
 
       layoutOpeningTag.remove();
