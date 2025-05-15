@@ -374,7 +374,7 @@ function decorateHorizontalRules(element) {
 }
 
 /**
- * Converts '-layout-' and '-end layout- text nodes into containers to allow for nesting of blocks within layouts
+ * Converts '-layout-' and '-end layout-' text nodes into containers to allow for nesting of blocks within layouts
  * @param {Element} element container element
  */
 function decorateLayouts(element) {
