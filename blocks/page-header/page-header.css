@@ -1,0 +1,122 @@
+.page-header {
+  gap: 2rem;
+
+  @media (min-width: 22.5rem) {
+    gap: 3rem;
+  }
+
+  @media (min-width: 48rem) {
+    gap: 4rem;
+  }
+
+  .page-header__title {
+    margin-block-start: 0;
+  }
+
+  .page-header__title,
+  .page-header__byline {
+    margin-block-end: 1.5rem;
+
+    @media (min-width: 48rem) {
+      margin-block-end: 2rem;
+    }
+
+    @media (min-width: 80rem) {
+      margin-block-end: 3rem;
+    }
+  }
+
+  .page-header__description {
+    margin-block-end: 1rem;
+
+    @media (min-width: 22.5rem) {
+      margin-block-end: 1.25rem;
+    }
+
+    @media (min-width: 48rem) {
+      margin-block-end: 2rem;
+    }
+  }
+
+  .page-header__description--with-byline {
+    @media (min-width: 22.5rem) {
+      margin-block-end: 1rem;
+    }
+
+    @media (min-width: 48rem) {
+      margin-block-end: 1rem;
+    }
+
+    @media (min-width: 80rem) {
+      margin-block-end: 3rem;
+    }
+  }
+
+  .page-header-byline__author {
+    margin-block-end: 0.25rem;
+  }
+
+  .page-header-byline__title {
+    margin-block-end: 0;
+  }
+
+  .page-header__button {
+    margin-block-end: 2rem;
+    width: 100%;
+
+    @media (min-width: 22.5rem) {
+      margin-block-end: 0;
+      width: unset;
+    }
+  }
+
+  .page-header__image img {
+    display: block;
+    max-width: 100%;
+    aspect-ratio: auto;
+    height: auto;
+    border-radius: 1rem;
+  }
+
+}
+
+/* adjust font sizes */
+.page-header {
+  @media (min-width: 22.5rem) {
+    h1 {
+      font-size: var(--spectrum-heading-size-xxl);
+    }
+
+    .page-header__description {
+      font-size: var(--spectrum-body-size-l);
+    }
+
+    .page-header__description--with-byline {
+      font-size: var(--spectrum-title-size-xxxl);
+    }
+  }
+
+  @media (min-width: 48rem) {
+    h1 {
+      font-size: var(--spectrum-heading-size-xxl);
+    }
+
+    .page-header__description {
+      font-size: var(--spectrum-body-size-xl);
+    }
+
+    .page-header__description--with-byline {
+      font-size: var(--spectrum-title-size-xl);
+    }
+  }
+
+  @media (min-width: 80rem) {
+    h1 {
+      font-size: var(--spectrum-heading-size-xl);
+    }
+
+    .page-header__description--with-byline {
+      font-size: var(--spectrum-title-size-xxl);
+    }
+  }
+}
