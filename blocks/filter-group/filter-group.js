@@ -1,3 +1,5 @@
+import { dataStore } from '../../scripts/dataStore.js';
+
 /**
  * Update selected state of filter button.
  * @param {HTMLButtonElement} buttonElement 
@@ -45,7 +47,8 @@ const applyTemporaryMockupTags = () => {
 }
 
 /**
- * TO-DO: work with real Ideas page content. This function is currently mockup/placeholder functionality.
+ * TO-DO: work with real Ideas page content. This function is currently mockup/placeholder functionality
+ * and will likely need to be moved to the ideas/stories feed block.
  * 
  * Update all articles displayed on the page with ones that have tags
  * that match the currently selected filters.
@@ -114,9 +117,23 @@ const handleFilterClick = function (event) {
     refreshArticleContent(selectedFilters);
 };
 
+/**
+ * Remove filter buttons for tags that are not assigned to any articles.
+ */
+const removeUnusedTags = async (parentElement) => {
+    const allArticles = await dataStore.getData(dataStore.commonEndpoints.queryIndex);
+    if (allArticles?.data?.length > 0) {
+        parentElement.querySelectorAll('.filter-group__button:not(:first-of-type)').forEach((btn) => {
+            if (!allArticles?.data?.some(article => article?.tag && btn.textContent === article.tag)){
+                btn.remove();
+            }
+        });
+    }
+}
+
 /*
  * Filter Group Block
- * A set of multi-select tags that filter which articles are displayed.
+ * A set of multi-select tag buttons that filter which articles are displayed.
  */
 export default async function decorate(block) {
     const wrapper = block.parentElement;
@@ -169,4 +186,8 @@ export default async function decorate(block) {
 
     // Replace block with newly built elements.
     wrapper.replaceChildren(label, filterGroup);
+
+    // Remove filter buttons not in the list of articles.
+    // Don't wait for this async operation so it's not render blocking.
+    removeUnusedTags(wrapper);
 }
