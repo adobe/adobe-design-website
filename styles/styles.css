@@ -918,5 +918,5 @@ main > .section > .grid-container {
 }
 
 .theme-indigo-light {
-  --page-background: var(--gradient-indigo-dark);
+  --page-background: var(--gradient-indigo-light);
 }
