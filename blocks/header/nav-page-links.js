@@ -1,3 +1,5 @@
+import { isExternalURL } from '../../blocks-helpers/isExternalURL.js';
+
 /**
  * creates a link list node from a set of anchor elements
  * @param {Array} links an array of anchor elements
@@ -16,7 +18,11 @@ export const buildPageLinks = (links) => {
 
     anchorNode.href = link.href;
     anchorNode.innerText = link.innerText.trim();
-    anchorNode.classList.add('nav-page-links__link');
+    anchorNode.classList.add("nav-page-links__link", "util-body-xs");
+
+    if (isExternalURL(link.href)) {
+      anchorNode.classList.add("nav-page-links__link--external");
+    }
 
     listItem.append(anchorNode);
     navLinks.append(listItem);

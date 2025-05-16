@@ -75,25 +75,18 @@ body.appear {
   display: block;
 }
 
-header {
-  height: var(--page-nav-height);
-}
-
 header .header,
 footer .footer {
   visibility: hidden;
 }
 
+header {
+  height: var(--page-nav-height);
+}
+
 header .header[data-block-status="loaded"],
 footer .footer[data-block-status="loaded"] {
   visibility: visible;
-}
-
-@media (min-width: 48rem) {
-  /* !! min-width MQ needs refactor */
-  body[data-breadcrumbs] {
-    --page-nav-height: calc(var(--page-nav-height) + var(--breadcrumbs-height));
-  }
 }
 
 /* ** Typography ** */

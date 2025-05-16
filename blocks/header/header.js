@@ -84,7 +84,7 @@ function toggleMenu(nav, navPageLinks, forceExpanded = null) {
     forceExpanded !== null
       ? !forceExpanded
       : nav.getAttribute("aria-expanded") === "true";
-  const button = nav.querySelector(".nav__hamburger button");
+  const button = nav.querySelector(".nav__menu-button button");
   document.body.style.overflowY = expanded || isDesktop.matches ? "" : "hidden";
   nav.setAttribute("aria-expanded", expanded ? "false" : "true");
   toggleAllNavSections(
@@ -201,7 +201,7 @@ export default async function decorate(block) {
 
   // on small screens we'll want a hamburger menu
   const hamburger = document.createElement("div");
-  hamburger.classList.add("nav__hamburger");
+  hamburger.classList.add("nav__menu-button");
   hamburger.innerHTML = `
     <button type="button" aria-controls="nav" aria-label="Open navigation">
       <span class="nav-hamburger-icon"></span>
