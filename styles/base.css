@@ -594,6 +594,7 @@
 
   /* ** PAGE LEVEL ** */
   --page-background: var(--color-background);
+  --page-background-nav: var(--spectrum-gray-25);
   --page-max-width: 97.5rem;
   --page-constrained-text: 75ch;
   --page-nav-height: 4rem;

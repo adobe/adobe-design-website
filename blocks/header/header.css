@@ -232,19 +232,35 @@ header nav .nav__page-links ul > li > ul > li {
 /* } */
 /* !! new styles start here */
 
+.nav-wrapper {
+  background-color: var(--page-background-nav);
+}
+
 .nav {
   --nav-padding-block-end: 1.25rem;
+  --nav-sections-border: 2px solid var(--spectrum-gray-300);
 
+  @media (min-width: 65.5rem) {
+    --nav-sections-border: none;
+  }
+
+  background-color: var(--page-background-nav);
+  position: fixed;
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
   gap: 1.5rem;
-
-  margin-inline: var(--page-gutters);
-  max-width: var(--page-max-width);
-  padding-block-end: var(--nav-padding-block-end);
   height: calc(var(--page-nav-height) - var(--nav-padding-block-end));
+  width: 100%;
+  padding-block-end: var(--nav-padding-block-end);
   font-family: var(--body-font-family);
+
+
+  @media (min-width: 65.5rem) {
+    position: unset;
+    max-width: var(--page-max-width);
+    padding-inline: var(--page-gutters);
+  }
 
   @media (min-width: 100rem) {
     margin-inline: auto;
@@ -252,12 +268,51 @@ header nav .nav__page-links ul > li > ul > li {
 }
 
 .nav__menu-button {
-  color: var(--color-text-dark);
-  height: ;
+  --menu-button-size: 2rem;
 
-  @media (min-width: 48rem) {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+
+  display: inline-block;
+  border: none;
+  margin: 0;
+  margin-inline-end: var(--page-gutters);
+  padding: 0;
+  color: var(--color-text-dark);
+  background-color: transparent;
+
+  height: var(--menu-button-size);
+  width: var(--menu-button-size);
+
+  @media (min-width: 65.5rem) {
     display: none;
   }
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  svg {
+    height: 100%;
+  }
+}
+
+.nav__menu {
+  width: 100%;
+  min-height: calc(100vh - var(--page-nav-height));
+  position: fixed;
+  top: var(--page-nav-height);
+  background-color: var(--page-background-nav);
+  z-index: 9999;
+  transition: transform 0.3s ease;
+
+  @media (min-width: 65.5rem) {
+    display: none;
+  }
+}
+
+.nav__menu--closed {
+  display: none;
 }
 
 a.nav__home-link {
@@ -265,6 +320,7 @@ a.nav__home-link {
   display: flex;
   align-items: flex-end;
   color: var(--color-text-dark);
+  margin-inline-start: var(--page-gutters);
 
   /* fake a line-height for our svg */
   padding-block-end: 0.125rem;
@@ -276,6 +332,10 @@ a.nav__home-link {
   svg {
     max-width: 100%;
   }
+
+  @media (min-width: 65.5rem) {
+    margin-inline: 0;
+  }
 }
 
 .nav__page-links {
@@ -285,23 +345,33 @@ a.nav__home-link {
 .nav-page-links {
   list-style-type: none;
   display: flex;
-  flex-direction: row;
-  gap: 2rem;
+  flex-direction: column;
   margin: 0;
   padding: 0;
 
   & li {
     display: block;
+    border-top: var(--nav-sections-border);
+
+    &:last-of-type {
+      border-bottom: var(--nav-sections-border);
+    }
   }
 
   & a.nav-page-links__link {
     color: var(--spectrum-gray-800);
     text-decoration: none;
     display: block;
+    padding-block: 2rem;
+    padding-inline: var(--page-gutters);
 
     &:hover {
       color: var(--spectrum-gray-900);
       text-decoration: underline;
+    }
+
+    @media (min-width: 22.5rem) {
+      padding-block: 3.25rem;
     }
   }
 
@@ -321,20 +391,51 @@ a.nav__home-link {
       background: var(--icon-external-link) center no-repeat;
     }
   }
+
+  @media (min-width: 65.5rem) {
+    flex-direction: row;
+    gap: 2rem;
+
+    & a.nav-page-links__link {
+      padding: 0;
+    }
+  }
 }
 
-.nav__toolbar {
+.nav-toolbar {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
+  align-items: flex-start;
   gap: 1.5rem;
-  align-items: center;
+  padding-inline: var(--page-gutters);
+  padding-block: 2.25rem;
 
-  /* fake a little alignment */
-  margin-block-end: -0.25rem;
+  .nav-toolbar__label {
+    margin: 0;
+  }
 
-  .theme-toggle__label {
-    /* keep the font size aligned with the page links */
-    font-size: var(--spectrum-body-size-xs);
+  @media (min-width: 65.5rem) {
+    flex-direction: row;
+    align-items: center;
+    padding: 0;
+
+    /* fake a little alignment */
+    margin-block-end: -0.25rem;
+
+    .theme-toggle__label {
+      /* keep the font size aligned with the page links */
+      font-size: var(--spectrum-body-size-xs);
+    }
+  }
+}
+
+.nav-toolbar__search {
+  border-top: var(--nav-sections-border);
+  padding-block: 1.25rem;
+  padding-inline: var(--page-gutters);
+
+  @media (min-width: 65.5rem) {
+    padding: 0;
   }
 }
 

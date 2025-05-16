@@ -25,6 +25,11 @@ body {
   font-size: var(--spectrum-body-size-m);
 }
 
+body.js-no-scroll {
+  overflow: hidden;
+  height: 100vh;
+}
+
 :root:has(#color-scheme:checked) body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;

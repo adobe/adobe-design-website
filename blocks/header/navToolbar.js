@@ -6,7 +6,7 @@ import decorateSearch from "../search/search.js";
  * @returns {Element}
  */
 
-const buildThemeToggle = () => {
+export const buildThemeToggle = () => {
   // build a wrapper for the toggle
   const toggle = document.createElement("div");
   toggle.classList.add("theme-toggle");
@@ -28,31 +28,67 @@ const buildThemeToggle = () => {
 
   // all together now
   toggle.append(themeSelectLabel);
+  toggle.classList.add("nav-toolbar__toggle");
   return toggle;
 };
 
 /**
- * Creates and decorates the Nav Toolbar.
+ * Creates and decorates the Nav Search.
  * @function
  * @returns {Element}
  */
 
-export const buildNavToolbar = () => {
-  // toolbar wrapper
-  const toolbar = document.createElement("div");
-  toolbar.classList.add("nav-toolbar", "nav__toolbar");
-
+export const buildSearch = () => {
   // use the existing search component but mock the block
   const search = document.createElement("div");
   decorateSearch(search);
   search.classList.add("search", "nav-toolbar__search");
 
+  return search;
+};
+
+/**
+ * Creates and decorates the Large Screen Nav Toolbar.
+ * @function
+ * @returns {Element}
+ */
+
+export const buildLargeScreenNavToolbar = () => {
+  // toolbar wrapper
+  const toolbar = document.createElement("div");
+  toolbar.classList.add("nav-toolbar", "nav__toolbar");
+
   // build the toggle
   const toggle = buildThemeToggle();
-  toggle.classList.add("nav-toolbar__toggle");
+  const search = buildSearch();
 
   // apply them in the correct DOM order
   toolbar.append(toggle);
   toolbar.append(search);
   return toolbar;
 };
+
+/**
+ * Creates and decorates the Small Screen Nav Toolbar, which doesn't have Search.
+ * @function
+ * @returns {Element}
+ */
+
+export const buildSmallScreenNavToolbar = () => {
+  // toolbar wrapper
+  const toolbar = document.createElement("div");
+  toolbar.classList.add("nav-toolbar", "nav__toolbar");
+
+  // section label
+  const label = document.createElement("p");
+  label.classList.add("nav-toolbar__label", "nav__toolbar-label", "util-body-s");
+  label.innerText = "Accessibility Features";
+
+  // build the toggle
+  const toggle = buildThemeToggle();
+
+  // apply them in the correct DOM order
+  toolbar.append(label);
+  toolbar.append(toggle);
+  return toolbar;
+}

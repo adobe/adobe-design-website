@@ -16,7 +16,7 @@ export const createFocusTrap = (focusTrapContainer) => {
     }
 
     const focusableElements = focusTrapContainer.querySelectorAll(
-      'a[href], button'
+      'a[href], button, input'
     );
 
     if (focusableElements.length === 0) {

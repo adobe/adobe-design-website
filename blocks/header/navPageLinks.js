@@ -19,7 +19,7 @@ export const buildPageLinks = (links) => {
 
     anchorNode.href = link.href;
     anchorNode.innerText = link.innerText.trim();
-    anchorNode.classList.add("nav-page-links__link", "util-body-xs");
+    anchorNode.classList.add("nav-page-links__link");
 
     if (isExternalURL(link.href)) {
       anchorNode.classList.add("nav-page-links__link--external");
