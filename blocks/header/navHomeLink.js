@@ -1,7 +1,8 @@
 import { logoSVG } from '../header/logosvg.js';
 
 /**
- * creates a styled logo link from a provided set of text and url
+ * Creates a styled logo link from a provided set of text and url.
+ * @function
  * @param {Element} anchorNode the homepage header link
  * @returns {Element}
  */

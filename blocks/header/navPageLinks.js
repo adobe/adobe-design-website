@@ -1,7 +1,8 @@
 import { isExternalURL } from '../../blocks-helpers/isExternalURL.js';
 
 /**
- * creates a link list node from a set of anchor elements
+ * Creates a link list node from a set of anchor elements.
+ * @function
  * @param {Array} links an array of anchor elements
  * @returns {Element}
  */

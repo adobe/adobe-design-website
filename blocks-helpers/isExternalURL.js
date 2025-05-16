@@ -1,7 +1,8 @@
 /**
- * returns true if a url is external and false if it's a local url
+ * Returns true if a url is external and false if it's a local url.
+ * @function
  * @param {string} url a url to check
- * @returns {boolean}
+ * @return {boolean}
  */
 
 export const isExternalURL = (url) => {

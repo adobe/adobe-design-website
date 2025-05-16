@@ -252,6 +252,9 @@ header nav .nav__page-links ul > li > ul > li {
 }
 
 .nav__menu-button {
+  color: var(--color-text-dark);
+  height: ;
+
   @media (min-width: 48rem) {
     display: none;
   }

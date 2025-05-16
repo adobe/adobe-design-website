@@ -1,7 +1,8 @@
 import { buildSkipLink } from '../../blocks-helpers/skipLinks.js';
 
 /**
- * decorates an object of links
+ * Decorates an object of links.
+ * @function
  * @param {string} textContent the desired link label
  * @param {string} url the desired link href
  * @returns {Element} a set of anchor nodes
@@ -19,7 +20,8 @@ const buildFooterLink = ({textContent, url}) => {
 };
 
 /**
- * loads and decorates the footer links block
+ * Loads and decorates the footer links block.
+ * @function
  * @param {Element} block The block element
  * @returns {Element}
  */

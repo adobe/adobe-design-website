@@ -1,5 +1,6 @@
 /**
- * loads and decorates the footer copyright section
+ * Loads and decorates the footer copyright.
+ * @function
  * @param {Element} block The block element
  * @returns {Element}
  */

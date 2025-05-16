@@ -1,7 +1,8 @@
 import { logoSVG } from './logosvg.js';
 
 /**
- * loads and decorates the footer heading
+ * Loads and decorates the footer heading.
+ * @function
  * @param {Element} block The block element
  * @returns {Element}
  */

@@ -1,5 +1,11 @@
 import decorateSearch from "../search/search.js";
 
+/**
+ * Creates a toggle input that changes color scheme.
+ * @function
+ * @returns {Element}
+ */
+
 const buildThemeToggle = () => {
   // build a wrapper for the toggle
   const toggle = document.createElement("div");
@@ -24,6 +30,12 @@ const buildThemeToggle = () => {
   toggle.append(themeSelectLabel);
   return toggle;
 };
+
+/**
+ * Creates and decorates the Nav Toolbar.
+ * @function
+ * @returns {Element}
+ */
 
 export const buildNavToolbar = () => {
   // toolbar wrapper

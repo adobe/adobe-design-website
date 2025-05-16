@@ -1,7 +1,8 @@
 import { isExternalURL } from '../../blocks-helpers/isExternalURL.js';
 
 /**
- * creates a decorated set of link list items
+ * Creates a decorated set of link list items.
+ * @function
  * @param {string} textContent the desired link text
  * @param {string} url the desired link href
  * @returns {Element}
@@ -39,7 +40,8 @@ const buildLinkListItem = ({ textContent, url }) => {
 };
 
 /**
- * loads and decorates the link list block
+ * Loads and decorates the link list block.
+ * @function
  * @param {Element} block the block element
  * @returns {Element}
  */
