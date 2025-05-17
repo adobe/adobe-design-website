@@ -1,5 +1,13 @@
 import { buildSkipLink } from '../../blocks-helpers/skipLinks.js';
 
+/**
+ * Decorates an object of links.
+ * @function
+ * @param {string} textContent the desired link label
+ * @param {string} url the desired link href
+ * @returns {Element} a set of anchor nodes
+ */
+
 const buildFooterLink = ({textContent, url}) => {
   const footerLink = document.createElement('a');
   const footerLinkText = textContent;
@@ -10,6 +18,13 @@ const buildFooterLink = ({textContent, url}) => {
 
   return footerLink;
 };
+
+/**
+ * Loads and decorates the footer links block.
+ * @function
+ * @param {Element} block The block element
+ * @returns {Element}
+ */
 
 export default async function decorate(block) {
   block.parentElement.classList.add('footer-links');

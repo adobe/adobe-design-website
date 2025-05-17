@@ -1,3 +1,10 @@
+/**
+ * Loads and decorates the footer copyright.
+ * @function
+ * @param {Element} block The block element
+ * @returns {Element}
+ */
+
 export default function decorate(block) {
   block.parentElement.classList.add('footer-copyright');
   const copyright = document.createElement('div');
