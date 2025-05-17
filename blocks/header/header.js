@@ -10,6 +10,7 @@ import { buildPageLinks } from "./navPageLinks.js";
 import { buildHomePageLink } from "./navHomeLink.js";
 import { buildMenuButton } from "./navMenuButton.js";
 import { createFocusTrap } from "../../blocks-helpers/focusTrap.js";
+import { NAV_MENU_ICON_OPEN, NAV_MENU_ICON_CLOSE } from "./navMenuIcons.js";
 
 /**
  * Builds and decorates the large screen navigation.
@@ -58,9 +59,13 @@ const buildSmallScreenNav = (nav, homepageLink, pageLinks) => {
    */
   const openNavMenu = () => {
     isPanelOpen = true;
+
     menuButton.setAttribute("aria-expanded", true);
+    menuButton.innerHTML = NAV_MENU_ICON_CLOSE;
+
     menuPanel.classList.remove("nav__menu--closed");
     menuPanel.setAttribute("aria-hidden", false);
+
     document.body.classList.remove("js-no-scroll");
 
     // Trap focus inside menu
@@ -76,10 +81,14 @@ const buildSmallScreenNav = (nav, homepageLink, pageLinks) => {
    */
   const closeNavMenu = () => {
     isPanelOpen = false;
+
     menuButton.focus();
     menuButton.setAttribute("aria-expanded", false);
+    menuButton.innerHTML = NAV_MENU_ICON_OPEN;
+
     menuPanel.classList.add("nav__menu--closed");
     menuPanel.setAttribute("aria-hidden", true);
+
     document.body.classList.add("js-no-scroll");
 
     // Remove focus trap
@@ -103,7 +112,6 @@ const buildSmallScreenNav = (nav, homepageLink, pageLinks) => {
   });
 
   menuPanel.append(search, pageLinks, toolbar);
-
   nav.append(homepageLink, menuButton, menuPanel);
 };
 

@@ -1,4 +1,4 @@
-import { NAV_MENU_ICON_OPEN, NAV_MENU_ICON_CLOSE} from "./navMenuIcons.js";
+import { NAV_MENU_ICON_OPEN} from "./navMenuIcons.js";
 
 /**
  * Creates a functional menu button for small screen sizes.
@@ -14,8 +14,6 @@ export const buildMenuButton = () => {
   menuButton.innerHTML = NAV_MENU_ICON_OPEN;
 
   menuButton.setAttribute("aria-expanded", "false");
-
-  // menuButton.addEventListener("click", () => toggleMenu(nav, navPageLinks));
 
   return menuButton;
 }

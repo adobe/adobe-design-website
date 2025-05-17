@@ -1,4 +1,4 @@
-import { logoSVG } from '../header/logosvg.js';
+import { logoSVG } from "../header/logosvg.js";
 
 /**
  * Creates a styled logo link from a provided set of text and url.
@@ -8,7 +8,7 @@ import { logoSVG } from '../header/logosvg.js';
  */
 
 export const buildHomePageLink = (anchorNode) => {
-  const headingLink = document.createElement('a');
+  const headingLink = document.createElement("a");
   const headingLinkText = anchorNode.innerText.trim();
   const headingLinkURL = anchorNode.href;
 
@@ -18,7 +18,7 @@ export const buildHomePageLink = (anchorNode) => {
   `;
 
   headingLink.href = headingLinkURL;
-  headingLink.classList.add('nav__home-link');
+  headingLink.classList.add("nav__home-link");
 
   return headingLink;
-}
+};

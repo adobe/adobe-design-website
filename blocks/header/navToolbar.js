@@ -81,7 +81,11 @@ export const buildSmallScreenNavToolbar = () => {
 
   // section label
   const label = document.createElement("p");
-  label.classList.add("nav-toolbar__label", "nav__toolbar-label", "util-body-s");
+  label.classList.add(
+    "nav-toolbar__label",
+    "nav__toolbar-label",
+    "util-body-s"
+  );
   label.innerText = "Accessibility Features";
 
   // build the toggle
@@ -91,4 +95,4 @@ export const buildSmallScreenNavToolbar = () => {
   toolbar.append(label);
   toolbar.append(toggle);
   return toolbar;
-}
+};
