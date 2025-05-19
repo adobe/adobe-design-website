@@ -21,6 +21,10 @@ import {
   debounce
 } from './helpers.js';
 
+import { checkSubPage } from '../page-helpers/checkPage.js';
+
+import { buildCareersListingPage } from '../page-helpers/careers.js';
+
 /**
  * Builds hero block and prepends to main in a new section.
  * @param {Element} main The container element
@@ -141,6 +145,11 @@ async function loadLazy(doc) {
 
   // Append any theme background SVGs.
   decorateThemeBackgroundVisuals();
+
+  // decorates page-specific components
+
+  // decorate careers listing page
+  if (checkSubPage('/careers/')) buildCareersListingPage();
 }
 
 /**
