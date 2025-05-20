@@ -37,6 +37,7 @@ const buildSmallScreenNav = (nav, homepageLink, pageLinks) => {
   const menuButton = buildMenuButton();
   const search = buildSearch();
   const toolbar = buildSmallScreenNavToolbar();
+  const skipLink = nav.querySelector("#skip-to-main-content-from-header");
 
   menuButton.setAttribute("aria-expanded", false);
 
@@ -66,6 +67,8 @@ const buildSmallScreenNav = (nav, homepageLink, pageLinks) => {
     menuPanel.classList.add("nav__menu--open");
     menuPanel.setAttribute("aria-hidden", false);
 
+    skipLink.addEventListener('click', closeNavMenu);
+
     document.body.classList.add("js-no-scroll");
 
     // Trap focus inside menu
@@ -88,6 +91,8 @@ const buildSmallScreenNav = (nav, homepageLink, pageLinks) => {
 
     menuPanel.classList.remove("nav__menu--open");
     menuPanel.setAttribute("aria-hidden", true);
+
+    skipLink.removeEventListener('click', closeNavMenu);
 
     document.body.classList.remove("js-no-scroll");
 
@@ -160,8 +165,10 @@ export default async function decorate(block) {
   // clear out the nav so we can build things well
   nav.innerHTML = "";
 
+  const skipLink = buildSkipLink();
+  skipLink.id = "skip-to-main-content-from-header";
   // insert the bypass block
-  nav.append(buildSkipLink());
+  nav.append(skipLink);
 
   // if large screens, build the large screen nav
   // otherwise, build the small screen nav

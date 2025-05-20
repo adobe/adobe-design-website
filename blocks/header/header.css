@@ -31,6 +31,10 @@
     max-width: var(--page-max-width);
     padding-inline: var(--page-gutters);
   }
+
+  & .util-skip-link {
+    z-index: 9999;
+  }
 }
 
 .nav__menu-button {
@@ -74,7 +78,7 @@
   position: fixed;
   top: var(--page-nav-height);
   background-color: var(--page-background-nav);
-  z-index: 9999;
+  z-index: 9000;
 }
 
 a.nav__home-link {
