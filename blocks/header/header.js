@@ -22,6 +22,7 @@ import { NAV_MENU_ICON_OPEN, NAV_MENU_ICON_CLOSE } from "./navMenuIcons.js";
 const buildLargeScreenNav = (nav, homepageLink, pageLinks) => {
   const toolbar = buildLargeScreenNavToolbar();
   pageLinks.classList.add("util-body-xs");
+  nav.classList.add("nav--large-screens");
   nav.append(homepageLink, pageLinks, toolbar);
 };
 

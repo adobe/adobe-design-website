@@ -9,10 +9,6 @@
   --nav-padding-block-end: 1.25rem;
   --nav-sections-border: 2px solid var(--spectrum-gray-300);
 
-  @media (min-width: 65.5rem) {
-    --nav-sections-border: none;
-  }
-
   background-color: var(--page-background-nav);
   position: fixed;
   display: flex;
@@ -24,17 +20,18 @@
   padding-block-end: var(--nav-padding-block-end);
   font-family: var(--body-font-family);
 
-  @media (min-width: 65.5rem) {
-    width: 100%;
-    margin-inline: auto;
-    position: relative;
-    max-width: var(--page-max-width);
-    padding-inline: var(--page-gutters);
-  }
-
   & .util-skip-link {
     z-index: 9999;
   }
+}
+
+.nav.nav--large-screens {
+  --nav-sections-border: none;
+
+  width: 100%;
+  margin-inline: auto;
+  position: relative;
+  max-width: var(--page-max-width);
 }
 
 .nav__menu-button {
@@ -54,16 +51,16 @@
   height: var(--menu-button-size);
   width: var(--menu-button-size);
 
-  @media (min-width: 65.5rem) {
-    display: none;
-  }
-
   &:hover {
     cursor: pointer;
   }
 
   svg {
     height: 100%;
+  }
+
+  .nav.nav--large-screens & {
+    display: none;
   }
 }
 
@@ -99,8 +96,8 @@ a.nav__home-link {
     max-width: 100%;
   }
 
-  @media (min-width: 65.5rem) {
-    margin-inline: 0;
+  .nav.nav--large-screens & {
+    /* margin-inline: 0; */
   }
 }
 
@@ -158,7 +155,7 @@ a.nav__home-link {
     }
   }
 
-  @media (min-width: 65.5rem) {
+  .nav.nav--large-screens & {
     flex-direction: row;
     gap: 2rem;
 
@@ -180,13 +177,14 @@ a.nav__home-link {
     margin: 0;
   }
 
-  @media (min-width: 65.5rem) {
+  .nav.nav--large-screens & {
     flex-direction: row;
     align-items: center;
     padding: 0;
 
     /* fake a little alignment */
     margin-block-end: -0.25rem;
+    margin-inline-end: var(--page-gutters);
 
     .theme-toggle__label {
       /* keep the font size aligned with the page links */
@@ -200,7 +198,7 @@ a.nav__home-link {
   padding-block: 1.25rem;
   padding-inline: var(--page-gutters);
 
-  @media (min-width: 65.5rem) {
+  .nav.nav--large-screens & {
     padding: 0;
   }
 }
