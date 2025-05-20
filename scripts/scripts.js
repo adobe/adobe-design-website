@@ -134,7 +134,7 @@ async function loadLazy(doc) {
   loadHeader(headerElement);
 
   // supports rerendering of the responsive navigation
-  window.addEventListener("resize", debounce(() => reloadHeader(headerElement)));
+  window.addEventListener("resize", debounce(() => reloadHeader(headerElement), 150));
 
   loadFooter(doc.querySelector('footer'));
 }
