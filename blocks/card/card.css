@@ -4,13 +4,11 @@
 }
 
 .card {
-  --card-color-background: var(--spectrum-white);
-
   display: flex;
   flex-direction: column;
   box-shadow: var(--drop-shadow-emphasized);
   border-radius: 1rem;
-  background-color: var(--card-color-background);
+  background-color: var(--color-background-highlighted-element);
   overflow: hidden;
 
   @container card-container (min-width: 28rem) {
@@ -27,11 +25,6 @@
     text-decoration: underline;
   }
 }
-
-:root:has(#color-scheme:checked) .card {
-  --card-color-background: var(--spectrum-gray-50);
-}
-
 .card__image {
   @container card-container (min-width: 28rem) {
     order: 2;
@@ -53,7 +46,7 @@
   justify-content: center;
   padding: 1.25rem 1rem;
   color: var(--color-text);
-  
+
   @container card-container (min-width: 24rem) {
     min-height: 9rem;
   }
@@ -86,7 +79,7 @@
   @container card-container (min-width: 42rem) {
     font-size: var(--spectrum-font-size-700);
   }
-  
+
   @container card-container (min-width: 48rem) {
     font-size: var(--spectrum-font-size-900);
   }
@@ -104,7 +97,7 @@
   @container card-container (min-width: 42rem) {
     font-size: var(--spectrum-font-size-500);
   }
-  
+
   @container card-container (min-width: 48rem) {
     font-size: var(--spectrum-font-size-600);
   }
