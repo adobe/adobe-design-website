@@ -145,6 +145,7 @@
   /* functional colors */
   --color-background-default: var(--spectrum-gray-50);
   --color-background: var(--color-background-default);
+  --color-background-highlighted-element: var(--spectrum-white);
 
   --color-text: var(--spectrum-gray-800);
   --color-text-dark: var(--spectrum-gray-900);
@@ -154,6 +155,7 @@
 
   &:has(#color-scheme:checked) {
     --color-background-default: var(--spectrum-gray-25);
+    --color-background-highlighted-element: var(--spectrum-gray-50);
 
     --color-text-link: var(--spectrum-blue-800);
     --color-text-link-hover: var(--spectrum-blue-900);
