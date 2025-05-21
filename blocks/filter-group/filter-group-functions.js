@@ -12,13 +12,22 @@ import { applyTemporaryMockupTags } from './filter-group-temp-mockup.js';
  * @param {parentElement} parentElement Look for the filter buttons within this element. Usually the filter group.
  */
 export const removeUnusedTags = async (parentElement) => {
-    const allArticles = await dataStore.getData(dataStore.commonEndpoints.queryIndex);
-    if (allArticles?.data?.length > 0) {
-        parentElement.querySelectorAll('.filter-group__button:not(:first-of-type)').forEach((btn) => {
-            if (!allArticles?.data?.some(article => article?.tag && btn.textContent === article.tag)){
-                btn.remove();
-            }
-        });
+    // Filter buttons other than the first "All" reset button.
+    const regularFilterButtons = parentElement.querySelectorAll('.filter-group__button:not(:first-of-type)');
+    if (regularFilterButtons.length === 0) return;
+
+    // Data which contains info about which tags are used on all the articles.
+    try {
+        const allArticles = await dataStore.getData(dataStore.commonEndpoints.queryIndex);
+        if (allArticles?.data?.length > 0) {
+            regularFilterButtons.forEach((btn) => {
+                if (!allArticles?.data?.some(article => article?.tag && btn.textContent.trim() === article.tag.trim())){
+                    btn.remove();
+                }
+            });
+        }
+    } catch {
+        return;
     }
 };
 
@@ -66,30 +75,36 @@ export const handleFilterClick = function (event) {
     const clickedButton = event.target.closest('.filter-group__button');
     if (!clickedButton) return;
 
-    // State of button and whether it's the special "All" filter reset.
+    // All filter button elements.
+    const filterButtons = filterGroup.querySelectorAll('.filter-group__button');
+    if (filterButtons.length === 0) return;
+    const allButton = filterButtons[0];
+
+    // State of the clicked button and whether it's the special "All" filter reset.
     const isSelected = clickedButton.getAttribute('aria-pressed') === 'true';
-    const isAllFilter = clickedButton.matches(':first-of-type');
+    const isAllFilter = clickedButton.isSameNode(allButton);
 
     if (isAllFilter) {
         // "All" filter -----
         // Does nothing if already selected.
         if (isSelected) return;
         // Set all other filters as unselected when "All" is selected.
-        filterGroup.querySelectorAll('.filter-group__button').forEach((btn) => {
+        filterButtons.forEach((btn) => {
             updateFilter(btn, false);
         });
         updateFilter(clickedButton, true);
     } else {
         // Regular filters -----
         // Set filter as selected, and deselect "All" if it was selected.
-        const allButton = filterGroup.querySelector('.filter-group__button:first-of-type');
         updateFilter(clickedButton, !isSelected);
-        
+
         // Update state of "All" filter:
         // - If at least one filter is selected, "All" gets deselected.
         // - In the case that the only selected filter was just deselected, set "All" back to selected.
-        const hasAnySelectedFilter = document.querySelector('.filter-group__button:not(:first-of-type)[aria-pressed="true"]') != null;
-        updateFilter(allButton, !hasAnySelectedFilter);
+        const hasRegularFilterSelected = Array.from(filterButtons).slice(1).some(
+            button => button.getAttribute('aria-pressed') === 'true'
+        );
+        updateFilter(allButton, !hasRegularFilterSelected);
     }
 
     // Update array of selected filters, and refresh articles displayed on page.

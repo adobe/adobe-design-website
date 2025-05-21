@@ -19,5 +19,5 @@ export const updateFilter = (buttonElement, newSelected = false) => {
  * @returns {string[]}
  */
 export const getCurrentFiltersArray = (parentElement) => Array.from(
-    parentElement.querySelectorAll('.filter-group__button:not(:first-of-type)[aria-pressed="true"]'), btn => btn.textContent
+    parentElement.querySelectorAll('.filter-group__button:not(:first-of-type)[aria-pressed="true"]'), btn => btn.textContent.trim()
 ) || [];
