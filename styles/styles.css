@@ -40,6 +40,13 @@ main > .section {
   }
 }
 
+main picture:not([class]) > img:not([class]) {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  border-radius: var(--spectrum-corner-radius-800);
+}
+
 /* ** Global Focus Styles ** */
 
 :is(a, button, input, textarea, summary, select) {
