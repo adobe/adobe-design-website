@@ -2,8 +2,10 @@ import { getMetadata } from '../../scripts/aem.js';
 import { loadFragment } from '../fragment/fragment.js';
 
 /**
- * loads and decorates the footer
+ * Loads and decorates the footer.
+ * @function
  * @param {Element} block The footer block element
+ * @returns {Element}
  */
 
 export default async function decorate(block) {
