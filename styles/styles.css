@@ -897,6 +897,18 @@ main > .section > .grid-container {
   }
 }
 
+.util-listing-prefooter {
+  margin-block-end: 4rem;
+
+  @media (min-width: 80rem) {
+    margin-block-end: 5rem;
+  }
+
+  @media (min-width: 105rem) {
+    margin-block-end: 6.5rem;
+  }
+}
+
 .util-contained-width {
   /* consistent, responsive page width utility */
   max-width: 100%;
