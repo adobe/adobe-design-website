@@ -29,14 +29,14 @@ export const buildCareersListingPage = async () => {
 
   // Add horizontal rule between listing and prefooter
   const fullHorizontalRuleWrapper = document.createElement('div');
-  horizontalRuleWrapper.classList.add('horizontal-rule-wrapper', 'util-hide-at-large');
+  horizontalRuleWrapper.classList.add('horizontal-rule-wrapper');
   const fullHorizontalRule = document.createElement('hr');
   fullHorizontalRule.classList.add('horizontal-rule', 'horizontal-rule--full');
   fullHorizontalRuleWrapper.append(fullHorizontalRule);
 
-  listing.append(fullHorizontalRuleWrapper);
   listing.after(listingCTA);
   listingCTA.after(listingPreFooter);
+  listingPreFooter.before(fullHorizontalRuleWrapper);
   listingHeader.after(listingDetails);
   listingDetails.after(horizontalRuleWrapper);
   horizontalRuleWrapper.after(listingMainContentContainer);
