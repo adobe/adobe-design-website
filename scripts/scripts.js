@@ -18,10 +18,9 @@ import {
 import { decorateThemeBackgroundVisuals } from './modules/themeBackgrounds.js';
 
 import {
-  debounce
+  debounce,
+  checkSubPage
 } from './helpers.js';
-
-import { checkSubPage } from '../page-helpers/checkPage.js';
 
 import { buildCareersListingPage } from '../page-helpers/careers.js';
 
