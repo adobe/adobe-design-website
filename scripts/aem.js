@@ -300,17 +300,36 @@ function createOptimizedPicture(
  * Set template (page structure) and theme (page styles).
  */
 function decorateTemplateAndTheme() {
-  const addClasses = (element, classes) => {
+  /**
+   * Add cleaned comma separated classes to an element.
+   * @param {*} element HTML element to add classes to
+   * @param {string} classes CSV class(es)
+   * @param {string} classPrefix 
+   */
+  const addClasses = (element, classes, classPrefix = '') => {
     classes.split(',').forEach((c) => {
-      element.classList.add(toClassName(c.trim()));
+      element.classList.add(classPrefix + toClassName(c.trim()));
     });
   };
+
+  // Add template class(es) to body from metadata.
   const template = getMetadata('template');
-  if (template) addClasses(document.body, template);
+  if (template) {
+    addClasses(document.body, template);
+  }
+
+  // Add theme class(es) to body from metadata.
   const theme = getMetadata('theme');
-  if (theme) addClasses(document.body, theme);
+  if (theme) {
+    document.body.classList.add('theme');
+    addClasses(document.body, theme, 'theme--');
+  }
+
+  // Add page specific color from the metadata in a root level CSS custom property.
   const color = getMetadata('color');
-  if (color) document.querySelector(":root").style.setProperty("--color-background", `var(--${color})`);
+  if (color) {
+    document.querySelector(":root").style.setProperty("--color-background", `var(--${color})`);
+  }
 }
 
 /**

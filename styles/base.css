@@ -211,6 +211,7 @@
   );
 
   --gradient-indigo-dark: var(--gradient-indigo-500);
+  --gradient-indigo-dark-start: var(--spectrum-indigo-500);
   --gradient-indigo-light: var(--gradient-indigo-400);
 
   --gradient-multitone: linear-gradient(269deg, #eb1000 -0.72%, #4b75ff 81.56%);
@@ -235,6 +236,7 @@
     );
 
     --gradient-indigo-dark: var(--gradient-indigo-100);
+    --gradient-indigo-dark-start: var(--spectrum-indigo-100);
     --gradient-indigo-light: var(--gradient-indigo-200);
   }
 
@@ -602,6 +604,20 @@
   --page-max-width: 97.5rem;
   --page-constrained-text: 75ch;
   --page-nav-height: 4rem;
+
+  --page-bg-height: 48.813rem;
+  
+  @media (min-width: 48rem) {
+    --page-bg-height: 70.75rem;
+  }
+
+  @media (min-width: 80rem) {
+    --page-bg-height: 36.563rem;
+  }
+
+  @media (min-width: 105rem) {
+    --page-bg-height: 55.938rem;
+  }
 
   /* smallest screens */
   --page-gutters: 1.25rem;
