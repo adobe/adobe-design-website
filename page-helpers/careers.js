@@ -1,10 +1,12 @@
 import { buildListingDetails } from "../blocks-helpers/listingDetails.js";
+import { buildListingCTA } from '../blocks-helpers/listingCTA.js';
 
 export const buildCareersListingPage = () => {
   const listing = document.querySelector('#main-content > .section > div');
   listing.classList.add('util-listing-container');
   const listingHeader = listing.querySelector('h1');
   const listingDetails = buildListingDetails();
+  const listingCTA = buildListingCTA();
 
   const listingMainContent = [...listing.children].filter(
     (child) => child !== listingHeader && child !==listingDetails
@@ -21,7 +23,18 @@ export const buildCareersListingPage = () => {
   horizontalRule.classList.add('horizontal-rule');
   horizontalRuleWrapper.append(horizontalRule);
 
+  listing.after(listingCTA);
   listingHeader.after(listingDetails);
   listingDetails.after(horizontalRuleWrapper);
   horizontalRuleWrapper.after(listingMainContentContainer);
+
+  window.addEventListener('scroll', () => {
+    const revealListingCTAPosition = listingDetails.getBoundingClientRect().top;
+
+    if (revealListingCTAPosition < 0) {
+      listingCTA.classList.remove('util-visually-hidden');
+    } else {
+      listingCTA.classList.add('util-visually-hidden');
+    };
+  });
 }

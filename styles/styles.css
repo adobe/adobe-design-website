@@ -700,6 +700,51 @@ main > .section > .grid-container {
   }
 }
 
+.util-listing-cta {
+  --cta-background-color: var(--spectrum-white);
+
+  background: var(--cta-background-color);
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  border-radius: 1.5rem 1.5rem 0 0;
+  padding: 1.5rem 1.25rem 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  box-shadow: var(--drop-shadow-emphasized);
+
+  @media (min-width: 36rem) {
+    padding: 1.5rem 2rem 2rem;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  @media (min-width: 80rem) {
+    display: none;
+  }
+
+  span {
+    color: var(--color-text);
+
+    @media (min-width: 36rem) {
+      font-size: var(--spectrum-font-size-700);
+    }
+  }
+  
+  .button {
+    @media (min-width: 36rem) {
+      width: auto;
+    }
+  }
+}
+
+:root:has(#color-scheme:checked) .util-listing-cta {
+  --cta-background-color: var(--spectrum-gray-50);
+}
+
 .util-listing-container {
   @media (min-width: 80rem) {
     display: grid;
@@ -751,17 +796,20 @@ main > .section > .grid-container {
   display: grid;
   gap: 1rem;
   grid-template-areas:
-    "button button"
-    "location location"
-    "detail-grid detail-grid";
-
+  "button button"
+  "location location"
+  "detail-grid detail-grid";
+  
   @media (min-width: 36rem) {
     grid-template-columns: 1fr 2fr auto;
     grid-template-areas:
-      "location detail-grid button";
+    "location detail-grid button";
   }
-
+  
   @media (min-width: 80rem) {
+    align-self: start;
+    position: sticky;
+    top: 4rem;
     display: flex;
     flex-direction: column;
   }
