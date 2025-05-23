@@ -17,8 +17,11 @@ import {
 } from './aem.js';
 
 import {
-  debounce
+  debounce,
+  checkSubPage
 } from './helpers.js';
+
+import { buildCareersListingPage } from '../page-helpers/careers.js';
 
 /**
  * Builds hero block and prepends to main in a new section.
@@ -137,6 +140,11 @@ async function loadLazy(doc) {
   window.addEventListener("resize", debounce(() => reloadHeader(headerElement), 150));
 
   loadFooter(doc.querySelector('footer'));
+
+  // decorates page-specific components
+
+  // decorate careers listing page
+  if (checkSubPage('/careers/')) buildCareersListingPage();
 }
 
 /**
