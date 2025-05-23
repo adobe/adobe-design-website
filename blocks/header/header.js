@@ -55,11 +55,13 @@ const buildSmallScreenNav = (nav, homepageLink, pageLinks) => {
   let isPanelOpen = false;
   let removeNavFocusTrap = null;
 
+  let openNavMenu, closeNavMenu, handleEscapeKey;
+
   /**
    * Opens the Navigation Menu.
    * @function
    */
-  const openNavMenu = () => {
+  openNavMenu = () => {
     isPanelOpen = true;
 
     menuButton.setAttribute("aria-expanded", true);
@@ -83,7 +85,7 @@ const buildSmallScreenNav = (nav, homepageLink, pageLinks) => {
    * "close" can be called on escape keydown.
    * @function
    */
-  const closeNavMenu = () => {
+  closeNavMenu = () => {
     isPanelOpen = false;
 
     menuButton.focus();
@@ -107,7 +109,7 @@ const buildSmallScreenNav = (nav, homepageLink, pageLinks) => {
    * Pressing the escape key will close the menu.
    * @function
    */
-  const handleEscapeKey = (e) => {
+  handleEscapeKey = (e) => {
     if (e.key === "Escape") {
       closeNavMenu();
     }

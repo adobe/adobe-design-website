@@ -64,6 +64,7 @@
   --spectrum-gray-900: rgb(19 19 19);
   --spectrum-gray-1000: rgb(0 0 0);
 
+  --spectrum-indigo-100: rgb(247 248 255);
   --spectrum-indigo-400: rgb(192 201 255);
   --spectrum-indigo-500: rgb(167 178 255);
   --spectrum-indigo-1000: rgb(99 56 238);
@@ -113,6 +114,7 @@
     --spectrum-gray-900: rgb(242 242 242);
     --spectrum-gray-1000: rgb(255 255 255);
 
+    --spectrum-indigo-100: rgb(30 0 93);
     --spectrum-indigo-400: rgb(62 12 174);
     --spectrum-indigo-500: rgb(79 30 209);
     --spectrum-indigo-1000: rgb(139 141 254);
@@ -209,6 +211,7 @@
   );
 
   --gradient-indigo-dark: var(--gradient-indigo-500);
+  --gradient-indigo-dark-start: var(--spectrum-indigo-500);
   --gradient-indigo-light: var(--gradient-indigo-400);
 
   --gradient-multitone: linear-gradient(269deg, #eb1000 -0.72%, #4b75ff 81.56%);
@@ -233,6 +236,7 @@
     );
 
     --gradient-indigo-dark: var(--gradient-indigo-100);
+    --gradient-indigo-dark-start: var(--spectrum-indigo-100);
     --gradient-indigo-light: var(--gradient-indigo-200);
   }
 
@@ -600,6 +604,20 @@
   --page-max-width: 97.5rem;
   --page-constrained-text: 75ch;
   --page-nav-height: 4rem;
+
+  --page-bg-height: 48.813rem;
+  
+  @media (min-width: 48rem) {
+    --page-bg-height: 70.75rem;
+  }
+
+  @media (min-width: 80rem) {
+    --page-bg-height: 36.563rem;
+  }
+
+  @media (min-width: 105rem) {
+    --page-bg-height: 55.938rem;
+  }
 
   /* smallest screens */
   --page-gutters: 1.25rem;

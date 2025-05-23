@@ -15,6 +15,7 @@ import {
   loadCSS,
   sampleRUM,
 } from './aem.js';
+import { decorateThemeBackgroundVisuals } from './modules/themeBackgrounds.js';
 
 import {
   debounce
@@ -137,6 +138,9 @@ async function loadLazy(doc) {
   window.addEventListener("resize", debounce(() => reloadHeader(headerElement), 150));
 
   loadFooter(doc.querySelector('footer'));
+
+  // Append any theme background SVGs.
+  decorateThemeBackgroundVisuals();
 }
 
 /**

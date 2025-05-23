@@ -11,6 +11,8 @@
  */
 
 /* eslint-env browser */
+import { decorateThemeBackgroundVisuals } from "./modules/themeBackgrounds.js";
+
 function sampleRUM(checkpoint, data) {
   // eslint-disable-next-line max-len
   const timeShift = () => (window.performance ? window.performance.now() : Date.now() - window.hlx.rum.firstReadTime);
@@ -300,17 +302,38 @@ function createOptimizedPicture(
  * Set template (page structure) and theme (page styles).
  */
 function decorateTemplateAndTheme() {
-  const addClasses = (element, classes) => {
+  /**
+   * Add cleaned comma separated classes to an element.
+   * @param {*} element HTML element to add classes to
+   * @param {string} classes CSV class(es)
+   * @param {string} classPrefix 
+   */
+  const addClasses = (element, classes, classPrefix = '') => {
     classes.split(',').forEach((c) => {
-      element.classList.add(toClassName(c.trim()));
+      element.classList.add(classPrefix + toClassName(c.trim()));
     });
   };
+
+  // Add template class(es) to body from metadata.
   const template = getMetadata('template');
-  if (template) addClasses(document.body, template);
+  if (template) {
+    addClasses(document.body, template);
+  }
+
+  // Add theme class(es) to body from metadata.
+  // And add any page background vectors needed for this theme.
   const theme = getMetadata('theme');
-  if (theme) addClasses(document.body, theme);
+  if (theme) {
+    document.body.classList.add('theme');
+    addClasses(document.body, theme, 'theme--');
+    decorateThemeBackgroundVisuals(theme);
+  }
+
+  // Add page specific color from the metadata in a root level CSS custom property.
   const color = getMetadata('color');
-  if (color) document.querySelector(":root").style.setProperty("--color-background", `var(--${color})`);
+  if (color) {
+    document.querySelector(":root").style.setProperty("--color-background", `var(--${color})`);
+  }
 }
 
 /**
