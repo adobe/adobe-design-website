@@ -909,11 +909,48 @@ main > .section > .grid-container {
 
 .theme--blue {
   --page-bg-main-gradient: var(--gradient-blue);
+  --page-bg-overscroll-color: var(--spectrum-green-300);
+}
+
+.theme--cyan {
+  --page-bg-main-gradient: var(--gradient-cyan);
+  --page-bg-overscroll-color: var(--gradient-cyan-start);
+}
+
+.theme--indigo {
+  --page-bg-main-gradient: var(--gradient-indigo);
+  --page-bg-overscroll-color: var(--gradient-indigo-start);
+}
+
+.theme--fuchsia {
+  --page-bg-main-gradient: var(--gradient-fuchsia);
+  --page-bg-overscroll-color: var(--spectrum-fuchsia-500);
+}
+
+.theme--red {
+  --page-bg-main-gradient: var(--gradient-red);
+  --page-bg-overscroll-color: var(--gradient-red-start);
 }
 
 .theme--seafoam {
   --page-bg-main-gradient: var(--gradient-seafoam);
+  --page-bg-overscroll-color: var(--gradient-seafoam-start);
 }
+
+.theme--cinnamon {
+  --page-bg-main-gradient: var(--gradient-cinnamon);
+  --page-bg-overscroll-color: var(--spectrum-cinnamon-500);
+}
+
+.theme--orange {
+  --page-bg-main-gradient: var(--gradient-orange);
+  --page-bg-overscroll-color: var(--gradient-orange-start);
+}
+
+.theme--no-color {
+  --page-background: none;
+}
+
 
 .theme--cyan-500 {
   --page-bg-main-gradient: var(--gradient-cyan-500);

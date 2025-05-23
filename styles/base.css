@@ -174,11 +174,44 @@
     var(--spectrum-blue-500) 0%,
     var(--color-background) 100%
   );
+  --gradient-blue-start: --spectrum-blue-500;
+  --gradient-cyan: linear-gradient(
+    180deg,
+    var(--spectrum-cyan-400) 0%,
+    var(--color-background) 100%
+  );
+  --gradient-cyan-start: var(--spectrum-cyan-400);
+  --gradient-indigo: linear-gradient(
+    180deg,
+    var(--spectrum-indigo-500) 0%,
+    var(--color-background) 100%
+  );
+  --gradient-indigo-start: var(--spectrum-indigo-500);
+  --gradient-fuchsia: linear-gradient(
+    180deg,
+    var(--spectrum-fuchsia-500) 0%,
+    var(--color-background) 100%
+  );
+  --gradient-red: linear-gradient(
+    180deg,
+    var(--spectrum-red-500) 0%,
+    var(--color-background) 100%
+  );
+  --gradient-red-start: var(--spectrum-red-500);
   --gradient-seafoam: linear-gradient(
     180deg,
-    var(--spectrum-seafoam-400) 0%,
-    var(--spectrum-turquoise-200) 100%
+    var(--spectrum-seafoam-300) 0%,
+    var(--color-background) 100%
   );
+  --gradient-seafoam-start: var(--spectrum-seafoam-300);
+  --gradient-cinnamon: var(--spectrum-cinnamon-500);
+  --gradient-orange: linear-gradient(
+    180deg,
+    var(--spectrum-orange-400) 0%,
+    var(--color-background) 100%
+  );
+  --gradient-orange-start: var(--spectrum-orange-400);
+
   --gradient-cyan-500: linear-gradient(
     180deg,
     var(--spectrum-cyan-500) -47.5%,
@@ -214,6 +247,12 @@
   --gradient-indigo-dark-start: var(--spectrum-indigo-500);
   --gradient-indigo-light: var(--gradient-indigo-400);
 
+  --gradient-hero-seafoam: linear-gradient(
+    180deg,
+    rgb(142 233 214) 0%,
+    rgb(233 246 245) 100%
+  );
+
   --gradient-multitone: linear-gradient(269deg, #eb1000 -0.72%, #4b75ff 81.56%);
 
   --gradient-multitone-pink: linear-gradient(
@@ -234,9 +273,41 @@
       var(--spectrum-blue-300) 0%,
       var(--color-background) 100%
     );
+    --gradient-blue-start: --spectrum-blue-300;
+    --gradient-cyan: linear-gradient(
+      180deg,
+      var(--spectrum-cyan-600) 0%,
+      var(--color-background) 100%
+    );
+    --gradient-cyan-start: var(--spectrum-cyan-600);
+    --gradient-indigo: linear-gradient(
+      180deg,
+      var(--spectrum-indigo-400) 0%,
+      var(--color-background) 100%
+    );
+    --gradient-indigo-start: var(--spectrum-indigo-400);
+    --gradient-red: linear-gradient(
+      180deg,
+      var(--spectrum-red-600) 0%,
+      var(--color-background) 100%
+    );
+    --gradient-red-start: var(--spectrum-red-600);
+    --gradient-seafoam: linear-gradient(
+      180deg,
+      var(--spectrum-seafoam-600) 0%,
+      var(--color-background) 100%
+    );
+    --gradient-seafoam-start: var(--spectrum-seafoam-600);
+    --gradient-orange: linear-gradient(
+      180deg,
+      var(--spectrum-orange-800) 0%,
+      var(--color-background) 100%
+    );
+    --gradient-orange-start: var(--spectrum-orange-800);
 
     --gradient-indigo-dark: var(--gradient-indigo-100);
     --gradient-indigo-dark-start: var(--spectrum-indigo-100);
+
     --gradient-indigo-light: var(--gradient-indigo-200);
   }
 
