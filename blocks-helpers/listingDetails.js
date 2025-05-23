@@ -4,10 +4,10 @@
  * @function
  * @param {string} name
  * @param {string} content
- * @return {string} an HTML <div> node
+ * @return {string|undefined} an HTML <div> node
  */
 
-const buildDetail = ({ name, content }) => {
+const buildDetail = ({ label, content }) => {
   if (!content) return;
 
   const detailContainer = document.createElement('div');
@@ -15,10 +15,10 @@ const buildDetail = ({ name, content }) => {
 
   const detailName = document.createElement('span');
   detailName.classList.add('util-detail-l', 'util-listing-detail__name');
-  detailName.textContent = name;
+  detailName.textContent = label;
   detailContainer.append(detailName);
 
-  if (name === 'Location') {
+  if (label === 'Location') {
     detailContainer.classList.add('util-listing-detail--location');
     detailName.classList.add('util-listing-detail__name--location');
   };
@@ -30,7 +30,7 @@ const buildDetail = ({ name, content }) => {
     detailContent.classList.add('util-body-xs', 'util-listing-detail__content');
     detailContent.textContent = part;
 
-    if (name === 'Location') {
+    if (label === 'Location') {
       detailContent.classList.add('util-listing-detail__content--location');
     } else {
       detailContent.classList.add('util-details-grid__item');
@@ -49,31 +49,16 @@ const buildDetail = ({ name, content }) => {
  * @return {string} an HTML <section> node
  */
 
-export const buildListingDetails = () => {
+export const buildListingDetails = (metadata) => {
   const details = [
-    {
-      name: "Location",
-      content: document.querySelector('meta[name="location"]')?.content
-    },
-    {
-      name: "Position type",
-      content: document.querySelector('meta[name="position-type"]')?.content
-    },
-    {
-      name: "Req number",
-      content: document.querySelector('meta[name="req-number"]')?.content
-    },
-    {
-      name: "Discipline",
-      content: document.querySelector('meta[name="discipline"]')?.content
-    },
-    {
-      name: "Team name",
-      content: document.querySelector('meta[name="team-name"]')?.content
-    },
+    metadata.location,
+    metadata.positionType,
+    metadata.reqNumber,
+    metadata.discipline,
+    metadata.teamName
   ];
-  const linkToApply = document.querySelector('meta[name="job-listing"]')?.content;
-  const jobTitle = document.querySelector('meta[name="job-title"]')?.content;
+  const linkToApply = metadata.jobListing.content;
+  const jobTitle = metadata.jobTitle.content;
 
   const detailsSection = document.createElement('section');
   detailsSection.classList.add('util-listing-details');
@@ -94,14 +79,16 @@ export const buildListingDetails = () => {
   details.forEach((detail) => {
     const builtDetail = buildDetail(detail);
 
-    if (detail.name === "Location") {
+    if (!builtDetail) return;
+
+    if (detail.label === "Location") {
       detailsSection.append(builtDetail);
     } else {
       detailGridContainer.append(builtDetail);
     };
   });
 
-  if (detailGridContainer.children.length > 1)
+  if (detailGridContainer?.children.length > 1)
     detailsSection.append(detailGridContainer);
   return detailsSection;
 }

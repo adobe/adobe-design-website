@@ -5,10 +5,10 @@
  * @return {string} an HTML <div> node
  */
 
-export const buildListingCTA = () => {
+export const buildListingCTA = (metadata) => {
   const content = {
     title: document.querySelector('h1').textContent,
-    link: document.querySelector('meta[name="job-listing"]')?.content,
+    link: metadata.jobListing.content,
   };
 
   const listingCTA = document.createElement('div');
@@ -21,7 +21,7 @@ export const buildListingCTA = () => {
   const listingCTALink = document.createElement('a');
   listingCTALink.classList.add('button', 'button--accent');
   listingCTALink.textContent = 'Apply now';
-  listingCTALink.href = content.title;
+  listingCTALink.href = content.link;
 
   listingCTA.append(listingCTATitle);
   listingCTA.append(listingCTALink);

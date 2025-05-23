@@ -1,13 +1,16 @@
+import { getListingMetadata } from "../blocks-helpers/getListingMetadata.js";
 import { buildListingDetails } from "../blocks-helpers/listingDetails.js";
 import { buildListingCTA } from '../blocks-helpers/listingCTA.js';
 import { loadListingPreFooter } from '../blocks-helpers/listingPreFooter.js';
 
 export const buildCareersListingPage = async () => {
+  const listingMetadata = getListingMetadata();
+
   const listing = document.querySelector('#main-content > .section > div');
   listing.classList.add('util-listing-container');
   const listingHeader = listing.querySelector('h1');
-  const listingDetails = buildListingDetails();
-  const listingCTA = buildListingCTA();
+  const listingDetails = buildListingDetails(listingMetadata);
+  const listingCTA = buildListingCTA(listingMetadata);
   const listingPreFooter = await loadListingPreFooter();
 
   // Wrap main content of career listing in its own container for grid layout
