@@ -46,6 +46,7 @@ const buildDetail = ({ label, content }) => {
  * Builds a sticky <section> node for use on a Careers Listing page.
  *
  * @function
+ * @param {Object} metadata
  * @return {string} an HTML <section> node
  */
 

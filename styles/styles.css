@@ -701,9 +701,7 @@ main > .section > .grid-container {
 }
 
 .util-listing-cta {
-  --cta-background-color: var(--spectrum-white);
-
-  background: var(--cta-background-color);
+  background: var(--color-background-highlighted-element);
   position: fixed;
   left: 0;
   bottom: 0;
@@ -739,10 +737,6 @@ main > .section > .grid-container {
       width: auto;
     }
   }
-}
-
-:root:has(#color-scheme:checked) .util-listing-cta {
-  --cta-background-color: var(--spectrum-gray-50);
 }
 
 .util-listing-container {
