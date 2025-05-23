@@ -895,10 +895,11 @@ main > .section > .grid-container {
 
 /* Theme gradient backgrounds also include a color above the gradient to account for overscroll area underneath the sticky nav. */
 .theme {
+  --nav-height: 64px;
   --page-bg-overscroll-color: var(--color-background);
   --page-background: var(--page-bg-main-gradient), linear-gradient(var(--page-bg-overscroll-color) 0%, var(--page-bg-overscroll-color) 100%);
-  --page-background-position: left top 64px, left top;
-  --page-background-size: 100% calc(var(--page-bg-height) - 64px), 100% 64px;
+  --page-background-position: left top var(--nav-height), left top;
+  --page-background-size: 100% calc(var(--page-bg-height) - var(--nav-height)), 100% var(--nav-height);
 }
 
 /* -- Simple color themes with only a gradient. -- */
