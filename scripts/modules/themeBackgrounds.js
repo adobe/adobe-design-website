@@ -1,5 +1,4 @@
 import { allShapes } from "../../assets/themes/shapes.js";
-import { getMetadata } from "../aem.js";
 
 /**
  * Adds inline SVGs needed for the different hero page backgrounds within some themes.
@@ -7,9 +6,10 @@ import { getMetadata } from "../aem.js";
  * 
  * These are added as their own elements instead of in `background-image` because their
  * fill colors are changed with CSS between themes and light/dark.
+ * 
+ * @param {string} theme - The name of the current theme (as stored in metadata).
  */
-export async function decorateThemeBackgroundVisuals() {
-    const theme = getMetadata('theme');
+export async function decorateThemeBackgroundVisuals(theme) {
     if (!theme) return;
 
     // Array of SVG strings to load per theme name.

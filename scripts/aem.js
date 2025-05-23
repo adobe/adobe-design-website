@@ -11,6 +11,8 @@
  */
 
 /* eslint-env browser */
+import { decorateThemeBackgroundVisuals } from "./modules/themeBackgrounds";
+
 function sampleRUM(checkpoint, data) {
   // eslint-disable-next-line max-len
   const timeShift = () => (window.performance ? window.performance.now() : Date.now() - window.hlx.rum.firstReadTime);
@@ -319,10 +321,12 @@ function decorateTemplateAndTheme() {
   }
 
   // Add theme class(es) to body from metadata.
+  // And add any page background vectors needed for this theme.
   const theme = getMetadata('theme');
   if (theme) {
     document.body.classList.add('theme');
     addClasses(document.body, theme, 'theme--');
+    decorateThemeBackgroundVisuals(theme);
   }
 
   // Add page specific color from the metadata in a root level CSS custom property.
