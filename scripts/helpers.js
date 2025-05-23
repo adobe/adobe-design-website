@@ -34,7 +34,7 @@ const normalizePathname = () => {
  * Checks if the user is on an index page
  * 
  * @function
- * @param {string} path - The pathname to check against
+ * @param {string} path - The pathname to check against the current path
  * @returns {boolean}
  */
 export const checkPage = (path) => {
@@ -48,7 +48,7 @@ export const checkPage = (path) => {
  * Checks if the user is on a sub-page
  * 
  * @function
- * @param {string} path - The pathname to check against
+ * @param {string} path - The parent pathname to check against the current path
  * @returns {boolean}
  */
 export const checkSubPage = (path) => {
