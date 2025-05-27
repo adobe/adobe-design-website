@@ -11,11 +11,15 @@ import { allShapes } from "../../assets/themes/shapes.js";
  */
 export async function decorateThemeBackgroundVisuals(theme) {
     if (!theme) return;
+    theme = theme.trim().toLowerCase();
 
     // Array of SVG strings to load per theme name.
     const graphicsMapping = {
         'hero-indigo': [allShapes.roundedDiamond],
         'hero-green': [allShapes.roundedDiamond],
+        'hero-seafoam': [],
+        'hero-blue-green-wave': [],
+        'hero-blue-circles': []
     };
 
     // Return if theme does not need any SVGs.
