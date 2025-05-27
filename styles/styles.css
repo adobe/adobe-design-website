@@ -894,7 +894,7 @@ main > .section > .grid-container {
 /* ** Page Themes ** */
 .theme {
   /**
-   * Basic top to bottom gradient used on most non-hero page backgrounds.
+   * Basic top to bottom gradient used on most page backgrounds.
    * Includes a color above the gradient to account for overscroll area underneath the sticky nav.
    * Set `--page-gradient-start-color`, and optionally `--page-gradient-end-color` when used.
    */
@@ -943,7 +943,7 @@ main > .section > .grid-container {
   --page-background: none;
 }
 
-/* -- Main page "hero" themes' with overlaid SVG shapes. -- */
+/* -- Main page "backdrop-*" themes' with overlaid SVG shapes. -- */
 .background-visuals {
   position: absolute;
   overflow: hidden;
@@ -967,8 +967,8 @@ main > .section > .grid-container {
   }
 }
 
-.theme--hero-indigo {
-  --page-gradient-start-color: var(--gradient-hero-indigo-start);
+.theme--backdrop-indigo {
+  --page-gradient-start-color: var(--gradient-backdrop-indigo-start);
   --shape-diamond-fill: rgb(116 91 252);
 
   &:has(#color-scheme:checked) {
@@ -976,13 +976,13 @@ main > .section > .grid-container {
   }
 }
 
-.theme--hero-green {
-  --page-gradient-start-color: var(--gradient-hero-green-start);
+.theme--backdrop-green {
+  --page-gradient-start-color: var(--gradient-backdrop-green-start);
   --shape-diamond-fill: var(--spectrum-green-600);
 }
 
-.theme--hero-indigo,
-.theme--hero-green {
+.theme--backdrop-indigo,
+.theme--backdrop-green {
   --page-background-height: 48.813rem;
   
   @media (min-width: 48rem) {
@@ -998,8 +998,8 @@ main > .section > .grid-container {
   }
 }
 
-.theme--hero-indigo .background-visuals .shape--diamond,
-.theme--hero-green .background-visuals .shape--diamond {
+.theme--backdrop-indigo .background-visuals .shape--diamond,
+.theme--backdrop-green .background-visuals .shape--diamond {
   position: absolute;
   inset: -57px auto auto -327px;
   min-height: 100%;
@@ -1024,11 +1024,11 @@ main > .section > .grid-container {
   }
 }
 
-.theme--hero-seafoam {
-  --page-gradient-start-color: var(--gradient-hero-seafoam-start);
-  --page-gradient-end-color: var(--gradient-hero-seafoam-end);
+.theme--backdrop-seafoam {
+  --page-gradient-start-color: var(--gradient-backdrop-seafoam-start);
+  --page-gradient-end-color: var(--gradient-backdrop-seafoam-end);
 }
 
-.theme--hero-blue-green-wave {
-  --page-gradient-start-color: var(--gradient-hero-blue-green-wave-start);
+.theme--backdrop-blue-green-wave {
+  --page-gradient-start-color: var(--gradient-backdrop-blue-green-wave-start);
 }

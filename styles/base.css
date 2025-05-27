@@ -192,12 +192,12 @@
   --gradient-orange-start: var(--spectrum-orange-400);
   --gradient-cinnamon-start: var(--spectrum-cinnamon-500);
 
-  /* Hero theme backgrounds. Used in tandem with shapes. */
-  --gradient-hero-indigo-start: var(--spectrum-indigo-500);
-  --gradient-hero-green-start: var(--spectrum-green-300);
-  --gradient-hero-seafoam-start: rgb(142 233 214);
-  --gradient-hero-seaform-end: rgb(233 246 245);
-  --gradient-hero-blue-green-wave-start: rgb(142 210 253);
+  /* Unique theme backgrounds that are used in tandem with shapes. */
+  --gradient-backdrop-indigo-start: var(--spectrum-indigo-500);
+  --gradient-backdrop-green-start: var(--spectrum-green-300);
+  --gradient-backdrop-seafoam-start: rgb(142 233 214);
+  --gradient-backdrop-seaform-end: rgb(233 246 245);
+  --gradient-backdrop-blue-green-wave-start: rgb(142 210 253);
 
   /* Multi-colored gradients */
   --gradient-multitone: linear-gradient(269deg, #eb1000 -0.72%, #4b75ff 81.56%);
@@ -212,10 +212,10 @@
     --gradient-seafoam-start: var(--spectrum-seafoam-600);
     --gradient-orange-start: var(--spectrum-orange-800);
 
-    --gradient-hero-indigo-start: var(--spectrum-indigo-100);
-    --gradient-hero-seafoam-start: rgb(3 55 50);
-    --gradient-hero-seaform-end: rgb(17 33 34);
-    --gradient-hero-blue-green-wave-start: rgb(8 63 68);
+    --gradient-backdrop-indigo-start: var(--spectrum-indigo-100);
+    --gradient-backdrop-seafoam-start: rgb(3 55 50);
+    --gradient-backdrop-seaform-end: rgb(17 33 34);
+    --gradient-backdrop-blue-green-wave-start: rgb(8 63 68);
   }
 
   /* ** ELEVATION ** */
