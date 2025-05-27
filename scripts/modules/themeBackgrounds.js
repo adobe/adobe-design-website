@@ -29,7 +29,7 @@ export async function decorateThemeBackgroundVisuals(theme) {
 
     // Create presentation only container that holds SVGs, and append to the body.
     const backgroundVisuals = document.createElement('div');
-    backgroundVisuals.className = 'bg-visuals';
+    backgroundVisuals.className = 'background-visuals';
     backgroundVisuals.setAttribute('aria-hidden', 'true');
 
     // Parse the SVG strings and append the necessary SVGs to the container, per theme.

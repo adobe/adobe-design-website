@@ -583,14 +583,14 @@
   --page-constrained-text: 75ch;
   --page-nav-height: 4rem;
 
-  --page-bg-height: 28.75rem;
+  --page-background-height: 28.75rem;
   
   @media (min-width: 48rem) {
-    --page-bg-height: 29.375rem;
+    --page-background-height: 29.375rem;
   }
 
   @media (min-width: 80rem) {
-    --page-bg-height: 38.5rem;
+    --page-background-height: 38.5rem;
   }
 
   /* smallest screens */

@@ -12,7 +12,7 @@
 
 body {
   background-color: var(--color-background);
-  background-size: var(--page-background-size, 100% var(--page-bg-height, 36.563rem));
+  background-size: var(--page-background-size, 100% var(--page-background-height, 36.563rem));
   background-position: var(--page-background-position, left top);
   background-repeat: no-repeat;
   background-image: var(--page-background);
@@ -896,7 +896,7 @@ main > .section > .grid-container {
   /**
    * Basic top to bottom gradient used on most non-hero page backgrounds.
    * Includes a color above the gradient to account for overscroll area underneath the sticky nav.
-   * Just set `--page-gradient-start-color`, and optionally `--page-gradient-end-color` when used.
+   * Set `--page-gradient-start-color`, and optionally `--page-gradient-end-color` when used.
    */
   --page-background: linear-gradient(
     180deg,
@@ -944,7 +944,7 @@ main > .section > .grid-container {
 }
 
 /* -- Main page "hero" themes' with overlaid SVG shapes. -- */
-.bg-visuals {
+.background-visuals {
   position: absolute;
   overflow: hidden;
   z-index: -1;
@@ -952,7 +952,7 @@ main > .section > .grid-container {
   left: 0;
   top: 0;
   width: 100%;
-  height: var(--page-bg-height, 0px);
+  height: var(--page-background-height, 0px);
 
   /* Blend bottom to background, on top of shapes. */
   &::after {
@@ -969,37 +969,37 @@ main > .section > .grid-container {
 
 .theme--hero-indigo {
   --page-gradient-start-color: var(--gradient-hero-indigo-start);
-  --diamond-fill: rgb(116 91 252);
+  --shape-diamond-fill: rgb(116 91 252);
 
   &:has(#color-scheme:checked) {
-    --diamond-fill: rgb(99 56 238);
+    --shape-diamond-fill: rgb(99 56 238);
   }
 }
 
 .theme--hero-green {
   --page-gradient-start-color: var(--gradient-hero-green-start);
-  --diamond-fill: var(--spectrum-green-600);
+  --shape-diamond-fill: var(--spectrum-green-600);
 }
 
 .theme--hero-indigo,
 .theme--hero-green {
-  --page-bg-height: 48.813rem;
+  --page-background-height: 48.813rem;
   
   @media (min-width: 48rem) {
-    --page-bg-height: 70.75rem;
+    --page-background-height: 70.75rem;
   }
 
   @media (min-width: 80rem) {
-    --page-bg-height: 36.563rem;
+    --page-background-height: 36.563rem;
   }
 
   @media (min-width: 105rem) {
-    --page-bg-height: 55.938rem;
+    --page-background-height: 55.938rem;
   }
 }
 
-.bg-visuals .shape-diamond,
-.bg-visuals .shape-diamond {
+.theme--hero-indigo .background-visuals .shape--diamond,
+.theme--hero-green .background-visuals .shape--diamond {
   position: absolute;
   inset: -57px auto auto -327px;
   min-height: 100%;
