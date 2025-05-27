@@ -13,7 +13,7 @@
 body {
   background-color: var(--color-background);
   background-size: var(--page-background-size, 100% var(--page-bg-height, 36.563rem));
-  background-position: var(--page-background-position, top);
+  background-position: var(--page-background-position, left top);
   background-repeat: no-repeat;
   background-image: var(--page-background);
   display: none;
@@ -892,80 +892,55 @@ main > .section > .grid-container {
 }
 
 /* ** Page Themes ** */
-
-/* Theme gradient backgrounds also include a color above the gradient to account for overscroll area underneath the sticky nav. */
 .theme {
-  --page-bg-overscroll-color: var(--color-background);
-  --page-background: var(--page-bg-main-gradient), linear-gradient(var(--page-bg-overscroll-color) 0%, var(--page-bg-overscroll-color) 100%);
-  --page-background-position: left top var(--page-nav-height), left top;
-  --page-background-size: 100% calc(var(--page-bg-height) - var(--page-nav-height)), 100% var(--page-nav-height);
+  /**
+   * Basic top to bottom gradient used on most non-hero page backgrounds.
+   * Includes a color above the gradient to account for overscroll area underneath the sticky nav.
+   * Just set `--page-gradient-start-color`, and optionally `--page-gradient-end-color` when used.
+   */
+  --page-background: linear-gradient(
+    180deg,
+    var(--page-gradient-overscroll-color, var(--page-gradient-start-color)) var(--page-nav-height, 64px),
+    var(--page-gradient-start-color, var(--color-background)) 0%,
+    var(--page-gradient-end-color, var(--color-background)) 100%
+  );
 }
 
 /* -- Simple color themes with only a gradient. -- */
-.theme--green {
-  --page-bg-main-gradient: var(--gradient-green);
-  --page-bg-overscroll-color: var(--spectrum-green-300);
-}
-
 .theme--blue {
-  --page-bg-main-gradient: var(--gradient-blue);
-  --page-bg-overscroll-color: var(--spectrum-green-300);
+  --page-gradient-start-color: var(--gradient-blue-start);
 }
 
 .theme--cyan {
-  --page-bg-main-gradient: var(--gradient-cyan);
-  --page-bg-overscroll-color: var(--gradient-cyan-start);
+  --page-gradient-start-color: var(--gradient-cyan-start);
 }
 
 .theme--indigo {
-  --page-bg-main-gradient: var(--gradient-indigo);
-  --page-bg-overscroll-color: var(--gradient-indigo-start);
+  --page-gradient-start-color: var(--gradient-indigo-start);
 }
 
 .theme--fuchsia {
-  --page-bg-main-gradient: var(--gradient-fuchsia);
-  --page-bg-overscroll-color: var(--spectrum-fuchsia-500);
+  --page-gradient-start-color: var(--gradient-fuchsia-start);
 }
 
 .theme--red {
-  --page-bg-main-gradient: var(--gradient-red);
-  --page-bg-overscroll-color: var(--gradient-red-start);
+  --page-gradient-start-color: var(--gradient-red-start);
 }
 
 .theme--seafoam {
-  --page-bg-main-gradient: var(--gradient-seafoam);
-  --page-bg-overscroll-color: var(--gradient-seafoam-start);
+  --page-gradient-start-color: var(--gradient-seafoam-start);
 }
 
 .theme--cinnamon {
-  --page-bg-main-gradient: var(--gradient-cinnamon);
-  --page-bg-overscroll-color: var(--spectrum-cinnamon-500);
+  --page-gradient-start-color: var(--gradient-cinnamon-start);
 }
 
 .theme--orange {
-  --page-bg-main-gradient: var(--gradient-orange);
-  --page-bg-overscroll-color: var(--gradient-orange-start);
+  --page-gradient-start-color: var(--gradient-orange-start);
 }
 
 .theme--no-color {
   --page-background: none;
-}
-
-
-.theme--cyan-500 {
-  --page-bg-main-gradient: var(--gradient-cyan-500);
-}
-
-.theme--cyan-600 {
-  --page-bg-main-gradient: var(--gradient-cyan-600);
-}
-
-.theme--indigo-dark {
-  --page-bg-main-gradient: var(--gradient-indigo-dark);
-}
-
-.theme--indigo-light {
-  --page-bg-main-gradient: var(--gradient-indigo-light);
 }
 
 /* -- Main page "hero" themes' with overlaid SVG shapes. -- */
@@ -993,8 +968,7 @@ main > .section > .grid-container {
 }
 
 .theme--hero-indigo {
-  --page-bg-overscroll-color: var(--gradient-indigo-dark-start);
-  --page-bg-main-gradient: var(--gradient-indigo-dark);
+  --page-gradient-start-color: var(--gradient-hero-indigo-start);
   --diamond-fill: rgb(116 91 252);
 
   &:has(#color-scheme:checked) {
@@ -1003,13 +977,29 @@ main > .section > .grid-container {
 }
 
 .theme--hero-green {
-  --page-bg-overscroll-color: var(--spectrum-green-300);
-  --page-bg-main-gradient: var(--gradient-green);
+  --page-gradient-start-color: var(--gradient-hero-green-start);
   --diamond-fill: var(--spectrum-green-600);
 }
 
-.theme--hero-indigo .bg-visuals .shape-diamond,
-.theme--hero-green .bg-visuals .shape-diamond {
+.theme--hero-indigo,
+.theme--hero-green {
+  --page-bg-height: 48.813rem;
+  
+  @media (min-width: 48rem) {
+    --page-bg-height: 70.75rem;
+  }
+
+  @media (min-width: 80rem) {
+    --page-bg-height: 36.563rem;
+  }
+
+  @media (min-width: 105rem) {
+    --page-bg-height: 55.938rem;
+  }
+}
+
+.bg-visuals .shape-diamond,
+.bg-visuals .shape-diamond {
   position: absolute;
   inset: -57px auto auto -327px;
   min-height: 100%;
@@ -1032,4 +1022,13 @@ main > .section > .grid-container {
     inset: 0 0 auto 32.7%;
     width: 67.3%;
   }
+}
+
+.theme--hero-seafoam {
+  --page-gradient-start-color: var(--gradient-hero-seafoam-start);
+  --page-gradient-end-color: var(--gradient-hero-seafoam-end);
+}
+
+.theme--hero-blue-green-wave {
+  --page-gradient-start-color: var(--gradient-hero-blue-green-wave-start);
 }
