@@ -45,6 +45,7 @@
   --spectrum-transparent-black-800: rgb(from var(--spectrum-black) r g b / 0.84);
 
   --spectrum-blue-300: rgb(203 226 254);
+  --spectrum-blue-400: rgb(172 207 253);
   --spectrum-blue-500: rgb(142 185 252);
   --spectrum-blue-800: rgb(75 117 255);
   --spectrum-blue-900: rgb(59 99 251);
@@ -80,21 +81,30 @@
   --spectrum-green-1400: rgb(0 46 34);
 
   --spectrum-fuchsia-400: rgb(247 181 255);
+  --spectrum-fuchsia-500: rgb(243 147 255);
   --spectrum-fuchsia-1400: rgb(72 0 88);
 
   --spectrum-orange-400: rgb(255 193 94);
+  --spectrum-orange-800: rgb(199 82 0);
   --spectrum-orange-1400: rgb(73 24 0);
 
+  --spectrum-seafoam-300: rgb(169 237 216);
   --spectrum-seafoam-400: rgb(92 225 194);
+  --spectrum-seafoam-600: rgb(13 181 149);
   --spectrum-seafoam-1400: rgb(0 46 40);
 
   --spectrum-turquoise-200: rgb(209 245 245);
 
+  --spectrum-red-500: rgb(255 157 145);
+  --spectrum-red-600: rgb(255 118 101);
   --spectrum-red-1400: rgb(80 16 6);
+
   --spectrum-brown-1400: rgb(52 37 13);
+  --spectrum-cinnamon-500: rgb(229 170 136);
 
   &:has(#color-scheme:checked) {
     --spectrum-blue-300: rgb(12 33 117);
+    --spectrum-blue-400: rgb(26 58 195);
     --spectrum-blue-500: rgb(26 58 195);
     --spectrum-blue-800: rgb(64 105 253);
     --spectrum-blue-900: rgb(86 129 255);
@@ -130,18 +140,26 @@
     --spectrum-green-1400: rgb(189 241 208);
 
     --spectrum-fuchsia-400: rgb(102 9 120);
+    --spectrum-fuchsia-500: rgb(127 23 146);
     --spectrum-fuchsia-1400: rgb(251 219 255);
 
     --spectrum-orange-400: rgb(106 36 0);
+    --spectrum-orange-800: rgb(212 91 0);
     --spectrum-orange-1400: rgb(255 225 178);
 
+    --spectrum-seafoam-300: rgb(0 50 44);
     --spectrum-seafoam-400: rgb(0 67 59);
+    --spectrum-seafoam-600: rgb(4 105 89);
     --spectrum-seafoam-1400: rgb(186 241 222);
 
     --spectrum-turquoise-200: rgb(0 37 41);
 
+    --spectrum-red-500: rgb(147 31 17);
+    --spectrum-red-600: rgb(177 38 23);
     --spectrum-red-1400: rgb(255 222 219);
+
     --spectrum-brown-1400: rgb(242 227 206);
+    --spectrum-cinnamon-500: rgb(122 57 28);
   }
 
   /* functional colors */
@@ -163,81 +181,39 @@
     --color-text-link-hover: var(--spectrum-blue-900);
   }
 
-  /* gradients */
-  --gradient-green: linear-gradient(
-    180deg,
-    var(--spectrum-green-300) 0%,
-    var(--color-background) 100%
-  );
-  --gradient-blue: linear-gradient(
-    180deg,
-    var(--spectrum-blue-500) 0%,
-    var(--color-background) 100%
-  );
-  --gradient-seafoam: linear-gradient(
-    180deg,
-    var(--spectrum-seafoam-400) 0%,
-    var(--spectrum-turquoise-200) 100%
-  );
-  --gradient-cyan-500: linear-gradient(
-    180deg,
-    var(--spectrum-cyan-500) -47.5%,
-    var(--color-background) 100%
-  );
-  --gradient-cyan-600: linear-gradient(
-    95deg,
-    var(--spectrum-cyan-600) 11.17%,
-    var(--color-background) 97.52%
-  );
-  --gradient-indigo-100: linear-gradient(
-    180deg,
-    var(--spectrum-indigo-100) 0%,
-    var(--color-background) 100%
-  );
-  --gradient-indigo-200: linear-gradient(
-    180deg,
-    var(--spectrum-indigo-200) 0%,
-    var(--color-background) 100%
-  );
-  --gradient-indigo-400: linear-gradient(
-    180deg,
-    var(--spectrum-indigo-400) 0%,
-    var(--color-background) 100%
-  );
-  --gradient-indigo-500: linear-gradient(
-    180deg,
-    var(--spectrum-indigo-500) 0%,
-    var(--color-background) 100%
-  );
+  /* Gradients */
+  /* Basic article/page gradient themes. Some change in dark mode to different color tokens. */
+  --gradient-blue-start: var(--spectrum-blue-400);
+  --gradient-cyan-start: var(--spectrum-cyan-400);
+  --gradient-indigo-start: var(--spectrum-indigo-500);
+  --gradient-fuchsia-start: var(--spectrum-fuchsia-400);
+  --gradient-red-start: var(--spectrum-red-500);
+  --gradient-seafoam-start: var(--spectrum-seafoam-300);
+  --gradient-orange-start: var(--spectrum-orange-400);
+  --gradient-cinnamon-start: var(--spectrum-cinnamon-500);
 
-  --gradient-indigo-dark: var(--gradient-indigo-500);
-  --gradient-indigo-dark-start: var(--spectrum-indigo-500);
-  --gradient-indigo-light: var(--gradient-indigo-400);
+  /* Unique theme backgrounds that are used in tandem with shapes. */
+  --gradient-backdrop-green-start: var(--spectrum-green-300);
+  --gradient-backdrop-seafoam-start: rgb(142 233 214);
+  --gradient-backdrop-seaform-end: rgb(233 246 245);
+  --gradient-backdrop-blue-green-wave-start: rgb(142 210 253);
 
+  /* Multi-colored gradients */
   --gradient-multitone: linear-gradient(269deg, #eb1000 -0.72%, #4b75ff 81.56%);
-
-  --gradient-multitone-pink: linear-gradient(
-    268deg,
-    #df4df5 -9.27%,
-    #f03823 105.57%
-  );
-
-  --gradient-background: linear-gradient(
-    180deg,
-    transparent 0%,
-    var(--color-background) 100%
-  );
+  --gradient-multitone-pink: linear-gradient(268deg, #df4df5 -9.27%, #f03823 105.57%);
 
   &:has(#color-scheme:checked) {
-    --gradient-blue: linear-gradient(
-      180deg,
-      var(--spectrum-blue-300) 0%,
-      var(--color-background) 100%
-    );
+    --gradient-blue-start: var(--spectrum-blue-500);
+    --gradient-cyan-start: var(--spectrum-cyan-600);
+    --gradient-indigo-start: var(--spectrum-indigo-100);
+    --gradient-fuchsia-start: var(--spectrum-fuchsia-500);
+    --gradient-red-start: var(--spectrum-red-600);
+    --gradient-seafoam-start: var(--spectrum-seafoam-600);
+    --gradient-orange-start: var(--spectrum-orange-800);
 
-    --gradient-indigo-dark: var(--gradient-indigo-100);
-    --gradient-indigo-dark-start: var(--spectrum-indigo-100);
-    --gradient-indigo-light: var(--gradient-indigo-200);
+    --gradient-backdrop-seafoam-start: rgb(3 55 50);
+    --gradient-backdrop-seaform-end: rgb(17 33 34);
+    --gradient-backdrop-blue-green-wave-start: rgb(8 63 68);
   }
 
   /* ** ELEVATION ** */
@@ -605,18 +581,14 @@
   --page-constrained-text: 75ch;
   --page-nav-height: 4rem;
 
-  --page-bg-height: 48.813rem;
+  --page-background-height: 28.75rem;
   
   @media (min-width: 48rem) {
-    --page-bg-height: 70.75rem;
+    --page-background-height: 29.375rem;
   }
 
   @media (min-width: 80rem) {
-    --page-bg-height: 36.563rem;
-  }
-
-  @media (min-width: 105rem) {
-    --page-bg-height: 55.938rem;
+    --page-background-height: 38.5rem;
   }
 
   /* smallest screens */
