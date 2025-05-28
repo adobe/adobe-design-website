@@ -11,6 +11,10 @@ export const buildListingCTA = (metadata) => {
     link: metadata.jobListing.content,
   };
 
+  // The body needs additional margin when the listing CTA is available
+  // so that the CTA doesn't block the copyright links
+  document.body.classList.add("js-has-sticky-footer");
+
   const listingCTA = document.createElement('div');
   listingCTA.classList.add('util-listing-cta', 'util-visually-hidden');
 
