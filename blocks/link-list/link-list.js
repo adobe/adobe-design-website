@@ -5,39 +5,60 @@ import { isExternalURL } from '../../scripts/helpers/index.js';
  * @function
  * @param {string} textContent the desired link text
  * @param {string} url the desired link href
+ * @param {string} [altText] the link title
  * @returns {Element}
  */
 
-const buildLinkListItem = ({ textContent, url }) => {
-  const linkListItem = document.createElement("li");
-  const linkListItemAnchor = document.createElement("a");
-  linkListItemAnchor.className = "link-list-item";
-  linkListItemAnchor.href = url;
+const buildLinkListItem = ({ textContent, url, altText }) => {
+  const item = document.createElement("li");
+  const itemAnchor = document.createElement("a");
+  itemAnchor.className = "link-list-item";
+  itemAnchor.href = url;
+  if (altText) itemAnchor.title = altText;
 
-  const linkListItemContent = document.createElement("div");
-  linkListItemContent.className = "link-list-item__content";
-  linkListItemAnchor.append(linkListItemContent);
+  const itemContent = document.createElement("div");
+  itemContent.className = "link-list-item__content";
+  itemAnchor.append(itemContent);
 
   if (isExternalURL(url)) {
-    linkListItemAnchor.classList.add("link-list-item--external");
+    itemAnchor.classList.add("link-list-item--external");
   }
 
   textContent.forEach((textNode) => {
-    const linkListItemContentPart = document.createElement("span");
-    linkListItemContentPart.innerText = textNode.innerText;
-    linkListItemContent.append(linkListItemContentPart);
+    const itemContentPart = document.createElement("span");
+    itemContentPart.innerText = textNode.innerText;
+    itemContent.append(itemContentPart);
   });
 
-  if (url.startsWith("https://adobe.design/jobs/job-posts/")) {
-    linkListItemContent.children[0].className = "link-list-item__job-title";
-    linkListItemContent.children[1].className =
+  if (url.startsWith("https://adobe.design/careers/")) {
+    itemContent.children[0].className = "link-list-item__job-title";
+    itemContent.children[1].className =
       "link-list-item__job-department";
-    linkListItemContent.children[2].className = "link-list-item__job-location";
+    itemContent.children[2].className = "link-list-item__job-location";
   }
 
-  linkListItem.append(linkListItemAnchor);
-  return linkListItem;
+  item.append(itemAnchor);
+  return item;
 };
+
+/**
+ * Creates a link to display below the link list block.
+ * @function
+ * @param {string} textContent the desired link text
+ * @param {string} url the desired link href
+ * @param {string} [altText] the link title
+ * @returns {Element}
+ */
+
+const buildLinkListFooterLink = ({ textContent, url, altText }) => {
+  const footerLink = document.createElement("a");
+  footerLink.classList.add("button", "link-list-footer-link");
+  footerLink.textContent = textContent;
+  footerLink.href = url;
+  if (altText) footerLink.title = altText;
+
+  return footerLink;
+}
 
 /**
  * Loads and decorates the link list block.
@@ -47,20 +68,32 @@ const buildLinkListItem = ({ textContent, url }) => {
  */
 
 export default async function decorate(block) {
-  const linkListContainer = document.createElement("div");
   const linkList = document.createElement("ul");
-  linkListContainer.classList.add("link-list");
-  linkListContainer.append(linkList);
+  linkList.classList.add("link-list");
 
-  const linkListLinksData = [...block.children].map((row) => ({
+  const linksData = [...block.children].slice(1).map((row) => ({
     textContent: [...row.children[0].children],
     url: row.children[1].innerText,
+    altText: row.children[2]?.innerText,
   }));
-
-  linkListLinksData.forEach((row) => {
+  if (linksData.every((link) => link.url.startsWith("https://adobe.design/careers/")))
+    linkList.classList.add("link-list--jobs");
+  linksData.forEach((row) => {
     const linkListItem = buildLinkListItem(row);
     linkList.append(linkListItem);
   });
 
-  block.replaceWith(linkListContainer);
+  block.replaceWith(linkList);
+
+  let footerLink;
+  let footerLinkData;
+  if (block.children[0].children[0].innerText && block.children[0].children[1].innerText) {
+    footerLinkData = {
+      textContent: block.children[0].children[0].innerText,
+      url: block.children[0].children[1].innerText,
+      altText: block.children[0].children[2]?.innerText,
+    };
+    footerLink = buildLinkListFooterLink(footerLinkData);
+    linkList.after(footerLink);
+  };
 }
