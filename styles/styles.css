@@ -54,7 +54,7 @@ main picture:not([class]) > img:not([class]) {
 
 /* ** Global Focus Styles ** */
 
-:is(a, button, input, textarea, summary, select) {
+:root {
   /* max value allows for bigger focus on zoom */
   --focus-outline-size: max(2px, 0.08em);
   --focus-outline-style: solid;
