@@ -180,7 +180,7 @@ a:hover {
 /* ** Button ** */
 .button {
   --color-button-text-disabled: rgb(from var(--spectrum-black) r g b / 22%);
-  --border-radius-button: 1.5rem;
+  --border-radius-button: 3rem;
   --focus-border-radius: var(--border-radius-button);
 
   box-sizing: border-box;
@@ -742,7 +742,7 @@ main > .section > .grid-container {
       font-size: var(--spectrum-font-size-700);
     }
   }
-  
+
   .button {
     @media (min-width: 36rem) {
       width: auto;
@@ -763,12 +763,12 @@ main > .section > .grid-container {
   > h1 {
     margin-block-start: 2rem;
     margin-block-end: 1rem;
-    
+
     @media (min-width: 36rem) {
       margin-block-start: 4rem;
       margin-block-end: 2.5rem;
     }
-    
+
     @media (min-width: 80rem) {
       margin-block-start: 12rem;
       margin-block-end: 10rem;
@@ -804,13 +804,13 @@ main > .section > .grid-container {
   "button button"
   "location location"
   "detail-grid detail-grid";
-  
+
   @media (min-width: 36rem) {
     grid-template-columns: 1fr 2fr auto;
     grid-template-areas:
     "location detail-grid button";
   }
-  
+
   @media (min-width: 80rem) {
     align-self: start;
     position: sticky;
@@ -892,7 +892,7 @@ main > .section > .grid-container {
       font-size: var(--spectrum-font-size-600);
     }
   }
-  
+
   .util-listing-detail__content {
     @media (min-width: 36rem) {
       font-size: var(--spectrum-font-size-200);
@@ -1225,7 +1225,7 @@ main > .section > .grid-container {
 .theme--backdrop-indigo,
 .theme--backdrop-green {
   --page-background-height: 48.813rem;
-  
+
   @media (min-width: 48rem) {
     --page-background-height: 70.75rem;
   }
