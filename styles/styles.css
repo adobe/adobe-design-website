@@ -425,7 +425,7 @@ a:hover {
   }
 }
 
-.button--hide-at-large {
+.button--hide-at-medium {
   /* supports change in button location */
   /* review section header styles for detail */
   @media (min-width: 48rem) {
@@ -802,7 +802,7 @@ main > .section > .grid-container {
   @media (min-width: 80rem) {
     align-self: start;
     position: sticky;
-    top: 4rem;
+    top: calc(1rem + var(--page-nav-height));
     display: flex;
     flex-direction: column;
   }
@@ -835,13 +835,32 @@ main > .section > .grid-container {
 }
 
 .util-listing-detail--location {
+  --listing-detail-location-column-gap: 1rem;
+
   grid-area: location;
   display: flex;
   flex-wrap: wrap;
+  column-gap: var(--listing-detail-location-column-gap);
 
   @media (min-width: 36rem) {
     flex-wrap: unset;
     flex-direction: column;
+  }
+
+  .util-listing-detail__name--location {
+    flex: 1 0 100%;
+
+    @media (min-width: 36rem) {
+      flex: unset;
+    }
+  }
+
+  .util-listing-detail__content--location {
+    flex: 1 1 calc(50% - var(--listing-detail-location-column-gap));
+
+    @media (min-width: 36rem) {
+      flex: unset;
+    }
   }
 }
 
