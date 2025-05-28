@@ -17,7 +17,7 @@ export default async function decorate(block) {
 
     if (button.altText) button.anchorNode.title = button.altText.innerText;
 
-    if (button.hideButtonOnLargeScreens) button.anchorNode.classList.add("button--hide-at-large");
+    if (button.hideButtonOnLargeScreens) button.anchorNode.classList.add("button--hide-at-medium");
 
     buttonGroupContainer.append(button.anchorNode);
   });

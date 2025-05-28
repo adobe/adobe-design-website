@@ -18,8 +18,11 @@ import {
 import { decorateThemeBackgroundVisuals } from './modules/themeBackgrounds.js';
 
 import {
-  debounce
+  debounce,
+  isSubPageOf
 } from './helpers.js';
+
+import { buildCareersListingPage } from '../page-helpers/careers.js';
 
 /**
  * Builds hero block and prepends to main in a new section.
@@ -127,7 +130,11 @@ async function loadLazy(doc) {
   // loads our standard styles and important root variables
   loadCSS(`${window.hlx.codeBasePath}/styles/base.css`);
   loadCSS(`${window.hlx.codeBasePath}/styles/styles.css`);
-  loadCSS(`${window.hlx.codeBasePath}/blocks/search/search.css`)
+  loadCSS(`${window.hlx.codeBasePath}/blocks/search/search.css`);
+
+  // decorate page-specific components
+  // decorate careers listing page
+  if (isSubPageOf('careers')) buildCareersListingPage();
 
   // loads the header and footer components, along with their stylesheets
   const headerElement = doc.querySelector('header');
