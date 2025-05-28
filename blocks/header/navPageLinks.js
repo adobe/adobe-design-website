@@ -1,4 +1,4 @@
-import { isExternalURL } from "../../blocks-helpers/isExternalURL.js";
+import { isExternalURL } from "../../scripts/helpers/index.js";
 
 /**
  * Creates a link list node from a set of anchor elements.

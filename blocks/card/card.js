@@ -1,4 +1,4 @@
-import { cleanText } from '../../blocks-helpers/cleanText.js';
+import { cleanText } from '../../scripts/helpers/index.js';
 
 export default function decorate(block) {
   const cardData = {
@@ -9,7 +9,7 @@ export default function decorate(block) {
 
   const cardContainer = document.createElement('div');
   cardContainer.className = 'card-container';
-  
+
   const card = document.createElement('a');
   card.className = 'card';
 

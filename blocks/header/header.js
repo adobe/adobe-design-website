@@ -1,6 +1,6 @@
 import { getMetadata } from "../../scripts/aem.js";
 import { loadFragment } from "../fragment/fragment.js";
-import { buildSkipLink } from "../../blocks-helpers/skipLinks.js";
+import { createFocusTrap, buildSkipLink } from "../../scripts/helpers/index.js";
 import {
   buildLargeScreenNavToolbar,
   buildSearch,
@@ -9,7 +9,6 @@ import {
 import { buildPageLinks } from "./navPageLinks.js";
 import { buildHomePageLink } from "./navHomeLink.js";
 import { buildMenuButton } from "./navMenuButton.js";
-import { createFocusTrap } from "../../blocks-helpers/focusTrap.js";
 import { NAV_MENU_ICON_OPEN, NAV_MENU_ICON_CLOSE } from "./navMenuIcons.js";
 
 /**

@@ -1,5 +1,5 @@
 import { getMetadata } from '../../scripts/aem.js';
-import { prepURL } from '../../blocks-helpers/prepURL.js';
+import { prepURL } from '../../scripts/helpers/index.js';
 
 export default async function decorate(block) {
   // parse data into an object
