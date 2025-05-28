@@ -386,12 +386,9 @@ function decorateHorizontalRules(element) {
   element.querySelectorAll('p').forEach((p) => {
     const content = p.textContent.trim();
     if (content === '-hr-' || content === '-hr fw-') {
-      const wrapper = document.createElement('div');
-      wrapper.className = 'horizontal-rule-wrapper';
       const hr = document.createElement('hr');
       hr.className = content === '-hr fw-' ? 'horizontal-rule horizontal-rule--full' : 'horizontal-rule';
-      wrapper.appendChild(hr);
-      p.replaceWith(wrapper);
+      p.replaceWith(hr);
     }
   });
 }

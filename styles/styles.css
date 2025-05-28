@@ -435,10 +435,6 @@ a:hover {
 
 /* **Horizontal Rule** */
 
-.horizontal-rule-wrapper {
-  overflow: hidden;
-}
-
 .horizontal-rule {
   height: 0;
   border: none;
@@ -455,9 +451,12 @@ a:hover {
 }
 
 .horizontal-rule--full {
-  position: relative;
-  inset-inline: -50vw;
-  width: 150vw;
+  width: 100vw;
+  margin-inline: calc(-1 * var(--page-gutters));
+
+  @media (min-width: 100rem) {
+    margin-inline: calc(-0.5 * calc(100vw - var(--page-max-width)));
+  }
 }
 
 /* ** Grid Layout Styles **  */

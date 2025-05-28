@@ -24,25 +24,19 @@ export const buildCareersListingPage = async () => {
   );
 
   // Add horizontal rule between listing details and main content
-  const horizontalRuleWrapper = document.createElement('div');
-  horizontalRuleWrapper.classList.add('horizontal-rule-wrapper', 'util-hide-at-large');
   const horizontalRule = document.createElement('hr');
-  horizontalRule.classList.add('horizontal-rule');
-  horizontalRuleWrapper.append(horizontalRule);
+  horizontalRule.classList.add('horizontal-rule', 'util-hide-at-large');
 
   // Add horizontal rule between listing and prefooter
-  const fullHorizontalRuleWrapper = document.createElement('div');
-  horizontalRuleWrapper.classList.add('horizontal-rule-wrapper');
   const fullHorizontalRule = document.createElement('hr');
   fullHorizontalRule.classList.add('horizontal-rule', 'horizontal-rule--full');
-  fullHorizontalRuleWrapper.append(fullHorizontalRule);
 
   listing.after(listingCTA);
   listingCTA.after(listingPreFooter);
-  listingPreFooter.before(fullHorizontalRuleWrapper);
+  listingPreFooter.before(fullHorizontalRule);
   listingHeader.after(listingDetails);
-  listingDetails.after(horizontalRuleWrapper);
-  horizontalRuleWrapper.after(listingMainContentContainer);
+  listingDetails.after(horizontalRule);
+  horizontalRule.after(listingMainContentContainer);
 
   // Listing CTA only visible after scrolling past career details
   window.addEventListener('scroll', () => {
