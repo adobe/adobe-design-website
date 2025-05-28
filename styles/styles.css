@@ -54,7 +54,7 @@ main picture:not([class]) > img:not([class]) {
 
 /* ** Global Focus Styles ** */
 
-:is(a, button, input, textarea, summary, select) {
+:root {
   /* max value allows for bigger focus on zoom */
   --focus-outline-size: max(2px, 0.08em);
   --focus-outline-style: solid;
@@ -968,7 +968,7 @@ main > .section > .grid-container {
 }
 
 .theme--backdrop-indigo {
-  --page-gradient-start-color: var(--gradient-backdrop-indigo-start);
+  --page-gradient-start-color: var(--gradient-indigo-start);
   --shape-diamond-fill: rgb(116 91 252);
 
   &:has(#color-scheme:checked) {

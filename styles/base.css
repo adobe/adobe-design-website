@@ -193,7 +193,6 @@
   --gradient-cinnamon-start: var(--spectrum-cinnamon-500);
 
   /* Unique theme backgrounds that are used in tandem with shapes. */
-  --gradient-backdrop-indigo-start: var(--spectrum-indigo-500);
   --gradient-backdrop-green-start: var(--spectrum-green-300);
   --gradient-backdrop-seafoam-start: rgb(142 233 214);
   --gradient-backdrop-seaform-end: rgb(233 246 245);
@@ -206,13 +205,12 @@
   &:has(#color-scheme:checked) {
     --gradient-blue-start: var(--spectrum-blue-500);
     --gradient-cyan-start: var(--spectrum-cyan-600);
-    --gradient-indigo-start: var(--spectrum-indigo-400);
+    --gradient-indigo-start: var(--spectrum-indigo-100);
     --gradient-fuchsia-start: var(--spectrum-fuchsia-500);
     --gradient-red-start: var(--spectrum-red-600);
     --gradient-seafoam-start: var(--spectrum-seafoam-600);
     --gradient-orange-start: var(--spectrum-orange-800);
 
-    --gradient-backdrop-indigo-start: var(--spectrum-indigo-100);
     --gradient-backdrop-seafoam-start: rgb(3 55 50);
     --gradient-backdrop-seaform-end: rgb(17 33 34);
     --gradient-backdrop-blue-green-wave-start: rgb(8 63 68);
