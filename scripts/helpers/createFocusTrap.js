@@ -44,7 +44,9 @@ export const createFocusTrap = (focusTrapContainer) => {
   focusTrapContainer.addEventListener('keydown', handleKeyDown);
 
   const removeFocusTrap = (focusTrapContainer) => {
-    focusTrapContainer.removeEventListener('keydown', handleKeyDown);
+    if (focusTrapContainer) {
+      focusTrapContainer.removeEventListener('keydown', handleKeyDown);
+    }
   };
 
   return removeFocusTrap;
