@@ -115,27 +115,13 @@
   }
 
   @media (min-width: 80rem) {
-    --footer-link-color-border: rgb(
-      from var(--spectrum-black) r g b / 84%
-    );
-    --footer-link-color-border-hover: rgb(
-      from var(--spectrum-black) r g b / 93%
-    );
-    --footer-link-color-border-disabled: rgb(
-      from var(--spectrum-black) r g b / 15%
-    );
-    --footer-link-background-hover: rgb(
-      from var(--spectrum-black) r g b / 9%
-    );
-    --footer-link-color-text: rgb(
-      from var(--spectrum-black) r g b / 84%
-    );
-    --footer-link-color-text-hover: rgb(
-      from var(--spectrum-black) r g b / 93%
-    );
-    --footer-link-color-text-disabled: rgb(
-      from var(--spectrum-black) r g b / 22%
-    );
+    --footer-link-color-border: var(--spectrum-transparent-black-800);
+    --footer-link-color-border-hover: var(--spectrum-transparent-black-900);
+    --footer-link-color-border-disabled: var(--spectrum-transparent-black-300);
+    --footer-link-background-hover: var(--spectrum-transparent-black-100);
+    --footer-link-color-text: var(--spectrum-gray-800);
+    --footer-link-color-text-hover: var(--spectrum-gray-900);
+    --footer-link-color-text-disabled: var(--spectrum-gray-400);
 
     border: 2px solid var(--footer-link-color-border);
     padding: 0.75rem 1.25rem 0.875rem;
@@ -162,26 +148,9 @@
 
 :root:has(#color-scheme:checked) .link-list-footer-link {
   @media (min-width: 80rem) {
-    --footer-link-color-border: rgb(
-      from var(--spectrum-white) r g b / 85%
-    );
-    --footer-link-color-border-hover: rgb(
-      from var(--spectrum-white) r g b / 94%
-    );
-    --footer-link-color-border-disabled: rgb(
-      from var(--spectrum-white) r g b / 17%
-    );
-    --footer-link-background-hover: rgb(
-      from var(--spectrum-white) r g b / 11%
-    );
-    --footer-link-color-text: rgb(
-      from var(--spectrum-white) r g b / 85%
-    );
-    --footer-link-color-text-hover: rgb(
-      from var(--spectrum-white) r g b / 94%
-    );
-    --footer-link-color-text-disabled: rgb(
-      from var(--spectrum-white) r g b / 21%
-    );
+    --footer-link-color-border: var(--spectrum-transparent-white-800);
+    --footer-link-color-border-hover: var(--spectrum-transparent-white-900);
+    --footer-link-color-border-disabled: var(--spectrum-transparent-white-300);
+    --footer-link-background-hover: var(--spectrum-transparent-white-100);
   }
 }
