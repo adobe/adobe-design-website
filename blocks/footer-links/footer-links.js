@@ -1,4 +1,4 @@
-import { buildSkipLink } from '../../blocks-helpers/skipLinks.js';
+import { buildSkipLink } from '../../scripts/helpers/index.js';
 
 /**
  * Decorates an object of links.

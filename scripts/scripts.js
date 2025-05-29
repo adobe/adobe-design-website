@@ -16,13 +16,11 @@ import {
   sampleRUM,
 } from './aem.js';
 import { decorateThemeBackgroundVisuals } from './modules/themeBackgrounds.js';
-
 import {
   debounce,
-  isSubPageOf
-} from './helpers.js';
-
-import { buildCareersListingPage } from '../page-helpers/careers.js';
+  isSubPageOf,
+  buildCareersListingPage
+} from './helpers/index.js';
 
 /**
  * Builds hero block and prepends to main in a new section.

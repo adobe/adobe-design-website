@@ -1,4 +1,4 @@
-import { isExternalURL } from '../../blocks-helpers/isExternalURL.js';
+import { isExternalURL } from '../../scripts/helpers/index.js';
 
 /**
  * Creates a decorated set of link list items.

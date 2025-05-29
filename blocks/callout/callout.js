@@ -1,4 +1,4 @@
-import { cleanText } from '../../blocks-helpers/cleanText.js';
+import { cleanText } from '../../scripts/helpers/index.js';
 
 const PAPER_PLANE_ICON_SVG = `
   <svg xmlns="http://www.w3.org/2000/svg" width="26" height="27" fill="none" viewBox="0 0 26 26">
