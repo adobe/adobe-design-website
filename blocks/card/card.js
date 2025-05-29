@@ -1,4 +1,4 @@
-import { cleanText } from '../../scripts/helpers/index.js';
+import { appendCleanText } from '../../scripts/helpers/index.js';
 
 /**
  * Represents the data used within a card.
@@ -29,7 +29,7 @@ export function createCard(cardData) {
 
   const cardContent = document.createElement('div');
   cardContent.classList.add('card__content');
-  cleanText(cardData.textContent, cardContent);
+  appendCleanText(cardData.textContent, cardContent);
   cardContent.children?.[0]?.classList.add('card__title', 'util-title-s');
   cardContent.children?.[1]?.classList.add('card__description','util-body-s');
 

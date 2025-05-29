@@ -1,4 +1,4 @@
-import { cleanText } from "../../scripts/helpers/index.js";
+import { appendCleanText } from '../../scripts/helpers/index.js';
 
 const PAPER_PLANE_ICON_SVG = `
   <svg xmlns="http://www.w3.org/2000/svg" width="26" height="27" fill="none" viewBox="0 0 26 26">
@@ -39,7 +39,7 @@ export default async function decorate(block) {
   calloutContent.append(calloutTitle);
 
   // ...remove semantic tags from description text
-  cleanText(calloutData.description, calloutContent);
+  appendCleanText(calloutData.description, calloutContent);
 
   if (calloutData.url && calloutData.buttonLabel) {
     // The callout has a button; the rest of the block is not interactive

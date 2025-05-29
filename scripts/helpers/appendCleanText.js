@@ -6,7 +6,7 @@
  * @param {object} element - the name of the parent element we are appending to.
  */
 
-export const cleanText = (data, element) => {
+export const appendCleanText = (data, element) => {
   [...data].forEach((textNode) => {
     const part = document.createElement('span');
     part.textContent = textNode.textContent.trim();
