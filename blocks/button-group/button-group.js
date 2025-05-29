@@ -6,16 +6,16 @@ export default async function decorate(block) {
     hideButtonOnLargeScreens: row.children[3]?.firstChild,
   }));
 
-  const buttonGroupContainer = document.createElement('div');
-  buttonGroupContainer.classList = 'button-group';
+  const buttonGroupContainer = document.createElement("div");
+  buttonGroupContainer.classList = "button-group";
 
   buttons.forEach(button => {
-    button.anchorNode.classList = 'button';
+    button.anchorNode.classList = "button";
     button.buttonStyle
       ? button.anchorNode.classList.add(`button--${button.buttonStyle.innerText}`)
       : button.anchorNode.classList.add(`button--primary`);
 
-    if (button.altText) button.anchorNode.title = button.altText.innerText;
+    if (button.altText) button.anchorNode.setAttribute("aria-label", button.altText);
 
     if (button.hideButtonOnLargeScreens) button.anchorNode.classList.add("button--hide-at-medium");
 

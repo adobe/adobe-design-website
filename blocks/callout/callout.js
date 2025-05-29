@@ -1,4 +1,4 @@
-import { cleanText } from '../../scripts/helpers/index.js';
+import { cleanText } from "../../scripts/helpers/index.js";
 
 const PAPER_PLANE_ICON_SVG = `
   <svg xmlns="http://www.w3.org/2000/svg" width="26" height="27" fill="none" viewBox="0 0 26 26">
@@ -24,16 +24,16 @@ export default async function decorate(block) {
   let calloutButton = null;
 
   // Create container element
-  const calloutContainer = document.createElement('div');
-  calloutContainer.classList.add('callout-container');
+  const calloutContainer = document.createElement("div");
+  calloutContainer.classList.add("callout-container");
 
   // Populate callout content
-  const calloutContent = document.createElement('div');
-  calloutContent.classList.add('callout__content');
+  const calloutContent = document.createElement("div");
+  calloutContent.classList.add("callout__content");
 
   // ...remove any automatic heading tag from title text
-  const calloutTitle = document.createElement('span');
-  calloutTitle.classList.add('callout__title');
+  const calloutTitle = document.createElement("span");
+  calloutTitle.classList.add("callout__title");
   calloutTitle.textContent = calloutData.title;
   calloutContent.append(calloutTitle);
 
@@ -42,27 +42,27 @@ export default async function decorate(block) {
 
   if (calloutData.url && calloutData.buttonLabel) {
     // The callout has a button; the rest of the block is not interactive
-    calloutBlock = document.createElement('div');
-    calloutButton = document.createElement('a');
-    calloutButton.classList.add('button', 'button--static-white');
+    calloutBlock = document.createElement("div");
+    calloutButton = document.createElement("a");
+    calloutButton.classList.add("button", "button--static-white");
     calloutButton.href = calloutData.url;
     calloutButton.innerHTML = `
       ${PAPER_PLANE_ICON_SVG}
       <span>${calloutData.buttonLabel}</span>
     `;
-    if (calloutData.altText) calloutButton.title = calloutData.altText;
+    if (calloutData.altText) calloutButton.setAttribute("aria-label", calloutData.altText);
   } else if (calloutData.url && !calloutData.buttonLabel) {
     // The callout as a whole is interactive
-    calloutBlock = document.createElement('a');
-    calloutBlock.classList.add('callout--with-link');
+    calloutBlock = document.createElement("a");
+    calloutBlock.classList.add("callout--with-link");
     calloutBlock.href = calloutData.url;
-    if (calloutData.altText) calloutButton.title = calloutData.altText;
+    if (calloutData.altText) calloutButton.setAttribute("aria-label", calloutData.altText);
   } else {
     // The callout is non-interactive
-    calloutBlock = document.createElement('div');
+    calloutBlock = document.createElement("div");
   };
 
-  calloutBlock.classList.add('callout');
+  calloutBlock.classList.add("callout");
   calloutBlock.append(calloutContent);
   if (calloutButton) calloutBlock.append(calloutButton);
   calloutContainer.append(calloutBlock);

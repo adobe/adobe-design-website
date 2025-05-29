@@ -5,7 +5,7 @@ import { isExternalURL } from '../../scripts/helpers/index.js';
  * @function
  * @param {string} textContent the desired link text
  * @param {string} url the desired link href
- * @param {string} [altText] the link title
+ * @param {string} [altText] the link aria-label
  * @returns {Element}
  */
 
@@ -14,7 +14,7 @@ const buildLinkListItem = ({ textContent, url, altText }) => {
   const itemAnchor = document.createElement("a");
   itemAnchor.className = "link-list-item";
   itemAnchor.href = url;
-  if (altText) itemAnchor.title = altText;
+  if (altText) itemAnchor.setAttribute("aria-label", altText);
 
   const itemContent = document.createElement("div");
   itemContent.className = "link-list-item__content";
@@ -46,7 +46,7 @@ const buildLinkListItem = ({ textContent, url, altText }) => {
  * @function
  * @param {string} textContent the desired link text
  * @param {string} url the desired link href
- * @param {string} [altText] the link title
+ * @param {string} [altText] the link aria-label
  * @returns {Element}
  */
 
@@ -55,7 +55,7 @@ const buildLinkListFooterLink = ({ textContent, url, altText }) => {
   footerLink.classList.add("button", "link-list-footer-link");
   footerLink.textContent = textContent;
   footerLink.href = url;
-  if (altText) footerLink.title = altText;
+  if (altText) footerLink.setAttribute("aria-label", altText);
 
   return footerLink;
 }
