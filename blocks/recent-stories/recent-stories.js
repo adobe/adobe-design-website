@@ -4,36 +4,6 @@ import { dataStore } from "../../scripts/dataStore.js";
 
 const articleDirectory = '/ideas/';
 
-/**
- * Create card markup with simple content/data.
- * @returns {HTMLDivElement}
- */
-const createCardFromData = (titleText, descriptionText, linkURL, imageURL) => {
-    // Create elements as the card block builder would expect from the content.
-    const titleAndDescription = document.createDocumentFragment();
-
-    const title = document.createElement('p');
-    title.textContent = titleText.trim();
-
-    const description = document.createElement('p');
-    description.textContent = descriptionText.trim();
-
-    titleAndDescription.append(title);
-    titleAndDescription.append(description);
-
-    // Image is a picture element with a generated srcset.
-    // const imageURL = '/ideas/media_1e99407a5ddc7da61c03a44192ec6d6bdb8a5f9a3.jpg?width=1200&format=pjpg&optimize=medium';
-    const cardPicture = createOptimizedPicture(imageURL);
-
-    // Create the card.
-    const card = createCard({
-        img: cardPicture, 
-        textContent: titleAndDescription.children, 
-        url: linkURL.trim(), 
-    });
-    return card;
-}
-
 /*
  * Recent Stories Block
  *
@@ -76,12 +46,14 @@ export default function decorate(block) {
                 articleHolder.append(gridItem);
 
                 // Create card and append.
-                const card = createCardFromData(
-                    article.title.trim(),
-                    article.description.trim(),
-                    article.path.trim(),
-                    article.image.trim()
-                );
+                const card = createCard({
+                    img: createOptimizedPicture(article.image.trim()), 
+                    textContent: [
+                        article.title,
+                        article.description
+                    ], 
+                    url: article.path.trim(), 
+                });
                 gridItem.append(card);
             });
             // Append everything within our fragment to this parent.
