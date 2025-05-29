@@ -76,6 +76,13 @@ export default async function decorate(block) {
     url: row.children[1].innerText,
     altText: row.children[2]?.innerText,
   }));
+
+  const footerLinkData = {
+    textContent: block.children[0]?.children[0]?.innerText,
+    url: block.children[0]?.children[1]?.innerText,
+    altText: block.children[0]?.children[2]?.innerText,
+  };
+
   if (linksData.every((link) => link.url.startsWith("https://adobe.design/careers/")))
     linkList.classList.add("link-list--jobs");
   linksData.forEach((row) => {
@@ -85,15 +92,8 @@ export default async function decorate(block) {
 
   block.replaceWith(linkList);
 
-  let footerLink;
-  let footerLinkData;
-  if (block.children[0].children[0].innerText && block.children[0].children[1].innerText) {
-    footerLinkData = {
-      textContent: block.children[0].children[0].innerText,
-      url: block.children[0].children[1].innerText,
-      altText: block.children[0].children[2]?.innerText,
-    };
-    footerLink = buildLinkListFooterLink(footerLinkData);
+  if (footerLinkData.textContent && footerLinkData.url) {
+    const footerLink = buildLinkListFooterLink(footerLinkData);
     linkList.after(footerLink);
   };
 }
