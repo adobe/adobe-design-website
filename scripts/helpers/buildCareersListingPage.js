@@ -9,7 +9,7 @@ export const buildCareersListingPage = async () => {
   const listingMetadata = getListingMetadata();
 
   const listing = document.querySelector("#main-content > .section > div");
-  listing.classList.add("util-listing-container");
+  listing.classList.add("listing-container");
   const listingHeader = listing.querySelector("h1");
   const listingDetails = buildListingDetails(listingMetadata);
   const listingCTA = buildListingCTA(listingMetadata);
@@ -20,7 +20,7 @@ export const buildCareersListingPage = async () => {
     (child) => child !== listingHeader && child !== listingDetails
   );
   const listingMainContentContainer = document.createElement("div");
-  listingMainContentContainer.classList.add("util-listing-content");
+  listingMainContentContainer.classList.add("listing-content");
   listingMainContent.forEach((child) =>
     listingMainContentContainer.append(child)
   );

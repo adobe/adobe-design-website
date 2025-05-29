@@ -11,29 +11,29 @@ const buildDetail = ({ label, content }) => {
   if (!content) return;
 
   const detailContainer = document.createElement('div');
-  detailContainer.classList.add('util-listing-detail');
+  detailContainer.classList.add('listing-detail');
 
   const detailName = document.createElement('span');
-  detailName.classList.add('util-detail-l', 'util-listing-detail__name');
+  detailName.classList.add('util-detail-l', 'listing-detail__name');
   detailName.textContent = label;
   detailContainer.append(detailName);
 
   if (label === 'Location') {
-    detailContainer.classList.add('util-listing-detail--location');
-    detailName.classList.add('util-listing-detail__name--location');
+    detailContainer.classList.add('listing-detail--location');
+    detailName.classList.add('listing-detail__name--location');
   };
 
   const contentParts = content.split(',');
 
   contentParts.forEach((part) => {
     const detailContent = document.createElement('span');
-    detailContent.classList.add('util-body-xs', 'util-listing-detail__content');
+    detailContent.classList.add('util-body-xs', 'listing-detail__content');
     detailContent.textContent = part;
 
     if (label === 'Location') {
-      detailContent.classList.add('util-listing-detail__content--location');
+      detailContent.classList.add('listing-detail__content--location');
     } else {
-      detailContent.classList.add('util-details-grid__item');
+      detailContent.classList.add('listing-details-grid__item');
     }
 
     detailContainer.append(detailContent);
@@ -62,7 +62,7 @@ export const buildListingDetails = (metadata) => {
   const jobTitle = metadata.jobTitle.content;
 
   const detailsSection = document.createElement('section');
-  detailsSection.classList.add('util-listing-details');
+  detailsSection.classList.add('listing-details');
 
   if (linkToApply) {
     const applyButton = document.createElement('a');
@@ -75,7 +75,7 @@ export const buildListingDetails = (metadata) => {
   };
 
   const detailGridContainer = document.createElement('div');
-  detailGridContainer.classList.add('util-details-grid');
+  detailGridContainer.classList.add('listing-details-grid');
 
   details.forEach((detail) => {
     const builtDetail = buildDetail(detail);
