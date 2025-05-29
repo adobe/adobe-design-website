@@ -10,6 +10,32 @@
  * governing permissions and limitations under the License.
  */
 
+/*
+  * General Styles *
+
+  These styles are baseline styles for the entire codebase.
+
+  To ensure inheritance within this file, follow ITCSS
+  structure for Elements, Objects, and Utilities.
+
+  Styles in `global-blocks.css` represent the "components" layer of ITCSS,
+  but in this codebase, styles in that sheet will take priority over those in this stylesheet.
+
+  Where necessary, `:root` selectors are located near their related styles.
+
+  1. Elements
+    a. General
+    b. Focus Styles
+    c. Performance
+    d. Typography
+  2. Objects
+  3. Utilities
+    a. General
+    b. Typography
+    c. Page Themes
+*/
+
+/* ** Elements - General ** */
 body {
   background-color: var(--color-background);
   background-size: var(--page-background-size, 100% var(--page-background-height, 36.563rem));
@@ -64,7 +90,7 @@ main picture:not([class]) > img:not([class]) {
   border-radius: var(--spectrum-corner-radius-800);
 }
 
-/* ** Global Focus Styles ** */
+/* ** Elements - Focus Styles ** */
 
 :root {
   /* max value allows for bigger focus on zoom */
@@ -93,7 +119,7 @@ main picture:not([class]) > img:not([class]) {
   outline: none;
 }
 
-/* ** Performance ** */
+/* ** Elements - Performance ** */
 
 body.appear {
   display: block;
@@ -113,7 +139,7 @@ footer .footer[data-block-status="loaded"] {
   visibility: visible;
 }
 
-/* ** Typography ** */
+/* ** Elements - Typography ** */
 
 h1,
 h2,
@@ -177,7 +203,8 @@ a:hover {
   text-decoration: underline;
 }
 
-/* ** Grid Layout Styles **  */
+/* **  Objects ** */
+
 main > .section > .grid-container {
   margin-block: 1.25rem;
 
@@ -363,7 +390,7 @@ main > .section > .grid-container {
   }
 }
 
-/* ** Utility Classes ** */
+/* **  Utilities - General ** */
 
 .util-visually-hidden {
   position: fixed;
@@ -428,15 +455,13 @@ main > .section > .grid-container {
   }
 }
 
-/* ** Display Utilities ** */
-
 .util-hide-at-large {
   @media (min-width: 80rem) {
     display: none;
   }
 }
 
-/* ** Type Utilities ** */
+/* **  Utilities - Typography ** */
 
 .util-heading-xxl {
   font-family: var(--heading-font-family);
@@ -616,7 +641,8 @@ main > .section > .grid-container {
   max-width: var(--page-constrained-text);
 }
 
-/* ** Page Themes ** */
+
+/* ** Utilities - Page Themes ** */
 .theme {
   /**
    * Basic top to bottom gradient used on most page backgrounds.
