@@ -1,3 +1,5 @@
+/* button styles located in global-blocks.css */
+
 .button-group {
   display: flex;
   flex-direction: column;

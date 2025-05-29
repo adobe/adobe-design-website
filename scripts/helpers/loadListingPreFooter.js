@@ -10,7 +10,7 @@ export const loadListingPreFooter = async () => {
 
   if (resp.ok) {
     const prefooterContainer = document.createElement('section');
-    prefooterContainer.classList.add('util-listing-prefooter');
+    prefooterContainer.classList.add('listing-prefooter');
     prefooterContainer.innerHTML = await resp.text();
 
     return prefooterContainer;

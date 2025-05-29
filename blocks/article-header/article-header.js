@@ -10,6 +10,9 @@ export default async function decorate(block) {
     author: getMetadata('author'),
     pubDate: getMetadata('publication-date'),
     tag: getMetadata('tag'),
+    image: block.children?.[2]?.children?.[0]?.firstElementChild,
+    caption: block.children?.[2]?.children?.[1]?.textContent?.trim(),
+    altText: block.children?.[2]?.children?.[2]?.textContent?.trim(),
   };
 
   // create the container element
@@ -68,6 +71,26 @@ export default async function decorate(block) {
     articleHeader.append(byLine);
   }
 
-  // replace the parent with our new block
-  block.parentElement.replaceWith(articleHeader);
+  // if there is an image, let's add an image
+  if (articleHeaderData.image) {
+    const imageContainer = document.createElement('figure');
+    imageContainer.classList.add('image-with-caption', 'image-with-caption--full-bleed');
+
+    articleHeaderData.image.classList.add('image-with-caption__image');
+    if (articleHeaderData.altText) articleHeaderData.image.setAttribute('alt', articleHeaderData.altText);
+    imageContainer.append(articleHeaderData.image);
+
+    if (articleHeaderData.caption) {
+      const imageCaption = document.createElement('figcaption');
+      imageCaption.classList.add('util-detail-s', 'image-with-caption__caption');
+      imageCaption.innerText = articleHeaderData.caption;
+      imageContainer.append(imageCaption);
+    }
+
+    // replace the parent with our new block and then append the image
+    block.parentElement.replaceWith(articleHeader, imageContainer);
+  } else {
+    // replace the parent with our new block
+    block.parentElement.replaceWith(articleHeader);
+  }
 }

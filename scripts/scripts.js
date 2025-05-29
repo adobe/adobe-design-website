@@ -128,7 +128,7 @@ async function loadLazy(doc) {
   // loads our standard styles and important root variables
   loadCSS(`${window.hlx.codeBasePath}/styles/base.css`);
   loadCSS(`${window.hlx.codeBasePath}/styles/styles.css`);
-  loadCSS(`${window.hlx.codeBasePath}/blocks/search/search.css`);
+  loadCSS(`${window.hlx.codeBasePath}/styles/global-blocks.css`);
 
   // decorate page-specific components
   // decorate careers listing page

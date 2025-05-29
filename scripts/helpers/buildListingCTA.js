@@ -16,12 +16,12 @@ export const buildListingCTA = (metadata) => {
   document.body.classList.add("js-has-sticky-footer");
 
   const listingCTA = document.createElement('div');
-  listingCTA.classList.add('util-listing-cta', 'util-visually-hidden');
+  listingCTA.classList.add('listing-cta', 'util-visually-hidden');
 
   const listingCTATitle = document.createElement('span');
   listingCTATitle.classList.add('util-title-xl');
   listingCTATitle.textContent = content.title;
-  
+
   const listingCTALink = document.createElement('a');
   listingCTALink.classList.add('button', 'button--accent');
   listingCTALink.textContent = 'Apply now';
