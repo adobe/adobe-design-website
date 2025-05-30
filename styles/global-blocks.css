@@ -124,7 +124,7 @@
   --color-button-border-static-black-hover: var(--spectrum-transparent-black-900);
   --color-button-border-static-black-disabled: var(--spectrum-transparent-black-300);
   --color-button-background-static-black-hover: var(--spectrum-transparent-black-100);
-  --color-button-text-static-black: var(--spectrum-gray-800);
+  --color-button-text-static-black: var(--spectrum-gray-900);
   --color-button-text-static-black-hover: var(--spectrum-gray-900);
   --color-button-text-static-black-disabled: var(--spectrum-gray-400);
   --outline-color: var(--spectrum-transparent-black-800);
@@ -146,14 +146,20 @@
   }
 }
 
+:root:has(#color-scheme:checked) .button--static-black {
+  --color-button-text-static-black: var(--spectrum-gray-25);
+  --color-button-text-static-black-hover: var(--spectrum-gray-25);
+  --color-button-text-static-black-disabled: var(--spectrum-gray-700);
+}
+
 .button--static-white {
   --color-button-border-static-white: var(--spectrum-transparent-white-800);
   --color-button-border-static-white-hover: var(--spectrum-transparent-white-900);
   --color-button-border-static-white-disabled: var(--spectrum-transparent-white-300);
   --color-button-background-static-white-hover: var(--spectrum-transparent-white-100);
-  --color-button-text-static-white: var(--spectrum-gray-800);
-  --color-button-text-static-white-hover: var(--spectrum-gray-900);
-  --color-button-text-static-white-disabled: var(--spectrum-gray-400);
+  --color-button-text-static-white: var(--spectrum-gray-25);
+  --color-button-text-static-white-hover: var(--spectrum-gray-25);
+  --color-button-text-static-white-disabled: var(--spectrum-gray-700);
   --outline-color: var(--spectrum-transparent-white-800);
   --focus-outline-color: var(--spectrum-white);
 
@@ -171,6 +177,12 @@
     border-color: var(--color-button-border-static-white-disabled);
     color: var(--color-button-text-static-white-disabled);
   }
+}
+
+:root:has(#color-scheme:checked) .button--static-white {
+  --color-button-text-static-white: var(--spectrum-gray-900);
+  --color-button-text-static-white-hover: var(--spectrum-gray-900);
+  --color-button-text-static-white-disabled: var(--spectrum-gray-400);
 }
 
 .button--accent {
