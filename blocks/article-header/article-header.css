@@ -1,3 +1,11 @@
+/* this class styles the #main-content selector text within the article page */
+.article-constrained-text {
+  & > .article-header-container > :is(div, figure, p, h1, h2, h3, h4, h5, h6, ul, ol, dl)  {
+    max-width: var(--page-constrained-text);
+    margin-inline: auto;
+  }
+}
+
 .article-header {
   display: flex;
   flex-direction: column;

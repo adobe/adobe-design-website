@@ -19,6 +19,10 @@ export default async function decorate(block) {
   const articleHeader = document.createElement("div");
   articleHeader.classList.add("article-header");
 
+  // constrain the width of text on article pages
+  const main = document.querySelector("#main-content");
+  main.classList.add("article-constrained-text");
+
   // if there is a tag, add it as an eyebrow
   // that links to the story packs page
   if (articleHeaderData.tag) {
