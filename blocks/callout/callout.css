@@ -4,9 +4,11 @@
 }
 
 .callout {
+  --callout-background-theme: var(--gradient-multitone);
+
   border-radius: var(--spectrum-corner-radius-800);
   padding: 1.5rem;
-  background: var(--gradient-multitone);
+  background: var(--callout-background-theme);
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -97,4 +99,8 @@
       margin-block-end: 1.5rem;
     }
   }
+}
+
+.callout--bright {
+  --callout-background-theme: var(--gradient-multitone-bright);
 }

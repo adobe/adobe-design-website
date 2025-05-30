@@ -13,11 +13,12 @@ const PAPER_PLANE_ICON_SVG = `
 
 export default async function decorate(block) {
   const calloutData = {
-    title: block.children[0].children[0].textContent.trim(),
-    description: block.children[0].children[1].children,
-    url: block.children[1].children[0].textContent.trim(),
-    buttonLabel: block.children[1].children[1].textContent.trim(),
-    altText: block.children[1].children[2].textContent.trim(),
+    title: block.children?.[0]?.children?.[0]?.textContent?.trim(),
+    description: block.children?.[0]?.children?.[1]?.children,
+    url: block.children?.[1]?.children?.[0]?.textContent?.trim(),
+    buttonLabel: block.children?.[1]?.children[1]?.textContent?.trim(),
+    altText: block.children?.[1]?.children?.[2]?.textContent?.trim(),
+    calloutTheme: block.children?.[2]?.children?.[0]?.textContent?.trim()
   };
 
   let calloutBlock;
@@ -63,6 +64,10 @@ export default async function decorate(block) {
   };
 
   calloutBlock.classList.add("callout");
+
+  // style our callout based on theme
+  if (calloutData.calloutTheme) calloutBlock.classList.add(`callout--${calloutData.calloutTheme}`);
+
   calloutBlock.append(calloutContent);
   if (calloutButton) calloutBlock.append(calloutButton);
   calloutContainer.append(calloutBlock);
