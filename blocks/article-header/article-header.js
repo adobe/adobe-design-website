@@ -1,6 +1,13 @@
 import { getMetadata } from '../../scripts/aem.js';
 import { prepURL } from '../../scripts/helpers/index.js';
 
+/**
+ * Loads and decorates the article header.
+ * @function
+ * @param {Element} block The header block element
+ * @returns {Element}
+ */
+
 export default async function decorate(block) {
   // parse data into an object
   const articleHeaderData = {
@@ -18,6 +25,10 @@ export default async function decorate(block) {
   // create the container element
   const articleHeader = document.createElement("div");
   articleHeader.classList.add("article-header");
+
+  // constrain the width of text on article pages
+  const main = document.querySelector("#main-content");
+  main.classList.add("article-constrained-text");
 
   // if there is a tag, add it as an eyebrow
   // that links to the story packs page

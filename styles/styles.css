@@ -253,7 +253,13 @@ main > .section > .grid-container {
 }
 
 .grid-container--with-scroll {
+  --card-drop-shadow-size-x: var(--spectrum-drop-shadow-blur-100);
+  --card-drop-shadow-size-y: calc(var(--spectrum-drop-shadow-y-100) + var(--spectrum-drop-shadow-blur-100));
+
   overflow-x: scroll;
+  padding-block: var(--card-drop-shadow-size-y);
+  padding-inline-start: var(--card-drop-shadow-size-x);
+  margin-inline-start: calc(var(--card-drop-shadow-size-x) * -1);
 
   @media (min-width: 36rem) {
     overflow-x: unset;
@@ -273,7 +279,15 @@ main > .section > .grid-container {
 .grid-item {
   min-height: 0;
   min-width: 0;
-  align-self: center;
+  align-self: stretch;
+
+  & .card-container,
+  & .card,
+  & .callout,
+  & .callout-container {
+    height: 100%;
+    box-sizing: border-box;
+  }
 }
 
 .grid-item--100 {

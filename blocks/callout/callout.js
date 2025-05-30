@@ -67,5 +67,5 @@ export default async function decorate(block) {
   if (calloutButton) calloutBlock.append(calloutButton);
   calloutContainer.append(calloutBlock);
 
-  block.replaceWith(calloutContainer);
+  block.parentElement.replaceWith(calloutContainer);
 }
