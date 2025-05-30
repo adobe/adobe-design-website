@@ -229,7 +229,7 @@
 
   /* Multi-colored gradients */
   --gradient-multitone: linear-gradient(269deg, #eb1000 -0.72%, #4b75ff 81.56%);
-  --gradient-multitone-pink: linear-gradient(268deg, #df4df5 -9.27%, #f03823 105.57%);
+  --gradient-multitone-bright: linear-gradient(268deg, #df4df5 -9.27%, #f03823 105.57%);
 
   &:has(#color-scheme:checked) {
     --gradient-blue-start: var(--spectrum-blue-500);
