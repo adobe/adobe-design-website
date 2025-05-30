@@ -26,7 +26,7 @@ describe('Link-List Block', () => {
     });
 
     it('should have job post classes applied when the link is a job posting', async () => {
-      const linkListItemWithjobLink = await page.$('.link-list-item[href^="https://adobe.design/jobs/job-posts/"]');
+      const linkListItemWithjobLink = await page.$('.link-list-item[href^="https://adobe.design/careers/"]');
 
       if (linkListItemWithjobLink) {
         const linkListItemWithJobLinkChildren = await linkListItemWithjobLink.$$('span');
