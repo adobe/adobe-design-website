@@ -8,6 +8,7 @@
   padding: 1.5rem;
   background: var(--gradient-multitone);
   display: flex;
+  align-items: center;
   flex-direction: column;
   gap: 1rem;
   -webkit-font-smoothing: antialiased;
@@ -21,7 +22,7 @@
       margin-inline-end: 0.5rem;
     }
   }
-  
+
   @container callout-container (min-width: 35.5rem) {
     padding: 2.5rem;
     flex-direction: row;
@@ -31,11 +32,11 @@
       width: unset;
     }
   }
-  
+
   @container callout-container (min-width: 44rem) {
     padding: 1.5rem;
   }
-  
+
   @container callout-container (min-width: 49rem) {
     padding: 3.625rem;
     justify-content: space-between;
@@ -60,15 +61,15 @@
     display: block;
     font-size: var(--spectrum-font-size-300);
     line-height: 1.5;
-    
+
     @container callout-container (min-width: 35.5rem) {
       font-size: var(--spectrum-font-size-400);
     }
-    
+
     @container callout-container (min-width: 44rem) {
       font-size: var(--spectrum-font-size-500);
     }
-    
+
     @container callout-container (min-width: 49rem) {
       font-size: var(--spectrum-font-size-600);
     }
@@ -80,17 +81,17 @@
     font-size: var(--spectrum-font-size-700);
     line-height: 1.25;
     margin-block-end: 1rem;
-    
+
     @container callout-container (min-width: 35.5rem) {
       font-size: var(--spectrum-font-size-900);
       margin-block-end: 1.5rem;
     }
-    
+
     @container callout-container (min-width: 44rem) {
       font-size: var(--spectrum-font-size-1000);
       margin-block-end: 1rem;
     }
-    
+
     @container callout-container (min-width: 49rem) {
       font-size: var(--spectrum-font-size-1100);
       margin-block-end: 1.5rem;
