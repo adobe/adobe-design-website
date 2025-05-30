@@ -281,21 +281,12 @@ main > .section > .grid-container {
   min-width: 0;
   align-self: stretch;
 
-  & .link-list,
   & .card-container,
   & .card,
   & .callout,
   & .callout-container {
     height: 100%;
     box-sizing: border-box;
-  }
-
-  & .section-header {
-    padding-block: 2rem;
-
-    @media (min-width: 48rem) {
-      padding-block: 4rem;
-    }
   }
 }
 
