@@ -460,8 +460,8 @@
 
   @media (min-width: 48rem) {
     --spectrum-heading-size-l: var(--spectrum-font-size-1300);
-    --spectrum-heading-size-m: var(--spectrum-font-size-800);
-    --spectrum-heading-size-s: var(--spectrum-font-size-900);
+    --spectrum-heading-size-m: var(--spectrum-font-size-900);
+    --spectrum-heading-size-s: var(--spectrum-font-size-800);
   }
 
   @media (min-width: 80rem) {
