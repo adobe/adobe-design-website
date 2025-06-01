@@ -19,6 +19,7 @@ import { decorateThemeBackgroundVisuals } from './modules/themeBackgrounds.js';
 import {
   debounce,
   isSubPageOf,
+  buildArticlePage,
   buildCareersListingPage
 } from './helpers/index.js';
 
@@ -131,6 +132,9 @@ async function loadLazy(doc) {
   loadCSS(`${window.hlx.codeBasePath}/styles/global-blocks.css`);
 
   // decorate page-specific components
+  // decorate article page
+  if (isSubPageOf('ideas')) buildArticlePage();
+
   // decorate careers listing page
   if (isSubPageOf('careers')) buildCareersListingPage();
 

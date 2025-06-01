@@ -22,6 +22,49 @@
   Where necessary, `:root` selectors are located near their related blocks.
 */
 
+.author-bio {
+  margin-block: 2rem;
+  padding-block-start: 2rem;
+  border-top: 1px solid var(--spectrum-gray-400);
+  
+  .author-meta {
+    display: flex;
+    gap: 1rem;
+    margin-block-end: 1rem;
+  
+    > .author-meta__image img {
+      width: 4rem;
+      height: 4rem;
+      border-radius: 100%;
+    }
+  
+    > .author-meta__info {
+      align-self: center;
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+
+      > .author-meta__name {
+        @media (min-width: 48rem) {
+          font-size: var(--spectrum-font-size-500);
+        }
+      }
+
+      > .author-meta__title {
+        color: var(--spectrum-gray-600);
+
+        @media (min-width: 48rem) {
+          font-size: var(--spectrum-font-size-200);
+        }
+      }
+    }
+  }
+
+  .author-description {
+    margin-block: 0;
+  }
+}
+
 .button {
   --color-button-text-disabled: rgb(from var(--spectrum-black) r g b / 22%);
   --border-radius-button: 3rem;
