@@ -4,9 +4,9 @@ export default function decorate(block) {
 
   const [headingRow, ...jobRows] = [...block.children];
 
-  if (headingRow) {
-    const heading = document.createElement('h2');
-    heading.className = 'job-list__heading util-heading-s grid-item grid-item--33';
+  const heading = headingRow.children?.[0]?.children?.[0];
+  if (heading) {
+    heading.classList.add('job-list__heading', 'util-heading-s', 'grid-item', 'grid-item--33');
     heading.textContent = headingRow.textContent;
     jobList.append(heading);
   }
