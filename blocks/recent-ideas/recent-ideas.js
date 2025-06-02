@@ -8,6 +8,7 @@ import { dataStore } from "../../scripts/dataStore.js";
  * @property {string} tagName - Fetch articles with this tag, or "All" to fetch all articles.
  * @property {number} maxArticles - Max articles to fetch or -1 for infinite.
  * @property {string} gridItemClass - Class for each grid item that determines layout; e.g. "grid-item--25" for four-up layout.
+ * @property {boolean} hasHorizontalScroll - Has horizontal scroll at mobile.
  */
 
 /**
@@ -78,11 +79,12 @@ export default function decorate(block) {
         tagName: block.children?.[0]?.children?.[0]?.textContent?.trim() ?? "All",
         maxArticles: parseInt(block.children?.[1]?.children?.[0]?.textContent?.trim(), 10),
         gridItemClass: block.children?.[2]?.children?.[0]?.textContent?.trim().toLowerCase() === "four-up" ? 'grid-item--25' : 'grid-item--50',
+        hasHorizontalScroll: block.children?.[2]?.children?.[1]?.textContent?.trim().toLowerCase() === "scrolling",
     };
 
     // Create a new container to house the block.
     const newBlock = document.createElement('div');
-    newBlock.className = 'recent-ideas grid-container';
+    newBlock.className = !settings.hasHorizontalScroll ? 'recent-ideas grid-container' : 'recent-ideas grid-container grid-container--with-scroll';
     newBlock.dataset.blockName = 'recent-ideas';
 
     // Replace the empty wrapper div around the block with our new markup.
