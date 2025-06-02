@@ -1,6 +1,7 @@
 // helpers for building blocks
 export { getAuthorData } from "./getAuthorData.js";
 export { getListingMetadata } from "./getListingMetadata.js";
+export { loadArticlePreFooter } from "./loadArticlePreFooter.js";
 export { loadListingPreFooter } from "./loadListingPreFooter.js";
 export { buildAuthorBio } from "./buildAuthorBio.js";
 export { buildListingCTA } from "./buildListingCTA.js";

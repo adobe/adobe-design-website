@@ -10,7 +10,6 @@ export const buildAuthorBio = async () => {
     description: authorData.description,
   }
 
-  const articleBodyContainer = document.querySelector(".article-header-container");
   const authorBio = document.createElement("div");
   authorBio.classList.add("author-bio");
 
@@ -37,5 +36,5 @@ export const buildAuthorBio = async () => {
   authorDescription.innerText = author.description;
 
   authorBio.append(authorMeta, authorDescription);
-  articleBodyContainer.append(authorBio);
+  return authorBio;
 }
