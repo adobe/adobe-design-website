@@ -7,6 +7,8 @@
   margin-inline: calc(-1 * var(--page-gutters));
   padding-block: 2.5rem;
   color: var(--color-text-inverted);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 
   h1, h2, h3, h4, h5, h6 {
     margin-block-start: 0;
@@ -50,6 +52,11 @@
       font-size: var(--spectrum-font-size-600);
     }
   }
+}
+
+:root:has(#color-scheme:checked) .feature-layout {
+  -webkit-font-smoothing: none;
+  -moz-osx-font-smoothing: auto;
 }
 
 .feature-layout > .grid-container {
