@@ -6,10 +6,13 @@
  */
 
 export default async function decorate (block) {
-  const backgroundColor = block.children[0]?.innerText?.trim();
-  const textContent = block.children[1]?.children[0];
-  const imageContent = block.children[1]?.children[1];
-  const primaryVariant = Boolean(block.children[2]?.innerText?.trim());
+  const data = {
+    backgroundColor: block.children[0]?.innerText?.trim(),
+    textContent: block.children[1]?.children[0],
+    imageContent: block.children[1]?.children[1],
+    altText: block.children[1]?.children[2]?.innerText?.trim(),
+    primaryVariant: Boolean(block.children[2]?.innerText?.trim()),
+  };
 
   const featureLayout = document.createElement("div");
   const gridContainer = document.createElement("div");
@@ -17,22 +20,23 @@ export default async function decorate (block) {
   gridContainer.classList.add("grid-container");
   featureLayout.append(gridContainer);
 
-  if (primaryVariant) {
+  if (data.primaryVariant) {
     featureLayout.classList.add("feature-layout--primary");
   } else {
     featureLayout.setAttribute(
       "style",
-      `background: var(--spectrum-${backgroundColor});`
+      `background: var(--spectrum-${data.backgroundColor});`
     );
   };
 
-  if (imageContent.children[0]) {
-    imageContent.classList.add("feature-layout__image");
-    gridContainer.append(imageContent);
+  if (data.imageContent.children[0]) {
+    data.imageContent.classList.add("feature-layout__image");
+    if (data.altText) data.imageContent.setAttribute("alt", data.altText);
+    gridContainer.append(data.imageContent);
   };
 
-  textContent.classList.add("feature-layout__content");
-  gridContainer.append(textContent);
+  data.textContent.classList.add("feature-layout__content");
+  gridContainer.append(data.textContent);
 
   block.parentElement.replaceWith(featureLayout);
 }
