@@ -23,9 +23,11 @@ export function createCard(cardData) {
     card.setAttribute('href', cardData.url.trim());
   }
 
-  cardData.img.classList.add('card__image');
-  cardData.img.setAttribute('alt', '');
-  card.append(cardData.img);
+  if (cardData?.img) {
+    cardData.img.classList.add('card__image');
+    cardData.img.setAttribute('alt', '');
+    card.append(cardData.img);
+  }
 
   const cardContent = document.createElement('div');
   cardContent.classList.add('card__content');
