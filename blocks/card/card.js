@@ -20,7 +20,7 @@ export function buildCard(cardData) {
   const card = document.createElement('a');
   card.className = 'card';
   if (cardData?.url) {
-    card.setAttribute('href', cardData.url.trim());
+    card.setAttribute('href', cardData.url);
   }
 
   if (cardData?.img) {
