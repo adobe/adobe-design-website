@@ -1,13 +1,19 @@
+import { prepURL } from "./index.js";
+
 export const getAuthorData = async () => {
-  const authorName = document.head.querySelector("meta[name='author']")?.content;
-  const resp = await fetch("/query-index.json?sheet=authors");
+  const authorName = prepURL(document.head.querySelector("meta[name='author']")?.content);
+  const resp = await fetch(`/authors/${authorName}.plain.html`);
 
   if (resp.ok) {
-    const json = await resp.json();
-    const allAuthors = json.data;
-    const [authorData] = allAuthors.filter((author) => author.title === authorName);
-
-    return authorData;
+    const dataContainer = document.createElement('div');
+    dataContainer.innerHTML = await resp.text();
+  
+    return {
+      name: dataContainer.querySelector('h1')?.innerText,
+      title: dataContainer.querySelector('h2')?.innerText,
+      image: dataContainer.querySelector('picture'),
+      description: [...dataContainer.querySelectorAll('p')]?.slice(1),
+    };
   };
 
   return null;
