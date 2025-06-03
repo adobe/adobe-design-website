@@ -17,7 +17,7 @@ export function buildCard(cardData) {
   const cardContainer = document.createElement('div');
   cardContainer.className = 'card-container';
 
-  const card = document.createElement('a');
+  const card = cardData?.url ? document.createElement('a') : document.createElement('div');
   card.className = 'card';
   if (cardData?.url) {
     card.setAttribute('href', cardData.url);
