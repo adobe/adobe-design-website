@@ -11,7 +11,7 @@ export const getAuthorData = async () => {
     return {
       name: dataContainer.querySelector('h1')?.innerText,
       title: dataContainer.querySelector('h2')?.innerText,
-      image: dataContainer.querySelector('picture'),
+      image: dataContainer.querySelector('picture') || undefined,
       description: [...dataContainer.querySelectorAll('p')]?.slice(1),
     };
   };

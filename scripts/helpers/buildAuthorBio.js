@@ -1,14 +1,6 @@
 import { getAuthorData } from "./index.js";
 
-export const buildAuthorBio = async () => {
-  const {
-    name,
-    title,
-    image,
-    description,
-  } = await getAuthorData();
-  console.log(description);
-
+export const buildAuthorBio = ({ name, title, image, description }) => {
   const authorBio = document.createElement("div");
   authorBio.classList.add("author-bio");
 
