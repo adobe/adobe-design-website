@@ -1,20 +1,20 @@
-import { getAuthorData } from "./index.js";
-
 export const buildAuthorBio = ({ name, title, image, description }) => {
   const authorBio = document.createElement("div");
   authorBio.classList.add("author-bio");
+  const authorInfo = document.createElement("div");
+  authorInfo.classList.add("author-meta__info");
 
   const authorName = document.createElement("span");
   authorName.classList.add("author-meta__name", "util-title-m");
   authorName.innerText = name;
+  authorInfo.append(authorName);
 
-  const authorJobTitle = document.createElement("span");
-  authorJobTitle.classList.add("author-meta__title", "util-detail-s");
-  authorJobTitle.innerText = title;
-
-  const authorInfo = document.createElement("div");
-  authorInfo.classList.add("author-meta__info");
-  authorInfo.append(authorName, authorJobTitle);
+  if (title) {
+    const authorJobTitle = document.createElement("span");
+    authorJobTitle.classList.add("author-meta__title", "util-detail-s");
+    authorJobTitle.innerText = title;
+    authorInfo.append(authorJobTitle);
+  };
 
   const authorMeta = document.createElement("div");
   authorMeta.classList.add("author-meta");

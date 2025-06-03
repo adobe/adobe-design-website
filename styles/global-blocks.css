@@ -26,6 +26,10 @@
   margin-block: 2rem;
   padding-block-start: 2rem;
   border-top: 1px solid var(--spectrum-gray-400);
+
+  + .author-bio {
+    border-top: none;
+  }
   
   .author-meta {
     display: flex;
