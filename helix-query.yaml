@@ -21,10 +21,6 @@ indices:
         select: head > meta[name="publication-date"]
         value: |
           attribute(el, 'content')
-      publicationTimestamp:
-        select: head > meta[name="publication-date"]
-        value: |
-          parseTimestamp(attribute(el, 'content'), 'MMMM D, YYYY')
       author:
         select: head > meta[name="author"]
         value: |
