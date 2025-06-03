@@ -13,7 +13,7 @@ import { appendCleanText } from '../../scripts/helpers/index.js';
  * @param {CardData} cardData
  * @returns {HTMLDivElement}
  */
-export function createCard(cardData) {
+export function buildCard(cardData) {
   const cardContainer = document.createElement('div');
   cardContainer.className = 'card-container';
 
@@ -50,7 +50,7 @@ export default function decorate(block) {
     textContent: block.children[1].children[0].children,
     url: block.children[2].textContent.trim()
   };
-  const cardContainer = createCard(cardData);
+  const cardContainer = buildCard(cardData);
 
   // Replaces empty wrapper div with new markup.
   block.parentElement.replaceWith(cardContainer);

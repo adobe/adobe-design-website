@@ -1,5 +1,5 @@
 import { createOptimizedPicture } from "../../scripts/aem.js";
-import { createCard } from "../card/card.js";
+import { buildCard } from "../card/card.js";
 import { dataStore } from "../../scripts/dataStore.js";
 
 /**
@@ -16,7 +16,7 @@ import { dataStore } from "../../scripts/dataStore.js";
  * @param {HTMLElement} cardsParent Parent element to append cards to.
  * @param {RecentIdeasSettings} settings Settings for what is fetched and how many are fetched.
  */
-const fetchDataAndCreateCards = async (cardsParent, settings) => {
+const fetchDataAndBuildCards = async (cardsParent, settings) => {
     // Contains all of the grid items and cards to be appended at the end.
     const articleHolder = document.createDocumentFragment();
 
@@ -45,7 +45,7 @@ const fetchDataAndCreateCards = async (cardsParent, settings) => {
 
             // Create card and append.
             const articleImageUrl = article.image.trim();
-            const card = createCard({
+            const card = buildCard({
                 img: articleImageUrl ? createOptimizedPicture(articleImageUrl) : '', 
                 textContent: [
                     article.title,
@@ -91,5 +91,5 @@ export default function decorate(block) {
     block.parentElement.replaceWith(newBlock);
 
     // Fetch and add markup for articles (async).
-    fetchDataAndCreateCards(newBlock, settings);
+    fetchDataAndBuildCards(newBlock, settings);
 }
