@@ -9,15 +9,63 @@ indices:
       - /drafts/**
     target: /query-index.xlsx
     properties:
-      jobTitle:
-        select: head > meta[name="job-title"]
+      title:
+        select: head > meta[property="og:title"]
+        value: |
+          attribute(el, 'content')
+      image:
+        select: head > meta[property="og:image"]
+        value: |
+          match(attribute(el, 'content'), 'https:\/\/[^/]+(\/.*)')
+      publicationDate:
+        select: head > meta[name="publication-date"]
+        value: |
+          attribute(el, 'content')
+      publicationTimestamp:
+        select: head > meta[name="publication-date"]
+        value: |
+          parseTimestamp(attribute(el, 'content'), 'MMMM D, YYYY')
+      author:
+        select: head > meta[name="author"]
+        value: |
+          attribute(el, 'content')
+      description:
+        select: head > meta[name="description"]
+        value: |
+          attribute(el, 'content')
+      robots:
+        select: head > meta[name="robots"]
+        value: |
+          attribute(el, 'content')
+      theme:
+        select: head > meta[name="theme"]
+        value: |
+          attribute(el, 'content')
+      tag:
+        select: head > meta[name="tag"]
         value: |
           attribute(el, 'content')
       positionType:
         select: head > meta[name="position-type"]
         value: |
           attribute(el, 'content')
+      department:
+        select: head > meta[name="department"]
+        value: |
+          attribute(el, 'content')
+      location:
+        select: head > meta[name="location"]
+        value: |
+          attribute(el, 'content')
+      jobTitle:
+        select: head > meta[name="job-title"]
+        value: |
+          attribute(el, 'content')
       jobListing:
         select: head > meta[name="job-listing"]
         value: |
           attribute(el, 'content')
+      lastModified:
+        select: none
+        value: |
+          parseTimestamp(headers['last-modified'], 'ddd, DD MMM YYYY hh:mm:ss GMT')
