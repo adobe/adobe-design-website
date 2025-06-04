@@ -133,7 +133,10 @@ async function loadLazy(doc) {
 
   // decorate page-specific components
   // decorate article page
-  if (isSubPageOf('ideas')) buildArticlePage();
+  if (isSubPageOf('ideas')) {
+    const isStoryPackPage = document.head.querySelector("meta[name='page-type']")?.content.trim().toLowerCase() === "story pack";
+    if (!isStoryPackPage) buildArticlePage();
+  };
 
   // decorate careers listing page
   if (isSubPageOf('careers')) buildCareersListingPage();
