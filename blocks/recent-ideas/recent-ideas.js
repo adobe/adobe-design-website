@@ -32,6 +32,9 @@ const fetchDataAndBuildCards = async (cardsParent, settings) => {
             filteredArticles = filteredArticles.filter(item => item.tag.trim().toLowerCase() === tagToFind);
         }
 
+        // Sort by published date (serial number or timestamp), with the latest dates first.
+        filteredArticles = filteredArticles.sort((a, b) => b.publishedDate - parseInt(a.publishedDate, 10));
+
         // Limit the number of results displayed.
         if (settings.maxArticles !== -1) {
             filteredArticles = filteredArticles.slice(0, Number.isInteger(settings.maxArticles) ? settings.maxArticles : 4);
