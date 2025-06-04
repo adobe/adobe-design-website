@@ -204,16 +204,16 @@ a:hover {
 }
 
 /* **  Objects ** */
-
 main > .section > .grid-container {
-  margin-block: 1.25rem;
+  margin-block-start: 0;
+  margin-block-end: var(--spacing-global-block-end-small-screen);
 
   @media (min-width: 22.5rem) {
-    margin-block: 2rem;
+    margin-block-end: var(--spacing-global-block-end-medium-screen);
   }
 
   @media (min-width: 48rem) {
-    margin-block: 4rem;
+    margin-block-end: var(--spacing-global-block-end-large-screen);
   }
 }
 

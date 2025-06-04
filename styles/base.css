@@ -340,7 +340,6 @@
     var(--spectrum-drop-shadow-dragged-color);
 
   /* ** SPACING ** */
-
   /* assumes base 16px font */
   --spectrum-spacing-50: 0.125rem; /* 2px */
   --spectrum-spacing-75: 0.25rem; /* 4px */
@@ -354,6 +353,10 @@
   --spectrum-spacing-800: 4rem; /* 64px */
   --spectrum-spacing-900: 5rem; /* 80px */
   --spectrum-spacing-1000: 6rem; /* 96px */
+
+  --spacing-global-block-end-small-screen: 4rem;
+  --spacing-global-block-end-medium-screen: 5rem;
+  --spacing-global-block-end-large-screen: 6.5rem;
 
   /* ** STATES ** */
   --spectrum-focus-indicator-thickness: 2px;

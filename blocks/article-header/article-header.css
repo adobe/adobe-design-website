@@ -26,12 +26,17 @@
   flex-direction: column;
   max-width: 66rem;
   margin-inline: auto;
-  margin-block: 2rem;
+  margin-block-start: 4rem;
+  margin-block-end: var(--spacing-global-block-end-small-screen);
   gap: 1rem;
 
+  @media (min-width: 22.5rem) {
+    margin-block-end: var(--spacing-global-block-end-medium-screen);
+  }
+
   @media (min-width: 48rem) {
-    margin-block: 4rem;
     gap: 1.25rem;
+    margin-block-end: var(--spacing-global-block-end-large-screen);
   }
 
   h1,
