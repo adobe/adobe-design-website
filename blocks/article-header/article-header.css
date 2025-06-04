@@ -1,5 +1,5 @@
 /* this class styles the #main-content selector text within the article page */
-.article-constrained-text {
+.article-content {
   &
     > .article-header-container
     > :is(
