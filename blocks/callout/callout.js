@@ -26,7 +26,7 @@ export default async function decorate(block) {
 
   // Create container element
   const calloutContainer = document.createElement("div");
-  calloutContainer.classList.add("callout-container");
+  calloutContainer.classList.add("callout-wrapper");
 
   // Populate callout content
   const calloutContent = document.createElement("div");
@@ -44,6 +44,7 @@ export default async function decorate(block) {
   if (calloutData.url && calloutData.buttonLabel) {
     // The callout has a button; the rest of the block is not interactive
     calloutBlock = document.createElement("div");
+    calloutBlock.classList.add("callout");
     calloutButton = document.createElement("a");
     calloutButton.classList.add("button", "button--static-white");
     calloutButton.href = calloutData.url;
@@ -55,15 +56,13 @@ export default async function decorate(block) {
   } else if (calloutData.url && !calloutData.buttonLabel) {
     // The callout as a whole is interactive
     calloutBlock = document.createElement("a");
-    calloutBlock.classList.add("callout--with-link");
+    calloutBlock.classList.add("callout", "callout--with-link");
     calloutBlock.href = calloutData.url;
     if (calloutData.altText) calloutButton.setAttribute("aria-label", calloutData.altText);
   } else {
     // The callout is non-interactive
     calloutBlock = document.createElement("div");
   };
-
-  calloutBlock.classList.add("callout");
 
   // style our callout based on theme
   if (calloutData.calloutTheme) calloutBlock.classList.add(`callout--${calloutData.calloutTheme}`);

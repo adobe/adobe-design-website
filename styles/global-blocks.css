@@ -60,8 +60,12 @@
 
 .button--primary {
   --color-button-background-primary: var(--spectrum-transparent-black-800);
-  --color-button-background-primary-hover: var(--spectrum-transparent-black-900);
-  --color-button-background-primary-disabled: var(--spectrum-transparent-black-100);
+  --color-button-background-primary-hover: var(
+    --spectrum-transparent-black-900
+  );
+  --color-button-background-primary-disabled: var(
+    --spectrum-transparent-black-100
+  );
   --color-button-text-primary: var(--spectrum-white);
   background-color: var(--color-button-background-primary);
   color: var(--color-button-text-primary);
@@ -82,16 +86,26 @@
 
 :root:has(#color-scheme:checked) .button--primary {
   --color-button-background-primary: var(--spectrum-transparent-white-800);
-  --color-button-background-primary-hover: var(--spectrum-transparent-white-900);
-  --color-button-background-primary-disabled: var(--spectrum-transparent-white-100);
+  --color-button-background-primary-hover: var(
+    --spectrum-transparent-white-900
+  );
+  --color-button-background-primary-disabled: var(
+    --spectrum-transparent-white-100
+  );
   --color-button-text-primary: var(--spectrum-gray-25);
 }
 
 .button--primary-outline {
   --color-button-border-primary-outline: var(--spectrum-transparent-black-800);
-  --color-button-border-primary-outline-hover: var(--spectrum-transparent-black-900);
-  --color-button-border-primary-outline-disabled: var(--spectrum-transparent-black-300);
-  --color-button-background-primary-outline-hover: var(--spectrum-transparent-black-100);
+  --color-button-border-primary-outline-hover: var(
+    --spectrum-transparent-black-900
+  );
+  --color-button-border-primary-outline-disabled: var(
+    --spectrum-transparent-black-300
+  );
+  --color-button-background-primary-outline-hover: var(
+    --spectrum-transparent-black-100
+  );
   --color-button-text-primary-outline: var(--spectrum-gray-800);
   --color-button-text-primary-outline-hover: var(--spectrum-gray-900);
   --color-button-text-primary-outline-disabled: var(--spectrum-gray-400);
@@ -114,16 +128,28 @@
 
 :root:has(#color-scheme:checked) .button--primary-outline {
   --color-button-border-primary-outline: var(--spectrum-transparent-white-800);
-  --color-button-border-primary-outline-hover: var(--spectrum-transparent-white-900);
-  --color-button-border-primary-outline-disabled: var(--spectrum-transparent-white-300);
-  --color-button-background-primary-outline-hover: var(--spectrum-transparent-white-100);
+  --color-button-border-primary-outline-hover: var(
+    --spectrum-transparent-white-900
+  );
+  --color-button-border-primary-outline-disabled: var(
+    --spectrum-transparent-white-300
+  );
+  --color-button-background-primary-outline-hover: var(
+    --spectrum-transparent-white-100
+  );
 }
 
 .button--static-black {
   --color-button-border-static-black: var(--spectrum-transparent-black-800);
-  --color-button-border-static-black-hover: var(--spectrum-transparent-black-900);
-  --color-button-border-static-black-disabled: var(--spectrum-transparent-black-300);
-  --color-button-background-static-black-hover: var(--spectrum-transparent-black-100);
+  --color-button-border-static-black-hover: var(
+    --spectrum-transparent-black-900
+  );
+  --color-button-border-static-black-disabled: var(
+    --spectrum-transparent-black-300
+  );
+  --color-button-background-static-black-hover: var(
+    --spectrum-transparent-black-100
+  );
   --color-button-text-static-black: var(--spectrum-gray-900);
   --color-button-text-static-black-hover: var(--spectrum-gray-900);
   --color-button-text-static-black-disabled: var(--spectrum-gray-400);
@@ -154,9 +180,15 @@
 
 .button--static-white {
   --color-button-border-static-white: var(--spectrum-transparent-white-800);
-  --color-button-border-static-white-hover: var(--spectrum-transparent-white-900);
-  --color-button-border-static-white-disabled: var(--spectrum-transparent-white-300);
-  --color-button-background-static-white-hover: var(--spectrum-transparent-white-100);
+  --color-button-border-static-white-hover: var(
+    --spectrum-transparent-white-900
+  );
+  --color-button-border-static-white-disabled: var(
+    --spectrum-transparent-white-300
+  );
+  --color-button-background-static-white-hover: var(
+    --spectrum-transparent-white-100
+  );
   --color-button-text-static-white: var(--spectrum-gray-25);
   --color-button-text-static-white-hover: var(--spectrum-gray-25);
   --color-button-text-static-white-disabled: var(--spectrum-gray-700);
@@ -188,7 +220,9 @@
 .button--accent {
   --color-button-background-accent: var(--spectrum-blue-900);
   --color-button-background-accent-hover: var(--spectrum-blue-1000);
-  --color-button-background-accent-disabled: var(--spectrum-transparent-black-100);
+  --color-button-background-accent-disabled: var(
+    --spectrum-transparent-black-100
+  );
   --color-button-text-accent: var(--spectrum-white);
 
   background-color: var(--color-button-background-accent);
@@ -332,6 +366,35 @@
   }
 
   > .listing-content {
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      margin-block-start: var(
+        --spacing-heading-block-start-medium-screen-small-screen
+      );
+
+      @media (min-width: 22.5rem) {
+        margin-block-start: var(
+          --spacing-heading-block-start-medium-screen-medium-screen
+        );
+      }
+
+      @media (min-width: 48rem) {
+        margin-block-start: var(
+          --spacing-heading-block-start-medium-screen-large-screen
+        );
+      }
+
+      @media (min-width: 80rem) {
+        margin-block-start: var(
+          --spacing-heading-block-start-medium-screen-xl-screen
+        );
+      }
+    }
+
     > h2:first-of-type {
       margin-block-start: 0;
     }
@@ -346,14 +409,13 @@
   display: grid;
   gap: 1rem;
   grid-template-areas:
-  "button button"
-  "location location"
-  "detail-grid detail-grid";
+    "button button"
+    "location location"
+    "detail-grid detail-grid";
 
   @media (min-width: 36rem) {
     grid-template-columns: 1fr 2fr auto;
-    grid-template-areas:
-    "location detail-grid button";
+    grid-template-areas: "location detail-grid button";
   }
 
   @media (min-width: 80rem) {
@@ -671,7 +733,9 @@
     position: fixed;
     top: 3.5rem;
     margin-inline-end: 2.75rem;
-    width: calc(var(--search-input-wrapper-width) - var(--search-input-margin-block-end));
+    width: calc(
+      var(--search-input-wrapper-width) - var(--search-input-margin-block-end)
+    );
     background: var(--spectrum-gray-25);
     border-radius: 0.625rem;
     box-shadow: var(--drop-shadow-emphasized);

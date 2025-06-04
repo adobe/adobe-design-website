@@ -19,6 +19,27 @@
     max-width: var(--page-constrained-text);
     margin-inline: auto;
   }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    margin-block-start: var(--spacing-heading-block-start-medium-screen-small-screen);
+
+    @media (min-width: 22.5rem) {
+      margin-block-start: var(--spacing-heading-block-start-medium-screen-medium-screen);
+    }
+
+    @media (min-width: 48rem) {
+      margin-block-start: var(--spacing-heading-block-start-medium-screen-large-screen);
+    }
+
+    @media (min-width: 80rem) {
+      margin-block-start: var(--spacing-heading-block-start-medium-screen-xl-screen);
+    }
+  }
 }
 
 .article-header {
@@ -26,7 +47,6 @@
   flex-direction: column;
   max-width: 66rem;
   margin-inline: auto;
-  margin-block-start: 4rem;
   margin-block-end: var(--spacing-global-block-end-small-screen);
   gap: 1rem;
 

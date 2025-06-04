@@ -1,6 +1,5 @@
 .page-header {
   gap: 2rem;
-  margin-block-start: 4rem !important;
   margin-block-end: var(--spacing-global-block-end-small-screen);
 
   @media (min-width: 22.5rem) {

@@ -1,6 +1,23 @@
-.callout-container {
+.callout-wrapper {
   container-type: inline-size;
   container-name: callout-container;
+
+  .section & {
+    margin-block-start: 0;
+    margin-block-end: var(--spacing-global-block-end-small-screen);
+
+    @media (min-width: 22.5rem) {
+      margin-block-end: var(--spacing-global-block-end-medium-screen);
+    }
+
+    @media (min-width: 48rem) {
+      margin-block-end: var(--spacing-global-block-end-large-screen);
+    }
+  }
+
+  .section .grid-container & {
+    margin-block-end: 0;
+  }
 }
 
 .callout {
