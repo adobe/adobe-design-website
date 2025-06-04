@@ -32,6 +32,9 @@ const currentRequests = new Map();
  */
 const commonEndpoints = {
   queryIndex: '/query-index.json',
+  ideas: '/query-index.json?sheet=ideas',
+  authors: '/query-index.json?sheet=authors',
+  careers: '/query-index.json?sheet=careers',
 };
 
 /**

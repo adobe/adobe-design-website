@@ -746,17 +746,18 @@
   @container card-container (min-width: 28rem) {
     flex-direction: row;
   }
+}
 
-  &:hover {
-    color: var(--color-text);
-    cursor: pointer;
-    text-decoration: none;
-  }
+a.card:hover {
+  color: var(--color-text);
+  cursor: pointer;
+  text-decoration: none;
 
-  &:hover .card__title {
+  .card__title {
     text-decoration: underline;
   }
 }
+
 .card__image {
   @container card-container (min-width: 28rem) {
     order: 2;

@@ -10,7 +10,7 @@ export { createFocusTrap } from "./createFocusTrap.js";
 export { buildCareersListingPage } from "./buildCareersListingPage.js";
 
 // general helpers
-export { cleanText } from "./cleanText.js";
+export { appendCleanText } from "./appendCleanText.js";
 export { debounce } from "./debounce.js";
 export { isSubPageOf, isIndexPageOf } from "./isPageOf.js";
 export { prepURL } from "./prepURL.js";
