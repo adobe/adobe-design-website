@@ -263,13 +263,16 @@ main > .section.button-group-container > .grid-container {
 }
 
 .grid-container--large-gap {
-  gap: 4rem;
+  row-gap: var(--spacing-global-block-end-small-screen);
+  column-gap: 0;
 
-  @supports (display: grid) {
-    @media (min-width: 22.5rem) {
-      grid-column-gap: 4rem;
-      grid-row-gap: 4rem;
-    }
+  @media (min-width: 22.5rem) {
+    column-gap: 0.5rem;
+    row-gap: var(--spacing-global-block-end-medium-screen);
+  }
+
+  @media (min-width: 48rem) {
+    gap: 4rem;
   }
 }
 

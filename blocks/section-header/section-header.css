@@ -7,7 +7,6 @@
 }
 
 main > .section > .section-header {
-  /* remove default margin-bottom as section headings sit close to content */
   margin-block-end: 2rem;
 
   @media (min-width: 80rem) {
