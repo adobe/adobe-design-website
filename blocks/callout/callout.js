@@ -62,6 +62,7 @@ export default async function decorate(block) {
   } else {
     // The callout is non-interactive
     calloutBlock = document.createElement("div");
+    calloutBlock.classList.add("callout");
   };
 
   // style our callout based on theme
