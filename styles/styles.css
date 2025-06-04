@@ -414,15 +414,11 @@ main > .section.button-group-container > .grid-container {
 .grid-item--25 {
   grid-column: span 8;
 
-  @media (min-width: 22.5rem) {
-    grid-column: span 4;
-  }
-
   @media (min-width: 48rem) {
     grid-column: span 6;
   }
 
-  @media (min-width: 61.25rem) {
+  @media (min-width: 80rem) {
     grid-column: span 3;
   }
 
@@ -438,8 +434,7 @@ main > .section.button-group-container > .grid-container {
     @media (min-width: 48rem) {
       grid-column: span 6;
     }
-
-    @media (min-width: 61.25rem) {
+    @media (min-width: 61rem) {
       grid-column: span 3;
     }
   }
