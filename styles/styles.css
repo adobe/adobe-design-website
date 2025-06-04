@@ -772,11 +772,13 @@ main > .section > .grid-container {
   @media (min-width: 48rem) {
     inset: -113px -316px auto auto;
     width: 168%;
+    height: calc(100% + 113px);
   }
 
   @media (min-width: 80rem) {
     inset: -154px -320px auto auto;
     width: auto;
+    height: calc(100% + 154px);
   }
 
   @media (min-width: 105rem) {
