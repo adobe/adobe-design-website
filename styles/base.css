@@ -359,10 +359,10 @@
   --spacing-global-block-end-large-screen: 6.5rem;
 
   /* for headings within text content, like articles */
-  --spacing-heading-block-start-medium-screen-small-screen: 2rem;
-  --spacing-heading-block-start-medium-screen-medium-screen: 3.5rem;
-  --spacing-heading-block-start-medium-screen-large-screen: 3rem;
-  --spacing-heading-block-start-medium-screen-xl-screen: 3.5rem;
+  --spacing-heading-block-start-small-screen: 2rem;
+  --spacing-heading-block-start-medium-screen: 3.5rem;
+  --spacing-heading-block-start-large-screen: 3rem;
+  --spacing-heading-block-start-xl-screen: 3.5rem;
 
   /* ** STATES ** */
   --spectrum-focus-indicator-thickness: 2px;

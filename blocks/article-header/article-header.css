@@ -26,18 +26,18 @@
   h4,
   h5,
   h6 {
-    margin-block-start: var(--spacing-heading-block-start-medium-screen-small-screen);
+    margin-block-start: var(--spacing-heading-block-start-small-screen);
 
     @media (min-width: 22.5rem) {
-      margin-block-start: var(--spacing-heading-block-start-medium-screen-medium-screen);
+      margin-block-start: var(--spacing-heading-block-start-medium-screen);
     }
 
     @media (min-width: 48rem) {
-      margin-block-start: var(--spacing-heading-block-start-medium-screen-large-screen);
+      margin-block-start: var(--spacing-heading-block-start-large-screen);
     }
 
     @media (min-width: 80rem) {
-      margin-block-start: var(--spacing-heading-block-start-medium-screen-xl-screen);
+      margin-block-start: var(--spacing-heading-block-start-xl-screen);
     }
   }
 }
