@@ -1,12 +1,16 @@
 .page-header {
-  gap: 2rem;
+  row-gap: 2rem;
+  margin-block-end: var(--spacing-global-block-end-small-screen);
 
   @media (min-width: 22.5rem) {
-    gap: 3rem;
+    row-gap: 3rem;
+    margin-block-end: var(--spacing-global-block-end-medium-screen);
   }
 
   @media (min-width: 48rem) {
-    gap: 4rem;
+    row-gap: 0;
+    column-gap: 4rem;
+    margin-block-end: var(--spacing-global-block-end-large-screen);
   }
 
   .page-header__title {

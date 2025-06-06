@@ -13,7 +13,7 @@ export default async function decorate(block) {
 
   // create the container element
   const pageHeader = document.createElement("div");
-  pageHeader.classList.add("page-header", "grid-container");
+  pageHeader.classList.add("grid-container", "page-header");
 
   const pageHeaderContent = document.createElement("div");
   pageHeaderContent.classList.add("page-header__content", "grid-item", "grid-item--50");

@@ -73,6 +73,10 @@ body.js-has-sticky-footer {
   -moz-osx-font-smoothing: grayscale;
 }
 
+main {
+  padding-block-start: 4rem;
+}
+
 main > .section {
   max-width: var(--page-max-width);
   margin-inline: var(--page-gutters);
@@ -140,6 +144,14 @@ footer .footer[data-block-status="loaded"] {
 }
 
 /* ** Elements - Typography ** */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin-block: 0;
+}
 
 h1,
 h2,
@@ -204,16 +216,32 @@ a:hover {
 }
 
 /* **  Objects ** */
-
 main > .section > .grid-container {
-  margin-block: 1.25rem;
+  margin-block-start: 0;
+  margin-block-end: var(--spacing-global-block-end-small-screen);
 
   @media (min-width: 22.5rem) {
-    margin-block: 2rem;
+    margin-block-end: var(--spacing-global-block-end-medium-screen);
   }
 
   @media (min-width: 48rem) {
-    margin-block: 4rem;
+    margin-block-end: var(--spacing-global-block-end-large-screen);
+  }
+}
+
+main > .section.button-group-container > .grid-container {
+  margin-block-end: 1.25rem;
+
+  @media (min-width: 22.5rem) {
+    margin-block-end: 1.25rem;
+  }
+}
+
+main > .section.small-screen-cta-container > .grid-container {
+  margin-block-end: 1.25rem;
+
+  @media (min-width: 22.5rem) {
+    margin-block-end: 2.5rem;
   }
 }
 
@@ -228,6 +256,7 @@ main > .section > .grid-container {
 
   @supports (display: grid) {
     display: grid;
+    align-items: center;
     max-width: 100%;
     grid-template-columns: repeat(8, [col] 1fr);
     grid-column-gap: 1rem;
@@ -242,13 +271,11 @@ main > .section > .grid-container {
 }
 
 .grid-container--large-gap {
-  gap: 4rem;
+  row-gap: 2rem;
+  column-gap: 0;
 
-  @supports (display: grid) {
-    @media (min-width: 22.5rem) {
-      grid-column-gap: 4rem;
-      grid-row-gap: 4rem;
-    }
+  @media (min-width: 48rem) {
+    gap: 4rem;
   }
 }
 
@@ -279,15 +306,20 @@ main > .section > .grid-container {
 .grid-item {
   min-height: 0;
   min-width: 0;
-  align-self: stretch;
 
   & .card-container,
   & .card,
   & .callout,
-  & .callout-container {
+  & .callout-container,
+  & .callout-wrapper {
     height: 100%;
     box-sizing: border-box;
   }
+}
+
+.callout-container .grid-item,
+.card-container .grid-item {
+  align-self: stretch;
 }
 
 .grid-item--100 {
@@ -381,11 +413,11 @@ main > .section > .grid-container {
 .grid-item--25 {
   grid-column: span 8;
 
-  @media (min-width: 22.5rem) {
-    grid-column: span 4;
+  @media (min-width: 48rem) {
+    grid-column: span 6;
   }
 
-  @media (min-width: 48rem) {
+  @media (min-width: 80rem) {
     grid-column: span 3;
   }
 
@@ -399,6 +431,9 @@ main > .section > .grid-container {
     }
 
     @media (min-width: 48rem) {
+      grid-column: span 6;
+    }
+    @media (min-width: 61rem) {
       grid-column: span 3;
     }
   }

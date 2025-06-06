@@ -1,5 +1,5 @@
 /* this class styles the #main-content selector text within the article page */
-.article-constrained-text {
+.article-content {
   &
     > .article-header-container
     > :is(
@@ -19,6 +19,27 @@
     max-width: var(--page-constrained-text);
     margin-inline: auto;
   }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    margin-block-start: var(--spacing-heading-block-start-small-screen);
+
+    @media (min-width: 22.5rem) {
+      margin-block-start: var(--spacing-heading-block-start-medium-screen);
+    }
+
+    @media (min-width: 48rem) {
+      margin-block-start: var(--spacing-heading-block-start-large-screen);
+    }
+
+    @media (min-width: 80rem) {
+      margin-block-start: var(--spacing-heading-block-start-xl-screen);
+    }
+  }
 }
 
 .article-header {
@@ -26,12 +47,16 @@
   flex-direction: column;
   max-width: 66rem;
   margin-inline: auto;
-  margin-block: 2rem;
+  margin-block-end: var(--spacing-global-block-end-small-screen);
   gap: 1rem;
 
+  @media (min-width: 22.5rem) {
+    margin-block-end: var(--spacing-global-block-end-medium-screen);
+  }
+
   @media (min-width: 48rem) {
-    margin-block: 4rem;
     gap: 1.25rem;
+    margin-block-end: var(--spacing-global-block-end-large-screen);
   }
 
   h1,

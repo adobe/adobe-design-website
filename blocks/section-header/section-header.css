@@ -6,8 +6,7 @@
   }
 }
 
-main > .section > .grid-container {
-  /* remove default margin-bottom as section headings sit close to content */
+main > .section > .section-header {
   margin-block-end: 2rem;
 
   @media (min-width: 80rem) {

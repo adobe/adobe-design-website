@@ -28,7 +28,7 @@ export default async function decorate(block) {
 
   // constrain the width of text on article pages
   const main = document.querySelector("#main-content");
-  main.classList.add("article-constrained-text");
+  main.classList.add("article-content");
 
   // if there is a tag, add it as an eyebrow
   // that links to the story packs page
