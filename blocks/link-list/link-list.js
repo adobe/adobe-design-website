@@ -90,7 +90,7 @@ export default async function decorate(block) {
     linkList.append(linkListItem);
   });
 
-  block.replaceWith(linkList);
+  block.parentElement.replaceWith(linkList);
 
   if (footerLinkData.textContent && footerLinkData.url) {
     const footerLink = buildLinkListFooterLink(footerLinkData);
