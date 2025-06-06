@@ -812,3 +812,33 @@ a.card:hover {
     margin-inline-end: 0;
   }
 }
+
+.article-prefooter {
+  > .section-header {
+    margin-block-end: var(--spacing-heading-block-start-small-screen);
+
+    @media (min-width: 48rem) {
+      margin-block-end: var(--spacing-heading-block-start-medium-screen);
+    }
+
+    @media (min-width: 80rem) {
+      margin-block-end: var(--spacing-heading-block-start-large-screen);
+    }
+
+    @media (min-width: 105rem) {
+      margin-block-end: var(--spacing-heading-block-start-exlarge-screen);
+    }
+  }
+
+  > *:not(.section-header):not(div > .horizontal-rule) {
+      margin-block-end: var(--spacing-global-block-end-small-screen);
+
+      @media (min-width: 48rem) {
+        margin-block-end: var(--spacing-global-block-end-medium-screen);
+      }
+
+      @media (min-width: 80rem) {
+        margin-block-end: var(--spacing-global-block-end-large-screen);
+      }
+    }
+}
