@@ -349,10 +349,6 @@ main > .section.button-group-container > .grid-container {
   grid-column: span 8;
 
   @media (min-width: 48rem) {
-    grid-column: span 12;
-  }
-
-  @media (min-width: 80rem) {
     grid-column: span 6;
   }
 
