@@ -237,6 +237,14 @@ main > .section.button-group-container > .grid-container {
   }
 }
 
+main > .section.small-screen-cta-container > .grid-container {
+  margin-block-end: 1.25rem;
+
+  @media (min-width: 22.5rem) {
+    margin-block-end: 2.5rem;
+  }
+}
+
 .grid-container {
   /* flexbox fallback */
   display: flex;
