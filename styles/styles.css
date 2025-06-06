@@ -271,13 +271,8 @@ main > .section.small-screen-cta-container > .grid-container {
 }
 
 .grid-container--large-gap {
-  row-gap: var(--spacing-global-block-end-small-screen);
+  row-gap: 2rem;
   column-gap: 0;
-
-  @media (min-width: 22.5rem) {
-    column-gap: 0.5rem;
-    row-gap: var(--spacing-global-block-end-medium-screen);
-  }
 
   @media (min-width: 48rem) {
     gap: 4rem;
