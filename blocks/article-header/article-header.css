@@ -1,7 +1,7 @@
 /* this class styles the #main-content selector text within the article page */
 .article-content {
   &
-    > .article-header-container
+    article
     > :is(
       div,
       figure:not(.image-with-caption--full-bleed),
