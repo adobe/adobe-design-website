@@ -132,8 +132,12 @@ main picture:not([class]) > img:not([class]) {
 
 .button--primary {
   --color-button-background-primary: var(--spectrum-transparent-black-800);
-  --color-button-background-primary-hover: var(--spectrum-transparent-black-900);
-  --color-button-background-primary-disabled: var(--spectrum-transparent-black-100);
+  --color-button-background-primary-hover: var(
+    --spectrum-transparent-black-900
+  );
+  --color-button-background-primary-disabled: var(
+    --spectrum-transparent-black-100
+  );
   --color-button-text-primary: var(--spectrum-white);
   background-color: var(--color-button-background-primary);
   color: var(--color-button-text-primary);
@@ -154,16 +158,27 @@ main picture:not([class]) > img:not([class]) {
 
 :root:has(#color-scheme:checked) .button--primary {
   --color-button-background-primary: var(--spectrum-transparent-white-800);
-  --color-button-background-primary-hover: var(--spectrum-transparent-white-900);
-  --color-button-background-primary-disabled: var(--spectrum-transparent-white-100);
+  --color-button-background-primary-hover: var(
+    --spectrum-transparent-white-900
+  );
+  --color-button-background-primary-disabled: var(
+    --spectrum-transparent-white-100
+  );
   --color-button-text-primary: var(--spectrum-gray-25);
 }
 
 .button--primary-outline {
   --color-button-border-primary-outline: var(--spectrum-transparent-black-800);
-  --color-button-border-primary-outline-hover: var(--spectrum-transparent-black-900);
-  --color-button-border-primary-outline-disabled: var(--spectrum-transparent-black-300);
-  --color-button-background-primary-outline-hover: var(--spectrum-transparent-black-100);
+  --color-button-border-primary-outline-hover: var(
+    --spectrum-transparent-black-900
+  );
+  --color-button-border-primary-outline-disabled: var(
+    --spectrum-transparent-black-30
+    0
+  );
+  --color-button-background-primary-outline-hover: var(
+    --spectrum-transparent-black-100
+  );
   --color-button-text-primary-outline: var(--spectrum-gray-800);
   --color-button-text-primary-outline-hover: var(--spectrum-gray-900);
   --color-button-text-primary-outline-disabled: var(--spectrum-gray-400);
@@ -186,16 +201,28 @@ main picture:not([class]) > img:not([class]) {
 
 :root:has(#color-scheme:checked) .button--primary-outline {
   --color-button-border-primary-outline: var(--spectrum-transparent-white-800);
-  --color-button-border-primary-outline-hover: var(--spectrum-transparent-white-900);
-  --color-button-border-primary-outline-disabled: var(--spectrum-transparent-white-300);
-  --color-button-background-primary-outline-hover: var(--spectrum-transparent-white-100);
+  --color-button-border-primary-outline-hover: var(
+    --spectrum-transparent-white-900
+  );
+  --color-button-border-primary-outline-disabled: var(
+    --spectrum-transparent-white-300
+  );
+  --color-button-background-primary-outline-hover: var(
+    --spectrum-transparent-white-100
+  );
 }
 
 .button--static-black {
   --color-button-border-static-black: var(--spectrum-transparent-black-800);
-  --color-button-border-static-black-hover: var(--spectrum-transparent-black-900);
-  --color-button-border-static-black-disabled: var(--spectrum-transparent-black-300);
-  --color-button-background-static-black-hover: var(--spectrum-transparent-black-100);
+  --color-button-border-static-black-hover: var(
+    --spectrum-transparent-black-900
+  );
+  --color-button-border-static-black-disabled: var(
+    --spectrum-transparent-black-300
+  );
+  --color-button-background-static-black-hover: var(
+    --spectrum-transparent-black-100
+  );
   --color-button-text-static-black: var(--spectrum-gray-900);
   --color-button-text-static-black-hover: var(--spectrum-gray-900);
   --color-button-text-static-black-disabled: var(--spectrum-gray-400);
@@ -226,9 +253,15 @@ main picture:not([class]) > img:not([class]) {
 
 .button--static-white {
   --color-button-border-static-white: var(--spectrum-transparent-white-800);
-  --color-button-border-static-white-hover: var(--spectrum-transparent-white-900);
-  --color-button-border-static-white-disabled: var(--spectrum-transparent-white-300);
-  --color-button-background-static-white-hover: var(--spectrum-transparent-white-100);
+  --color-button-border-static-white-hover: var(
+    --spectrum-transparent-white-900
+  );
+  --color-button-border-static-white-disabled: var(
+    --spectrum-transparent-white-300
+  );
+  --color-button-background-static-white-hover: var(
+    --spectrum-transparent-white-100
+  );
   --color-button-text-static-white: var(--spectrum-gray-25);
   --color-button-text-static-white-hover: var(--spectrum-gray-25);
   --color-button-text-static-white-disabled: var(--spectrum-gray-700);
@@ -260,7 +293,9 @@ main picture:not([class]) > img:not([class]) {
 .button--accent {
   --color-button-background-accent: var(--spectrum-blue-900);
   --color-button-background-accent-hover: var(--spectrum-blue-1000);
-  --color-button-background-accent-disabled: var(--spectrum-transparent-black-100);
+  --color-button-background-accent-disabled: var(
+    --spectrum-transparent-black-100
+  );
   --color-button-text-accent: var(--spectrum-white);
 
   background-color: var(--color-button-background-accent);
