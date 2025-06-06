@@ -1,6 +1,6 @@
 .callout-wrapper {
   container-type: inline-size;
-  container-name: callout-container;
+  container-name: callout-wrapper;
 
   .section & {
     margin-block-start: 0;
@@ -42,12 +42,12 @@
       margin-inline-end: 0.5rem;
     }
 
-    @container callout-container (min-width: 49rem) {
+    @container callout-wrapper (min-width: 49rem) {
       margin-block-start: 0;
     }
   }
 
-  @container callout-container (min-width: 35.5rem) {
+  @container callout-wrapper (min-width: 35.5rem) {
     padding: 2.5rem;
     gap: 1.25rem;
 
@@ -56,12 +56,12 @@
     }
   }
 
-  @container callout-container (min-width: 44rem) {
+  @container callout-wrapper (min-width: 44rem) {
     padding: 1.5rem;
     gap: 1.5rem;
   }
 
-  @container callout-container (min-width: 49rem) {
+  @container callout-wrapper (min-width: 49rem) {
     flex-direction: row;
     align-items: center;
     padding: 3.625rem;
@@ -89,15 +89,15 @@
     font-size: var(--spectrum-font-size-300);
     line-height: 1.5;
 
-    @container callout-container (min-width: 35.5rem) {
+    @container callout-wrapper (min-width: 35.5rem) {
       font-size: var(--spectrum-font-size-400);
     }
 
-    @container callout-container (min-width: 44rem) {
+    @container callout-wrapper (min-width: 44rem) {
       font-size: var(--spectrum-font-size-500);
     }
 
-    @container callout-container (min-width: 49rem) {
+    @container callout-wrapper (min-width: 49rem) {
       font-size: var(--spectrum-font-size-600);
     }
   }
@@ -109,15 +109,15 @@
     line-height: 1.25;
     margin-block-end: 0;
 
-    @container callout-container (min-width: 35.5rem) {
+    @container callout-wrapper (min-width: 35.5rem) {
       font-size: var(--spectrum-font-size-900);
     }
 
-    @container callout-container (min-width: 44rem) {
+    @container callout-wrapper (min-width: 44rem) {
       font-size: var(--spectrum-font-size-1000);
     }
 
-    @container callout-container (min-width: 49rem) {
+    @container callout-wrapper (min-width: 49rem) {
       font-size: var(--spectrum-font-size-1100);
     }
   }
