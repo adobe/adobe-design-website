@@ -666,6 +666,15 @@ function decorateBlocks(main) {
   main.querySelectorAll('div.section > div > div').forEach(decorateBlock);
 }
 
+function cleanEmptyDivs(main) {
+  main.querySelectorAll('div').forEach((div) => {
+    const isEmpty = !div.textContent.trim() && div.children.length === 0;
+    if (isEmpty) {
+      div.remove();
+    }
+  });
+}
+
 /**
  * Loads a block named 'header' into header
  * @param {Element} header header element
@@ -750,6 +759,7 @@ export {
   decorateIcons,
   decorateSections,
   decorateTemplateAndTheme,
+  cleanEmptyDivs,
   fetchPlaceholders,
   getMetadata,
   loadBlock,
