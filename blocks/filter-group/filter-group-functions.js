@@ -2,7 +2,7 @@
  * @file Filter group functionality, including event listener logic.
  */
 
-import { dataStore } from '../../scripts/dataStore.js';
+import { dataStore } from '../../scripts/helpers/dataStore.js';
 import { updateFilter, getCurrentFiltersArray } from './filter-group-utils.js';
 import { applyTemporaryMockupTags } from './filter-group-temp-mockup.js';
 
