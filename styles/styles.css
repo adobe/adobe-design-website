@@ -94,6 +94,251 @@ main picture:not([class]) > img:not([class]) {
   border-radius: var(--spectrum-corner-radius-800);
 }
 
+.button {
+  --color-button-text-disabled: rgb(from var(--spectrum-black) r g b / 22%);
+  --border-radius-button: 3rem;
+  --focus-border-radius: var(--border-radius-button);
+
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 100%;
+  padding: 0.75rem 1.25rem 0.875rem;
+  border: none;
+  border-radius: var(--border-radius-button);
+  background-color: transparent;
+  color: inherit;
+  font-family: var(--body-font-family);
+  font-size: var(--spectrum-font-size-300);
+  font-style: normal;
+  font-weight: var(--spectrum-bold-font-weight);
+  line-height: 1.3;
+  text-align: center;
+  text-decoration: none;
+  white-space: nowrap;
+  cursor: pointer;
+
+  &:hover {
+    text-decoration: none;
+  }
+
+  &:disabled,
+  &:disabled:hover {
+    color: var(--color-button-text-disabled);
+    cursor: unset;
+  }
+}
+
+.button--primary {
+  --color-button-background-primary: var(--spectrum-transparent-black-800);
+  --color-button-background-primary-hover: var(
+    --spectrum-transparent-black-900
+  );
+  --color-button-background-primary-disabled: var(
+    --spectrum-transparent-black-100
+  );
+  --color-button-text-primary: var(--spectrum-white);
+  background-color: var(--color-button-background-primary);
+  color: var(--color-button-text-primary);
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  &:hover {
+    background-color: var(--color-button-background-primary-hover);
+    color: var(--color-button-text-primary);
+  }
+
+  &:disabled,
+  &:disabled:hover {
+    background-color: var(--color-button-background-primary-disabled);
+  }
+}
+
+:root:has(#color-scheme:checked) .button--primary {
+  --color-button-background-primary: var(--spectrum-transparent-white-800);
+  --color-button-background-primary-hover: var(
+    --spectrum-transparent-white-900
+  );
+  --color-button-background-primary-disabled: var(
+    --spectrum-transparent-white-100
+  );
+  --color-button-text-primary: var(--spectrum-gray-25);
+}
+
+.button--primary-outline {
+  --color-button-border-primary-outline: var(--spectrum-transparent-black-800);
+  --color-button-border-primary-outline-hover: var(
+    --spectrum-transparent-black-900
+  );
+  --color-button-border-primary-outline-disabled: var(
+    --spectrum-transparent-black-30
+    0
+  );
+  --color-button-background-primary-outline-hover: var(
+    --spectrum-transparent-black-100
+  );
+  --color-button-text-primary-outline: var(--spectrum-gray-800);
+  --color-button-text-primary-outline-hover: var(--spectrum-gray-900);
+  --color-button-text-primary-outline-disabled: var(--spectrum-gray-400);
+
+  border: 2px solid var(--color-button-border-primary-outline);
+  color: var(--color-button-text-primary-outline);
+
+  &:hover {
+    border-color: var(--color-button-border-primary-outline-hover);
+    background-color: var(--color-button-background-primary-outline-hover);
+    color: var(--color-button-text-primary-outline-hover);
+  }
+
+  &:disabled,
+  &:disabled:hover {
+    border-color: var(--color-button-border-primary-outline-disabled);
+    color: var(--color-button-text-primary-outline-disabled);
+  }
+}
+
+:root:has(#color-scheme:checked) .button--primary-outline {
+  --color-button-border-primary-outline: var(--spectrum-transparent-white-800);
+  --color-button-border-primary-outline-hover: var(
+    --spectrum-transparent-white-900
+  );
+  --color-button-border-primary-outline-disabled: var(
+    --spectrum-transparent-white-300
+  );
+  --color-button-background-primary-outline-hover: var(
+    --spectrum-transparent-white-100
+  );
+}
+
+.button--static-black {
+  --color-button-border-static-black: var(--spectrum-transparent-black-800);
+  --color-button-border-static-black-hover: var(
+    --spectrum-transparent-black-900
+  );
+  --color-button-border-static-black-disabled: var(
+    --spectrum-transparent-black-300
+  );
+  --color-button-background-static-black-hover: var(
+    --spectrum-transparent-black-100
+  );
+  --color-button-text-static-black: var(--spectrum-gray-900);
+  --color-button-text-static-black-hover: var(--spectrum-gray-900);
+  --color-button-text-static-black-disabled: var(--spectrum-gray-400);
+  --outline-color: var(--spectrum-transparent-black-800);
+  --focus-outline-color: var(--spectrum-black);
+
+  border: 2px solid var(--color-button-border-static-black);
+  color: var(--color-button-text-static-black);
+
+  &:hover {
+    border-color: var(--color-button-border-static-black-hover);
+    background-color: var(--color-button-background-static-black-hover);
+    color: var(--color-button-text-static-black-hover);
+  }
+
+  &:disabled,
+  &:disabled:hover {
+    border-color: var(--color-button-border-static-black-disabled);
+    color: var(--color-button-text-static-black-disabled);
+  }
+}
+
+:root:has(#color-scheme:checked) .button--static-black {
+  --color-button-text-static-black: var(--spectrum-gray-25);
+  --color-button-text-static-black-hover: var(--spectrum-gray-25);
+  --color-button-text-static-black-disabled: var(--spectrum-gray-700);
+}
+
+.button--static-white {
+  --color-button-border-static-white: var(--spectrum-transparent-white-800);
+  --color-button-border-static-white-hover: var(
+    --spectrum-transparent-white-900
+  );
+  --color-button-border-static-white-disabled: var(
+    --spectrum-transparent-white-300
+  );
+  --color-button-background-static-white-hover: var(
+    --spectrum-transparent-white-100
+  );
+  --color-button-text-static-white: var(--spectrum-gray-25);
+  --color-button-text-static-white-hover: var(--spectrum-gray-25);
+  --color-button-text-static-white-disabled: var(--spectrum-gray-700);
+  --outline-color: var(--spectrum-transparent-white-800);
+  --focus-outline-color: var(--spectrum-white);
+
+  border: 2px solid var(--color-button-border-static-white);
+  color: var(--color-button-text-static-white);
+
+  &:hover {
+    border-color: var(--color-button-border-static-white-hover);
+    background-color: var(--color-button-background-static-white-hover);
+    color: var(--color-button-text-static-white-hover);
+  }
+
+  &:disabled,
+  &:disabled:hover {
+    border-color: var(--color-button-border-static-white-disabled);
+    color: var(--color-button-text-static-white-disabled);
+  }
+}
+
+:root:has(#color-scheme:checked) .button--static-white {
+  --color-button-text-static-white: var(--spectrum-gray-900);
+  --color-button-text-static-white-hover: var(--spectrum-gray-900);
+  --color-button-text-static-white-disabled: var(--spectrum-gray-400);
+}
+
+.button--accent {
+  --color-button-background-accent: var(--spectrum-blue-900);
+  --color-button-background-accent-hover: var(--spectrum-blue-1000);
+  --color-button-background-accent-disabled: var(
+    --spectrum-transparent-black-100
+  );
+  --color-button-text-accent: var(--spectrum-white);
+
+  background-color: var(--color-button-background-accent);
+  color: var(--color-button-text-accent);
+
+  &:hover {
+    background-color: var(--color-button-background-accent-hover);
+    color: var(--color-button-text-accent);
+  }
+
+  &:disabled,
+  &:disabled:hover {
+    background-color: var(--color-button-background-accent-disabled);
+  }
+}
+
+:root:has(#color-scheme:checked) .button--accent {
+  --color-button-background-accent: var(--spectrum-blue-800);
+  --color-button-background-accent-hover: var(--spectrum-blue-900);
+}
+
+.button--ghost {
+  --color-button-text-ghost: var(--color-text-link);
+  --color-button-text-ghost-hover: var(--color-text-link-hover);
+
+  color: var(--color-button-text-ghost);
+  font-size: var(--spectrum-font-size-200);
+  font-weight: var(--spectrum-medium-font-weight);
+
+  &:hover {
+    color: var(--color-button-text-ghost-hover);
+    text-decoration: underline;
+  }
+}
+
+.button--hide-at-medium {
+  /* supports change in button location */
+  /* review section header styles for detail */
+  @media (min-width: 48rem) {
+    display: none;
+  }
+}
+
 /* ** Elements - Focus Styles ** */
 
 :root {

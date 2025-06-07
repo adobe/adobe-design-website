@@ -1,7 +1,7 @@
 /* this class styles the #main-content selector text within the article page */
 .article-content {
   &
-    > .article-header-container
+    article
     > :is(
       div,
       figure:not(.image-with-caption--full-bleed),
@@ -14,7 +14,8 @@
       h6,
       ul,
       ol,
-      dl
+      dl,
+      aside
     ) {
     max-width: var(--page-constrained-text);
     margin-inline: auto;

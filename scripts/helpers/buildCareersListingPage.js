@@ -5,6 +5,13 @@ import {
   buildListingCTA,
 } from "./index.js";
 
+/**
+ * Append a sticky CTA, a listing details section, and a prefooter with
+ * static content to career listing pages.
+ *
+ * @return {void}
+ */
+
 export const buildCareersListingPage = async () => {
   const listingMetadata = getListingMetadata();
 

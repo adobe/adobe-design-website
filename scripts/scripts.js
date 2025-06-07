@@ -8,6 +8,7 @@ import {
   decorateSections,
   decorateBlocks,
   decorateTemplateAndTheme,
+  cleanEmptyDivs,
   getMetadata,
   waitForFirstImage,
   loadSection,
@@ -19,6 +20,7 @@ import { decorateThemeBackgroundVisuals } from './modules/themeBackgrounds.js';
 import {
   debounce,
   isSubPageOf,
+  buildArticlePage,
   buildCareersListingPage
 } from './helpers/index.js';
 
@@ -74,7 +76,8 @@ export function decorateMain(main) {
   buildAutoBlocks(main),
   decorateSections(main),
   decorateBlocks(main),
-  decorateLayouts(main);
+  decorateLayouts(main),
+  cleanEmptyDivs(main);
 }
 
 /**
@@ -131,6 +134,12 @@ async function loadLazy(doc) {
   loadCSS(`${window.hlx.codeBasePath}/styles/global-blocks.css`);
 
   // decorate page-specific components
+  // decorate article page
+  if (isSubPageOf('ideas')) {
+    const isStoryPackPage = document.head.querySelector("meta[name='page-type']")?.content.trim().toLowerCase() === "story pack";
+    if (!isStoryPackPage) buildArticlePage();
+  };
+
   // decorate careers listing page
   if (isSubPageOf('careers')) buildCareersListingPage();
 
