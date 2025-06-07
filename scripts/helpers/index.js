@@ -3,7 +3,7 @@ export { getAuthorData } from "./getAuthorData.js";
 export { getListingMetadata } from "./getListingMetadata.js";
 export { loadArticlePreFooter } from "./loadArticlePreFooter.js";
 export { loadListingPreFooter } from "./loadListingPreFooter.js";
-export { buildAuthorBio } from "./buildAuthorBio.js";
+export { buildAuthorAside } from "./buildAuthorAside.js";
 export { buildListingCTA } from "./buildListingCTA.js";
 export { buildListingDetails } from "./buildListingDetails.js";
 export { buildSkipLink } from "./buildSkipLink.js";

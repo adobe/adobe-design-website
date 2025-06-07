@@ -14,7 +14,8 @@
       h6,
       ul,
       ol,
-      dl
+      dl,
+      aside
     ) {
     max-width: var(--page-constrained-text);
     margin-inline: auto;

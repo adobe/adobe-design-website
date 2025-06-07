@@ -1,6 +1,6 @@
 import {
   getAuthorData,
-  buildAuthorBio,
+  buildAuthorAside,
   loadArticlePreFooter,
 } from "./index.js";
 
@@ -21,10 +21,8 @@ export const buildArticlePage = async () => {
   };
 
   const authorData = await getAuthorData();
-  authorData.forEach((author) => {
-    const authorBio = buildAuthorBio(author);
-    articleElement.append(authorBio);
-  });
+  const authorBios = buildAuthorAside(authorData);
+  articleElement.append(authorBios);
 
   articleBodyContainer.append(articleElement);
 
