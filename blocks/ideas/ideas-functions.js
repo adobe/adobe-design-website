@@ -139,8 +139,8 @@ export const handleLoadMore = async (event) => {
         startAfterPath: lastCardPath,
     });
 
-    // Mark the items loaded via load more with a "was-loaded" data attribute, for styling purposes.
-    Array.from(fragment?.children || []).forEach(item => item.dataset.wasLoaded = true);
+    // Mark the items loaded via load more with an "added" data attribute, for styling purposes.
+    Array.from(fragment?.children || []).forEach(item => item.dataset.added = true);
 
     // Find some info in what was fetched, and then append the new articles.
     const reachedLastArticle = fragment?.lastChild?.dataset?.lastArticle === "true";

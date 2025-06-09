@@ -1,5 +1,5 @@
 .ideas {
-    margin-block: 1.5rem;
+    margin-block: 1.5rem 3.0rem;
 
     @media (min-width: 48rem) {
         margin-block: 2rem 3rem;
@@ -91,12 +91,69 @@
 
 .ideas__load-button {
     margin-block: 2.0rem;
+    width: 100%;
 
     &:disabled[data-is-loading="true"]{
         cursor: progress;
     }
 
+    @media (min-width: 48rem) {
+        width: auto;
+    }
+
     @media (min-width: 80rem) {
         margin-block: 4.0rem;
+    }
+}
+
+/* Appended cards on mobile display differently, including a side-by-side layout. */
+@media (max-width: 30rem) {
+    .ideas .grid-item[data-added="true"] {
+        grid-column: span 8;
+        border-top: 1px solid var(--spectrum-gray-400);
+        border-bottom: 1px solid var(--spectrum-gray-400);
+        padding-block: 1rem;
+        margin-block-start: 1.0rem;
+
+        & ~ .grid-item[data-added="true"] {
+            border-top: none;
+            padding-block: 0 1rem;
+            margin-block-start: 0;
+        }
+
+        .card {
+            flex-direction: row;
+            column-gap: 1rem;
+            background: transparent;
+            border-radius: 0;
+            box-shadow: none;
+        }
+
+        .card__image {
+            order: 1;
+            flex: 1 0 20%;
+            align-content: center;
+
+            & img {
+                height: auto;
+                object-fit: contain;
+                border-radius: var(--spectrum-corner-radius-800);
+            }
+        }
+
+        .card__content {
+            order: 2;
+            flex: 0 1 80%;
+            min-height: auto;
+            padding: 0;
+
+            .card__title {
+                margin: 0;
+            }
+
+            .card__description {
+                display: none;
+            }
+        }
     }
 }
