@@ -36,5 +36,7 @@ main > .section > .section-header {
   .section-header__description + .section-header__button {
     margin-inline-start: auto;
     grid-column: 9 / span 4;
+    grid-row: 1 / span 2;
+    align-self: end;
   }
 }

@@ -45,15 +45,14 @@
     @container callout-wrapper (min-width: 49rem) {
       margin-block-start: 0;
     }
+    @media (min-width: 48rem) {
+      width: unset;
+    }
   }
 
   @container callout-wrapper (min-width: 35.5rem) {
     padding: 2.5rem;
     gap: 1.25rem;
-
-    .button {
-      width: unset;
-    }
   }
 
   @container callout-wrapper (min-width: 44rem) {

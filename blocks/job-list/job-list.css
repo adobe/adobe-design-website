@@ -46,7 +46,7 @@
     border-top: 0;
   }
 
-  @media (min-width: 48rem) {
+  @media (min-width: 34.5rem) {
 
     & .job-listing::after {
       display: none;

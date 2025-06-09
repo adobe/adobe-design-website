@@ -20,12 +20,13 @@
 }
 
 .grid-item .link-list {
+  margin-block: 0;
+
   @media (min-width: 48rem) {
     height: 100%;
     display: flex;
     flex-direction: column;
-    margin-block: 0;
-  
+
     > li {
       flex-grow: 1;
     }
@@ -51,7 +52,7 @@
       border-bottom: none;
     }
   }
-  
+
   @media (min-width: 80rem) {
     grid-template-columns: 1fr 1fr 1fr;
     margin-block-end: 3rem;

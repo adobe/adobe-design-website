@@ -104,7 +104,7 @@ main picture:not([class]) > img:not([class]) {
   align-items: center;
   justify-content: center;
   max-width: 100%;
-  padding: 0.75rem 1.25rem 0.875rem;
+  padding: 0.625rem 1rem 0.6875rem;
   border: none;
   border-radius: var(--border-radius-button);
   background-color: transparent;
@@ -512,6 +512,10 @@ main > .section.small-screen-cta-container > .grid-container {
       grid-column-gap: 1.5rem;
       grid-row-gap: 1.5rem;
     }
+
+    @media (min-width: 80rem) {
+      grid-row-gap: 3.375rem;
+    }
   }
 }
 
@@ -553,6 +557,7 @@ main > .section.small-screen-cta-container > .grid-container {
   min-width: 0;
 
   & .card-container,
+  &.card-container,
   & .card,
   & .callout,
   & .callout-container,
@@ -563,7 +568,8 @@ main > .section.small-screen-cta-container > .grid-container {
 }
 
 .callout-container .grid-item,
-.card-container .grid-item {
+.card-container .grid-item,
+.card-container.grid-item {
   align-self: stretch;
 }
 
