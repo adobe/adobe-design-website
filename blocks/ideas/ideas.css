@@ -2,13 +2,13 @@
     margin-block: 1.5rem;
 
     @media (min-width: 48rem) {
-        margin-block: 2rem;
+        margin-block: 2rem 3rem;
     }
     @media (min-width: 80rem) {
-        margin-block: 2.5rem;
+        margin-block: 2.5rem 5rem;
     }
     @media (min-width: 105rem) {
-        margin-block-start: 5rem;
+        margin-block: 5rem 6.5rem;
     }
 }
 
@@ -91,6 +91,10 @@
 
 .ideas__load-button {
     margin-block: 2.0rem;
+
+    &:disabled[data-is-loading="true"]{
+        cursor: progress;
+    }
 
     @media (min-width: 80rem) {
         margin-block: 4.0rem;
