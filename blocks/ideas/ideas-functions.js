@@ -139,20 +139,27 @@ export const handleLoadMore = async (event) => {
         startAfterPath: lastCardPath,
     });
 
-    // Mark the items loaded via load more with a "was-loaded" data attribute.
+    // Mark the items loaded via load more with a "was-loaded" data attribute, for styling purposes.
     Array.from(fragment?.children || []).forEach(item => item.dataset.wasLoaded = true);
 
-    // Find some info in the fetched articles, then append them.
+    // Find some info in what was fetched, and then append the new articles.
     const reachedLastArticle = fragment?.lastChild?.dataset?.lastArticle === "true";
     const firstNewCard = fragment?.firstChild?.querySelector('a.card');
+    const totalNewArticles = fragment?.children?.length ?? 0;
     gridContainer.append(fragment);
 
     // Update button to no longer be in loading state, or remove button if we've reached the end.
     updateButtonState(false, reachedLastArticle);
 
-    // Set focus to the first newly added item.
-    // To-do: update live region.
+    // Update focus and live region.
     if (firstNewCard) {
+        // Update live region text.
+        const liveRegion = document.getElementById('ideas-live-region');
+        if (liveRegion && totalNewArticles > 0) {
+            liveRegion.textContent = `${totalNewArticles} more ${totalNewArticles > 1 ? 'articles' : 'article'} loaded.`;
+        }
+
+        // Set focus to the first newly added item.
         firstNewCard.focus();
     }
 };

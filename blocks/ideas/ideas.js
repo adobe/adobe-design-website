@@ -23,6 +23,7 @@ export default function decorate(block) {
 
     const gridContainer = document.createElement('div');
     gridContainer.classList.add('ideas__grid', 'grid-container');
+    gridContainer.id = "ideas-grid";
     newBlock.append(gridContainer);
 
     // Create new features markup.
@@ -62,17 +63,19 @@ export default function decorate(block) {
         gridContainer.append(fragment, ...features);
         rearrangeFeatures(gridContainer, groupTotal);
 
-        // Append aria-live region to help announce when new posts are loaded.
-        const liveRegion = document.createElement('div');
-        liveRegion.setAttribute('aria-live', 'polite');
-        liveRegion.setAttribute('aria-atomic', 'true');
-        liveRegion.classList.add('util-visually-hidden');
-        newBlock.append(liveRegion);
-
-        // Append load more button if there are more articles.
         if (!isEndOfArticles) {
+            // Append aria-live region to help announce when new posts are loaded.
+            const liveRegion = document.createElement('div');
+            liveRegion.setAttribute('aria-live', 'polite');
+            liveRegion.setAttribute('aria-atomic', 'true');
+            liveRegion.classList.add('util-visually-hidden');
+            liveRegion.id = "ideas-live-region";
+            newBlock.append(liveRegion);
+
+            // Append load more button.
             const loadMoreButton = document.createElement('button');
             loadMoreButton.type = "button";
+            loadMoreButton.setAttribute('aria-controls', 'ideas-grid');
             loadMoreButton.classList.add('ideas__load-button', 'button', 'button--primary');
             loadMoreButton.dataset.defaultText = "Load more ideas";
             loadMoreButton.dataset.loadingText = "Loading ideas…";
