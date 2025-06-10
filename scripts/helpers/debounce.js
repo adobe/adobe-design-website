@@ -1,5 +1,5 @@
 /**
- * Creates a delay of the provided function, waiting ofr a delay
+ * Creates a delay of the provided function, waiting for a delay
  * before calling the function again.
  * @function
  * @param {Function} trigger - The function to delay.

@@ -2,6 +2,7 @@
  * @file Ideas block specific functions used to assist with block decoration.
  */
 import { getCurrentBreakpoint, fetchAndBuildIdeas } from "../../scripts/helpers/index.js";
+import { getCurrentFiltersArray } from "../filter-group/filter-group-utils.js";
 
 /**
  * Object representing each feature row in the content.
@@ -102,6 +103,8 @@ export const handleLoadMore = async (event) => {
     const clickedButton = event.target?.closest('.ideas__load-button');
     const gridContainer = event.target?.closest('.ideas')?.querySelector('.ideas__grid');
     const lastCardItem = gridContainer?.querySelector('.grid-item:last-child:has(.card)');
+    const filtersParent = document.querySelector('.filter-group');
+    const layoutType = gridContainer?.dataset?.layoutType;
 
     /**
      * Update state of button depending on whether it's currently loading or not.
@@ -132,9 +135,9 @@ export const handleLoadMore = async (event) => {
 
     // Fetch ideas older than the last one on the page.
     const fragment = await fetchAndBuildIdeas({
-        tagName: 'All',
+        tagName: getCurrentFiltersArray(filtersParent),
         maxArticles: 8,
-        gridItemClass: 'grid-item--25',
+        gridItemClass: layoutType === 'two-up' ? 'grid-item-50' : 'grid-item--25',
         hasHorizontalScroll: false,
         startAfterPath: lastCardPath,
     });

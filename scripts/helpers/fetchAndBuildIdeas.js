@@ -5,7 +5,7 @@ import { dataStore } from "./dataStore.js";
 /**
  * The settings object used for fetching and creating the list of ideas.
  * @typedef {object} FetchIdeasSettings
- * @property {string} tagName - Fetch articles with this tag, or "All" to fetch all articles.
+ * @property {string|string[]} tagName - Fetch articles with this tag or tags (array), or "All" to fetch all articles.
  * @property {number} maxArticles - Max articles to fetch or -1 for infinite.
  * @property {string} gridItemClass - Class for each grid item that determines layout; e.g. "grid-item--25" for four-up layout.
  * @property {boolean} hasHorizontalScroll - Has horizontal scroll at mobile.
@@ -27,10 +27,17 @@ export const fetchAndBuildIdeas = async (settings) => {
         const articles = await dataStore.getData(dataStore.commonEndpoints.ideas);
         let filteredArticles = articles.data;
 
-        // Filter by the specific tag.
-        const tagToFind = settings.tagName.trim().toLowerCase();
-        if (tagToFind !== 'all') {
-            filteredArticles = filteredArticles.filter(item => item.tag.trim().toLowerCase() === tagToFind);
+        // Make sure tag(s) is always an array.
+        if (!Array.isArray(settings.tagName)) {
+            settings.tagName = [settings.tagName];
+        }
+
+        // Filter by the specific tag(s).
+        const tagsToFind = settings.tagName.map(str => str.trim().toLowerCase());
+        if (tagsToFind.length > 0 && tagsToFind[0] != 'all') {
+            filteredArticles = filteredArticles.filter(
+                ({ tag }) => tagsToFind.includes(tag.trim().toLowerCase())
+            );
         }
 
         // Sort by published date (serial number or timestamp), with the latest dates first.
