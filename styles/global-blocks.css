@@ -32,7 +32,7 @@
   margin-block-end: 0;
 
   + .author-bio {
-    margin-block-start: 1rem;
+    margin-block-start: 3rem;
   }
 
   & .author-meta {
