@@ -81,6 +81,19 @@ export function decorateMain(main) {
 }
 
 /**
+ * Replaces the header if a user reloads the page.
+ * @function
+ * @param {Element} doc - The container element
+ */
+const reloadHeader = (headerElement) => {
+  // remove the current header
+  headerElement.innerHTML= '';
+
+  // build it again
+  loadHeader(headerElement);
+}
+
+/**
  * Loads everything needed to get to LCP.
  * @param {Element} doc The container element
  */
@@ -96,22 +109,13 @@ async function loadEager(doc) {
     main.id = "main-content";
     doc.body.classList.add('appear');
     await loadSection(main.querySelector('.section'), waitForFirstImage);
+
+    // loads the header component, along with its stylesheet
+    const headerElement = doc.querySelector('header');
+    loadHeader(headerElement);
   }
 
   sampleRUM.enhance();
-}
-
-/**
- * Replaces the header if a user reloads the page.
- * @function
- * @param {Element} doc - The container element
- */
-const reloadHeader = (headerElement) => {
-  // remove the current header
-  headerElement.innerHTML= '';
-
-  // build it again
-  loadHeader(headerElement);
 }
 
 /**
@@ -143,14 +147,11 @@ async function loadLazy(doc) {
   // decorate careers listing page
   if (isSubPageOf('careers')) buildCareersListingPage();
 
-  // loads the header and footer components, along with their stylesheets
-  const headerElement = doc.querySelector('header');
-
-  loadHeader(headerElement);
-
   // supports rerendering of the responsive navigation
+  const headerElement = doc.querySelector('header'); 
   window.addEventListener("resize", debounce(() => reloadHeader(headerElement), 150));
 
+  // loads the footer component, along with its stylesheet
   loadFooter(doc.querySelector('footer'));
 
   // Append any theme background SVGs.
