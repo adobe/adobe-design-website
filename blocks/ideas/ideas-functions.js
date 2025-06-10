@@ -95,6 +95,25 @@ export const calculateGroupTotal = () => ({
 }[getCurrentBreakpoint()] || 8);
 
 /**
+ * Update state of button depending on whether it's currently loading or not.
+ * Or whether we've reached the end of the articles and the button should disappear.
+ * @param {HTMLButtonElement} button
+ * @param {boolean} isLoading 
+ * @param {boolean} reachedLastArticle 
+ */
+export const updateLoadButtonState = (button, isLoading = false, reachedLastArticle = false) => {
+    if (reachedLastArticle === true) {
+        button.disabled = true;
+        button.style.display = 'none';
+    } else {
+        button.disabled = isLoading;
+        button.removeAttribute('style');
+        button.dataset.isLoading = isLoading;
+        button.textContent = isLoading ? button.dataset.loadingText : button.dataset.defaultText;
+    }
+};
+
+/**
  * Handle click on the load more button.
  * 
  * @param {PointerEvent} event
@@ -109,30 +128,15 @@ export const handleLoadMore = async (event) => {
     // Tag(s) to fetch. Tags in filters, or a set tag from the data attribute if there are no filters (story pack page).
     const tagsToFind = filtersParent ? getCurrentFiltersArray(filtersParent) : (gridContainer?.dataset?.tag ?? 'All');
 
-    /**
-     * Update state of button depending on whether it's currently loading or not.
-     * Or whether we've reached the end of the articles and the button should disappear.
-     * @param {boolean} isLoading 
-     * @param {boolean} reachedLastArticle 
-     */
-    const updateButtonState = (isLoading = false, reachedLastArticle = false) => {
-        if (reachedLastArticle === true) {
-            clickedButton.disabled = true;
-            clickedButton.style.display = 'none';
-        } else {
-            clickedButton.disabled = isLoading;
-            clickedButton.dataset.isLoading = isLoading;
-            clickedButton.textContent = isLoading ? clickedButton.dataset.loadingText : clickedButton.dataset.defaultText;
-        }
-    };
-    updateButtonState(true);
+    // Temporarily disable button while loading.
+    updateLoadButtonState(clickedButton, true);
 
     // Find last card's href (article path is unique).
     const lastCardPath = lastCardItem?.querySelector('a.card')?.getAttribute('href');
     if (!lastCardPath) {
         // eslint-disable-next-line no-console
         console.error('Could not determine the path of the last ideas article.');
-        updateButtonState(false, true);
+        updateLoadButtonState(clickedButton, false, true);
         return;
     }
 
@@ -155,7 +159,7 @@ export const handleLoadMore = async (event) => {
     gridContainer.append(fragment);
 
     // Update button to no longer be in loading state, or remove button if we've reached the end.
-    updateButtonState(false, reachedLastArticle);
+    updateLoadButtonState(clickedButton, false, reachedLastArticle);
 
     // Update focus and live region.
     if (firstNewCard) {

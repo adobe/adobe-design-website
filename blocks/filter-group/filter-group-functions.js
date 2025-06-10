@@ -3,7 +3,7 @@
  */
 import { updateFilter, getCurrentFiltersArray } from './filter-group-utils.js';
 import { fetchAndBuildIdeas } from '../../scripts/helpers/fetchAndBuildIdeas.js';
-import { initialMaxIdeas, calculateGroupTotal, rearrangeFeatures } from '../ideas/ideas-functions.js';
+import { initialMaxIdeas, calculateGroupTotal, rearrangeFeatures, updateLoadButtonState } from '../ideas/ideas-functions.js';
 import { debounce } from '../../scripts/helpers/debounce.js';
 
 /**
@@ -46,15 +46,7 @@ const refreshArticleContent = async (selectedFilters = []) => {
 
     // Show or hide load more button.
     if (loadMoreButton) {
-        if (isEndOfArticles) {
-            loadMoreButton.disabled = true;
-            loadMoreButton.style.display = 'none';
-        } else {
-            loadMoreButton.disabled = false;
-            loadMoreButton.removeAttribute('style');
-            loadMoreButton.dataset.isLoading = false;
-            loadMoreButton.textContent = loadMoreButton.dataset.defaultText;
-        }
+        updateLoadButtonState(loadMoreButton, false, isEndOfArticles);
     }
 
     // Show or hide no results text.
