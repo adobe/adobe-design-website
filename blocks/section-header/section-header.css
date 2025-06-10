@@ -40,3 +40,24 @@ main > .section > .section-header {
     align-self: end;
   }
 }
+
+.grid-item--66 .section-header,
+.grid-item--50 .section-header {
+  /* styles for when a section header with button is inside a limited grid container */
+
+  @media (min-width: 48rem) {
+    .section-header__heading.grid-item--66,
+    .section-header__description.grid-item--66 {
+      grid-column: span 12;
+      max-width: var(--page-constrained-text);
+    }
+
+    .section-header__description + .section-header__button {
+      margin-inline-start: unset;
+      grid-column: span 12;
+      grid-row: 3;
+      align-self: unset;
+      margin-block-start: 1rem;
+    }
+  }
+}

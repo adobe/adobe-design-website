@@ -829,7 +829,7 @@ a.card:hover {
     }
 
     @media (min-width: 105rem) {
-      margin-block-end: var(--spacing-heading-block-start-exlarge-screen);
+      margin-block-end: var(--spacing-heading-block-start-xl-screen);
     }
   }
 
@@ -844,4 +844,8 @@ a.card:hover {
         margin-block-end: var(--spacing-global-block-end-large-screen);
       }
     }
+
+  > .grid-container .grid-item:has(.section-header) {
+    align-self: center;
+  }
 }

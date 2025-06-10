@@ -565,6 +565,12 @@ main > .section.small-screen-cta-container > .grid-container {
     height: 100%;
     box-sizing: border-box;
   }
+
+  & .image-with-caption {
+    @media (min-width: 48rem) {
+      margin-block: auto;
+    }
+  }
 }
 
 .callout-container .grid-item,
