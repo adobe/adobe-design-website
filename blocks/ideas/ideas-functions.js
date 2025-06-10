@@ -106,6 +106,9 @@ export const handleLoadMore = async (event) => {
     const filtersParent = document.querySelector('.filter-group');
     const layoutType = gridContainer?.dataset?.layoutType;
 
+    // Tag(s) to fetch. Tags in filters, or a set tag from the data attribute if there are no filters (story pack page).
+    const tagsToFind = filtersParent ? getCurrentFiltersArray(filtersParent) : (gridContainer?.dataset?.tag ?? 'All');
+
     /**
      * Update state of button depending on whether it's currently loading or not.
      * Or whether we've reached the end of the articles and the button should disappear.
@@ -135,9 +138,9 @@ export const handleLoadMore = async (event) => {
 
     // Fetch ideas older than the last one on the page.
     const fragment = await fetchAndBuildIdeas({
-        tagName: getCurrentFiltersArray(filtersParent),
+        tagName: tagsToFind,
         maxArticles: 8,
-        gridItemClass: layoutType === 'two-up' ? 'grid-item-50' : 'grid-item--25',
+        gridItemClass: layoutType === 'two-up' ? 'grid-item--50' : 'grid-item--25',
         hasHorizontalScroll: false,
         startAfterPath: lastCardPath,
     });

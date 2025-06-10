@@ -8,10 +8,12 @@ import { buildIdeasFeature, calculateGroupTotal, initialMaxIdeas, handleLoadMore
  *
  * - Lists recent ideas articles, interspersed with featured sections that are entered in the content.
  * - Includes a load more button for loading the next set of articles.
+ * - Can pull in a specific tag, for using this block on the story pack (tag) pages.
  */
 export default function decorate(block) {
-    // Layout type setting.
+    // Settings from content. Stored in first row with optional second column for the tag.
     const layoutType = block.children?.[0]?.children?.[0]?.textContent?.trim();
+    const tagSetting = block.children?.[0]?.children?.[1]?.textContent?.trim() ?? 'All';
 
     // Features content, stored in row(s) after the first row.
     // There could be several features (recommended max of 4), or none.
@@ -34,6 +36,7 @@ export default function decorate(block) {
     gridContainer.classList.add('ideas__grid', 'grid-container');
     gridContainer.id = "ideas-grid";
     gridContainer.dataset.layoutType = layoutType;
+    gridContainer.dataset.tag = tagSetting;
     newBlock.append(gridContainer);
 
     // Append aria-live region to help announce when new posts are loaded.
@@ -70,7 +73,7 @@ export default function decorate(block) {
     // Fetch and add markup for articles, and then add in the features.
     const fetchAndAppend = async () => {
         const fragment = await fetchAndBuildIdeas({
-            tagName: 'All',
+            tagName: tagSetting,
             maxArticles: initialMaxIdeas(features.length, groupTotal),
             gridItemClass: layoutType === 'two-up' ? 'grid-item--50' : 'grid-item--25',
             hasHorizontalScroll: false,

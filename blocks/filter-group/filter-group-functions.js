@@ -32,7 +32,7 @@ const refreshArticleContent = async (selectedFilters = []) => {
     const fragment = await fetchAndBuildIdeas({
         tagName: selectedFilters,
         maxArticles: initialMaxIdeas(features?.length ?? 0, groupTotal),
-        gridItemClass: layoutType === 'two-up' ? 'grid-item-50' : 'grid-item--25',
+        gridItemClass: layoutType === 'two-up' ? 'grid-item--50' : 'grid-item--25',
         hasHorizontalScroll: false,
     });
     const hasArticles = (fragment.childElementCount > 0);
