@@ -1033,6 +1033,65 @@ main > .section.small-screen-cta-container > .grid-container {
   }
 }
 
+/* Backdrop heights */
+.theme--backdrop-indigo,
+.theme--backdrop-green {
+  --page-background-height: 48.813rem;
+}
+
+.theme--backdrop-blue-circles {
+  --page-background-height: 69.25rem;
+}
+
+.theme--backdrop-indigo,
+.theme--backdrop-green,
+.theme--backdrop-blue-circles {
+  @media (min-width: 48rem) {
+    --page-background-height: 70.75rem;
+  }
+
+  @media (min-width: 80rem) {
+    --page-background-height: 36.563rem;
+  }
+
+  @media (min-width: 105rem) {
+    --page-background-height: 55.938rem;
+  }
+}
+
+.theme--backdrop-seafoam {
+  --page-background-height: 21.75rem;
+
+  @media (min-width: 48rem) {
+    --page-background-height: 39.313rem;
+  }
+
+  @media (min-width: 80rem) {
+    --page-background-height: 35.188rem;
+  }
+
+  @media (min-width: 105rem) {
+    --page-background-height: 50.188rem;
+  }
+}
+
+.theme--backdrop-blue-green-wave {
+  --page-background-height: 69.25rem;
+
+  @media (min-width: 48rem) {
+    --page-background-height: 63.5rem;
+  }
+
+  @media (min-width: 80rem) {
+    --page-background-height: 71.5rem;
+  }
+
+  @media (min-width: 105rem) {
+    --page-background-height: 83.375rem;
+  }
+}
+
+/* Backdrop gradients and shape positioning */
 .theme--backdrop-indigo {
   --page-gradient-start-color: var(--gradient-indigo-start);
   --shape-diamond-fill: rgb(116 91 252);
@@ -1047,28 +1106,12 @@ main > .section.small-screen-cta-container > .grid-container {
   --shape-diamond-fill: var(--spectrum-green-600);
 }
 
-.theme--backdrop-indigo,
-.theme--backdrop-green {
-  --page-background-height: 48.813rem;
-
-  @media (min-width: 48rem) {
-    --page-background-height: 70.75rem;
-  }
-
-  @media (min-width: 80rem) {
-    --page-background-height: 36.563rem;
-  }
-
-  @media (min-width: 105rem) {
-    --page-background-height: 55.938rem;
-  }
-}
-
 .theme--backdrop-indigo .background-visuals .shape--diamond,
 .theme--backdrop-green .background-visuals .shape--diamond {
   position: absolute;
   inset: -57px auto auto -327px;
   min-height: 100%;
+  height: calc(100% + 57px);
 
   @media (min-width: 48rem) {
     inset: -113px -316px auto auto;
@@ -1089,6 +1132,23 @@ main > .section.small-screen-cta-container > .grid-container {
   @media (min-width: 120rem) {
     inset: 0 0 auto 32.7%;
     width: 67.3%;
+  }
+}
+
+.theme--backdrop-blue-circles .background-visuals .shape--slopes {
+  position: absolute;
+  inset: 0 -694px 0 auto;
+
+  @media (min-width: 48rem) {
+    inset: 0 -644px 0 auto;
+  }
+
+  @media (min-width: 80rem) {
+    inset: 0 auto 0 -132px;
+  }
+
+  @media (min-width: 105rem) {
+    inset: 0 -263px 0 auto;
   }
 }
 

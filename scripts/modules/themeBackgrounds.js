@@ -19,7 +19,7 @@ export async function decorateThemeBackgroundVisuals(theme) {
         'backdrop-green': [allShapes.roundedDiamond],
         'backdrop-seafoam': [],
         'backdrop-blue-green-wave': [],
-        'backdrop-blue-circles': []
+        'backdrop-blue-circles': [allShapes.slopes]
     };
 
     // Return if theme does not need any SVGs.
