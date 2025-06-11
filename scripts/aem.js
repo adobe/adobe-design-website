@@ -11,7 +11,7 @@
  */
 
 /* eslint-env browser */
-import { decorateThemeBackgroundVisuals } from "./modules/themeBackgrounds.js";
+import { decorateThemeBackgroundVisuals } from "./helpers/themeBackgrounds.js";
 
 function sampleRUM(checkpoint, data) {
   // eslint-disable-next-line max-len
