@@ -328,12 +328,6 @@ function decorateTemplateAndTheme() {
     addClasses(document.body, theme, 'theme--');
     decorateThemeBackgroundVisuals(theme);
   }
-
-  // Add page specific color from the metadata in a root level CSS custom property.
-  const color = getMetadata('color');
-  if (color) {
-    document.querySelector(":root").style.setProperty("--color-background", `var(--${color})`);
-  }
 }
 
 /**
