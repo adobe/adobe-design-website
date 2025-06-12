@@ -1025,6 +1025,7 @@ main > .section.small-screen-cta-container > .grid-container {
     display: block;
     content: '';
     position: absolute;
+    z-index: 2;
     bottom: 0;
     left: 0;
     width: 100%;
@@ -1033,20 +1034,7 @@ main > .section.small-screen-cta-container > .grid-container {
   }
 }
 
-.theme--backdrop-indigo {
-  --page-gradient-start-color: var(--gradient-indigo-start);
-  --shape-diamond-fill: rgb(116 91 252);
-
-  &:has(#color-scheme:checked) {
-    --shape-diamond-fill: rgb(99 56 238);
-  }
-}
-
-.theme--backdrop-green {
-  --page-gradient-start-color: var(--gradient-backdrop-green-start);
-  --shape-diamond-fill: var(--spectrum-green-600);
-}
-
+/* Backdrop heights */
 .theme--backdrop-indigo,
 .theme--backdrop-green {
   --page-background-height: 48.813rem;
@@ -1064,11 +1052,75 @@ main > .section.small-screen-cta-container > .grid-container {
   }
 }
 
+.theme--backdrop-blue-circles {
+  --page-background-height: 80rem;
+
+  @media (min-width: 48rem) {
+    --page-background-height: 68.125rem;
+  }
+
+  @media (min-width: 80rem) {
+    --page-background-height: 41.813rem;
+  }
+
+  @media (min-width: 105rem) {
+    --page-background-height: 55.938rem;
+  }
+}
+
+.theme--backdrop-seafoam {
+  --page-background-height: 21.75rem;
+
+  @media (min-width: 48rem) {
+    --page-background-height: 39.313rem;
+  }
+
+  @media (min-width: 80rem) {
+    --page-background-height: 35.188rem;
+  }
+
+  @media (min-width: 105rem) {
+    --page-background-height: 50.188rem;
+  }
+}
+
+.theme--backdrop-blue-green-wave {
+  --page-background-height: 69.25rem;
+
+  @media (min-width: 48rem) {
+    --page-background-height: 63.5rem;
+  }
+
+  @media (min-width: 80rem) {
+    --page-background-height: 71.5rem;
+  }
+
+  @media (min-width: 105rem) {
+    --page-background-height: 83.375rem;
+  }
+}
+
+/* Backdrop gradients and shape positioning */
+.theme--backdrop-indigo {
+  --page-gradient-start-color: var(--gradient-indigo-start);
+  --shape-diamond-fill: rgb(116 91 252);
+
+  &:has(#color-scheme:checked) {
+    --shape-diamond-fill: rgb(99 56 238);
+  }
+}
+
+.theme--backdrop-green {
+  --page-gradient-start-color: var(--gradient-backdrop-green-start);
+  --shape-diamond-fill: var(--spectrum-green-600);
+}
+
 .theme--backdrop-indigo .background-visuals .shape--diamond,
 .theme--backdrop-green .background-visuals .shape--diamond {
   position: absolute;
   inset: -57px auto auto -327px;
   min-height: 100%;
+  height: calc(100% + 57px);
 
   @media (min-width: 48rem) {
     inset: -113px -316px auto auto;
@@ -1092,11 +1144,108 @@ main > .section.small-screen-cta-container > .grid-container {
   }
 }
 
+.theme--backdrop-blue-circles .background-visuals .shape--slopes {
+  position: absolute;
+  min-height: 100%;
+  inset: 0 -694px 0 auto;
+
+  @media (min-width: 48rem) {
+    inset: 0 -544px 0 auto;
+  }
+
+  @media (min-width: 80rem) {
+    inset: 0 auto 0 -132px;
+  }
+
+  @media (min-width: 105rem) {
+    inset: 0 -263px 0 auto;
+  }
+
+  @media (min-width: 140rem) {
+    inset: auto 0 0 auto;
+    width: calc(50dvw + 980px);
+  }
+}
+
 .theme--backdrop-seafoam {
   --page-gradient-start-color: var(--gradient-backdrop-seafoam-start);
   --page-gradient-end-color: var(--gradient-backdrop-seafoam-end);
+
+  .background-visuals {
+    &::before,
+    &::after {
+      height: 426px;
+    }
+
+    &::after {
+      @media (min-width: 80rem) {
+        height: 426px;
+      }
+    }
+
+    /* A second offset bottom gradient in this design. */
+    &::before {
+      display: block;
+      content: '';
+      position: absolute;
+      z-index: 2;
+      bottom: -93px;
+      left: 0;
+      width: 100%;
+      background: linear-gradient(180deg, rgb(from var(--color-background) r g b / 0) 0%, var(--color-background) 100%);
+    }
+  }
+
+  .background-visuals .shape--faded-wave {
+    position: absolute;
+    inset: auto -550px -120px auto;
+
+    @media (min-width: 48rem) {
+      inset: auto -550px -120px auto;
+    }
+
+    @media (min-width: 80rem) {
+      inset: auto -321px -120px auto;
+    }
+
+    @media (min-width: 105rem) {
+      inset: auto 0 0 auto;
+    }
+
+    @media (min-width: 120rem) {
+      width: calc(50dvw + 493px);
+    }
+  }
 }
 
 .theme--backdrop-blue-green-wave {
   --page-gradient-start-color: var(--gradient-backdrop-blue-green-wave-start);
+
+  .background-visuals {
+    &::after {
+      height: max(calc(100% - 427px), 225px);
+    }
+
+    .shape--waves-and-glow {
+      position: absolute;
+      min-height: 100%;
+      inset: -120px -360px auto auto;
+
+      @media (min-width: 48rem) {
+        inset: -150px -140px auto auto;
+      }
+
+      @media (min-width: 80rem) {
+        inset: -40px -100px auto auto;
+      }
+
+      @media (min-width: 105rem) {
+        inset: 0 0 auto auto;
+      }
+    
+      @media (min-width: 140rem) {
+        width: calc(50dvw + 960px);
+      }
+    }
+  }
 }

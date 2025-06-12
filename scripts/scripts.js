@@ -16,7 +16,6 @@ import {
   loadCSS,
   sampleRUM,
 } from './aem.js';
-import { decorateThemeBackgroundVisuals } from './modules/themeBackgrounds.js';
 import {
   debounce,
   isSubPageOf,
@@ -153,9 +152,6 @@ async function loadLazy(doc) {
 
   // loads the footer component, along with its stylesheet
   loadFooter(doc.querySelector('footer'));
-
-  // Append any theme background SVGs.
-  decorateThemeBackgroundVisuals();
 }
 
 /**

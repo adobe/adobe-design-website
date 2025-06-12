@@ -2,7 +2,7 @@ import { allShapes } from "../../assets/themes/shapes.js";
 
 /**
  * Adds inline SVGs needed for the unique page backgrounds within some themes.
- * Appends a container element containing the SVG elements.
+ * Appends a container element containing the SVG element(s).
  * 
  * These are added as their own elements instead of in `background-image` because their
  * fill colors are changed with CSS between themes and light/dark.
@@ -17,9 +17,9 @@ export async function decorateThemeBackgroundVisuals(theme) {
     const graphicsMapping = {
         'backdrop-indigo': [allShapes.roundedDiamond],
         'backdrop-green': [allShapes.roundedDiamond],
-        'backdrop-seafoam': [],
-        'backdrop-blue-green-wave': [],
-        'backdrop-blue-circles': []
+        'backdrop-seafoam': [allShapes.fadedWave],
+        'backdrop-blue-green-wave': [allShapes.wavesAndGlow],
+        'backdrop-blue-circles': [allShapes.slopes]
     };
 
     // Return if theme does not need any SVGs.

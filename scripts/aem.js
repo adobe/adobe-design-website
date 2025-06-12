@@ -11,7 +11,7 @@
  */
 
 /* eslint-env browser */
-import { decorateThemeBackgroundVisuals } from "./modules/themeBackgrounds.js";
+import { decorateThemeBackgroundVisuals } from "./helpers/themeBackgrounds.js";
 
 function sampleRUM(checkpoint, data) {
   // eslint-disable-next-line max-len
@@ -327,12 +327,6 @@ function decorateTemplateAndTheme() {
     document.body.classList.add('theme');
     addClasses(document.body, theme, 'theme--');
     decorateThemeBackgroundVisuals(theme);
-  }
-
-  // Add page specific color from the metadata in a root level CSS custom property.
-  const color = getMetadata('color');
-  if (color) {
-    document.querySelector(":root").style.setProperty("--color-background", `var(--${color})`);
   }
 }
 

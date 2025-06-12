@@ -10,6 +10,7 @@ export { buildSkipLink } from "./buildSkipLink.js";
 export { createFocusTrap } from "./createFocusTrap.js";
 
 // helpers for full-page logic
+export { decorateThemeBackgroundVisuals } from "./themeBackgrounds.js";
 export { buildCareersListingPage } from "./buildCareersListingPage.js";
 export { buildArticlePage } from "./buildArticlePage.js";
 
