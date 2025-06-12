@@ -42,22 +42,19 @@ const fetchDataAndBuildCards = async (cardsParent, settings) => {
 
         // Build markup.
         filteredArticles.forEach(article => {
-            // Create a grid item for a two-up or four-up layout.
-            const gridItem = document.createElement('div');
-            gridItem.classList.add('grid-item', settings.gridItemClass);
 
             // Create card and append.
             const articleImageUrl = article.image.trim();
             const card = buildCard({
-                img: articleImageUrl ? createOptimizedPicture(articleImageUrl) : '', 
+                img: articleImageUrl ? createOptimizedPicture(articleImageUrl) : '',
                 textContent: [
                     article.title,
                     article.description
-                ], 
+                ],
                 url: article.path.trim(),
             });
-            gridItem.append(card);
-            articleHolder.append(gridItem);
+            card.classList.add('grid-item', settings.gridItemClass);
+            articleHolder.append(card);
         });
         // Append everything within our fragment to this parent.
         cardsParent.append(articleHolder);

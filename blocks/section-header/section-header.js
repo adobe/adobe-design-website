@@ -17,7 +17,7 @@ export default async function decorate(block) {
   sectionHeaderData.heading.classList.add(
     "section-header__heading",
     "grid-item",
-    "grid-item--100"
+    "grid-item--66"
   );
   sectionHeader.append(sectionHeaderData.heading);
 

@@ -13,6 +13,15 @@
     margin-block-end: var(--spacing-global-block-end-large-screen);
   }
 
+  &:not(:has(.page-header__image)) {
+    @media (min-width: 48rem) {
+      .page-header__content.grid-item.grid-item--50 {
+        grid-column: span 12;
+        max-width: var(--page-constrained-text);
+      }
+    }
+  }
+
   .page-header__title {
     margin-block-start: 0;
   }
@@ -64,14 +73,8 @@
     margin-block-end: 0;
   }
 
-  .page-header__button {
-    margin-block-end: 2rem;
-    width: 100%;
-
-    @media (min-width: 22.5rem) {
-      margin-block-end: 0;
-      width: unset;
-    }
+  .page-header__image {
+    height: 100%;
   }
 
   .page-header__image img {

@@ -31,10 +31,6 @@
   margin-block-start: 2rem;
   margin-block-end: 0;
 
-  + .author-bio {
-    margin-block-start: 1rem;
-  }
-
   & .author-meta {
     display: flex;
     gap: 1rem;
@@ -187,26 +183,18 @@
     h4,
     h5,
     h6 {
-      margin-block-start: var(
-        --spacing-heading-block-start-small-screen
-      );
+      margin-block-start: var(--spacing-heading-block-start-small-screen);
 
       @media (min-width: 22.5rem) {
-        margin-block-start: var(
-          --spacing-heading-block-start-medium-screen
-        );
+        margin-block-start: var(--spacing-heading-block-start-medium-screen);
       }
 
       @media (min-width: 48rem) {
-        margin-block-start: var(
-          --spacing-heading-block-start-large-screen
-        );
+        margin-block-start: var(--spacing-heading-block-start-large-screen);
       }
 
       @media (min-width: 80rem) {
-        margin-block-start: var(
-          --spacing-heading-block-start-xl-screen
-        );
+        margin-block-start: var(--spacing-heading-block-start-xl-screen);
       }
     }
 
@@ -829,19 +817,24 @@ a.card:hover {
     }
 
     @media (min-width: 105rem) {
-      margin-block-end: var(--spacing-heading-block-start-exlarge-screen);
+      margin-block-end: var(--spacing-heading-block-start-xl-screen);
     }
   }
 
   > *:not(.section-header):not(div > .horizontal-rule) {
-      margin-block-end: var(--spacing-global-block-end-small-screen);
+    margin-block-end: var(--spacing-global-block-end-small-screen);
 
-      @media (min-width: 48rem) {
-        margin-block-end: var(--spacing-global-block-end-medium-screen);
-      }
-
-      @media (min-width: 80rem) {
-        margin-block-end: var(--spacing-global-block-end-large-screen);
-      }
+    @media (min-width: 48rem) {
+      margin-block-end: var(--spacing-global-block-end-medium-screen);
     }
+
+    @media (min-width: 80rem) {
+      margin-block-end: var(--spacing-global-block-end-large-screen);
+    }
+  }
+
+  > .grid-container .grid-item:has(.section-header),
+  > .grid-container .grid-item:has(.image-with-caption) {
+    align-self: center;
+  }
 }

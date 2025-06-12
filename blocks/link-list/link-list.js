@@ -2,7 +2,6 @@ import { isExternalURL } from '../../scripts/helpers/index.js';
 
 /**
  * Creates a decorated set of link list items.
- * @function
  * @param {string} textContent the desired link text
  * @param {string} url the desired link href
  * @param {string} [altText] the link aria-label
@@ -43,7 +42,6 @@ const buildLinkListItem = ({ textContent, url, altText }) => {
 
 /**
  * Creates a link to display below the link list block.
- * @function
  * @param {string} textContent the desired link text
  * @param {string} url the desired link href
  * @param {string} [altText] the link aria-label

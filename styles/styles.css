@@ -103,8 +103,9 @@ main picture:not([class]) > img:not([class]) {
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  width: 100%;
   max-width: 100%;
-  padding: 0.75rem 1.25rem 0.875rem;
+  padding: 0.625rem 1rem 0.6875rem;
   border: none;
   border-radius: var(--border-radius-button);
   background-color: transparent;
@@ -116,7 +117,6 @@ main picture:not([class]) > img:not([class]) {
   line-height: 1.3;
   text-align: center;
   text-decoration: none;
-  white-space: nowrap;
   cursor: pointer;
 
   &:hover {
@@ -127,6 +127,15 @@ main picture:not([class]) > img:not([class]) {
   &:disabled:hover {
     color: var(--color-button-text-disabled);
     cursor: unset;
+  }
+
+  @media (min-width: 22.5rem) {
+    width: fit-content;
+    white-space: nowrap;
+  }
+
+  @media (min-width: 48rem) {
+    white-space: nowrap;
   }
 }
 
@@ -512,6 +521,10 @@ main > .section.small-screen-cta-container > .grid-container {
       grid-column-gap: 1.5rem;
       grid-row-gap: 1.5rem;
     }
+
+    @media (min-width: 80rem) {
+      grid-row-gap: 3.375rem;
+    }
   }
 }
 
@@ -553,6 +566,7 @@ main > .section.small-screen-cta-container > .grid-container {
   min-width: 0;
 
   & .card-container,
+  &.card-container,
   & .card,
   & .callout,
   & .callout-container,
@@ -560,10 +574,17 @@ main > .section.small-screen-cta-container > .grid-container {
     height: 100%;
     box-sizing: border-box;
   }
+
+  & .image-with-caption {
+    @media (min-width: 48rem) {
+      margin-block: auto;
+    }
+  }
 }
 
 .callout-container .grid-item,
-.card-container .grid-item {
+.card-container .grid-item,
+.card-container.grid-item {
   align-self: stretch;
 }
 
