@@ -31,10 +31,6 @@
   margin-block-start: 2rem;
   margin-block-end: 0;
 
-  + .author-bio {
-    margin-block-start: 3rem;
-  }
-
   & .author-meta {
     display: flex;
     gap: 1rem;
