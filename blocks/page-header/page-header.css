@@ -73,15 +73,6 @@
     margin-block-end: 0;
   }
 
-  .page-header__button {
-    width: 100%;
-
-    @media (min-width: 22.5rem) {
-      margin-block-end: 0;
-      width: unset;
-    }
-  }
-
   .page-header__image {
     height: 100%;
   }

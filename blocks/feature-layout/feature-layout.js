@@ -7,10 +7,10 @@
 
 export default async function decorate (block) {
   const data = {
-    backgroundColor: block.children[0]?.innerText?.trim(),
-    textContent: block.children[1]?.children[0],
-    imageContent: block.children[1]?.children[1],
-    altText: block.children[1]?.children[2]?.innerText?.trim(),
+    backgroundColor: block.children?.[0]?.innerText?.trim(),
+    textContent: block.children?.[1]?.children?.[0],
+    imageContent: block.children?.[1]?.children?.[1],
+    altText: block.children?.[1]?.children?.[2]?.innerText?.trim(),
     primaryVariant: Boolean(block.children[2]?.innerText?.trim()),
   };
 
@@ -29,7 +29,7 @@ export default async function decorate (block) {
     );
   };
 
-  if (data.imageContent?.children[0]) {
+  if (data.imageContent) {
     data.imageContent.classList.add("feature-layout__image");
     if (data.altText) data.imageContent?.setAttribute("alt", data.altText);
     gridContainer.append(data.imageContent);
