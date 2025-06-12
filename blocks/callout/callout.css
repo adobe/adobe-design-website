@@ -35,7 +35,6 @@
   -moz-osx-font-smoothing: grayscale;
 
   .button {
-    width: 100%;
     margin-block-start: 1.5rem;
 
     svg {
@@ -44,9 +43,6 @@
 
     @container callout-wrapper (min-width: 49rem) {
       margin-block-start: 0;
-    }
-    @media (min-width: 48rem) {
-      width: unset;
     }
   }
 

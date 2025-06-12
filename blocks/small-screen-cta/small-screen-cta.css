@@ -34,11 +34,3 @@
     font-size: var(--spectrum-title-size-xxl);
   }
 }
-
-.call-to-action__button {
-  width: 100%;
-
-  @media (min-width: 48rem) {
-    width: unset;
-  }
-}
