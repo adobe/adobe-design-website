@@ -78,8 +78,40 @@ export const fadedWave =
     </defs>
 </svg>`;
 
+export const wavesAndGlow = 
+`<svg class="shape shape--waves-and-glow" width="1616" height="876" viewBox="0 0 1616 876" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+    <path d="M625.077 -556.806C733.711 -524.751 819.132 -451.719 869.434 -359.719C969.967 -175.476 1088.06 -140.496 1272.44 -240.406C1364.74 -290.726 1476.28 -305.772 1585.04 -273.681C1802.39 -209.414 1926.64 18.2916 1862.63 235.235C1798.61 452.178 1570.69 575.836 1353.3 511.69C1244.3 479.528 1158.83 406.216 1108.63 313.851C1008.08 130.13 890.03 95.4301 705.581 195.583C613.356 245.66 502.006 260.498 393.372 228.444C176.104 164.334 51.8564 -63.3716 115.834 -280.193C179.812 -497.015 407.809 -620.916 625.077 -556.806Z" fill="url(#paint0_linear_2716_6071)" fill-opacity="0.5"/>
+    <mask id="mask0_2716_6071" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="835" y="-616" width="1492" height="1492">
+        <circle cx="1581.13" cy="129.875" r="745.875" fill="url(#paint1_radial_2716_6071)"/>
+    </mask>
+    <g mask="url(#mask0_2716_6071)">
+        <circle cx="1581.13" cy="129.875" r="745.875" fill="var(--spectrum-green-400, #6BE3A2)"/>
+    </g>
+    <mask id="mask1_2716_6071" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="1079" y="-601" width="1074" height="1074">
+        <circle cx="1615.88" cy="-64.1227" r="536.877" fill="url(#paint2_radial_2716_6071)"/>
+    </mask>
+    <g mask="url(#mask1_2716_6071)">
+        <circle cx="1615.88" cy="-64.1227" r="536.877" fill="var(--spectrum-fuchsia-400, #F7B5FF)"/>
+    </g>
+    <defs>
+        <linearGradient id="paint0_linear_2716_6071" x1="1717.08" y1="358.144" x2="39.7419" y2="218.533" gradientUnits="userSpaceOnUse">
+            <stop stop-color="var(--spectrum-cyan-600, #30A7FE)"/>
+            <stop offset="1" stop-color="var(--spectrum-cyan-600, #30A7FE)" stop-opacity="0"/>
+        </linearGradient>
+        <radialGradient id="paint1_radial_2716_6071" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(1581.13 129.875) rotate(90) scale(745.875)">
+            <stop offset="0.166667" stop-opacity="0.8"/>
+            <stop offset="1" stop-opacity="0"/>
+        </radialGradient>
+        <radialGradient id="paint2_radial_2716_6071" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(1615.88 -64.1227) rotate(90) scale(536.877)">
+            <stop offset="0.166667" stop-opacity="0.8"/>
+            <stop offset="1" stop-opacity="0"/>
+        </radialGradient>
+    </defs>
+</svg>`;
+
 export const allShapes = {
     roundedDiamond,
     slopes,
     fadedWave,
+    wavesAndGlow,
 };

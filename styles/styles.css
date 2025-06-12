@@ -1186,29 +1186,56 @@ main > .section.small-screen-cta-container > .grid-container {
       background: linear-gradient(180deg, rgb(from var(--color-background) r g b / 0) 0%, var(--color-background) 100%);
     }
   }
-}
 
-.theme--backdrop-seafoam .background-visuals .shape--faded-wave {
-  position: absolute;
-  inset: auto -550px -120px auto;
-
-  @media (min-width: 48rem) {
+  .background-visuals .shape--faded-wave {
+    position: absolute;
     inset: auto -550px -120px auto;
-  }
 
-  @media (min-width: 80rem) {
-    inset: auto -321px -120px auto;
-  }
+    @media (min-width: 48rem) {
+      inset: auto -550px -120px auto;
+    }
 
-  @media (min-width: 105rem) {
-    inset: auto 0 0 auto;
-  }
+    @media (min-width: 80rem) {
+      inset: auto -321px -120px auto;
+    }
 
-  @media (min-width: 120rem) {
-    width: calc(50dvw + 493px);
+    @media (min-width: 105rem) {
+      inset: auto 0 0 auto;
+    }
+
+    @media (min-width: 120rem) {
+      width: calc(50dvw + 493px);
+    }
   }
 }
 
 .theme--backdrop-blue-green-wave {
   --page-gradient-start-color: var(--gradient-backdrop-blue-green-wave-start);
+
+  .background-visuals {
+    &::after {
+      height: max(calc(100% - 427px), 225px);
+    }
+
+    .shape--waves-and-glow {
+      position: absolute;
+      inset: -120px -360px auto auto;
+
+      @media (min-width: 48rem) {
+        inset: -150px -140px auto auto;
+      }
+
+      @media (min-width: 80rem) {
+        inset: -40px -100px auto auto;
+      }
+
+      @media (min-width: 105rem) {
+        inset: 0 0 auto auto;
+      }
+    
+      @media (min-width: 140rem) {
+        width: calc(50dvw + 960px);
+      }
+    }
+  }
 }
