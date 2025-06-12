@@ -29,9 +29,9 @@ export default async function decorate (block) {
     );
   };
 
-  if (data.imageContent.children[0]) {
+  if (data.imageContent?.children[0]) {
     data.imageContent.classList.add("feature-layout__image");
-    if (data.altText) data.imageContent.setAttribute("alt", data.altText);
+    if (data.altText) data.imageContent?.setAttribute("alt", data.altText);
     gridContainer.append(data.imageContent);
   };
 
