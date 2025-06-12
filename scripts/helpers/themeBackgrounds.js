@@ -17,7 +17,7 @@ export async function decorateThemeBackgroundVisuals(theme) {
     const graphicsMapping = {
         'backdrop-indigo': [allShapes.roundedDiamond],
         'backdrop-green': [allShapes.roundedDiamond],
-        'backdrop-seafoam': [],
+        'backdrop-seafoam': [allShapes.fadedWave],
         'backdrop-blue-green-wave': [],
         'backdrop-blue-circles': [allShapes.slopes]
     };

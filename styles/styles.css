@@ -1025,6 +1025,7 @@ main > .section.small-screen-cta-container > .grid-container {
     display: block;
     content: '';
     position: absolute;
+    z-index: 2;
     bottom: 0;
     left: 0;
     width: 100%;
@@ -1150,11 +1151,62 @@ main > .section.small-screen-cta-container > .grid-container {
   @media (min-width: 105rem) {
     inset: 0 -263px 0 auto;
   }
+
+  @media (min-width: 140rem) {
+    inset: auto 0 0 auto;
+    width: calc(50dvw + 980px);
+  }
 }
 
 .theme--backdrop-seafoam {
   --page-gradient-start-color: var(--gradient-backdrop-seafoam-start);
   --page-gradient-end-color: var(--gradient-backdrop-seafoam-end);
+
+  .background-visuals {
+    &::before,
+    &::after {
+      height: 426px;
+    }
+
+    &::after {
+      @media (min-width: 80rem) {
+        height: 426px;
+      }
+    }
+
+    /* A second offset bottom gradient in this design. */
+    &::before {
+      display: block;
+      content: '';
+      position: absolute;
+      z-index: 2;
+      bottom: -93px;
+      left: 0;
+      width: 100%;
+      background: linear-gradient(180deg, rgb(from var(--color-background) r g b / 0) 0%, var(--color-background) 100%);
+    }
+  }
+}
+
+.theme--backdrop-seafoam .background-visuals .shape--faded-wave {
+  position: absolute;
+  inset: auto -550px -120px auto;
+
+  @media (min-width: 48rem) {
+    inset: auto -550px -120px auto;
+  }
+
+  @media (min-width: 80rem) {
+    inset: auto -321px -120px auto;
+  }
+
+  @media (min-width: 105rem) {
+    inset: auto 0 0 auto;
+  }
+
+  @media (min-width: 120rem) {
+    width: calc(50dvw + 493px);
+  }
 }
 
 .theme--backdrop-blue-green-wave {
