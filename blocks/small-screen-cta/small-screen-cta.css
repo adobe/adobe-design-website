@@ -27,7 +27,7 @@
   display: none;
 
   @media (min-width: 41.875rem) {
-    display: block
+    display: block;
   }
 
   @media (min-width: 48rem) {
