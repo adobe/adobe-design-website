@@ -16,17 +16,21 @@ export default async function decorate(block) {
   const wrapper = document.createElement("div");
   wrapper.classList.add("responsive-split-layout");
 
-  data.imageContent.classList.add("responsive-split-layout__image");
-  if (data.reverseOrderOnMedium) data.imageContent.classList.add("responsive-split-layout__image--reverse");
-  wrapper.append(data.imageContent);
-  
-  const textContentWrapper = document.createElement("div");
-  textContentWrapper.classList.add("responsive-split-layout__content");
-  if (data.reverseOrderOnMedium) textContentWrapper.classList.add("responsive-split-layout__content--reverse");
-  [...data.textContent].forEach((part) => {
-    textContentWrapper.append(part);
-  });
-  wrapper.append(textContentWrapper);
+  if (data.imageContent) {
+    data.imageContent.classList.add("responsive-split-layout__image");
+    if (data.reverseOrderOnMedium) data.imageContent.classList.add("responsive-split-layout__image--reverse");
+    wrapper.append(data.imageContent);
+  };
+
+  if (data.textContent) {
+    const textContentWrapper = document.createElement("div");
+    textContentWrapper.classList.add("responsive-split-layout__content");
+    if (data.reverseOrderOnMedium) textContentWrapper.classList.add("responsive-split-layout__content--reverse");
+    [...data.textContent].forEach((part) => {
+      textContentWrapper.append(part);
+    });
+    wrapper.append(textContentWrapper);
+  };
 
   block.parentElement.replaceWith(wrapper);
 }
