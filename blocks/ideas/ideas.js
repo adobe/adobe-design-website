@@ -1,6 +1,11 @@
-
 import { fetchAndBuildIdeas } from "../../scripts/helpers/index.js";
-import { buildIdeasFeature, calculateGroupTotal, initialMaxIdeas, handleLoadMore, rearrangeFeatures } from "./ideas-functions.js";
+import {
+  buildIdeasFeature,
+  calculateGroupTotal,
+  initialMaxIdeas,
+  handleLoadMore,
+  rearrangeFeatures,
+} from "./ideas-functions.js";
 /** @typedef {import('./ideas-functions.js').IdeasFeatureContent} IdeasFeatureContent */
 
 /*
@@ -11,96 +16,104 @@ import { buildIdeasFeature, calculateGroupTotal, initialMaxIdeas, handleLoadMore
  * - Can pull in a specific tag, for using this block on the story pack (tag) pages.
  */
 export default function decorate(block) {
-    // Settings from content. Stored in first row with optional second column for the tag.
-    const layoutType = block.children?.[0]?.children?.[0]?.textContent?.trim();
-    const tagSetting = block.children?.[0]?.children?.[1]?.textContent?.trim() ?? 'All';
+  // Settings from content. Stored in first row with optional second column for the tag.
+  const settings = {
+    layoutType: block.children?.[0]?.children?.[0]?.textContent?.trim(),
+    tag: block.children?.[0]?.children?.[1]?.textContent?.trim() ?? "All",
+  };
 
-    // Features content, stored in row(s) after the first row.
-    // There could be several features (recommended max of 4), or none.
-    const featuresContent = Array.from(block.children ?? []).slice(1);
+  // Features content, stored in row(s) after the first row.
+  // There could be several features (recommended max of 4), or none.
+  const featuresContent = Array.from(block.children ?? []).slice(1);
 
-    // Create a new container to house the block.
-    const newBlock = document.createElement('div');
-    newBlock.classList.add('ideas');
-    newBlock.dataset.blockName = 'ideas';
+  // Create a new container to house the block.
+  const newBlock = document.createElement("div");
+  newBlock.classList.add("ideas");
+  newBlock.dataset.blockName = "ideas";
 
-    // Hidden no results found element.
-    const noResults = document.createElement('p');
-    noResults.style.display = 'none';
-    noResults.classList.add('ideas__no-results', 'util-body-xl');
-    noResults.textContent = 'No articles found.';
-    newBlock.append(noResults);
+  // Hidden no results found element.
+  const noResults = document.createElement("p");
+  noResults.style.display = "none";
+  noResults.classList.add("util-body-xl", "ideas__no-results");
+  noResults.textContent = "No articles found.";
+  newBlock.append(noResults);
 
-    // Container that houses article and feature grid items.
-    const gridContainer = document.createElement('div');
-    gridContainer.classList.add('ideas__grid', 'grid-container');
-    gridContainer.id = "ideas-grid";
-    gridContainer.dataset.layoutType = layoutType;
-    gridContainer.dataset.tag = tagSetting;
-    newBlock.append(gridContainer);
+  // Container that houses article and feature grid items.
+  const gridContainer = document.createElement("div");
+  gridContainer.classList.add("grid-container", "ideas__grid");
+  gridContainer.id = "ideas-grid";
+  gridContainer.dataset.layoutType = settings.layoutType;
+  gridContainer.dataset.tag = settings.tag;
+  newBlock.append(gridContainer);
 
-    // Append aria-live region to help announce when new posts are loaded.
-    const liveRegion = document.createElement('div');
-    liveRegion.setAttribute('aria-live', 'polite');
-    liveRegion.setAttribute('aria-atomic', 'true');
-    liveRegion.classList.add('util-visually-hidden');
-    liveRegion.id = "live-region";
-    newBlock.append(liveRegion);
+  // Append aria-live region to help announce when new posts are loaded.
+  const liveRegion = document.createElement("div");
+  liveRegion.setAttribute("aria-live", "polite");
+  liveRegion.setAttribute("aria-atomic", "true");
+  liveRegion.classList.add("util-visually-hidden");
+  liveRegion.id = "live-region";
+  newBlock.append(liveRegion);
 
-    // Create new features markup.
-    let features = [];
-    featuresContent.forEach(feature => {
-        /**
-         * @type {IdeasFeatureContent}
-         */
-        const featureContent = {
-            headingText: feature?.children?.[0]?.textContent?.trim(),
-            description: feature?.children?.[1]?.children,
-            image: feature?.children?.[2]?.firstElementChild,
-            buttonLink: feature?.children?.[3]?.firstChild?.firstChild,
-            buttonAriaLabel: feature?.children?.[4]?.textContent?.trim(),
-        };
-
-        const featureMarkup = buildIdeasFeature(featureContent);
-        if (featureMarkup) {
-            features.push(featureMarkup);
-        }
-    });
-
-    // How many cards before a feature.
-    const groupTotal = calculateGroupTotal();
-
-    // Fetch and add markup for articles, and then add in the features.
-    const fetchAndAppend = async () => {
-        const fragment = await fetchAndBuildIdeas({
-            tagName: tagSetting,
-            maxArticles: initialMaxIdeas(features.length, groupTotal),
-            gridItemClass: layoutType === 'two-up' ? 'grid-item--50' : 'grid-item--25',
-            hasHorizontalScroll: false,
-        });
-        const isEndOfArticles = fragment?.lastChild?.dataset?.lastArticle === "true";
-
-        // Append all cards and features.
-        gridContainer.append(fragment, ...features);
-        rearrangeFeatures(gridContainer, groupTotal);
-
-        // Append load more button.
-        const loadMoreButton = document.createElement('button');
-        loadMoreButton.type = "button";
-        loadMoreButton.setAttribute('aria-controls', 'ideas-grid');
-        loadMoreButton.classList.add('ideas__load-button', 'button', 'button--primary');
-        loadMoreButton.dataset.defaultText = "Load more ideas";
-        loadMoreButton.dataset.loadingText = "Loading ideas…";
-        loadMoreButton.textContent = loadMoreButton.dataset.defaultText;
-        loadMoreButton.addEventListener('click', handleLoadMore);
-        if (isEndOfArticles) {
-            loadMoreButton.disabled = true;
-            loadMoreButton.style.display = 'none';
-        }
-        newBlock.append(loadMoreButton);
+  // Create new features markup.
+  let features = [];
+  featuresContent.forEach((feature) => {
+    /**
+     * @type {IdeasFeatureContent}
+     */
+    const featureContent = {
+      headingText: feature?.children?.[0]?.textContent?.trim(),
+      description: feature?.children?.[1]?.children,
+      image: feature?.children?.[2]?.firstElementChild,
+      buttonLink: feature?.children?.[3]?.firstChild?.firstChild,
+      buttonAriaLabel: feature?.children?.[4]?.textContent?.trim(),
     };
-    fetchAndAppend();
 
-    // Replace the empty wrapper div around the block with our new markup.
-    block.parentElement.replaceWith(newBlock);
+    const featureMarkup = buildIdeasFeature(featureContent);
+    if (featureMarkup) {
+      features.push(featureMarkup);
+    }
+  });
+
+  // How many cards before a feature.
+  const groupTotal = calculateGroupTotal();
+
+  // Fetch and add markup for articles, and then add in the features.
+  const fetchAndAppend = async () => {
+    const fragment = await fetchAndBuildIdeas({
+      tagName: settings.tag,
+      maxArticles: initialMaxIdeas(features.length, groupTotal),
+      gridItemClass:
+        settings.layoutType === "two-up" ? "grid-item--50" : "grid-item--25",
+      hasHorizontalScroll: false,
+    });
+    const isEndOfArticles =
+      fragment?.lastChild?.dataset?.lastArticle === "true";
+
+    // Append all cards and features.
+    gridContainer.append(fragment, ...features);
+    rearrangeFeatures(gridContainer, groupTotal);
+
+    // Append load more button.
+    const loadMoreButton = document.createElement("button");
+    loadMoreButton.type = "button";
+    loadMoreButton.setAttribute("aria-controls", "ideas-grid");
+    loadMoreButton.classList.add(
+      "button",
+      "button--primary",
+      "ideas__load-button"
+    );
+    loadMoreButton.dataset.defaultText = "Load more ideas";
+    loadMoreButton.dataset.loadingText = "Loading ideas…";
+    loadMoreButton.textContent = loadMoreButton.dataset.defaultText;
+    loadMoreButton.addEventListener("click", handleLoadMore);
+    if (isEndOfArticles) {
+      loadMoreButton.disabled = true;
+      loadMoreButton.style.display = "none";
+    }
+    newBlock.append(loadMoreButton);
+  };
+  fetchAndAppend();
+
+  // Replace the empty wrapper div around the block with our new markup.
+  block.parentElement.replaceWith(newBlock);
 }
