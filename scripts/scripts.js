@@ -20,7 +20,8 @@ import {
   debounce,
   isSubPageOf,
   buildArticlePage,
-  buildCareersListingPage
+  buildCareersListingPage,
+  appendLiveRegion,
 } from './helpers/index.js';
 
 /**
@@ -98,6 +99,7 @@ const reloadHeader = (headerElement) => {
  */
 async function loadEager(doc) {
   doc.documentElement.lang = 'en';
+  appendLiveRegion();
   decorateTemplateAndTheme();
   if (getMetadata('breadcrumbs').toLowerCase() === 'true') {
     doc.body.dataset.breadcrumbs = true;
