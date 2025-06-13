@@ -27,16 +27,16 @@ export default function decorate(block) {
   const featuresContent = Array.from(block.children ?? []).slice(1);
 
   // Create a new container to house the block.
-  const newBlock = document.createElement("div");
-  newBlock.classList.add("ideas");
-  newBlock.dataset.blockName = "ideas";
+  const ideasBlock = document.createElement("div");
+  ideasBlock.classList.add("ideas");
+  ideasBlock.dataset.blockName = "ideas";
 
   // Hidden no results found element.
   const noResults = document.createElement("p");
   noResults.style.display = "none";
   noResults.classList.add("util-body-xl", "ideas__no-results");
   noResults.textContent = "No articles found.";
-  newBlock.append(noResults);
+  ideasBlock.append(noResults);
 
   // Container that houses article and feature grid items.
   const gridContainer = document.createElement("div");
@@ -44,7 +44,7 @@ export default function decorate(block) {
   gridContainer.id = "ideas-grid";
   gridContainer.dataset.layoutType = settings.layoutType;
   gridContainer.dataset.tag = settings.tag;
-  newBlock.append(gridContainer);
+  ideasBlock.append(gridContainer);
 
   // Append aria-live region to help announce when new posts are loaded.
   const liveRegion = document.createElement("div");
@@ -52,7 +52,7 @@ export default function decorate(block) {
   liveRegion.setAttribute("aria-atomic", "true");
   liveRegion.classList.add("util-visually-hidden");
   liveRegion.id = "live-region";
-  newBlock.append(liveRegion);
+  ideasBlock.append(liveRegion);
 
   // Create new features markup.
   let features = [];
@@ -110,10 +110,10 @@ export default function decorate(block) {
       loadMoreButton.disabled = true;
       loadMoreButton.style.display = "none";
     }
-    newBlock.append(loadMoreButton);
+    ideasBlock.append(loadMoreButton);
   };
   fetchAndAppend();
 
   // Replace the empty wrapper div around the block with our new markup.
-  block.parentElement.replaceWith(newBlock);
+  block.parentElement.replaceWith(ideasBlock);
 }
