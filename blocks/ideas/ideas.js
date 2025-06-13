@@ -55,7 +55,8 @@ export default function decorate(block) {
     const featureContent = {
       headingText: feature?.children?.[0]?.textContent?.trim(),
       description: feature?.children?.[1]?.children,
-      image: feature?.children?.[2]?.firstElementChild,
+      image: feature?.children?.[2]?.querySelector('picture'),
+      imageAltText: feature?.children?.[2]?.children?.[1]?.textContent?.trim(),
       buttonLink: feature?.children?.[3]?.firstChild?.firstChild,
       buttonAriaLabel: feature?.children?.[4]?.textContent?.trim(),
     };

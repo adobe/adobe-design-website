@@ -13,6 +13,7 @@ import { getCurrentFiltersArray } from "../filter-group/filter-group-utils.js";
  * @property {string} headingText - Main heading text.
  * @property {HTMLCollection} description - Description text appearing under heading. Typically paragraph(s).
  * @property {HTMLPictureElement} image
+ * @property {string} imageAltText
  * @property {HTMLAnchorElement} buttonLink - Anchor element; linked text that will be turned into the button.
  * @property {string} buttonAriaLabel - Optional aria-label for the button.
  */
@@ -71,15 +72,15 @@ export const buildIdeasFeature = (featureContent) => {
   }
 
   // Image aside.
-  let image = null;
   if (
     featureContent.image &&
     featureContent.image instanceof HTMLPictureElement
   ) {
-    image = featureContent.image;
-    image.classList.add("ideas__feature-image");
-    image.setAttribute("alt", "");
-    feature.append(image);
+    const picture = featureContent.image;
+    const pictureImage = picture.querySelector("img");
+    picture.classList.add("ideas__feature-image");
+    pictureImage?.setAttribute("alt", featureContent?.imageAltText || "");
+    feature.append(picture);
   }
 
   feature.append(mainContent);
