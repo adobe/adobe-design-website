@@ -60,6 +60,11 @@
   flex-shrink: 0;
   transition: all var(--spectrum-animation-duration-100) ease;
 
+  &:focus-visible {
+    background-color: var(--color-background-button-filters-default);
+    color: inherit;
+  }
+
   @media (hover: hover) {
     &:hover {
       background-color: var(--color-background-button-filters-hover);
@@ -73,11 +78,6 @@
     color: var(--color-text-button-filters-disabled);
     cursor: not-allowed;
     opacity: 1;
-  }
-
-  &:focus-visible {
-    background-color: var(--color-background-button-filters-default);
-    color: inherit;
   }
 }
 
@@ -95,20 +95,16 @@
   color: var(--spectrum-gray-50);
   transition: all var(--spectrum-animation-duration-100) ease;
 
-  @media (hover: hover) {
-    &:hover {
-      background-color: rgb(from var(--color-background-button-filters-selected) r g b / 0.9);
-      color: var(--spectrum-gray-50);
-    }
-  }
-
   &:focus-visible {
     background-color: var(--color-background-button-filters-selected);
     color: var(--spectrum-gray-50);
   }
 
-  &:focus:not(:focus-visible) {
-    background-color: var(--color-background-button-filters-selected);
+  @media (hover: hover) {
+    &:hover {
+      background-color: rgb(from var(--color-background-button-filters-selected) r g b / 0.9);
+      color: var(--spectrum-gray-50);
+    }
   }
 }
 
