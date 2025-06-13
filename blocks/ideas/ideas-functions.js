@@ -121,7 +121,7 @@ export const updateLoadButtonState = (button, isLoading = false, reachedLastArti
 export const handleLoadMore = async (event) => {
     const clickedButton = event.target?.closest('.ideas__load-button');
     const gridContainer = event.target?.closest('.ideas')?.querySelector('.ideas__grid');
-    const lastCardItem = gridContainer?.querySelector('.grid-item:last-child:has(.card)');
+    const lastCardItem = Array.from(gridContainer?.querySelectorAll('.card-container') ?? []).pop();
     const filtersParent = document.querySelector('.filter-group');
     const layoutType = gridContainer?.dataset?.layoutType;
 
@@ -185,7 +185,7 @@ export const rearrangeFeatures = (containerElement, groupTotal) => {
     if (!containerElement || !groupTotal) return;
 
     const features = containerElement?.querySelectorAll('.ideas__feature');
-    const cards = containerElement?.querySelectorAll('.grid-item:has(.card)');
+    const cards = containerElement?.querySelectorAll('.card-container');
 
     features.forEach((feature, idx) => {
         const cardIndexForInsert = (idx * groupTotal) + groupTotal - 1;

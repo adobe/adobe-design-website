@@ -60,10 +60,6 @@ export const fetchAndBuildIdeas = async (settings) => {
 
         // Build markup.
         filteredArticles.forEach((article, idx) => {
-            // Create a grid item for a two-up or four-up layout.
-            const gridItem = document.createElement('div');
-            gridItem.classList.add('grid-item', settings.gridItemClass);
-
             // Create card and append.
             const articleImageUrl = article.image.trim();
             const card = buildCard({
@@ -74,15 +70,14 @@ export const fetchAndBuildIdeas = async (settings) => {
                 ],
                 url: article.path.trim(),
             });
+            card.classList.add('grid-item', settings.gridItemClass);
 
             // If article is last available, mark it with a data attribute.
             if (idx === filteredArticles.length - 1 && lastArticlePath && article.path.trim() === lastArticlePath) {
-                gridItem.dataset.lastArticle = "true";
+                card.dataset.lastArticle = "true";
             }
 
-            // Append card.
-            gridItem.append(card);
-            articleHolder.append(gridItem);
+            articleHolder.append(card);
         });
     } catch (error) {
         // eslint-disable-next-line no-console
