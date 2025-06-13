@@ -46,14 +46,6 @@ export default function decorate(block) {
   gridContainer.dataset.tag = settings.tag;
   ideasBlock.append(gridContainer);
 
-  // Append aria-live region to help announce when new posts are loaded.
-  const liveRegion = document.createElement("div");
-  liveRegion.setAttribute("aria-live", "polite");
-  liveRegion.setAttribute("aria-atomic", "true");
-  liveRegion.classList.add("util-visually-hidden");
-  liveRegion.id = "live-region";
-  ideasBlock.append(liveRegion);
-
   // Create new features markup.
   let features = [];
   featuresContent.forEach((feature) => {
