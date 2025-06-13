@@ -169,8 +169,11 @@
 }
 
 .feature-layout--primary > .grid-container {
+  width: 100%;
+
   .feature-layout__content {
     grid-column: span 8;
+    max-width: 90ch;
   }
 
   .feature-layout__image {

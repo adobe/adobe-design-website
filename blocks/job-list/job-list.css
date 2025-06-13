@@ -1,7 +1,7 @@
 .job-list {
   --color-text: var(--spectrum-gray-900);
   --color-border: var(--spectrum-gray-400);
-  margin-block: 2rem;
+  margin-block-end: 2rem;
   grid-row-gap: 0rem;
 }
 

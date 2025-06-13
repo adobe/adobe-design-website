@@ -224,7 +224,7 @@
   @media (min-width: 80rem) {
     align-self: start;
     position: sticky;
-    top: calc(1rem + var(--page-nav-height));
+    top: calc(5rem + var(--page-nav-height));
     display: flex;
     flex-direction: column;
   }
@@ -238,7 +238,7 @@
     }
 
     @media (min-width: 80rem) {
-      margin-block-end: 4rem;
+      margin-block-end: 3rem;
     }
   }
 }
