@@ -66,11 +66,13 @@ const refreshArticleContent = async (selectedFilters = []) => {
   if (liveRegion) {
     if (selectedFilters.length === 0) {
       liveRegion.textContent =
-        "The ideas list has refreshed to show all articles";
+        "The ideas list has refreshed to show all articles.";
     } else {
-      liveRegion.textContent = `The ideas list has refreshed to show articles tagged as: ${selectedFilters.join(
-        ", "
-      )}`;
+      // Separate the list of filters with a comma, with the word "and" before the last item.
+      const readableFilters = ('ListFormat' in Intl)
+        ? new Intl.ListFormat("en", { type: "conjunction" }).format(selectedFilters)
+        : selectedFilters.join(", ");
+      liveRegion.textContent = `The ideas list has refreshed to show articles tagged as: ${readableFilters}.`;
     }
   }
 };
