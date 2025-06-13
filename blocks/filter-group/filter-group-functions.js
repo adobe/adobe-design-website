@@ -23,7 +23,7 @@ const refreshArticleContent = async (selectedFilters = []) => {
   const ideasGrid = ideasElement.querySelector(".ideas__grid");
   const features = ideasGrid.querySelectorAll(".ideas__feature");
   const layoutType = ideasGrid?.dataset?.layoutType;
-  const liveRegion = document.getElementById("ideas-live-region");
+  const liveRegion = document.getElementById("live-region");
 
   if (!ideasElement || !ideasGrid) {
     // eslint-disable-next-line no-console

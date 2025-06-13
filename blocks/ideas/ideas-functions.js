@@ -198,7 +198,7 @@ export const handleLoadMore = async (event) => {
   // Update focus and live region.
   if (firstNewCard) {
     // Update live region text.
-    const liveRegion = document.getElementById("ideas-live-region");
+    const liveRegion = document.getElementById("live-region");
     if (liveRegion && totalNewArticles > 0) {
       liveRegion.textContent = `${totalNewArticles} more ${
         totalNewArticles > 1 ? "articles" : "article"

@@ -44,7 +44,7 @@ export default function decorate(block) {
     liveRegion.setAttribute('aria-live', 'polite');
     liveRegion.setAttribute('aria-atomic', 'true');
     liveRegion.classList.add('util-visually-hidden');
-    liveRegion.id = "ideas-live-region";
+    liveRegion.id = "live-region";
     newBlock.append(liveRegion);
 
     // Create new features markup.
