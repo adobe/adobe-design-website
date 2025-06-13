@@ -16,16 +16,11 @@
       ol,
       dl,
       aside
-    ) {
+    ):not(.article-header):not(.article-prefooter) {
     max-width: var(--page-constrained-text);
     margin-inline: auto;
 
-    h1,
-    h2,
-    h3,
-    h4,
-    h5,
-    h6 {
+    & :is(h1, h2, h3, h4, h5, h6) {
       margin-block-start: var(--spacing-heading-block-start-small-screen);
 
       @media (min-width: 22.5rem) {
@@ -39,6 +34,26 @@
       @media (min-width: 80rem) {
         margin-block-start: var(--spacing-heading-block-start-xl-screen);
       }
+    }
+
+    & :is(h3, h4, h5, h6) {
+      font-size: var(--spectrum-heading-size-s);
+
+      @media (min-width: 22.5rem) {
+        font-size: var(--spectrum-body-size-l);
+      }
+
+      @media (min-width: 48rem) {
+        font-size: var(--spectrum-body-size-xl);
+      }
+
+      @media (min-width: 80rem) {
+        font-size: var(--spectrum-title-size-xl);
+      }
+    }
+
+    & p {
+      margin-block-start: 0.5rem;
     }
   }
 }

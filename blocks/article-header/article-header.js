@@ -18,7 +18,7 @@ export default async function decorate(block) {
     pubDate: getMetadata('publication-date'),
     tag: getMetadata('tag'),
     image: block.children?.[2]?.children?.[0]?.firstElementChild,
-    caption: block.children?.[2]?.children?.[1]?.textContent?.trim(),
+    caption: block.children?.[2]?.children?.[1]?.innerHTML,
     altText: block.children?.[2]?.children?.[2]?.textContent?.trim(),
   };
 
@@ -94,7 +94,7 @@ export default async function decorate(block) {
     if (articleHeaderData.caption) {
       const imageCaption = document.createElement('figcaption');
       imageCaption.classList.add('util-detail-s', 'image-with-caption__caption');
-      imageCaption.innerText = articleHeaderData.caption;
+      imageCaption.innerHTML = articleHeaderData.caption;
       imageContainer.append(imageCaption);
     }
 
