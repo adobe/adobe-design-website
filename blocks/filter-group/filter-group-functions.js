@@ -33,6 +33,9 @@ const refreshArticleContent = async (selectedFilters = []) => {
     return;
   }
 
+  // Keep track of whether any filters (other than "All") are applied.
+  ideasElement.dataset.isFiltered = selectedFilters.length > 0;
+
   // Fetch articles and replace existing articles in Ideas block.
   const groupTotal = calculateGroupTotal();
   const fragment = await fetchAndBuildIdeas({

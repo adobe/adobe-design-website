@@ -10,6 +10,11 @@
   @media (min-width: 105rem) {
     margin-block: 5rem 6.5rem;
   }
+
+  /* Hide features when tag filters are used. */
+  &[data-is-filtered="true"] .ideas__feature {
+    display: none;
+  }
 }
 
 .ideas__feature {
