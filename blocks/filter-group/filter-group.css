@@ -97,9 +97,8 @@
 
   @media (hover: hover) {
     &:hover {
-      background-color: var(--color-background-button-filters-selected);
+      background-color: rgb(from var(--color-background-button-filters-selected) r g b / 0.9);
       color: var(--spectrum-gray-50);
-      opacity: 0.9;
     }
   }
 
