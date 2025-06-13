@@ -4,9 +4,11 @@
   @media (min-width: 48rem) {
     margin-block: 2rem 3rem;
   }
+
   @media (min-width: 80rem) {
     margin-block: 2.5rem 5rem;
   }
+
   @media (min-width: 105rem) {
     margin-block: 5rem 6.5rem;
   }
@@ -69,10 +71,16 @@
 
 .ideas__feature-button {
   margin-block-start: 1.25rem;
+  width: 100%;
+
+  @media (min-width: 48rem) {
+    width: auto;
+  }
 
   @media (min-width: 80rem) {
     margin-block-start: 1.5rem;
   }
+
   @media (min-width: 105rem) {
     margin-block-start: 2rem;
   }
