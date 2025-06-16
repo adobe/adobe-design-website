@@ -1,3 +1,5 @@
+import { dataStore } from "../../scripts/helpers/index.js";
+
 const searchParams = new URLSearchParams(window.location.search);
 const SEARCH_INPUT_ICON = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" focusable="false" aria-hidden="true" roll="img"><path fill="currentColor" d="M16.9 15.5c2.4-3.2 2.2-7.7-.7-10.6-3.1-3.1-8.1-3.1-11.3 0-3.1 3.2-3.1 8.3 0 11.4 2.9 2.9 7.5 3.1 10.6.6v.1l4.2 4.2c.5.4 1.1.4 1.5 0 .4-.4.4-1 0-1.4l-4.3-4.3zm-2.1-9.2c2.3 2.3 2.3 6.1 0 8.5-2.3 2.3-6.1 2.3-8.5 0C4 12.5 4 8.7 6.3 6.3c2.4-2.3 6.2-2.3 8.5 0z"/></svg>`;
 
@@ -20,29 +22,6 @@ function findNextHeading(el) {
     }
   }
   return h;
-}
-
-/**
- * Fetch from API and return JSON data.
- * @param {string|URL} source 
- * @returns {object|null}
- */
-export async function fetchData(source) {
-  const response = await fetch(source);
-  if (!response.ok) {
-    // eslint-disable-next-line no-console
-    console.error('error loading API response', response);
-    return null;
-  }
-
-  const json = await response.json();
-  if (!json) {
-    // eslint-disable-next-line no-console
-    console.error('empty API response', source);
-    return null;
-  }
-
-  return json.data;
 }
 
 /**
@@ -118,6 +97,9 @@ function compareFound(hit1, hit2) {
 
 /**
  * Searches data for search terms and returns data with matches.
+ * @param {string[]} searchTerms 
+ * @param {object} data 
+ * @returns 
  */
 function filterData(searchTerms, data) {
   const foundInHeader = [];
@@ -126,8 +108,9 @@ function filterData(searchTerms, data) {
   data?.forEach((result) => {
     let minIdx = -1;
 
+    // Search within `header` and `title` properties in data.
     searchTerms.forEach((term) => {
-      const idx = (result.header || result.title).toLowerCase().indexOf(term);
+      const idx = (result?.header || result?.title)?.toLowerCase().indexOf(term) || -1;
       if (idx < 0) return;
       if (minIdx < idx) minIdx = idx;
     });
@@ -137,6 +120,7 @@ function filterData(searchTerms, data) {
       return;
     }
 
+    // Search within meta `title`, `description`, and the words in the last part of the `path`.
     const metaContents = `${result.title} ${result.description} ${result.path.split('/').pop()}`.toLowerCase();
     searchTerms.forEach((term) => {
       const idx = metaContents.indexOf(term);
@@ -157,10 +141,12 @@ function filterData(searchTerms, data) {
 
 /**
  * Event listener that initiates search and displays results.
+ * - Only searches if inputted text has 3 characters or more.
  */
 async function handleSearch(e, block, config) {
   const searchValue = e.target.value.trim();
   searchParams.set('q', searchValue);
+
   if (window.history.replaceState) {
     const url = new URL(window.location.href);
     url.search = searchParams.toString();
@@ -172,10 +158,11 @@ async function handleSearch(e, block, config) {
     return;
   }
 
+  // Array of unique search terms from the search string (that were separated by a space).
   const searchTerms = searchValue.toLowerCase().split(/\s+/).filter((term) => !!term);
 
-  const data = await fetchData(config.source);
-  const filteredData = filterData(searchTerms, data);
+  const results = await dataStore.getData(config.source);
+  const filteredData = filterData(searchTerms, results?.data);
   await renderResults(block, config, filteredData, searchTerms);
 }
 
@@ -289,8 +276,8 @@ export default async function decorate(block) {
   // Placeholder strings; not currently in use.
   const placeholders = {};
 
-  //!! TODO: handle search functionality
-  const source = block.querySelector('a[href]') ? block.querySelector('a[href]').href : '/pattern-library/sample-search-data/query-index.json';
+  // Endpoint for search data.
+  const source = dataStore.commonEndpoints.queryIndex;
   
   // Build block markup.
   block.innerHTML = '';
