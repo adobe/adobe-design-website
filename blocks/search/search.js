@@ -3,7 +3,6 @@ import {
 } from '../../scripts/aem.js';
 
 const searchParams = new URLSearchParams(window.location.search);
-
 const SEARCH_INPUT_ICON = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" focusable="false" aria-hidden="true" roll="img"><path fill="currentColor" d="M16.9 15.5c2.4-3.2 2.2-7.7-.7-10.6-3.1-3.1-8.1-3.1-11.3 0-3.1 3.2-3.1 8.3 0 11.4 2.9 2.9 7.5 3.1 10.6.6v.1l4.2 4.2c.5.4 1.1.4 1.5 0 .4-.4.4-1 0-1.4l-4.3-4.3zm-2.1-9.2c2.3 2.3 2.3 6.1 0 8.5-2.3 2.3-6.1 2.3-8.5 0C4 12.5 4 8.7 6.3 6.3c2.4-2.3 6.2-2.3 8.5 0z"/></svg>`;
 
 function findNextHeading(el) {
@@ -40,6 +39,11 @@ export async function fetchData(source) {
   return json.data;
 }
 
+/**
+ * Create the markup for a single search result.
+ * @param {object} result To-do: document type of this object
+ * @returns {HTMLLIElement}
+ */
 function renderResult(result) {
   const li = document.createElement('li');
   li.className = 'search__results-item';
@@ -60,13 +64,20 @@ function renderResult(result) {
   return li;
 }
 
+/**
+ * Remove search results markup from its container.
+ */
 function clearSearchResults(block) {
   const searchResults = block.querySelector('.search__results');
   searchResults.innerHTML = '';
 }
 
+/**
+ * Clear search entirely; remove from URL params and results markup.
+ */
 function clearSearch(block) {
   clearSearchResults(block);
+  // Remove query param from URL and update browser history.
   if (window.history.replaceState) {
     const url = new URL(window.location.href);
     url.search = '';
@@ -75,6 +86,9 @@ function clearSearch(block) {
   }
 }
 
+/**
+ * Create and append all search results markup based on the data.
+ */
 async function renderResults(block, config, filteredData) {
   clearSearchResults(block);
   const searchResults = block.querySelector('.search__results');
@@ -94,6 +108,9 @@ function compareFound(hit1, hit2) {
   return hit1.minIdx - hit2.minIdx;
 }
 
+/**
+ * Searches data for search terms and returns data with matches.
+ */
 function filterData(searchTerms, data) {
   const foundInHeader = [];
   const foundInMeta = [];
@@ -130,6 +147,9 @@ function filterData(searchTerms, data) {
   ].map((item) => item.result);
 }
 
+/**
+ * Event listener that initiates search and displays results.
+ */
 async function handleSearch(e, block, config) {
   const searchValue = e.target.value.trim();
   searchParams.set('q', searchValue);
@@ -151,14 +171,22 @@ async function handleSearch(e, block, config) {
   await renderResults(block, config, filteredData, searchTerms);
 }
 
-function searchResultsContainer(block) {
+/**
+ * Create container element for search results.
+ * @returns {HTMLUListElement}
+ */
+function createSearchResultsContainer(block) {
   const results = document.createElement('ul');
   results.className = 'search__results';
   results.dataset.h = findNextHeading(block);
   return results;
 }
 
-function searchBox(block, config) {
+/**
+ * Create search markup, and add its event listeners.
+ * @returns {HTMLDivElement}
+ */
+function createSearchBox(block, config) {
   const box = document.createElement('div');
   box.classList.add('search__box');
 
@@ -185,7 +213,7 @@ function searchBox(block, config) {
 
   const resultsContainer = document.createElement('div');
   resultsContainer.className = 'search__results-container';
-  const searchResults = searchResultsContainer(block);
+  const searchResults = createSearchResultsContainer(block);
   resultsContainer.appendChild(searchResults);
 
   searchInput.append(searchIconInInput);
@@ -193,6 +221,9 @@ function searchBox(block, config) {
 
   box.append(inputWrapper, toggleButton, resultsContainer);
 
+  /**
+   * Clicking the search icon toggles the expanded search field.
+   */
   toggleButton.addEventListener('click', () => {
     box.classList.toggle('search__box--expanded');
     toggleButton.toggleAttribute('aria-expanded');
@@ -204,10 +235,17 @@ function searchBox(block, config) {
     }
   });
 
+  /**
+   * Search after input into search field.
+   * To-do: debounce
+   */
   searchInput.addEventListener('input', (e) => {
     handleSearch(e, block, config);
   });
 
+  /**
+   * Collapse and clear search after pressing Escape.
+   */
   searchInput.addEventListener('keyup', (e) => {
     if (e.code === 'Escape') {
       box.classList.remove('search__box--expanded');
@@ -220,6 +258,9 @@ function searchBox(block, config) {
     // }
   });
 
+  /**
+   * Collapse and clear search after clicking somewhere else.
+   */
   document.addEventListener('click', (e) => {
     if (!box.contains(e.target) && box.classList.contains('search__box--expanded')) {
       box.classList.remove('search__box--expanded');
@@ -230,14 +271,17 @@ function searchBox(block, config) {
   return box;
 }
 
+/**
+ * Search block
+ */
 export default async function decorate(block) {
   const placeholders = await fetchPlaceholders();
   //!! TODO: handle search functionality
   const source = block.querySelector('a[href]') ? block.querySelector('a[href]').href : './sample-search-data/query-index.json';
   block.innerHTML = '';
   block.append(
-    searchBox(block, { source, placeholders }),
-    searchResultsContainer(block),
+    createSearchBox(block, { source, placeholders }),
+    createSearchResultsContainer(block),
   );
 
   if (searchParams.get('q')) {
