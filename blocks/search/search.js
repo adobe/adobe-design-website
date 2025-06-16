@@ -1,12 +1,8 @@
-import {
-  fetchPlaceholders,
-} from '../../scripts/aem.js';
-
 const searchParams = new URLSearchParams(window.location.search);
 const SEARCH_INPUT_ICON = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" focusable="false" aria-hidden="true" roll="img"><path fill="currentColor" d="M16.9 15.5c2.4-3.2 2.2-7.7-.7-10.6-3.1-3.1-8.1-3.1-11.3 0-3.1 3.2-3.1 8.3 0 11.4 2.9 2.9 7.5 3.1 10.6.6v.1l4.2 4.2c.5.4 1.1.4 1.5 0 .4-.4.4-1 0-1.4l-4.3-4.3zm-2.1-9.2c2.3 2.3 2.3 6.1 0 8.5-2.3 2.3-6.1 2.3-8.5 0C4 12.5 4 8.7 6.3 6.3c2.4-2.3 6.2-2.3 8.5 0z"/></svg>`;
 
 function findNextHeading(el) {
-  let preceedingEl = el.parentElement.previousElement || el.parentElement.parentElement;
+  let preceedingEl = el.parentElement?.previousElement || el.parentElement?.parentElement;
   let h = 'H2';
   while (preceedingEl) {
     const lastHeading = [...preceedingEl.querySelectorAll('h1, h2, h3, h4, h5, h6')].pop();
@@ -99,7 +95,7 @@ async function renderResults(block, config, filteredData) {
   } else {
     const noResultsMessage = document.createElement('li');
     searchResults.classList.add('search__results--no-results');
-    noResultsMessage.textContent = config.placeholders.searchNoResults || 'No results found.';
+    noResultsMessage.textContent = config?.placeholders?.searchNoResults || 'No results found.';
     searchResults.append(noResultsMessage);
   }
 }
@@ -197,7 +193,7 @@ function createSearchBox(block, config) {
   searchInput.setAttribute('type', 'search');
   searchInput.setAttribute('autocomplete', 'off');
   searchInput.className = 'search__input';
-  const searchPlaceholder = config.placeholders.searchPlaceholder || 'Search';
+  const searchPlaceholder = config?.placeholders?.searchPlaceholder || 'Search';
   searchInput.placeholder = searchPlaceholder;
   searchInput.setAttribute('aria-label', searchPlaceholder);
 
@@ -275,7 +271,9 @@ function createSearchBox(block, config) {
  * Search block
  */
 export default async function decorate(block) {
-  const placeholders = await fetchPlaceholders();
+  // Placeholder strings; not currently in use.
+  const placeholders = {};
+
   //!! TODO: handle search functionality
   const source = block.querySelector('a[href]') ? block.querySelector('a[href]').href : './sample-search-data/query-index.json';
   block.innerHTML = '';
