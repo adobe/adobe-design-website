@@ -89,10 +89,12 @@ async function renderResults(block, config, filteredData) {
   clearSearchResults(block);
   const searchResults = block.querySelector('.search__results');
 
-  if (filteredData.length) {
+  if (filteredData?.length) {
+    // Has results; append results to container.
     searchResults.classList.remove('search__results--no-results');
     filteredData.forEach((result) => searchResults.append(renderResult(result)));
   } else {
+    // No results; display message.
     const noResultsMessage = document.createElement('li');
     searchResults.classList.add('search__results--no-results');
     noResultsMessage.textContent = config?.placeholders?.searchNoResults || 'No results found.';
@@ -111,7 +113,7 @@ function filterData(searchTerms, data) {
   const foundInHeader = [];
   const foundInMeta = [];
 
-  data.forEach((result) => {
+  data?.forEach((result) => {
     let minIdx = -1;
 
     searchTerms.forEach((term) => {
