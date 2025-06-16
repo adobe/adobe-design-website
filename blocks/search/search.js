@@ -1,6 +1,11 @@
 const searchParams = new URLSearchParams(window.location.search);
 const SEARCH_INPUT_ICON = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" focusable="false" aria-hidden="true" roll="img"><path fill="currentColor" d="M16.9 15.5c2.4-3.2 2.2-7.7-.7-10.6-3.1-3.1-8.1-3.1-11.3 0-3.1 3.2-3.1 8.3 0 11.4 2.9 2.9 7.5 3.1 10.6.6v.1l4.2 4.2c.5.4 1.1.4 1.5 0 .4-.4.4-1 0-1.4l-4.3-4.3zm-2.1-9.2c2.3 2.3 2.3 6.1 0 8.5-2.3 2.3-6.1 2.3-8.5 0C4 12.5 4 8.7 6.3 6.3c2.4-2.3 6.2-2.3 8.5 0z"/></svg>`;
 
+/**
+ * Determine which descending heading level is next, based on the heading in preceding and parent elements.
+ * @param {HTMLElement} el Current element.
+ * @returns {string} Heading tag name, e.g. `H3`.
+ */
 function findNextHeading(el) {
   let preceedingEl = el.parentElement?.previousElement || el.parentElement?.parentElement;
   let h = 'H2';
@@ -17,6 +22,11 @@ function findNextHeading(el) {
   return h;
 }
 
+/**
+ * Fetch from API and return JSON data.
+ * @param {string|URL} source 
+ * @returns {object|null}
+ */
 export async function fetchData(source) {
   const response = await fetch(source);
   if (!response.ok) {
@@ -242,15 +252,18 @@ function createSearchBox(block, config) {
   });
 
   /**
-   * Collapse and clear search after pressing Escape.
+   * Handle keyboard input within search field.
    */
   searchInput.addEventListener('keyup', (e) => {
+    // Collapse and clear search after pressing Escape.
     if (e.code === 'Escape') {
       box.classList.remove('search__box--expanded');
       toggleButton.toggleAttribute('aria-expanded');
       searchInput.value = '';
       clearSearch(block);
     }
+
+    // On Enter, navigate to search results page.
     // if (e.code === 'Enter') {
     //   window.location.href = `/search-results?q=${encodeURIComponent(searchInput.value)}`;
     // }
@@ -278,12 +291,15 @@ export default async function decorate(block) {
 
   //!! TODO: handle search functionality
   const source = block.querySelector('a[href]') ? block.querySelector('a[href]').href : '/pattern-library/sample-search-data/query-index.json';
+  
+  // Build block markup.
   block.innerHTML = '';
   block.append(
     createSearchBox(block, { source, placeholders }),
     createSearchResultsContainer(block),
   );
 
+  // Kick off search initially if it's in a query param in the URL.
   if (searchParams.get('q')) {
     const input = block.querySelector('input');
     input.value = searchParams.get('q');
