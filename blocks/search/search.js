@@ -41,7 +41,7 @@ function renderResult(result) {
   title.textContent = result.title;
 
   const description = document.createElement('div');
-  description.className = 'search__results-description util-body-s';
+  description.className = 'search__results-description util-body-xs';
   description.textContent = result.description;
 
   a.append(title, description);
