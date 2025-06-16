@@ -36,6 +36,10 @@
 */
 
 /* ** Elements - General ** */
+html {
+  scroll-padding-top: calc(var(--page-nav-height) + 1.0rem);
+}
+
 body {
   background-color: var(--color-background);
   background-size: var(--page-background-size, 100% var(--page-background-height, 36.563rem));
