@@ -1,6 +1,6 @@
 
 import { updateFilter } from './filter-group-utils.js';
-import { handleFilterClick, removeUnusedTags } from './filter-group-functions.js';
+import { handleFilterClick } from './filter-group-functions.js';
 
 /*
  * Filter Group Block
@@ -8,7 +8,8 @@ import { handleFilterClick, removeUnusedTags } from './filter-group-functions.js
  */
 export default async function decorate(block) {
     const wrapper = block.parentElement;
-    wrapper.classList.add('filter-group-wrapper');
+    wrapper.classList.add('filter-group');
+    wrapper.dataset.blockName = 'filter-group';
 
     // Create text label above the filters.
     // An aria-label is included to provide a little more explanation of the functionality for screen readers.
@@ -57,8 +58,4 @@ export default async function decorate(block) {
 
     // Replace block with newly built elements.
     wrapper.replaceChildren(label, filterGroup);
-
-    // Remove filter buttons not in the list of articles.
-    // Don't wait for this async operation so it's not render blocking.
-    removeUnusedTags(wrapper);
 }

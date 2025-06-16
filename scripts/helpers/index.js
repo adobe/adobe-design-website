@@ -8,8 +8,10 @@ export { buildListingCTA } from "./buildListingCTA.js";
 export { buildListingDetails } from "./buildListingDetails.js";
 export { buildSkipLink } from "./buildSkipLink.js";
 export { createFocusTrap } from "./createFocusTrap.js";
+export { fetchAndBuildIdeas } from "./fetchAndBuildIdeas.js";
 
 // helpers for full-page logic
+export { appendLiveRegion } from "./appendLiveRegion.js";
 export { decorateThemeBackgroundVisuals } from "./themeBackgrounds.js";
 export { buildCareersListingPage } from "./buildCareersListingPage.js";
 export { buildArticlePage } from "./buildArticlePage.js";
@@ -20,3 +22,4 @@ export { debounce } from "./debounce.js";
 export { isSubPageOf, isIndexPageOf } from "./isPageOf.js";
 export { prepURL } from "./prepURL.js";
 export { isExternalURL } from "./isExternalURL.js";
+export { getCurrentBreakpoint } from "./getCurrentBreakpoint.js";

@@ -1,11 +1,9 @@
-/* !important added to override system styles to maintain cutoff
-effect on filter buttons to indicate horizontal scroll */
 .filter-group {
-  padding-right: 0 !important;
-  margin: 1.5rem auto !important;
+  padding-inline-end: 0;
+  margin: 1.5rem calc(var(--page-gutters) * -1) 1.5rem auto;
 
   @media (min-width: 76rem) {
-    padding: 0 2rem !important;
+    margin-inline-end: 0;
   }
 }
 
@@ -62,10 +60,17 @@ effect on filter buttons to indicate horizontal scroll */
   flex-shrink: 0;
   transition: all var(--spectrum-animation-duration-100) ease;
 
-  &:hover {
-    background-color: var(--color-background-button-filters-hover);
-    color: var(--color-text-dark);
-    cursor: pointer;
+  &:focus-visible {
+    background-color: var(--color-background-button-filters-default);
+    color: inherit;
+  }
+
+  @media (hover: hover) {
+    &:hover {
+      background-color: var(--color-background-button-filters-hover);
+      color: var(--color-text-dark);
+      cursor: pointer;
+    }
   }
 
   &:is(:disabled, :disabled:hover) {
@@ -74,10 +79,13 @@ effect on filter buttons to indicate horizontal scroll */
     cursor: not-allowed;
     opacity: 1;
   }
+}
 
-  &:focus-visible {
-    background-color: var(--color-background-button-filters-default);
-    color: inherit;
+.filter-group__button:last-child {
+  margin-right: 0.5rem;
+
+  @media (min-width: 80rem) {
+    margin-right: 0;
   }
 }
 
@@ -87,19 +95,16 @@ effect on filter buttons to indicate horizontal scroll */
   color: var(--spectrum-gray-50);
   transition: all var(--spectrum-animation-duration-100) ease;
 
-  &:hover {
-    background-color: var(--color-background-button-filters-selected);
-    color: var(--spectrum-gray-50);
-    opacity: 0.9;
-  }
-
   &:focus-visible {
     background-color: var(--color-background-button-filters-selected);
     color: var(--spectrum-gray-50);
   }
 
-  &:focus:not(:focus-visible) {
-    background-color: var(--color-background-button-filters-selected);
+  @media (hover: hover) {
+    &:hover {
+      background-color: rgb(from var(--color-background-button-filters-selected) r g b / 0.9);
+      color: var(--spectrum-gray-50);
+    }
   }
 }
 
