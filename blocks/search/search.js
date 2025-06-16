@@ -277,7 +277,7 @@ export default async function decorate(block) {
   const placeholders = {};
 
   //!! TODO: handle search functionality
-  const source = block.querySelector('a[href]') ? block.querySelector('a[href]').href : './sample-search-data/query-index.json';
+  const source = block.querySelector('a[href]') ? block.querySelector('a[href]').href : '/pattern-library/sample-search-data/query-index.json';
   block.innerHTML = '';
   block.append(
     createSearchBox(block, { source, placeholders }),
