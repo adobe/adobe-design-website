@@ -25,8 +25,37 @@ function findNextHeading(el) {
 }
 
 /**
+ * Create section name to be used for descriptive text under search result title.
+ * @param {string} path 
+ * @return {string}
+ */
+function sectionNameFromPath(path) {
+  const pathParts = path?.split('/');
+  const rootDir = pathParts?.[1] ?? '';
+
+  let sectionName = '';
+  if (pathParts.length < 3 || path.endsWith('/')) {
+    // Landing or single pages
+    sectionName = "Pages";
+  } else {
+    // Default to the root directory name.
+    sectionName = rootDir;
+
+    // Custom sub-page name adjustments.
+    if (sectionName === "ideas") {
+      sectionName = "Articles";
+    }
+    if (sectionName === "careers") {
+      sectionName = "Career Listings";
+    }
+  }
+
+  return sectionName;
+}
+
+/**
  * Create the markup for a single search result.
- * @param {object} result To-do: document type of this object
+ * @param {object} result Todo: document type of this object
  * @returns {HTMLLIElement}
  */
 function renderResult(result) {
@@ -42,7 +71,8 @@ function renderResult(result) {
 
   const description = document.createElement('div');
   description.className = 'search__results-description util-body-xs';
-  description.textContent = result.description;
+  const descriptionText = sectionNameFromPath(result.path);
+  if (descriptionText) description.textContent = descriptionText;
 
   a.append(title, description);
   li.appendChild(a);
@@ -108,6 +138,9 @@ function filterData(searchTerms, data) {
   data?.forEach((result) => {
     let minIdx = -1;
 
+    // Leave home page off of results.
+    if (result?.path === '/') return;
+
     // Search within `header` and `title` properties in data.
     searchTerms.forEach((term) => {
       const idx = (result?.header || result?.title)?.toLowerCase().indexOf(term) || -1;
@@ -121,7 +154,7 @@ function filterData(searchTerms, data) {
     }
 
     // Search within meta `title`, `description`, and the words in the last part of the `path`.
-    const metaContents = `${result.title} ${result.description} ${result.path.split('/').pop()}`.toLowerCase();
+    const metaContents = `${result.title} ${!result.path.startsWith('/authors/') ? result.description : ''} ${result.path.split('/').pop()}`.toLowerCase();
     searchTerms.forEach((term) => {
       const idx = metaContents.indexOf(term);
       if (idx < 0) return;
@@ -232,7 +265,7 @@ function createSearchBox(block, config) {
 
   /**
    * Search after input into search field.
-   * To-do: debounce
+   * Todo: debounce
    */
   searchInput.addEventListener('input', (e) => {
     handleSearch(e, block, config);

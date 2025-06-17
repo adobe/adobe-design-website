@@ -591,7 +591,7 @@
     );
     overflow: scroll;
     scroll-padding-block: max(0.625rem - 4px, 0px);
-    max-height: min(32rem, calc(100dvh - 1rem - var(--page-nav-height)));
+    max-height: min(27rem, calc(100dvh - 1rem - var(--page-nav-height)));
     background: var(--spectrum-gray-25);
     border-radius: 0.625rem;
     box-shadow: var(--drop-shadow-emphasized);
@@ -652,6 +652,10 @@
 
   .search__results-description {
     color: var(--spectrum-gray-700);
+
+    &::first-letter {
+      text-transform: uppercase;
+    }
   }
 }
 
