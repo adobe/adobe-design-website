@@ -12,13 +12,16 @@
   <script src="/scripts/scripts.js" type="module" crossorigin="use-credentials"></script>
   <script type="module">
     window.addEventListener('load', () => {
+      const heading = document.querySelector(".heading-404");
+      const description = document.querySelector(".description-404");
+      const randomImageContainer = document.querySelector(".random-image-404");
+
       if (window.location.pathname.includes('/careers/')) {
-        const heading = document.querySelector(".heading-404");
-        const description = document.querySelector(".description-404");
         heading.classList.add("heading-404--careers");
         heading.textContent = "The job listing you are looking for cannot be found or is no longer active.";
         description.remove();
-      }
+        randomImageContainer.remove();
+      };
     });
   </script>
   <style>
@@ -77,6 +80,18 @@
         font-size: var(--spectrum-font-size-750);
       }
     }
+
+    .random-image-404 {
+      margin-block-end: 2rem;
+
+      @media (min-width: 48rem) {
+        margin-block-end: 3rem;
+      }
+
+      @media (min-width: 80rem) {
+        margin-block-end: 4rem;
+      }
+    }
   </style>
 </head>
 
@@ -87,7 +102,13 @@
   <main id="main-content">
     <section class="404 section">
       <h1 class="heading-404">Oops!</h1>
-      <p class="description-404">We couldn't find what you're looking for,<br> but we did find this in our design archives:</p>
+      <p class="description-404">We couldn't find what you're looking for,<br>but we did find this in our design archives:</p>
+      <div class="random-image-404">
+        <picture>
+          <img src="/assets/images/photohut-icon.png">
+        </picture>
+        <p>The original icon for Adobe Photoshop, then called PhotoHut, was designed by John Knoll circa 1988.</p>
+      </div>
       <div class="button-group">
         <a href="/careers/" class="button button--accent">See current job openings</a>
         <a href="/" class="button button--primary-outline">Go back home</a>
