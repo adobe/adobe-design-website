@@ -25,7 +25,7 @@ function sectionNameFromPath(path) {
       sectionName = "Articles";
     }
     if (sectionName === "careers") {
-      sectionName = "Career Listings";
+      sectionName = "Job Listings";
     }
   }
 
@@ -111,7 +111,6 @@ function compareFound(hit1, hit2) {
  * @returns 
  */
 function filterData(searchTerms, data) {
-  const foundInHeader = [];
   const foundInMeta = [];
 
   data?.forEach((result) => {
@@ -119,18 +118,6 @@ function filterData(searchTerms, data) {
 
     // Leave home page off of results.
     if (result?.path === '/') return;
-
-    // Search within `header` and `title` properties in data.
-    searchTerms.forEach((term) => {
-      const idx = (result?.header || result?.title)?.toLowerCase().indexOf(term) || -1;
-      if (idx < 0) return;
-      if (minIdx < idx) minIdx = idx;
-    });
-
-    if (minIdx >= 0) {
-      foundInHeader.push({ minIdx, result });
-      return;
-    }
 
     // Search within meta `title`, `description`, and the words in the last part of the `path`.
     const metaContents = `${result.title} ${!result.path.startsWith('/authors/') ? result.description : ''} ${result.path.split('/').pop()}`.toLowerCase();
@@ -145,10 +132,7 @@ function filterData(searchTerms, data) {
     }
   });
 
-  return [
-    ...foundInHeader.sort(compareFound),
-    ...foundInMeta.sort(compareFound),
-  ].map((item) => item.result);
+  return foundInMeta.sort(compareFound).map((item) => item.result);
 }
 
 /**
