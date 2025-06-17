@@ -15,7 +15,7 @@ export const buildThemeToggle = () => {
   const themeSelectLabel = document.createElement("label");
   themeSelectLabel.innerText = "Enable Dark Mode";
   themeSelectLabel.classList.add("theme-toggle__label", "util-detail-m");
-  themeSelectLabel.for = "color-scheme";
+  themeSelectLabel.htmlFor = "color-scheme";
 
   // create the input, and check the toggle if a user has system set to dark mode
   const toggleInput = window.matchMedia("(prefers-color-scheme: dark)").matches
