@@ -9,6 +9,9 @@
   </script>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta property="og:title" content="Page not found">
+  <link rel="stylesheet" href="/styles/base.css">
+  <link rel="stylesheet" href="/styles/styles.css">
+  <link rel="stylesheet" href="/styles/global-blocks.css">
   <script src="/scripts/scripts.js" type="module" crossorigin="use-credentials"></script>
   <script type="module">
     const getRandom404Data = async () => {
@@ -38,26 +41,36 @@
       };
     }
 
-    window.addEventListener("load", async () => {
+    const build404Page = async () => {
       const heading = document.querySelector(".not-found__heading");
       const description = document.querySelector(".not-found__description");
       const randomImageContainer = document.querySelector(".not-found__image");
       const randomImagePicture = randomImageContainer.querySelector("img");
       const randomImageCaption = randomImageContainer.querySelector("figcaption");
-
+      const buttons = document.querySelectorAll(".not-found .button");
+  
       if (window.location.pathname.includes("/careers/")) {
         heading.classList.add("not-found__heading--careers");
         heading.textContent = "The job listing you are looking for cannot be found or is no longer active.";
         description.remove();
         randomImageContainer.remove();
+        buttons[0].setAttribute("href", "/careers/");
+        buttons[0].innerText = "See current job openings";
+        buttons[1].setAttribute("href", "/");
+        buttons[1].innerText = "Go back home";
       } else {
         const random404Data = await getRandom404Data();
         if (random404Data) {
           randomImagePicture.setAttribute("src", random404Data.imageSrc);
           randomImageCaption.innerText = random404Data.caption;
+        } else {
+          randomImagePicture.setAttribute("src", "/assets/images/photohut-icon.png");
+          randomImageCaption.innerText = "The original icon for Adobe Photoshop, then called PhotoHut, was designed by John Knoll circa 1988.";
         };
-      };
-    })
+      }
+    }
+
+    build404Page();
   </script>
   <style>
     .not-found__heading {
@@ -84,10 +97,12 @@
       margin-block-end: var(--spacing-global-block-end-small-screen);
 
       @media (min-width: 48rem) {
+        margin-block-start: 4rem;
         margin-block-end: 8rem;
       }
 
       @media (min-width: 80rem) {
+        margin-block-start: 8rem;
         margin-block-end: 12rem;
       }
     }
@@ -169,13 +184,13 @@
       <p class="not-found__description">We couldn't find what you're looking for, but we did find this in our design archives:</p>
       <figure class="not-found__image">
         <picture>
-          <img loading="eager" alt="" src="/assets/images/photohut-icon.png">
+          <img loading="eager" alt="" src="">
         </picture>
-        <figcaption class="util-detail-s">The original icon for Adobe Photoshop, then called PhotoHut, was designed by John Knoll circa 1988.</figcaption>
+        <figcaption class="util-detail-s"></figcaption>
       </figure>
       <div class="button-group">
-        <a href="/careers/" class="button button--accent">See current job openings</a>
-        <a href="/" class="button button--primary-outline">Go back home</a>
+        <a href="/" class="button button--accent">Go back home</a>
+        <a href="/careers/" class="button button--primary-outline">See current job openings</a>
       </div>
     </section>
   </main>
