@@ -224,6 +224,7 @@ function createSearchBox(block, config) {
   const searchInput = document.createElement('input');
   searchInput.setAttribute('type', 'search');
   searchInput.setAttribute('autocomplete', 'off');
+  searchInput.name = 'search';
   searchInput.className = 'search__input';
   const searchPlaceholder = config?.placeholders?.searchPlaceholder || 'Search';
   searchInput.placeholder = searchPlaceholder;
@@ -315,8 +316,7 @@ export default async function decorate(block) {
   // Build block markup.
   block.innerHTML = '';
   block.append(
-    createSearchBox(block, { source, placeholders }),
-    createSearchResultsContainer(block),
+    createSearchBox(block, { source, placeholders })
   );
 
   // Kick off search initially if it's in a query param in the URL.
