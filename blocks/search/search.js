@@ -4,27 +4,6 @@ const searchParams = new URLSearchParams(window.location.search);
 const SEARCH_INPUT_ICON = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" focusable="false" aria-hidden="true" roll="img"><path fill="currentColor" d="M16.9 15.5c2.4-3.2 2.2-7.7-.7-10.6-3.1-3.1-8.1-3.1-11.3 0-3.1 3.2-3.1 8.3 0 11.4 2.9 2.9 7.5 3.1 10.6.6v.1l4.2 4.2c.5.4 1.1.4 1.5 0 .4-.4.4-1 0-1.4l-4.3-4.3zm-2.1-9.2c2.3 2.3 2.3 6.1 0 8.5-2.3 2.3-6.1 2.3-8.5 0C4 12.5 4 8.7 6.3 6.3c2.4-2.3 6.2-2.3 8.5 0z"/></svg>`;
 
 /**
- * Determine which descending heading level is next, based on the heading in preceding and parent elements.
- * @param {HTMLElement} el Current element.
- * @returns {string} Heading tag name, e.g. `H3`.
- */
-function findNextHeading(el) {
-  let preceedingEl = el.parentElement?.previousElement || el.parentElement?.parentElement;
-  let h = 'H2';
-  while (preceedingEl) {
-    const lastHeading = [...preceedingEl.querySelectorAll('h1, h2, h3, h4, h5, h6')].pop();
-    if (lastHeading) {
-      const level = parseInt(lastHeading.nodeName[1], 10);
-      h = level < 6 ? `H${level + 1}` : 'H6';
-      preceedingEl = false;
-    } else {
-      preceedingEl = preceedingEl.previousElement || preceedingEl.parentElement;
-    }
-  }
-  return h;
-}
-
-/**
  * Create section name to be used for descriptive text under search result title.
  * @param {string} path 
  * @return {string}
@@ -200,14 +179,16 @@ async function handleSearch(e, block, config) {
 }
 
 /**
- * Create container element for search results.
- * @returns {HTMLUListElement}
+ * Create container with a list for search results.
+ * @returns {HTMLDivElement}
  */
-function createSearchResultsContainer(block) {
-  const results = document.createElement('ul');
-  results.className = 'search__results';
-  results.dataset.h = findNextHeading(block);
-  return results;
+function createSearchResultsContainer() {
+  const resultsContainer = document.createElement('div');
+  resultsContainer.className = 'search__results-container';
+  const resultsList = document.createElement('ul');
+  resultsList.className = 'search__results';
+  resultsContainer.appendChild(resultsList);
+  return resultsContainer;
 }
 
 /**
@@ -240,10 +221,7 @@ function createSearchBox(block, config) {
   toggleButton.setAttribute('aria-label', 'Toggle search');
   toggleButton.innerHTML = searchIconInInput.innerHTML;
 
-  const resultsContainer = document.createElement('div');
-  resultsContainer.className = 'search__results-container';
-  const searchResults = createSearchResultsContainer(block);
-  resultsContainer.appendChild(searchResults);
+  const resultsContainer = createSearchResultsContainer();
 
   searchInput.append(searchIconInInput);
   inputWrapper.append(searchInput);
