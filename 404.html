@@ -11,21 +11,56 @@
   <meta property="og:title" content="Page not found">
   <script src="/scripts/scripts.js" type="module" crossorigin="use-credentials"></script>
   <script type="module">
-    window.addEventListener('load', () => {
-      const heading = document.querySelector(".heading-404");
-      const description = document.querySelector(".description-404");
-      const randomImageContainer = document.querySelector(".random-image-404");
+    const getRandom404Data = async () => {
+      try {
+        const res = await fetch("/query-index.json?sheet=404");
 
-      if (window.location.pathname.includes('/careers/')) {
-        heading.classList.add("heading-404--careers");
+        if (!res.ok) {
+          console.warn("We could not load the random 404 image data.");
+          return;
+        };
+
+        const { data } = await res.json();
+
+        if (!data.length) {
+          console.warn("No 404 files found.");
+          return;
+        };
+
+        const random404Item = data[Math.floor(Math.random() * data.length)];
+        const random404Data = {
+          imageSrc: random404Item.image,
+          caption: random404Item.title,
+        };
+        return random404Data;
+      } catch (err) {
+        console.warn("We could not load the random 404 image data.");
+      };
+    }
+
+    window.addEventListener("load", async () => {
+      const heading = document.querySelector(".not-found__heading");
+      const description = document.querySelector(".not-found__description");
+      const randomImageContainer = document.querySelector(".not-found__image");
+      const randomImagePicture = randomImageContainer.querySelector("img");
+      const randomImageCaption = randomImageContainer.querySelector("figcaption");
+
+      if (window.location.pathname.includes("/careers/")) {
+        heading.classList.add("not-found__heading--careers");
         heading.textContent = "The job listing you are looking for cannot be found or is no longer active.";
         description.remove();
         randomImageContainer.remove();
+      } else {
+        const random404Data = await getRandom404Data();
+        if (random404Data) {
+          randomImagePicture.setAttribute("src", random404Data.imageSrc);
+          randomImageCaption.innerText = random404Data.caption;
+        };
       };
-    });
+    })
   </script>
   <style>
-    .heading-404 {
+    .not-found__heading {
       font-family: var(--spectrum-display-font);
       font-weight: var(--spectrum-black-font-weight);
       font-size: var(--spectrum-font-size-1000);
@@ -45,7 +80,7 @@
       }
     }
 
-    .heading-404--careers {
+    .not-found__heading--careers {
       margin-block-end: var(--spacing-global-block-end-small-screen);
 
       @media (min-width: 48rem) {
@@ -57,7 +92,22 @@
       }
     }
 
-    .description-404 {
+    .not-found__description,
+    .not-found__image {
+      @media (min-width: 48rem) {
+        max-width: 25.5rem;
+      }
+
+      @media (min-width: 80rem) {
+        max-width: 33rem;
+      }
+
+      @media (min-width: 105rem) {
+        max-width: 34.5rem;
+      }
+    }
+
+    .not-found__description {
       font-family: var(--spectrum-sans-serif-font);
       font-weight: var(--spectrum-bold-font-weight);
       font-size: var(--spectrum-font-size-300);
@@ -81,7 +131,9 @@
       }
     }
 
-    .random-image-404 {
+    .not-found__image {
+      margin-inline: 0;
+      margin-block-start: 0;
       margin-block-end: 2rem;
 
       @media (min-width: 48rem) {
@@ -92,6 +144,18 @@
         margin-block-end: 4rem;
       }
     }
+
+    .not-found__image figcaption {
+      margin-block-start: 0.25rem;
+
+      @media (min-width: 48rem) {
+        margin-block-start: 0.5rem;
+      }
+
+      @media (min-width: 80rem) {
+        margin-block-start: 1rem;
+      }
+    }
   </style>
 </head>
 
@@ -100,15 +164,15 @@
     <!-- Necessary to load nav -->
   </header>
   <main id="main-content">
-    <section class="404 section">
-      <h1 class="heading-404">Oops!</h1>
-      <p class="description-404">We couldn't find what you're looking for,<br>but we did find this in our design archives:</p>
-      <div class="random-image-404">
+    <section class="not-found section">
+      <h1 class="not-found__heading">Oops!</h1>
+      <p class="not-found__description">We couldn't find what you're looking for, but we did find this in our design archives:</p>
+      <figure class="not-found__image">
         <picture>
-          <img src="/assets/images/photohut-icon.png">
+          <img loading="eager" alt="" src="/assets/images/photohut-icon.png">
         </picture>
-        <p>The original icon for Adobe Photoshop, then called PhotoHut, was designed by John Knoll circa 1988.</p>
-      </div>
+        <figcaption class="util-detail-s">The original icon for Adobe Photoshop, then called PhotoHut, was designed by John Knoll circa 1988.</figcaption>
+      </figure>
       <div class="button-group">
         <a href="/careers/" class="button button--accent">See current job openings</a>
         <a href="/" class="button button--primary-outline">Go back home</a>
