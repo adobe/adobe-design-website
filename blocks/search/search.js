@@ -34,7 +34,7 @@ function sectionNameFromPath(path) {
 
 /**
  * Create the markup for a single search result.
- * @param {object} result Todo: document type of this object
+ * @param {object} result
  * @returns {HTMLLIElement}
  */
 function renderResult(result) {
@@ -68,6 +68,7 @@ function clearSearchResults(block) {
 
 /**
  * Clear search entirely; remove from URL params and results markup.
+ * @param {HTMLElement} block The main search block element.
  */
 function clearSearch(block) {
   clearSearchResults(block);
@@ -235,9 +236,9 @@ function createSearchBox(block, config) {
   });
 
   /**
-   * Handle keyboard input within search field.
+   * Handle escape being pressed on input or when focused on a result.
    */
-  searchInput.addEventListener('keyup', (e) => {
+  block.addEventListener('keyup', (e) => {
     // Collapse and clear search after pressing Escape.
     if (e.code === 'Escape') {
       box.classList.remove('search__box--expanded');
@@ -245,11 +246,6 @@ function createSearchBox(block, config) {
       searchInput.value = '';
       clearSearch(block);
     }
-
-    // On Enter, navigate to search results page.
-    // if (e.code === 'Enter') {
-    //   window.location.href = `/search-results?q=${encodeURIComponent(searchInput.value)}`;
-    // }
   });
 
   /**
