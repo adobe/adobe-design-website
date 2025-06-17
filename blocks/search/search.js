@@ -1,4 +1,4 @@
-import { dataStore } from "../../scripts/helpers/index.js";
+import { dataStore, debounce } from "../../scripts/helpers/index.js";
 
 const searchParams = new URLSearchParams(window.location.search);
 const SEARCH_INPUT_ICON = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" focusable="false" aria-hidden="true" roll="img"><path fill="currentColor" d="M16.9 15.5c2.4-3.2 2.2-7.7-.7-10.6-3.1-3.1-8.1-3.1-11.3 0-3.1 3.2-3.1 8.3 0 11.4 2.9 2.9 7.5 3.1 10.6.6v.1l4.2 4.2c.5.4 1.1.4 1.5 0 .4-.4.4-1 0-1.4l-4.3-4.3zm-2.1-9.2c2.3 2.3 2.3 6.1 0 8.5-2.3 2.3-6.1 2.3-8.5 0C4 12.5 4 8.7 6.3 6.3c2.4-2.3 6.2-2.3 8.5 0z"/></svg>`;
@@ -137,11 +137,15 @@ function filterData(searchTerms, data) {
 }
 
 /**
- * Event listener that initiates search and displays results.
- * - Only searches if inputted text has 3 characters or more.
+ * Initiate search functionality and displays results.
+ * Only searches if inputted text has 3 characters or more.
+ * @param {HTMLInputElement} inputElement 
+ * @param {HTMLElement} block 
+ * @param {object} config
  */
-async function handleSearch(e, block, config) {
-  const searchValue = e.target.value.trim();
+async function handleSearch(inputElement, block, config) {
+  if (!inputElement) return;
+  const searchValue = inputElement.value.trim();
   searchParams.set('q', searchValue);
 
   if (window.history.replaceState) {
@@ -158,6 +162,7 @@ async function handleSearch(e, block, config) {
   // Array of unique search terms from the search string (that were separated by a space).
   const searchTerms = searchValue.toLowerCase().split(/\s+/).filter((term) => !!term);
 
+  // Query data, search it, and render the results.
   const results = await dataStore.getData(config.source);
   const filteredData = filterData(searchTerms, results?.data);
   await renderResults(block, config, filteredData, searchTerms);
@@ -229,11 +234,9 @@ function createSearchBox(block, config) {
 
   /**
    * Search after input into search field.
-   * Todo: debounce
    */
-  searchInput.addEventListener('input', (e) => {
-    handleSearch(e, block, config);
-  });
+  const debouncedHandleSearch = debounce((e) => handleSearch(e?.target, block, config), 200);
+  searchInput.addEventListener('input', debouncedHandleSearch);
 
   /**
    * Handle escape being pressed on input or when focused on a result.

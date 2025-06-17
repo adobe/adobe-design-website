@@ -547,7 +547,7 @@
     height: 2rem;
 
     @media (min-width: 48rem) {
-      width: auto;
+      width: 18rem;
     }
 
     .nav--large-screens & {
