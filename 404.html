@@ -12,59 +12,91 @@
   <script src="/scripts/scripts.js" type="module" crossorigin="use-credentials"></script>
   <script type="module">
     window.addEventListener('load', () => {
-      if (document.referrer) {
-        const { origin, pathname } = new URL(document.referrer);
-        if (origin === window.location.origin) {
-          const backBtn = document.createElement('a');
-          backBtn.classList.add('button', 'error-button-back');
-          backBtn.href = pathname;
-          backBtn.textContent = 'Go back';
-          backBtn.title = 'Go back';
-          const btnContainer = document.querySelector('.button-container');
-          btnContainer.append(backBtn);
-        }
+      if (window.location.pathname.includes('/careers/')) {
+        const heading = document.querySelector(".heading-404");
+        const description = document.querySelector(".description-404");
+        heading.classList.add("heading-404--careers");
+        heading.textContent = "The job listing you are looking for cannot be found or is no longer active.";
+        description.remove();
       }
     });
   </script>
-  <script type="module">
-    import { sampleRUM } from '/scripts/aem.js';
-    sampleRUM('404', { source: document.referrer });
-  </script>
   <style>
-    main.error {
-      min-height: calc(100vh - var(--page-nav-height));
-      display: flex;
-      align-items: center;
+    .heading-404 {
+      font-family: var(--spectrum-display-font);
+      font-weight: var(--spectrum-black-font-weight);
+      font-size: var(--spectrum-font-size-1000);
+      line-height: 1.25;
+      margin-block-end: 1.25rem;
+
+      @media (min-width: 48rem) {
+        font-size: var(--spectrum-font-size-1200);
+      }
+
+      @media (min-width: 80rem) {
+        font-size: var(--spectrum-font-size-1400);
+      }
+
+      @media (min-width: 105rem) {
+        font-size: var(--spectrum-font-size-1500);
+      }
     }
 
-    main.error .error-number {
-      width: 100%;
+    .heading-404--careers {
+      margin-block-end: var(--spacing-global-block-end-small-screen);
+
+      @media (min-width: 48rem) {
+        margin-block-end: 8rem;
+      }
+
+      @media (min-width: 80rem) {
+        margin-block-end: 12rem;
+      }
     }
 
-    main.error .error-number {
-      fill:  var(--color-text);
-    }
+    .description-404 {
+      font-family: var(--spectrum-sans-serif-font);
+      font-weight: var(--spectrum-bold-font-weight);
+      font-size: var(--spectrum-font-size-300);
+      line-height: 1.3;
+      margin-block-start: 0;
+      margin-block-end: 1rem;
 
-    main.error .error-number text {
-      font-family: var(--fixed-font-family);
+      @media (min-width: 48rem) {
+        font-size: var(--spectrum-font-size-500);
+        margin-block-end: 2rem;
+      }
+
+      @media (min-width: 80rem) {
+        font-size: var(--spectrum-font-size-700);
+        font-weight: var(--spectrum-extra-bold-font-weight);
+        margin-block-end: 3rem;
+      }
+
+      @media (min-width: 105rem) {
+        font-size: var(--spectrum-font-size-750);
+      }
     }
   </style>
 </head>
 
 <body>
-  <header></header>
-  <main id="main-content" class="error">
-    <div class="section">
-      <svg viewBox="1 0 38 18" class="error-number">
-        <text x="0" y="17">404</text>
-      </svg>
-      <h2 class="error-message">Page Not Found</h2>
-      <p class="button-container">
-        <a href="/" class="button secondary error-button-home">Go home</a>
-      </p>
-    </div>
+  <header>
+    <!-- Necessary to load nav -->
+  </header>
+  <main id="main-content">
+    <section class="404 section">
+      <h1 class="heading-404">Oops!</h1>
+      <p class="description-404">We couldn't find what you're looking for,<br> but we did find this in our design archives:</p>
+      <div class="button-group">
+        <a href="/careers/" class="button button--accent">See current job openings</a>
+        <a href="/" class="button button--primary-outline">Go back home</a>
+      </div>
+    </section>
   </main>
-  <footer></footer>
+  <footer>
+    <!-- Necessary to load footer -->
+  </footer>
 </body>
 
 </html>
