@@ -23,6 +23,7 @@ import {
   buildCareersListingPage,
   appendLiveRegion,
 } from './helpers/index.js';
+import { largeScreenMediaQuery } from '../blocks/header/header.js';
 
 /**
  * Builds hero block and prepends to main in a new section.
@@ -81,13 +82,23 @@ export function decorateMain(main) {
 }
 
 /**
- * Replaces the header if a user reloads the page.
+ * Rebuilds and replaces the header.
  * @function
- * @param {Element} doc - The container element
+ * @param {Element} headerElement - The header's container element.
+ * @param {boolean} onBreakpointChangeOnly - Only rebuild when the header has changed between small and large.
  */
-const reloadHeader = (headerElement) => {
+const reloadHeader = (headerElement, onBreakpointChangeOnly = false) => {
+  if (onBreakpointChangeOnly) {
+    // Compare current screen size and the state of the current nav.
+    const isLargeScreen = window.matchMedia(largeScreenMediaQuery).matches;
+    const isCurrentNavLarge = headerElement.querySelector(".nav--large-screens") !== null;
+    if (isLargeScreen === isCurrentNavLarge) {
+      return;
+    }
+  }
+
   // remove the current header
-  headerElement.innerHTML= '';
+  headerElement.replaceChildren('');
 
   // build it again
   loadHeader(headerElement);
@@ -150,7 +161,7 @@ async function loadLazy(doc) {
 
   // supports rerendering of the responsive navigation
   const headerElement = doc.querySelector('header'); 
-  window.addEventListener("resize", debounce(() => reloadHeader(headerElement), 150));
+  window.addEventListener("resize", debounce(() => reloadHeader(headerElement, true), 150));
 
   // loads the footer component, along with its stylesheet
   loadFooter(doc.querySelector('footer'));
