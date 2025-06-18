@@ -105,7 +105,7 @@ main picture:not([class]) > img:not([class]) {
   justify-content: center;
   width: 100%;
   max-width: 100%;
-  padding: 0.625rem 1rem 0.6875rem;
+  padding: 0.625rem 1.25rem 0.6875rem;
   border: none;
   border-radius: var(--border-radius-button);
   background-color: transparent;
