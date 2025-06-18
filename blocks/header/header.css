@@ -78,6 +78,12 @@
   z-index: 9000;
 }
 
+@supports (height: 100dvh) {
+  .nav__menu--open {
+    min-height: calc(100dvh - var(--page-nav-height));
+  }
+}
+
 a.nav__home-link {
   flex: 0 0 8rem;
   display: flex;
