@@ -239,6 +239,11 @@ function createSearchBox(block, config) {
   searchInput.addEventListener('input', debouncedHandleSearch);
 
   /**
+   * Kick off search if search field already has a value when it gains focus.
+   */
+  searchInput.addEventListener('focus', (e) => handleSearch(e?.target, block, config));
+
+  /**
    * Handle escape being pressed on input or when focused on a result.
    */
   block.addEventListener('keyup', (e) => {
