@@ -71,7 +71,8 @@
 .nav__menu--open {
   display: block;
   width: 100%;
-  min-height: calc(100vh - var(--page-nav-height));
+  height: calc(100vh - var(--page-nav-height));
+  overflow: scroll;
   position: fixed;
   top: var(--page-nav-height);
   background-color: var(--page-background-nav);
