@@ -140,7 +140,11 @@ a.nav__home-link {
       text-decoration: underline;
     }
 
-    @media (min-width: 22.5rem) {
+    @media (min-width: 25rem) {
+      padding-block: 2.5rem;
+    }
+
+    @media (min-width: 48rem) {
       padding-block: 3.25rem;
     }
   }
