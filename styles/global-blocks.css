@@ -77,6 +77,30 @@
   }
 }
 
+/* FIX BUTTON GROUP */
+.button-group {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-block-start: 0;
+  margin-block-end: var(--spacing-global-block-end-small-screen);
+
+  @media (min-width: 22.5rem) {
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+  }
+
+  @media (min-width: 48rem) {
+    gap: 1.5rem;
+    margin-block-end: var(--spacing-global-block-end-medium-screen);
+  }
+
+  @media (min-width: 80rem) {
+    margin-block-end: var(--spacing-global-block-end-large-screen);
+  }
+}
+
 .horizontal-rule {
   height: 0;
   border: none;

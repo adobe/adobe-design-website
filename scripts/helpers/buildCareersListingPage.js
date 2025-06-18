@@ -13,6 +13,8 @@ import {
  */
 
 export const buildCareersListingPage = async () => {
+  if (window.errorCode === "404") return;
+
   const listingMetadata = getListingMetadata();
 
   const listing = document.querySelector("#main-content > .section > div");

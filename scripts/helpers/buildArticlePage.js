@@ -13,6 +13,8 @@ import {
  */
 
 export const buildArticlePage = async () => {
+  if (window.errorCode === "404") return;
+
   const articleBodyContainer = document.querySelector(".article-header-container");
   const articleElement = document.createElement("article");
   

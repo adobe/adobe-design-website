@@ -9,62 +9,194 @@
   </script>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta property="og:title" content="Page not found">
+  <link rel="stylesheet" href="/styles/base.css">
+  <link rel="stylesheet" href="/styles/styles.css">
+  <link rel="stylesheet" href="/styles/global-blocks.css">
   <script src="/scripts/scripts.js" type="module" crossorigin="use-credentials"></script>
   <script type="module">
-    window.addEventListener('load', () => {
-      if (document.referrer) {
-        const { origin, pathname } = new URL(document.referrer);
-        if (origin === window.location.origin) {
-          const backBtn = document.createElement('a');
-          backBtn.classList.add('button', 'error-button-back');
-          backBtn.href = pathname;
-          backBtn.textContent = 'Go back';
-          backBtn.title = 'Go back';
-          const btnContainer = document.querySelector('.button-container');
-          btnContainer.append(backBtn);
-        }
+    const getRandom404Data = async () => {
+      try {
+        const res = await fetch("/query-index.json?sheet=404");
+
+        if (!res.ok) {
+          console.warn("We could not load the random 404 image data.");
+          return;
+        };
+
+        const { data } = await res.json();
+
+        if (!data.length) {
+          console.warn("No 404 files found.");
+          return;
+        };
+
+        const random404Item = data[Math.floor(Math.random() * data.length)];
+        const random404Data = {
+          imageSrc: random404Item.image,
+          caption: random404Item.title,
+        };
+        return random404Data;
+      } catch (err) {
+        console.warn("We could not load the random 404 image data.");
+      };
+    }
+
+    const build404Page = async () => {
+      const heading = document.querySelector(".not-found__heading");
+      const description = document.querySelector(".not-found__description");
+      const randomImageContainer = document.querySelector(".not-found__image");
+      const randomImagePicture = randomImageContainer.querySelector("img");
+      const randomImageCaption = randomImageContainer.querySelector("figcaption");
+      const buttons = document.querySelectorAll(".not-found .button");
+  
+      if (window.location.pathname.includes("/careers/")) {
+        heading.classList.add("not-found__heading--careers");
+        heading.textContent = "The job listing you are looking for cannot be found or is no longer active.";
+        description.remove();
+        randomImageContainer.remove();
+        buttons[0].setAttribute("href", "/careers/");
+        buttons[0].innerText = "See current job openings";
+        buttons[1].setAttribute("href", "/");
+        buttons[1].innerText = "Go back home";
+      } else {
+        const random404Data = await getRandom404Data();
+        if (random404Data) {
+          randomImagePicture.setAttribute("src", random404Data.imageSrc);
+          randomImageCaption.innerText = random404Data.caption;
+        } else {
+          randomImagePicture.setAttribute("src", "/assets/images/photohut-icon.png");
+          randomImageCaption.innerText = "The original icon for Adobe Photoshop, then called PhotoHut, was designed by John Knoll circa 1988.";
+        };
       }
-    });
-  </script>
-  <script type="module">
-    import { sampleRUM } from '/scripts/aem.js';
-    sampleRUM('404', { source: document.referrer });
+    }
+
+    build404Page();
   </script>
   <style>
-    main.error {
-      min-height: calc(100vh - var(--page-nav-height));
-      display: flex;
-      align-items: center;
+    .not-found__heading {
+      font-family: var(--spectrum-display-font);
+      font-weight: var(--spectrum-black-font-weight);
+      font-size: var(--spectrum-font-size-1000);
+      line-height: 1.25;
+      margin-block-end: 1.25rem;
+
+      @media (min-width: 48rem) {
+        font-size: var(--spectrum-font-size-1200);
+      }
+
+      @media (min-width: 80rem) {
+        font-size: var(--spectrum-font-size-1400);
+      }
+
+      @media (min-width: 105rem) {
+        font-size: var(--spectrum-font-size-1500);
+      }
     }
 
-    main.error .error-number {
-      width: 100%;
+    .not-found__heading--careers {
+      margin-block-end: var(--spacing-global-block-end-small-screen);
+
+      @media (min-width: 48rem) {
+        margin-block-start: 4rem;
+        margin-block-end: 8rem;
+      }
+
+      @media (min-width: 80rem) {
+        margin-block-start: 8rem;
+        margin-block-end: 12rem;
+      }
     }
 
-    main.error .error-number {
-      fill:  var(--color-text);
+    .not-found__description,
+    .not-found__image {
+      @media (min-width: 48rem) {
+        max-width: 25.5rem;
+      }
+
+      @media (min-width: 80rem) {
+        max-width: 33rem;
+      }
+
+      @media (min-width: 105rem) {
+        max-width: 34.5rem;
+      }
     }
 
-    main.error .error-number text {
-      font-family: var(--fixed-font-family);
+    .not-found__description {
+      font-family: var(--spectrum-sans-serif-font);
+      font-weight: var(--spectrum-bold-font-weight);
+      font-size: var(--spectrum-font-size-300);
+      line-height: 1.3;
+      margin-block-start: 0;
+      margin-block-end: 1rem;
+
+      @media (min-width: 48rem) {
+        font-size: var(--spectrum-font-size-500);
+        margin-block-end: 2rem;
+      }
+
+      @media (min-width: 80rem) {
+        font-size: var(--spectrum-font-size-700);
+        font-weight: var(--spectrum-extra-bold-font-weight);
+        margin-block-end: 3rem;
+      }
+
+      @media (min-width: 105rem) {
+        font-size: var(--spectrum-font-size-750);
+      }
+    }
+
+    .not-found__image {
+      margin-inline: 0;
+      margin-block-start: 0;
+      margin-block-end: 2rem;
+
+      @media (min-width: 48rem) {
+        margin-block-end: 3rem;
+      }
+
+      @media (min-width: 80rem) {
+        margin-block-end: 4rem;
+      }
+    }
+
+    .not-found__image figcaption {
+      margin-block-start: 0.25rem;
+
+      @media (min-width: 48rem) {
+        margin-block-start: 0.5rem;
+      }
+
+      @media (min-width: 80rem) {
+        margin-block-start: 1rem;
+      }
     }
   </style>
 </head>
 
 <body>
-  <header></header>
-  <main id="main-content" class="error">
-    <div class="section">
-      <svg viewBox="1 0 38 18" class="error-number">
-        <text x="0" y="17">404</text>
-      </svg>
-      <h2 class="error-message">Page Not Found</h2>
-      <p class="button-container">
-        <a href="/" class="button secondary error-button-home">Go home</a>
-      </p>
-    </div>
+  <header>
+    <!-- Necessary to load nav -->
+  </header>
+  <main id="main-content">
+    <section class="not-found section">
+      <h1 class="not-found__heading">Oops!</h1>
+      <p class="not-found__description">We couldn't find what you're looking for, but we did find this in our design archives:</p>
+      <figure class="not-found__image">
+        <picture>
+          <img loading="eager" alt="" src="">
+        </picture>
+        <figcaption class="util-detail-s"></figcaption>
+      </figure>
+      <div class="button-group">
+        <a href="/" class="button button--accent">Go back home</a>
+        <a href="/careers/" class="button button--primary-outline">See current job openings</a>
+      </div>
+    </section>
   </main>
-  <footer></footer>
+  <footer>
+    <!-- Necessary to load footer -->
+  </footer>
 </body>
 
 </html>
