@@ -117,8 +117,8 @@ function filterData(searchTerms, data) {
   data?.forEach((result) => {
     let minIdx = -1;
 
-    // Leave home page off of results.
-    if (result?.path === '/') return;
+    // Leave home page and author pages off of results.
+    if (result?.path === '/' || result?.path.startsWith('/authors/')) return;
 
     // Search within meta `title`, `description`, and the words in the last part of the `path`.
     const metaContents = `${result.title} ${!result.path.startsWith('/authors/') ? result.description : ''} ${result.path.split('/').pop()}`.toLowerCase();
