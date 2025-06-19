@@ -20,7 +20,7 @@
     max-width: var(--page-constrained-text);
     margin-inline: auto;
 
-    & :is(h1, h2, h3, h4, h5, h6) {
+    & :is(h1, h2, h3, h4, h5, h6):not(.author-meta__name) {
       margin-block-start: var(--spacing-heading-block-start-small-screen);
 
       @media (min-width: 22.5rem) {
@@ -36,7 +36,7 @@
       }
     }
 
-    & :is(h3, h4, h5, h6) {
+    & :is(h3, h4, h5, h6):not(.author-meta__name) {
       font-size: var(--spectrum-heading-size-s);
 
       @media (min-width: 22.5rem) {
@@ -52,7 +52,7 @@
       }
     }
 
-    & p {
+    & p:not(.author-description p) {
       margin-block-start: 0.5rem;
     }
   }
