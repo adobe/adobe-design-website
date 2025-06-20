@@ -87,7 +87,7 @@ export function decorateMain(main) {
  * @param {Element} headerElement - The header's container element.
  * @param {boolean} onBreakpointChangeOnly - Only rebuild when the header has changed between small and large.
  */
-const reloadHeader = (headerElement, onBreakpointChangeOnly = false) => {
+const reloadHeader = async (headerElement, onBreakpointChangeOnly = false) => {
   if (onBreakpointChangeOnly) {
     // Compare current screen size and the state of the current nav.
     const isLargeScreen = window.matchMedia(largeScreenMediaQuery).matches;
@@ -97,11 +97,18 @@ const reloadHeader = (headerElement, onBreakpointChangeOnly = false) => {
     }
   }
 
-  // remove the current header
-  headerElement.replaceChildren('');
+  // Build it again.
+  const tempHeader = document.createDocumentFragment();
+  await loadHeader(tempHeader);
 
-  // build it again
-  loadHeader(headerElement);
+  // Keep existing color scheme setting to avoid a brief flash.
+  const colorSchemeValue = document.getElementById("color-scheme")?.checked;
+  if (typeof colorSchemeValue !== "undefined") {
+    const newColorSchemeInput = tempHeader.getElementById("color-scheme");
+    if (newColorSchemeInput) newColorSchemeInput.checked = colorSchemeValue;
+  }
+
+  headerElement.replaceChildren(tempHeader);
 }
 
 /**
