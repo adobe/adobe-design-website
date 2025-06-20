@@ -101,10 +101,7 @@ a.nav__home-link {
 
   svg {
     max-width: 100%;
-  }
-
-  .nav.nav--large-screens & {
-    /* margin-inline: 0; */
+    flex: 1 0 auto;
   }
 }
 
