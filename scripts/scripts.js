@@ -108,6 +108,9 @@ const reloadHeader = async (headerElement, onBreakpointChangeOnly = false) => {
     if (newColorSchemeInput) newColorSchemeInput.checked = colorSchemeValue;
   }
 
+  // Make sure page is scrollable if mobile menu was previously open.
+  document.body.classList.remove("js-no-scroll");
+
   headerElement.replaceChildren(tempHeader);
 }
 
