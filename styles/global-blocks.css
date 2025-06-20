@@ -486,6 +486,7 @@
     transition: all 130ms ease;
     display: flex;
     flex-direction: row;
+    justify-content: flex-end;
     width: 0;
     opacity: 0;
   }
