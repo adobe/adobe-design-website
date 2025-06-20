@@ -567,6 +567,7 @@
     border-radius: 0.25rem;
     transition: background-color 130ms ease;
     align-self: center;
+    color: var(--color-text-dark);
   }
 
   .search__button:hover,
