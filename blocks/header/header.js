@@ -12,6 +12,11 @@ import { buildMenuButton } from "./navMenuButton.js";
 import { NAV_MENU_ICON_OPEN, NAV_MENU_ICON_CLOSE } from "./navMenuIcons.js";
 
 /**
+ * @type {string} Breakpoint for large screen menu. Media query string as used by window.MatchMedia().
+ */
+export const largeScreenMediaQuery = "(min-width: 65.5rem)";
+
+/**
  * Builds and decorates the large screen navigation.
  * @function
  * @param {Element} nav - Page Navigation.
@@ -130,7 +135,7 @@ const buildSmallScreenNav = (nav, homepageLink, pageLinks) => {
 
 export default async function decorate(block) {
   // media query match that indicates mobile/tablet width
-  const isLargeScreen = window.matchMedia("(min-width: 65.5rem)");
+  const isLargeScreen = window.matchMedia(largeScreenMediaQuery).matches;
 
   // load nav content
   const navMeta = getMetadata("nav");
@@ -174,7 +179,7 @@ export default async function decorate(block) {
 
   // if large screens, build the large screen nav
   // otherwise, build the small screen nav
-  if (isLargeScreen.matches) {
+  if (isLargeScreen) {
     buildLargeScreenNav(nav, homepageLink, pageLinks);
   } else {
     buildSmallScreenNav(nav, homepageLink, pageLinks);

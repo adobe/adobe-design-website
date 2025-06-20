@@ -56,6 +56,12 @@ body.js-no-scroll {
   height: 100vh;
 }
 
+@supports (height: 100dvh) {
+  body.js-no-scroll {
+    height: 100dvh;
+  }
+}
+
 body.js-has-sticky-footer {
   margin-block-end: 8rem;
 

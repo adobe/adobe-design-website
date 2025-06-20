@@ -63,8 +63,7 @@ export const buildLargeScreenNavToolbar = () => {
   const search = buildSearch();
 
   // apply them in the correct DOM order
-  toolbar.append(toggle);
-  toolbar.append(search);
+  toolbar.append(search, toggle);
   return toolbar;
 };
 

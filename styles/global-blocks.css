@@ -485,6 +485,7 @@
     transition: all 130ms ease;
     display: flex;
     flex-direction: row;
+    justify-content: flex-end;
     width: 0;
     opacity: 0;
   }
@@ -567,6 +568,11 @@
     border-radius: 0.25rem;
     transition: background-color 130ms ease;
     align-self: center;
+    color: var(--color-text-dark);
+
+    & svg {
+      flex: 1 0 auto;
+    }
   }
 
   .search__button:hover,

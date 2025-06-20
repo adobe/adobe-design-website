@@ -23,6 +23,7 @@ import {
   buildCareersListingPage,
   appendLiveRegion,
 } from './helpers/index.js';
+import { largeScreenMediaQuery } from '../blocks/header/header.js';
 
 /**
  * Builds hero block and prepends to main in a new section.
@@ -81,16 +82,36 @@ export function decorateMain(main) {
 }
 
 /**
- * Replaces the header if a user reloads the page.
+ * Rebuilds and replaces the header.
  * @function
- * @param {Element} doc - The container element
+ * @param {Element} headerElement - The header's container element.
+ * @param {boolean} onBreakpointChangeOnly - Only rebuild when the header has changed between small and large.
  */
-const reloadHeader = (headerElement) => {
-  // remove the current header
-  headerElement.innerHTML= '';
+const reloadHeader = async (headerElement, onBreakpointChangeOnly = false) => {
+  if (onBreakpointChangeOnly) {
+    // Compare current screen size and the state of the current nav.
+    const isLargeScreen = window.matchMedia(largeScreenMediaQuery).matches;
+    const isCurrentNavLarge = headerElement.querySelector(".nav--large-screens") !== null;
+    if (isLargeScreen === isCurrentNavLarge) {
+      return;
+    }
+  }
 
-  // build it again
-  loadHeader(headerElement);
+  // Build it again.
+  const tempHeader = document.createDocumentFragment();
+  await loadHeader(tempHeader);
+
+  // Keep existing color scheme setting to avoid a brief flash.
+  const colorSchemeValue = document.getElementById("color-scheme")?.checked;
+  if (typeof colorSchemeValue !== "undefined") {
+    const newColorSchemeInput = tempHeader.getElementById("color-scheme");
+    if (newColorSchemeInput) newColorSchemeInput.checked = colorSchemeValue;
+  }
+
+  // Make sure page is scrollable if mobile menu was previously open.
+  document.body.classList.remove("js-no-scroll");
+
+  headerElement.replaceChildren(tempHeader);
 }
 
 /**
@@ -150,7 +171,7 @@ async function loadLazy(doc) {
 
   // supports rerendering of the responsive navigation
   const headerElement = doc.querySelector('header'); 
-  window.addEventListener("resize", debounce(() => reloadHeader(headerElement), 150));
+  window.addEventListener("resize", debounce(() => reloadHeader(headerElement, true), 150));
 
   // loads the footer component, along with its stylesheet
   loadFooter(doc.querySelector('footer'));
