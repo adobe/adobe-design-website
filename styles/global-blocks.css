@@ -569,6 +569,10 @@
     transition: background-color 130ms ease;
     align-self: center;
     color: var(--color-text-dark);
+
+    & svg {
+      flex: 1 0 auto;
+    }
   }
 
   .search__button:hover,
