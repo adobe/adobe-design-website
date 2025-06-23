@@ -57,13 +57,7 @@ body {
 
 body.js-no-scroll {
   overflow: hidden;
-  height: 100vh;
-}
-
-@supports (height: 100dvh) {
-  body.js-no-scroll {
-    height: 100dvh;
-  }
+  height: var(--page-viewport-height);
 }
 
 body.js-has-sticky-footer {
