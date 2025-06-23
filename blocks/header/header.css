@@ -71,11 +71,18 @@
 .nav__menu--open {
   display: block;
   width: 100%;
-  min-height: calc(100vh - var(--page-nav-height));
+  height: calc(100vh - var(--page-nav-height));
+  overflow: scroll;
   position: fixed;
   top: var(--page-nav-height);
   background-color: var(--page-background-nav);
   z-index: 9000;
+}
+
+@supports (height: 100dvh) {
+  .nav__menu--open {
+    min-height: calc(100dvh - var(--page-nav-height));
+  }
 }
 
 a.nav__home-link {
@@ -94,10 +101,7 @@ a.nav__home-link {
 
   svg {
     max-width: 100%;
-  }
-
-  .nav.nav--large-screens & {
-    /* margin-inline: 0; */
+    flex: 1 0 auto;
   }
 }
 
@@ -133,7 +137,11 @@ a.nav__home-link {
       text-decoration: underline;
     }
 
-    @media (min-width: 22.5rem) {
+    @media (min-width: 25rem) {
+      padding-block: 2.5rem;
+    }
+
+    @media (min-width: 48rem) {
       padding-block: 3.25rem;
     }
   }
@@ -347,38 +355,6 @@ a.nav__home-link {
   background-color: var(--spectrum-switch-background-color);
   border-radius: var(--spectrum-switch-border-radius);
 
-  .theme-toggle:hover & {
-    border-color: var(--spectrum-switch-border-color-hover);
-  }
-
-  .theme-toggle:active & {
-    border-color: var(--spectrum-switch-border-color-down);
-  }
-
-  .theme-toggle__input:focus-visible + & {
-    border-color: var(--spectrum-switch-border-color-focus);
-  }
-
-  .theme-toggle__input:checked + & {
-    background-color: var(--spectrum-switch-background-color-selected-default);
-    border-color: var(--spectrum-switch-border-color-selected-default);
-  }
-
-  .theme-toggle:hover & {
-    background-color: var(--spectrum-switch-background-color-selected-hover);
-    border-color: var(--spectrum-switch-border-color-selected-hover);
-  }
-
-  .theme-toggle:active & {
-    background-color: var(--spectrum-switch-background-color-selected-down);
-    border-color: var(--spectrum-switch-border-color-selected-down);
-  }
-
-  .theme-toggle__input:checked:focus-visible + & {
-    background-color: var(--spectrum-switch-background-color-selected-focus);
-    border-color: var(--spectrum-switch-border-color-selected-focus);
-  }
-
   /* :before is used for the handle of the switch */
   &::before {
     display: block;
@@ -400,36 +376,6 @@ a.nav__home-link {
 
     background-color: var(--spectrum-switch-handle-background-color-default);
     border-radius: var(--spectrum-switch-border-radius);
-
-    .theme-toggle:hover & {
-      background-color: var(--spectrum-switch-handle-background-color-hover);
-    }
-
-    .theme-toggle:active & {
-      background-color: var(--spectrum-switch-handle-background-color-down);
-    }
-
-    .theme-toggle__input:focus-visible + & {
-      background-color: var(--spectrum-switch-handle-background-color-focus);
-    }
-
-    .theme-toggle:hover & {
-      background-color: var(--spectrum-switch-handle-background-color-selected);
-    }
-
-    .theme-toggle:active .theme-toggle__input:not(:disabled) + & {
-      transform: perspective(
-          var(--spectrum-component-size-minimum-perspective-down)
-        )
-        translateZ(var(--spectrum-component-size-difference-down));
-    }
-
-    .theme-toggle:active .theme-toggle__input:not(:disabled):checked + & {
-      /* Add down state without overriding translateX */
-      transform: translateX(calc(100% + var(--spectrum-switch-border-width)))
-        perspective(var(--spectrum-component-size-minimum-perspective-down))
-        translateZ(var(--spectrum-component-size-difference-down));
-    }
   }
 
   /* :after is used for the track of the switch and the focus */
@@ -450,6 +396,56 @@ a.nav__home-link {
   }
 }
 
+/* Switch color changes */
+.theme-toggle {
+  &:hover .theme-toggle__switch {
+    background-color: var(--spectrum-switch-background-color-selected-focus);
+    border-color: var(--spectrum-switch-border-color-selected-focus);
+  }
+
+  &:active .theme-toggle__switch {
+    border-color: var(--spectrum-switch-border-color-down);
+  }
+
+  .theme-toggle__input:focus-visible + .theme-toggle__switch {
+    border-color: var(--spectrum-switch-border-color-focus);
+  }
+
+  .theme-toggle__input:checked + .theme-toggle__switch {
+    background-color: var(--spectrum-switch-background-color-selected-default);
+    border-color: var(--spectrum-switch-border-color-selected-default);
+  }
+
+  &:hover .theme-toggle__input:checked + .theme-toggle__switch {
+    background-color: var(--spectrum-switch-background-color-selected-hover);
+    border-color: var(--spectrum-switch-border-color-selected-hover);
+  }
+
+  &:active .theme-toggle__switch {
+    background-color: var(--spectrum-switch-background-color-selected-down);
+    border-color: var(--spectrum-switch-border-color-selected-down);
+  }
+}
+
+/* Switch handle color changes */
+.theme-toggle {
+  &:hover .theme-toggle__switch::before {
+    background-color: var(--spectrum-switch-handle-background-color-hover);
+  }
+
+  &:active .theme-toggle__switch::before {
+    background-color: var(--spectrum-switch-handle-background-color-down);
+  }
+
+  .theme-toggle__input:focus-visible + .theme-toggle__switch::before {
+    background-color: var(--spectrum-switch-handle-background-color-focus);
+  }
+
+  &:hover .theme-toggle__switch::before {
+    background-color: var(--spectrum-switch-handle-background-color-selected);
+  }
+}
+
 .theme-toggle__input:focus-visible + .theme-toggle__switch::after {
   outline: var(--spectrum-switch-focus-indicator-thickness) solid
     var(--spectrum-switch-focus-indicator-color);
@@ -466,6 +462,20 @@ a.nav__home-link {
   inset-inline-start: -0.375rem;
 
   transform: translateX(calc(100% + var(--spectrum-switch-border-width)));
+}
+
+/* Minimum perspective down state */
+.theme-toggle__input:active {
+  &:not(:disabled) + .theme-toggle__switch::before {
+    transform: perspective(var(--spectrum-component-size-minimum-perspective-down))
+      translateZ(var(--spectrum-component-size-difference-down));
+  }
+
+  &:not(:disabled):checked + .theme-toggle__switch::before {
+    transform: translateX(calc(100% + var(--spectrum-switch-border-width)))
+      perspective(var(--spectrum-component-size-minimum-perspective-down))
+      translateZ(var(--spectrum-component-size-difference-down));
+  }
 }
 
 /* disabled */
