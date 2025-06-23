@@ -267,9 +267,19 @@ function createSearchBox(block, config) {
    * Collapse and clear search after clicking somewhere else.
    */
   document.addEventListener('click', (e) => {
-    if (!box.contains(e.target) && box.classList.contains('search__box--expanded')) {
+    const collapseAndClear = () => {
       box.classList.remove('search__box--expanded');
       clearSearch(block);
+    };
+
+    if (box.closest('.nav')?.classList.contains('nav--large-screens')) {
+      if (!box.contains(e.target) && box.classList.contains('search__box--expanded')) {
+        collapseAndClear();
+      }
+    } else {
+      if (inputWrapper !== e.target && !inputWrapper.contains(e.target) && resultsContainer !== e.target && !resultsContainer.contains(e.target)) {
+        collapseAndClear();
+      }
     }
   });
 

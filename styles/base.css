@@ -620,6 +620,12 @@
   --page-constrained-text: 75ch;
   --page-nav-height: 4rem;
 
+  --page-viewport-height: 100vh;
+
+  @supports (height: 100dvh) {
+    --page-viewport-height: 100dvh;
+  }
+
   --page-background-height: 28.75rem;
 
   @media (min-width: 48rem) {

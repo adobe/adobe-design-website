@@ -480,6 +480,10 @@
     position: relative;
     justify-content: flex-end;
 
+    .nav:not(.nav--large-screens) &:has(.search__results-container li) {
+      height: 100%;
+    }
+
     .nav--large-screens & {
       display: flex;
     }
@@ -507,6 +511,10 @@
       background-size: contain;
       position: absolute;
       inset-inline-start: 0.5rem;
+    }
+
+    @media (min-width: 48rem) {
+      width: 22rem;
     }
 
     .nav--large-screens & {
@@ -545,10 +553,6 @@
     color: var(--color-text-dark);
     font-size: var(--spectrum-body-size-s);
     height: 2rem;
-
-    @media (min-width: 48rem) {
-      width: 18rem;
-    }
 
     .nav--large-screens & {
       display: none;
@@ -624,8 +628,8 @@
     margin-block-start: 0.5rem;
     overflow: scroll;
     scroll-padding-block: max(0.625rem - 4px, 0px);
-    max-height: min(18rem, calc(100dvh - 1rem - var(--page-nav-height)));
-    background: var(--spectrum-gray-25);
+    max-height: min(calc(100% - 5.5rem), 75vh);
+    background: var(--spectrum-white);
     border-radius: 0.625rem;
     box-shadow: var(--drop-shadow-emphasized);
 
@@ -636,7 +640,7 @@
       top: 3.5rem;
       margin-block-start: 0;
       margin-inline-end: 2.75rem;
-      max-height: min(27rem, calc(100dvh - 1rem - var(--page-nav-height)));
+      max-height: min(27rem, calc(var(--page-viewport-height) - 1rem - var(--page-nav-height)));
       width: calc(
         var(--search-input-wrapper-width) - var(--search-input-margin-block-end)
       );
@@ -710,6 +714,7 @@
 }
 
 :root:has(#color-scheme:checked) .search .search__results-container {
+  background: var(--spectrum-black);
   border: 2px solid var(--spectrum-gray-300);
 }
 
