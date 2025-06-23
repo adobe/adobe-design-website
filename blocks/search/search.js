@@ -101,6 +101,14 @@ async function renderResults(block, config, filteredData) {
   }
 }
 
+/**
+ * Compare function for used by Array.sort on search results from `filterData`.
+ * Sorts by the `minIdx` property, smallest to largest, i.e. when searched text
+ * is found closer to the start of the searched text, it appears in results first. 
+ * @param {object} hit1
+ * @param {object} hit2 
+ * @returns 
+ */
 function compareFound(hit1, hit2) {
   return hit1.minIdx - hit2.minIdx;
 }
@@ -115,6 +123,7 @@ function filterData(searchTerms, data) {
   const foundInMeta = [];
 
   data?.forEach((result) => {
+    // Position of the first instance of the searched text substring.
     let minIdx = -1;
 
     // Leave home page and author pages off of results.
