@@ -95,7 +95,7 @@ export default function decorate(block) {
       "button--primary",
       "ideas__load-button"
     );
-    loadMoreButton.dataset.defaultText = "Load more ideas";
+    loadMoreButton.dataset.defaultText = "Load more";
     loadMoreButton.dataset.loadingText = "Loading ideas…";
     loadMoreButton.textContent = loadMoreButton.dataset.defaultText;
     loadMoreButton.addEventListener("click", handleLoadMore);
