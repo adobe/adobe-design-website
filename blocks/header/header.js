@@ -114,6 +114,14 @@ const buildSmallScreenNav = (nav, homepageLink, pageLinks) => {
    * @function
    */
   handleEscapeKey = (e) => {
+    // Prevent closing the menu if escape was used to clear the search field within the menu.
+    // Pressing a second time after clearing the search will close the menu.
+    const isSearchInputWithValue = e?.target?.classList?.contains('search__input') && e.target?.value !== "";
+    const isSearchResult = e?.target?.parentElement?.classList?.contains('search__results-item');
+    if (isSearchInputWithValue || isSearchResult) { 
+      return;
+    }
+
     if (e.key === "Escape") {
       closeNavMenu();
     }

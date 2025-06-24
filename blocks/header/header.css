@@ -71,18 +71,12 @@
 .nav__menu--open {
   display: block;
   width: 100%;
-  height: calc(100vh - var(--page-nav-height));
+  height: calc(var(--page-viewport-height) - var(--page-nav-height));
   overflow: scroll;
   position: fixed;
   top: var(--page-nav-height);
   background-color: var(--page-background-nav);
   z-index: 9000;
-}
-
-@supports (height: 100dvh) {
-  .nav__menu--open {
-    min-height: calc(100dvh - var(--page-nav-height));
-  }
 }
 
 a.nav__home-link {
@@ -202,12 +196,18 @@ a.nav__home-link {
 }
 
 .nav-toolbar__search {
+  box-sizing: border-box;
+  position: relative;
   border-top: var(--nav-sections-border);
   padding-block: 1.25rem;
   padding-inline: var(--page-gutters);
 
   .nav.nav--large-screens & {
     padding: 0;
+  }
+
+  .nav:not(.nav--large-screens) &:has(.search__results-container li) {
+    height: calc(var(--page-viewport-height) - var(--page-nav-height));
   }
 }
 

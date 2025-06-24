@@ -1,22 +1,29 @@
-// helpers for building blocks
-export { getAuthorData } from "./getAuthorData.js";
-export { getListingMetadata } from "./getListingMetadata.js";
+/**
+ * @file Helper and utility functions.
+ */
+
+// Fetching data
+export { dataStore } from "./dataStore.js";
+export { fetchAndBuildIdeas } from "./fetchAndBuildIdeas.js";
 export { loadArticlePreFooter } from "./loadArticlePreFooter.js";
 export { loadListingPreFooter } from "./loadListingPreFooter.js";
+
+// Building blocks
+export { getAuthorData } from "./getAuthorData.js";
+export { getListingMetadata } from "./getListingMetadata.js";
 export { buildAuthorAside } from "./buildAuthorAside.js";
 export { buildListingCTA } from "./buildListingCTA.js";
 export { buildListingDetails } from "./buildListingDetails.js";
 export { buildSkipLink } from "./buildSkipLink.js";
 export { createFocusTrap } from "./createFocusTrap.js";
-export { fetchAndBuildIdeas } from "./fetchAndBuildIdeas.js";
 
-// helpers for full-page logic
+// Full-page logic
 export { appendLiveRegion } from "./appendLiveRegion.js";
 export { decorateThemeBackgroundVisuals } from "./themeBackgrounds.js";
 export { buildCareersListingPage } from "./buildCareersListingPage.js";
 export { buildArticlePage } from "./buildArticlePage.js";
 
-// general helpers
+// General helpers/utilities
 export { appendCleanText } from "./appendCleanText.js";
 export { debounce } from "./debounce.js";
 export { isSubPageOf, isIndexPageOf } from "./isPageOf.js";
