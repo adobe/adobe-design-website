@@ -162,8 +162,8 @@ async function loadLazy(doc) {
   // decorate page-specific components
   // decorate article page
   if (isSubPageOf('ideas')) {
-    const isStoryPackPage = document.head.querySelector("meta[name='page-type']")?.content.trim().toLowerCase() === "story pack";
-    if (!isStoryPackPage) buildArticlePage();
+    const isArticle = Boolean(document.querySelector("main.article-content"));
+    if (isArticle) buildArticlePage();
   };
 
   // decorate careers listing page
