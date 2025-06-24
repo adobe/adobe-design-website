@@ -259,6 +259,7 @@ function createSearchBox(block, config) {
     if (e.code === 'Escape') {
       box.classList.remove('search__box--expanded');
       toggleButton.toggleAttribute('aria-expanded');
+      searchInput.value = '';
       clearSearch(block);
     }
   });

@@ -508,7 +508,7 @@
       inset-inline-start: 0.5rem;
     }
 
-    @media (min-width: 48rem) {
+    @media (min-width: 52rem) {
       width: 22rem;
     }
 
