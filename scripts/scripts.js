@@ -163,7 +163,6 @@ async function loadLazy(doc) {
   // decorate article page
   if (isSubPageOf('ideas')) {
     const isArticle = Boolean(document.querySelector("main.article-content"));
-    console.log(isArticle);
     if (isArticle) buildArticlePage();
   };
 
