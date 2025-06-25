@@ -12,6 +12,7 @@
 
 /* eslint-env browser */
 import { decorateThemeBackgroundVisuals } from "./helpers/themeBackgrounds.js";
+import { blocksWithoutCSS } from "./helpers/blockSettings.js";
 
 function sampleRUM(checkpoint, data) {
   // eslint-disable-next-line max-len
@@ -609,7 +610,10 @@ async function loadBlock(block) {
     block.dataset.blockStatus = 'loading';
     const { blockName } = block.dataset;
     try {
-      const cssLoaded = loadCSS(`${window.hlx.codeBasePath}/blocks/${blockName}/${blockName}.css`);
+      const cssLoaded = blocksWithoutCSS.includes(blockName)
+        ? Promise.resolve()
+        : loadCSS(`${window.hlx.codeBasePath}/blocks/${blockName}/${blockName}.css`);
+
       const decorationComplete = new Promise((resolve) => {
         (async () => {
           try {

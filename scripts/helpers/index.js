@@ -9,6 +9,7 @@ export { loadArticlePreFooter } from "./loadArticlePreFooter.js";
 export { loadListingPreFooter } from "./loadListingPreFooter.js";
 
 // Building blocks
+export { blocksWithoutCSS } from "./blockSettings.js";
 export { getAuthorData } from "./getAuthorData.js";
 export { getListingMetadata } from "./getListingMetadata.js";
 export { buildAuthorAside } from "./buildAuthorAside.js";
