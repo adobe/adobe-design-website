@@ -68,7 +68,7 @@ export default function decorate(block) {
   });
 
   // How many cards before a feature.
-  const groupTotal = calculateGroupTotal();
+  const groupTotal = calculateGroupTotal(settings.layoutType === "two-up");
 
   // Fetch and add markup for articles, and then add in the features.
   const fetchAndAppend = async () => {

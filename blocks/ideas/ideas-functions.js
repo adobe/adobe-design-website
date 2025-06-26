@@ -102,14 +102,15 @@ export const initialMaxIdeas = (totalFeatures, groupTotal) => {
 
 /**
  * Calculate number of cards per grouping, based on screen size.
+ * @param {boolean} isTwoUp Is two-up layout (rather than the default four-up).
  * @returns {number}
  */
-export const calculateGroupTotal = () =>
+export const calculateGroupTotal = (isTwoUp = false) =>
   ({
     sm: 3,
     md: 4,
-    lg: 8,
-    xl: 8,
+    lg: isTwoUp ? 4 : 8,
+    xl: isTwoUp ? 4 : 8,
   }[getCurrentBreakpoint()] || 8);
 
 /**
