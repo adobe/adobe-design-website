@@ -153,10 +153,10 @@ export const handleLoadMore = async (event) => {
   const filtersParent = document.querySelector(".filter-group");
   const layoutType = gridContainer?.dataset?.layoutType;
 
-  // Tag(s) to fetch. Tags in filters, or a set tag from the data attribute if there are no filters (story pack page).
+  // Tag(s) to fetch. Tags in filters, or a set tag from the data attribute if there are no filters (tag page).
   const tagsToFind = filtersParent
     ? getCurrentFiltersArray(filtersParent)
-    : gridContainer?.dataset?.tag ?? "All";
+    : gridContainer?.dataset?.tags.split(",") ?? "All";
 
   // Temporarily disable button while loading.
   updateLoadButtonState(clickedButton, true);
