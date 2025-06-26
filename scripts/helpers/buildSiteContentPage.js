@@ -1,6 +1,22 @@
 import { dataStore, prepURL } from "../helpers/index.js";
 
 /**
+ * Create HTML SECTION element, given list and header data.
+ *
+ * @param {string} headerText
+ * @param {HTMLULElement} list
+ * @return {HTMLSECTIONElement}
+ */
+const createSection = (headerText, list) => {
+  const section = document.createElement("section");
+  section.classList.add("section");
+  const sectionHeader = document.createElement("h2");
+  sectionHeader.innerText = headerText;
+  section.append(sectionHeader, list);
+  return section;
+}
+
+/**
  * Create HTML UL element with LI items, given list item data.
  *
  * @param {Array} items
@@ -36,6 +52,8 @@ const createListItemAnchor = (url = "", textContent) => {
  * @return {void}
  */
 export const buildSiteContentPage = async () => {
+  const main = document.querySelector("main");
+
   const articles = await dataStore.getData(dataStore.commonEndpoints.ideas);
   const articleListItems = Array.from(
     articles.data.map((article) =>
@@ -82,22 +100,22 @@ export const buildSiteContentPage = async () => {
     .sort((a, b) => a.textContent.localeCompare(b.textContent));
 
   // append articles
-  const articleSection = document.body.querySelector("div:has(#articles)");
   const articlesList = createList(articleListItems);
-  articleSection.append(articlesList);
+  const articleSection = createSection("Articles", articlesList);
+  main.append(articleSection);
 
   // append article tags
-  const articleTagsSection = document.body.querySelector("div:has(#article-tags)");
   const articleTagsList = createList(articleTagsListItems);
-  articleTagsSection.append(articleTagsList);
+  const articleTagsSection = createSection("Article Tags", articleTagsList);
+  main.append(articleTagsSection);
 
   // append career listings
-  const listingsSection = document.body.querySelector("div:has(#career-listings)");
   const listingsList = createList(listingsListItems);
-  listingsSection.append(listingsList);
+  const listingsSection = createSection("Job Listings", listingsList);
+  main.append(listingsSection);
 
   // append authors
-  const authorSection = document.body.querySelector("div:has(#authors)");
   const authorsList = createList(authorsListItems);
-  authorSection.append(authorsList);
+  const authorSection = createSection("Authors", authorsList);
+  main.append(authorSection);
 }
