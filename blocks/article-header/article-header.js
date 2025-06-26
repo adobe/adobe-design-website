@@ -1,5 +1,4 @@
 import { getMetadata } from '../../scripts/aem.js';
-import { prepURL } from '../../scripts/helpers/index.js';
 
 /**
  * Loads and decorates the article header.
@@ -16,7 +15,6 @@ export default async function decorate(block) {
       block.children?.[1]?.children?.[0]?.children?.[0]?.textContent?.trim(),
     author: getMetadata('author'),
     pubDate: getMetadata('publication-date'),
-    tag: getMetadata('tag'),
     image: block.children?.[2]?.children?.[0]?.firstElementChild,
     caption: block.children?.[2]?.children?.[1]?.innerHTML,
     altText: block.children?.[2]?.children?.[2]?.textContent?.trim(),
@@ -29,17 +27,6 @@ export default async function decorate(block) {
   // constrain the width of text on article pages
   const main = document.querySelector("#main-content");
   main.classList.add("article-content");
-
-  // if there is a tag, add it as an eyebrow
-  // that links to the story packs page
-  if (articleHeaderData.tag) {
-    const eyebrow = document.createElement("a");
-    eyebrow.classList.add("article-header__eyebrow", "util-detail-m");
-    const urlSlug = prepURL(articleHeaderData.tag);
-    eyebrow.href = `/ideas/${urlSlug}`;
-    eyebrow.innerText = articleHeaderData.tag;
-    articleHeader.append(eyebrow);
-  }
 
   // there should always be a title, so create it as an h1
   const pageTitle = document.createElement("h1");
