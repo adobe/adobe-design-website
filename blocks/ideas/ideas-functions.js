@@ -88,16 +88,16 @@ export const buildIdeasFeature = (featureContent) => {
 };
 
 /**
- * Determine total number of ideas to load initially.
+ * Determine total number of ideas to load initially, so there are enough
+ * cards to display before and after features.
  * @param {number} totalFeatures Total number of feature sections.
- * @param {number} groupTotal How many cards before a feature and how many additional to fetch on load more.
+ * @param {number} groupTotal How many cards before or after a feature.
  * @returns {number}
  */
 export const initialMaxIdeas = (totalFeatures, groupTotal) => {
-  // At least the groupTotal, if there are no features.
-  if (!totalFeatures) return groupTotal;
-  // Include a set of cards above every feature and below the last feature.
-  return totalFeatures * groupTotal + groupTotal;
+  const minTotalWithFeatures = (totalFeatures + 1) * groupTotal;
+  // Include a larger minimum of 3x the grouping, so the total is never too small.
+  return Math.max(minTotalWithFeatures, groupTotal * 3);
 };
 
 /**
