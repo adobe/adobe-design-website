@@ -36,7 +36,11 @@ export const fetchAndBuildIdeas = async (settings) => {
         const tagsToFind = settings.tagName.map(str => str.trim().toLowerCase());
         if (tagsToFind.length > 0 && tagsToFind[0] != 'all') {
             filteredArticles = filteredArticles.filter(
-                ({ tag }) => tagsToFind.includes(tag.trim().toLowerCase())
+                ({ tag }) => {
+                    // Tag(s) string for article can be one or more tags, comma separated.
+                    const articleTags = tag.split(",").map(item => item.trim().toLowerCase());
+                    return articleTags.some(item => tagsToFind.includes(item));
+                }
             );
         }
 
