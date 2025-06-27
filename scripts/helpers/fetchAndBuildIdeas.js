@@ -44,6 +44,9 @@ export const fetchAndBuildIdeas = async (settings) => {
             );
         }
 
+        // Exclude the current path, so we don't show the same article on an article page.
+        filteredArticles = filteredArticles.filter(item => item?.path !== window.location.pathname);
+
         // Sort by published date (serial number or timestamp), with the latest dates first.
         filteredArticles = filteredArticles.sort((a, b) => parseInt(b.publishedDate, 10) - parseInt(a.publishedDate, 10));
 
