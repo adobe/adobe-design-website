@@ -13,13 +13,13 @@ import {
  *
  * - Lists recent ideas articles, interspersed with featured sections that are entered in the content.
  * - Includes a load more button for loading the next set of articles.
- * - Can pull in a specific tag, for using this block on the story pack (tag) pages.
+ * - Can pull in specific tag(s), for using this block on the tag pages.
  */
 export default function decorate(block) {
   // Settings from content. Stored in first row with optional second column for the tag.
   const settings = {
     layoutType: block.children?.[0]?.children?.[0]?.textContent?.trim(),
-    tag: block.children?.[0]?.children?.[1]?.textContent?.trim() ?? "All",
+    tags: block.children?.[0]?.children?.[1]?.textContent?.trim() ?? "All",
   };
 
   // Features content, stored in row(s) after the first row.
@@ -43,7 +43,7 @@ export default function decorate(block) {
   gridContainer.classList.add("grid-container", "ideas__grid");
   gridContainer.id = "ideas-grid";
   gridContainer.dataset.layoutType = settings.layoutType;
-  gridContainer.dataset.tag = settings.tag;
+  if (settings.tags != "All") gridContainer.dataset.tags = settings.tags;
   ideasBlock.append(gridContainer);
 
   // Create new features markup.
@@ -68,12 +68,12 @@ export default function decorate(block) {
   });
 
   // How many cards before a feature.
-  const groupTotal = calculateGroupTotal();
+  const groupTotal = calculateGroupTotal(settings.layoutType === "two-up");
 
   // Fetch and add markup for articles, and then add in the features.
   const fetchAndAppend = async () => {
     const fragment = await fetchAndBuildIdeas({
-      tagName: settings.tag,
+      tagName: settings.tags.split(","),
       maxArticles: initialMaxIdeas(features.length, groupTotal),
       gridItemClass:
         settings.layoutType === "two-up" ? "grid-item--50" : "grid-item--25",

@@ -37,7 +37,7 @@ const refreshArticleContent = async (selectedFilters = []) => {
   ideasElement.dataset.isFiltered = selectedFilters.length > 0;
 
   // Fetch articles and replace existing articles in Ideas block.
-  const groupTotal = calculateGroupTotal();
+  const groupTotal = calculateGroupTotal(layoutType === "two-up");
   const fragment = await fetchAndBuildIdeas({
     tagName: selectedFilters,
     maxArticles: initialMaxIdeas(features?.length ?? 0, groupTotal),
