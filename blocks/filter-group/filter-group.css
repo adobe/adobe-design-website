@@ -91,6 +91,7 @@
 
 .filter-group__button--selected {
   --color-background-button-filters-selected: var(--color-text-dark);
+  --color-background-button-filters-selected--unformatted: 19 19 19;
   background-color: var(--color-background-button-filters-selected);
   color: var(--spectrum-gray-50);
   transition: all var(--spectrum-animation-duration-100) ease;
@@ -102,6 +103,11 @@
 
   @media (hover: hover) {
     &:hover {
+
+      /* from syntax is not always supported, this is a fallback */
+      background-color: rgb(var(--color-background-button-filters-selected--unformatted) / 0.9);
+
+      /* both are needed to elegantly break if color-text-dark changes */
       background-color: rgb(from var(--color-background-button-filters-selected) r g b / 0.9);
       color: var(--spectrum-gray-50);
     }
@@ -115,5 +121,7 @@
   --color-background-button-filters-hover: var(
     --spectrum-transparent-white-500
   );
+
+  --color-background-button-filters-selected--unformatted: 242 242 242;
 }
 

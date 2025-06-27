@@ -45,34 +45,37 @@
   /* ** COLOR ** */
 
   /* spectrum colors */
-  --spectrum-white: rgb(255 255 255);
-  --spectrum-black: rgb(0 0 0);
 
-  --spectrum-transparent-white-25: rgb(from var(--spectrum-white) r g b / 0);
-	--spectrum-transparent-white-50: rgb(from var(--spectrum-white) r g b / 0.04);
-	--spectrum-transparent-white-75: rgb(from var(--spectrum-white) r g b / 0.07);
-	--spectrum-transparent-white-100: rgb(from var(--spectrum-white) r g b / 0.11);
-	--spectrum-transparent-white-200: rgb(from var(--spectrum-white) r g b / 0.15);
-	--spectrum-transparent-white-300: rgb(from var(--spectrum-white) r g b / 0.17);
-	--spectrum-transparent-white-400: rgb(from var(--spectrum-white) r g b / 0.21);
-	--spectrum-transparent-white-500: rgb(from var(--spectrum-white) r g b / 0.39);
-	--spectrum-transparent-white-600: rgb(from var(--spectrum-white) r g b / 0.51);
-	--spectrum-transparent-white-700: rgb(from var(--spectrum-white) r g b / 0.66);
-	--spectrum-transparent-white-800: rgb(from var(--spectrum-white) r g b / 0.85);
-	--spectrum-transparent-white-900: rgb(from var(--spectrum-white) r g b / 0.94);
+  --spectrum-white--unformatted: 255 255 255;
+  --spectrum-white: rgb(var(--spectrum-white--unformatted));
+  --spectrum-black--unformatted: 0 0 0;
+  --spectrum-black: rgb(var(--spectrum-black--unformatted));
 
-	--spectrum-transparent-black-25: rgb(from var(--spectrum-black) r g b / 0);
-	--spectrum-transparent-black-50: rgb(from var(--spectrum-black) r g b / 0.03);
-	--spectrum-transparent-black-75: rgb(from var(--spectrum-black) r g b / 0.05);
-	--spectrum-transparent-black-100: rgb(from var(--spectrum-black) r g b / 0.09);
-	--spectrum-transparent-black-200: rgb(from var(--spectrum-black) r g b / 0.12);
-	--spectrum-transparent-black-300: rgb(from var(--spectrum-black) r g b / 0.15);
-	--spectrum-transparent-black-400: rgb(from var(--spectrum-black) r g b / 0.22);
-	--spectrum-transparent-black-500: rgb(from var(--spectrum-black) r g b / 0.44);
-	--spectrum-transparent-black-600: rgb(from var(--spectrum-black) r g b / 0.56);
-	--spectrum-transparent-black-700: rgb(from var(--spectrum-black) r g b / 0.69);
-	--spectrum-transparent-black-800: rgb(from var(--spectrum-black) r g b / 0.84);
-	--spectrum-transparent-black-900: rgb(from var(--spectrum-black) r g b / 0.93);
+  --spectrum-transparent-white-25: rgb(var(--spectrum-white--unformatted) / 0);
+	--spectrum-transparent-white-50: rgb(var(--spectrum-white--unformatted) / 0.04);
+	--spectrum-transparent-white-75: rgb(var(--spectrum-white--unformatted) / 0.07);
+	--spectrum-transparent-white-100: rgb(var(--spectrum-white--unformatted) / 0.11);
+	--spectrum-transparent-white-200: rgb(var(--spectrum-white--unformatted) / 0.15);
+	--spectrum-transparent-white-300: rgb(var(--spectrum-white--unformatted) / 0.17);
+	--spectrum-transparent-white-400: rgb(var(--spectrum-white--unformatted) / 0.21);
+	--spectrum-transparent-white-500: rgb(var(--spectrum-white--unformatted) / 0.39);
+	--spectrum-transparent-white-600: rgb(var(--spectrum-white--unformatted) / 0.51);
+	--spectrum-transparent-white-700: rgb(var(--spectrum-white--unformatted) / 0.66);
+	--spectrum-transparent-white-800: rgb(var(--spectrum-white--unformatted) / 0.85);
+	--spectrum-transparent-white-900: rgb(var(--spectrum-white--unformatted) / 0.94);
+
+	--spectrum-transparent-black-25: rgb(var(--spectrum-black--unformatted) / 0);
+	--spectrum-transparent-black-50: rgb(var(--spectrum-black--unformatted) / 0.03);
+	--spectrum-transparent-black-75: rgb(var(--spectrum-black--unformatted) / 0.05);
+	--spectrum-transparent-black-100: rgb(var(--spectrum-black--unformatted) / 0.09);
+	--spectrum-transparent-black-200: rgb(var(--spectrum-black--unformatted) / 0.12);
+	--spectrum-transparent-black-300: rgb(var(--spectrum-black--unformatted) / 0.15);
+	--spectrum-transparent-black-400: rgb(var(--spectrum-black--unformatted) / 0.22);
+	--spectrum-transparent-black-500: rgb(var(--spectrum-black--unformatted) / 0.44);
+	--spectrum-transparent-black-600: rgb(var(--spectrum-black--unformatted) / 0.56);
+	--spectrum-transparent-black-700: rgb(var(--spectrum-black--unformatted) / 0.69);
+	--spectrum-transparent-black-800: rgb(var(--spectrum-black--unformatted) / 0.84);
+	--spectrum-transparent-black-900: rgb(var(--spectrum-black--unformatted) / 0.93);
 
   --spectrum-blue-300: rgb(203 226 254);
   --spectrum-blue-400: rgb(172 207 253);

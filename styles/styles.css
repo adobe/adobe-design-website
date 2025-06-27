@@ -99,7 +99,7 @@ main picture:not([class]) > img:not([class]) {
 }
 
 .button {
-  --color-button-text-disabled: rgb(from var(--spectrum-black) r g b / 22%);
+  --color-button-text-disabled: var(--spectrum-transparent-black-400);
   --border-radius-button: 3rem;
   --focus-border-radius: var(--border-radius-button);
 
@@ -1246,7 +1246,7 @@ main > .section.small-screen-cta-container > .grid-container {
       @media (min-width: 105rem) {
         inset: 0 0 auto auto;
       }
-    
+
       @media (min-width: 140rem) {
         width: calc(50dvw + 960px);
       }
