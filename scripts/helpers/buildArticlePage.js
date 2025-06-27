@@ -7,6 +7,11 @@ import {
 } from "./index.js";
 
 /**
+ * Parent directory for tag pages. Followed by the sluggified name of the tag.
+ */
+const tagsRootDirectory = "/ideas/";
+
+/**
  * Build list of linked article tags.
  * @returns {HTMLDivElement|null}
  */
@@ -32,7 +37,7 @@ const buildArticleTags = () => {
     const link = document.createElement("a");
     link.classList.add("button", "button--tag");
     const urlSlug = prepURL(tag);
-    link.href = `/ideas/${urlSlug}`;
+    link.href = `${tagsRootDirectory}${urlSlug}`;
     link.innerText = tag;
     tagListItem.append(link);
     tagsList.append(tagListItem);
