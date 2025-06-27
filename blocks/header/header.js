@@ -118,7 +118,7 @@ const buildSmallScreenNav = (nav, homepageLink, pageLinks) => {
     // Pressing a second time after clearing the search will close the menu.
     const isSearchInputWithValue = e?.target?.classList?.contains('search__input') && e.target?.value !== "";
     const isSearchResult = e?.target?.parentElement?.classList?.contains('search__results-item');
-    if (isSearchInputWithValue || isSearchResult) { 
+    if (isSearchInputWithValue || isSearchResult) {
       return;
     }
 
@@ -155,6 +155,7 @@ export default async function decorate(block) {
   let nav = document.createElement("nav");
   nav.id = "nav";
   nav.classList.add("nav");
+  nav.setAttribute("aria-label", "Top");
 
   // grab the fragments from the file
   while (fragment.firstElementChild) nav.append(fragment.firstElementChild);

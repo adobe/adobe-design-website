@@ -47,5 +47,6 @@ export default async function decorate(block) {
   const footerLinks = document.createElement('nav');
   footerLinks.append(buildSkipLink());
   footerLinks.append(footerLinkList);
+  footerLinks.setAttribute("aria-label", "Footer");
   block.replaceWith(footerLinks);
 }
