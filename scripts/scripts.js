@@ -21,6 +21,7 @@ import {
   isSubPageOf,
   buildArticlePage,
   buildCareersListingPage,
+  buildSiteContentPage,
   appendLiveRegion,
 } from './helpers/index.js';
 import { largeScreenMediaQuery } from '../blocks/header/header.js';
@@ -168,6 +169,9 @@ async function loadLazy(doc) {
 
   // decorate careers listing page
   if (isSubPageOf('careers')) buildCareersListingPage();
+
+  // decorate site content page
+  if (window.location.pathname === "/pattern-library/site-content") buildSiteContentPage();
 
   // supports rerendering of the responsive navigation
   const headerElement = doc.querySelector('header'); 

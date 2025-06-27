@@ -23,6 +23,7 @@ export { appendLiveRegion } from "./appendLiveRegion.js";
 export { decorateThemeBackgroundVisuals } from "./themeBackgrounds.js";
 export { buildCareersListingPage } from "./buildCareersListingPage.js";
 export { buildArticlePage } from "./buildArticlePage.js";
+export { buildSiteContentPage } from "./buildSiteContentPage.js";
 
 // General helpers/utilities
 export { appendCleanText } from "./appendCleanText.js";
