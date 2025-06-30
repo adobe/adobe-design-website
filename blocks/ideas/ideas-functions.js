@@ -88,28 +88,29 @@ export const buildIdeasFeature = (featureContent) => {
 };
 
 /**
- * Determine total number of ideas to load initially.
+ * Determine total number of ideas to load initially, so there are enough
+ * cards to display before and after features.
  * @param {number} totalFeatures Total number of feature sections.
- * @param {number} groupTotal How many cards before a feature and how many additional to fetch on load more.
+ * @param {number} groupTotal How many cards before or after a feature.
  * @returns {number}
  */
 export const initialMaxIdeas = (totalFeatures, groupTotal) => {
-  // At least the groupTotal, if there are no features.
-  if (!totalFeatures) return groupTotal;
-  // Include a set of cards above every feature and below the last feature.
-  return totalFeatures * groupTotal + groupTotal;
+  const minTotalWithFeatures = (totalFeatures + 1) * groupTotal;
+  // Include a larger minimum of 3x the grouping, so the total is never too small.
+  return Math.max(minTotalWithFeatures, groupTotal * 3);
 };
 
 /**
  * Calculate number of cards per grouping, based on screen size.
+ * @param {boolean} isTwoUp Is two-up layout (rather than the default four-up).
  * @returns {number}
  */
-export const calculateGroupTotal = () =>
+export const calculateGroupTotal = (isTwoUp = false) =>
   ({
     sm: 3,
     md: 4,
-    lg: 8,
-    xl: 8,
+    lg: isTwoUp ? 4 : 8,
+    xl: isTwoUp ? 4 : 8,
   }[getCurrentBreakpoint()] || 8);
 
 /**
@@ -153,10 +154,10 @@ export const handleLoadMore = async (event) => {
   const filtersParent = document.querySelector(".filter-group");
   const layoutType = gridContainer?.dataset?.layoutType;
 
-  // Tag(s) to fetch. Tags in filters, or a set tag from the data attribute if there are no filters (story pack page).
+  // Tag(s) to fetch. Tags in filters, or a set tag from the data attribute if there are no filters (tag page).
   const tagsToFind = filtersParent
     ? getCurrentFiltersArray(filtersParent)
-    : gridContainer?.dataset?.tag ?? "All";
+    : gridContainer?.dataset?.tags.split(",") ?? "All";
 
   // Temporarily disable button while loading.
   updateLoadButtonState(clickedButton, true);

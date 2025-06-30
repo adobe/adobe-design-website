@@ -954,3 +954,17 @@ a.card:hover {
     align-self: center;
   }
 }
+
+.tags-list {
+  list-style-type: none;
+  margin: 0.25rem 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+
+  li {
+    padding: 0;
+    margin: 0;
+  }
+}

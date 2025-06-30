@@ -11,7 +11,7 @@ import { fetchAndBuildIdeas } from "../../scripts/helpers/fetchAndBuildIdeas.js"
 export default function decorate(block) {
     // Block settings from content.
     const settings = {
-        tagName: block.children?.[0]?.children?.[0]?.textContent?.trim() ?? "All",
+        tagName: block.children?.[0]?.children?.[0]?.textContent?.trim().split(",") ?? "All",
         maxArticles: parseInt(block.children?.[1]?.children?.[0]?.textContent?.trim(), 10),
         gridItemClass: block.children?.[2]?.children?.[0]?.textContent?.trim().toLowerCase() === "two-up" ? 'grid-item--50' : 'grid-item--25',
         hasHorizontalScroll: block.children?.[2]?.children?.[1]?.textContent?.trim().toLowerCase() === "scrolling",
