@@ -1,9 +1,9 @@
 export default async function decorate(block) {
   const buttons = [...block.children].map((row) => ({
-    anchorNode: row.children[0]?.firstChild.firstChild,
-    buttonStyle: row.children[1]?.firstChild,
-    altText: row.children[2]?.firstChild,
-    hideButtonOnLargeScreens: row.children[3]?.firstChild,
+    anchorNode: row.children?.[0]?.firstChild?.firstChild,
+    buttonStyle: row.children?.[1]?.firstChild?.innerText.trim(),
+    altText: row.children?.[2]?.firstChild?.innerText.trim(),
+    hideButtonOnLargeScreens: row.children?.[3]?.firstChild?.innerText.trim(),
   }));
 
   const buttonGroupContainer = document.createElement("div");
@@ -12,7 +12,7 @@ export default async function decorate(block) {
   buttons.forEach(button => {
     button.anchorNode.classList = "button";
     button.buttonStyle
-      ? button.anchorNode.classList.add(`button--${button.buttonStyle.innerText}`)
+      ? button.anchorNode.classList.add(`button--${button.buttonStyle}`)
       : button.anchorNode.classList.add(`button--primary`);
 
     if (button.altText) button.anchorNode.setAttribute("aria-label", button.altText);
