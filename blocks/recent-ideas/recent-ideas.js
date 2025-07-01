@@ -1,5 +1,5 @@
 import { getMetadata } from "../../scripts/aem.js";
-import { fetchAndBuildIdeas } from "../../scripts/helpers/fetchAndBuildIdeas.js";
+import { fetchAndBuildIdeas } from "../../scripts/helpers/index.js";
 
 /*
  * Recent Ideas Block
