@@ -1,4 +1,5 @@
-import { fetchAndBuildIdeas } from "../../scripts/helpers/fetchAndBuildIdeas.js";
+import { getMetadata } from "../../scripts/aem.js";
+import { fetchAndBuildIdeas } from "../../scripts/helpers/index.js";
 
 /*
  * Recent Ideas Block
@@ -11,11 +12,18 @@ import { fetchAndBuildIdeas } from "../../scripts/helpers/fetchAndBuildIdeas.js"
 export default function decorate(block) {
     // Block settings from content.
     const settings = {
-        tagName: block.children?.[0]?.children?.[0]?.textContent?.trim().split(",") ?? "All",
+        tagName: block.children?.[0]?.children?.[0]?.textContent?.trim().split(",") ?? ["All"],
         maxArticles: parseInt(block.children?.[1]?.children?.[0]?.textContent?.trim(), 10),
         gridItemClass: block.children?.[2]?.children?.[0]?.textContent?.trim().toLowerCase() === "two-up" ? 'grid-item--50' : 'grid-item--25',
         hasHorizontalScroll: block.children?.[2]?.children?.[1]?.textContent?.trim().toLowerCase() === "scrolling",
     };
+
+    // Special case tag name; get tags from page metadata or fall back to "All". 
+    // Used for finding related stories to an article.
+    if (settings.tagName?.[0]?.trim() === "UseMetadataTags") {
+        const metadataTags = getMetadata("tag");
+        settings.tagName = metadataTags ? metadataTags.split(",") : ["All"];
+    }
 
     // Create a new container to house the block.
     const newBlock = document.createElement('div');
