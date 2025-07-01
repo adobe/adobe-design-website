@@ -78,8 +78,7 @@ export function decorateMain(main) {
   buildAutoBlocks(main),
   decorateSections(main),
   decorateBlocks(main),
-  decorateLayouts(main),
-  cleanEmptyDivs(main);
+  decorateLayouts(main);
 }
 
 /**
@@ -174,11 +173,12 @@ async function loadLazy(doc) {
   if (window.location.pathname === "/pattern-library/site-content") buildSiteContentPage();
 
   // supports rerendering of the responsive navigation
-  const headerElement = doc.querySelector('header'); 
+  const headerElement = doc.querySelector('header');
   window.addEventListener("resize", debounce(() => reloadHeader(headerElement, true), 150));
 
   // loads the footer component, along with its stylesheet
   loadFooter(doc.querySelector('footer'));
+  cleanEmptyDivs(main);
 }
 
 /**

@@ -307,7 +307,7 @@ function decorateTemplateAndTheme() {
    * Add cleaned comma separated classes to an element.
    * @param {*} element HTML element to add classes to
    * @param {string} classes CSV class(es)
-   * @param {string} classPrefix 
+   * @param {string} classPrefix
    */
   const addClasses = (element, classes, classPrefix = '') => {
     classes.split(',').forEach((c) => {
@@ -667,7 +667,9 @@ function decorateBlocks(main) {
 function cleanEmptyDivs(main) {
   main.querySelectorAll('div').forEach((div) => {
     const isEmpty = !div.textContent.trim() && div.children.length === 0;
-    if (isEmpty) {
+    const hasAriaLive = div.hasAttribute('aria-live');
+    const hasClass = div.hasAttribute('class') && div.getAttribute('class').trim() !== '';
+    if (isEmpty && !hasAriaLive && !hasClass) {
       div.remove();
     }
   });
