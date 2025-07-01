@@ -3,7 +3,7 @@ export default async function decorate(block) {
     anchorNode: row.children?.[0]?.firstChild?.firstChild,
     buttonStyle: row.children?.[1]?.firstChild?.innerText.trim(),
     altText: row.children?.[2]?.firstChild?.innerText.trim(),
-    hideButtonOnLargeScreens: row.children?.[3]?.firstChild?.innerText.trim(),
+    hideButtonOnLargeScreens: row.children?.[3]?.firstChild?.innerText,
   }));
 
   const buttonGroupContainer = document.createElement("div");
