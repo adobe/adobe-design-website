@@ -35,7 +35,13 @@ export default function decorate(block) {
 
     // Fetch and add markup for articles (async).
     const fetchAndAppend = async () => {
-        const fragment = await fetchAndBuildIdeas(settings);
+        let fragment = await fetchAndBuildIdeas(settings);
+
+        // If no articles are found, fall back to fetching to "All" instead of a null state.
+        if (!fragment.hasChildNodes() && settings.tagName?.[0]?.trim().toLowerCase() !== "all") {
+            fragment = await fetchAndBuildIdeas({ ...settings, tagName: ["All"] });
+        }
+
         newBlock.append(fragment);
     };
     fetchAndAppend();
