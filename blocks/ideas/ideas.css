@@ -126,7 +126,6 @@
     border-top: 1px solid var(--spectrum-gray-400);
     border-bottom: 1px solid var(--spectrum-gray-400);
     padding-block: 1rem;
-    margin-block-start: 1rem;
 
     & ~ .grid-item[data-added="true"] {
       border-top: none;
