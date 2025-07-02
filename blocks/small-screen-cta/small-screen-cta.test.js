@@ -2,11 +2,11 @@ describe('Small Screen CTA Block', () => {
   beforeAll(async () => {
     await page.setViewport({ width: 350, height: 1000 });
     await page.goto(`${global.BASE_URL}pattern-library/`);
-    await page.$('.call-to-action');
+    await page.waitForSelector('.call-to-action');
   });
 
   it('On small screens should render the cta block', async () => {
-    const cta = page.$('.call-to-action');
+    const cta = await page.waitForSelector('.call-to-action');
     expect(cta).toExist();
   });
 
