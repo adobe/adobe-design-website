@@ -419,40 +419,62 @@ function decorateLayouts(element) {
     // only creates a layout container for valid layout opening and closing tag pairs
     if (layoutClosingTag) {
       const layoutContainer = document.createElement('div');
-      layoutContainer.classList.add('grid-container');
+      // "full" layout name doesn't need grid-container and grid-items; it's just used with "hide-*" classes.
+      const skipGridContainers = layoutOpeningTag.textContent.endsWith('full-');
 
-      // layout modifiers
-      if (layoutOpeningTag.textContent.includes('spacious'))
-        layoutContainer.classList.add('grid-container--large-gap');
-      if (layoutOpeningTag.textContent.includes('scrolling'))
-        layoutContainer.classList.add('grid-container--with-scroll');
+      if (!skipGridContainers) {
+        layoutContainer.classList.add('grid-container');
 
-      elementsToContain.forEach((e, idx) => {
-        const gridItemContainer = document.createElement('div');
-        gridItemContainer.classList.add('grid-item');
-        gridItemContainer.append(e);
+        // Layout modifiers - grid spacing and scrolling
+        if (layoutOpeningTag.textContent.includes('spacious'))
+          layoutContainer.classList.add('grid-container--large-gap');
+        if (layoutOpeningTag.textContent.includes('scrolling'))
+          layoutContainer.classList.add('grid-container--with-scroll');
+      }
 
-        // apply two-up layout
-        if (layoutOpeningTag.textContent.endsWith('two-up-'))
-          gridItemContainer.classList.add('grid-item--50');
-
-        // apply three-up layout
-        if (layoutOpeningTag.textContent.endsWith('three-up-'))
-          gridItemContainer.classList.add('grid-item--30');
-
-        // apply 70/30 layout
-        if (layoutOpeningTag.textContent.endsWith('70-30-')) {
-          (idx % 2 === 0)
-            ? gridItemContainer.classList.add('grid-item--66')
-            : gridItemContainer.classList.add('grid-item--33');
-        };
-
-        // apply four-up layout
-        if (layoutOpeningTag.textContent.endsWith('four-up-'))
-          gridItemContainer.classList.add('grid-item--25');
-
-        layoutContainer.append(gridItemContainer);
+      // Layout modifiers - hiding at breakpoints
+      const hideModifiers = [
+        'hide-at-large',
+        'hide-until-large',
+        'hide-at-medium',
+        'hide-until-medium',
+      ];
+      hideModifiers.forEach(className => {
+        if (layoutOpeningTag.textContent.includes(className)) {
+          layoutContainer.classList.add(`util-${className}`);
+        }
       });
+
+      if (skipGridContainers) {
+        // Just move existing blocks under the new parent.
+        elementsToContain.forEach((e) => layoutContainer.append(e));
+      } else {
+        // Add grid item containing each child block
+        elementsToContain.forEach((e, idx) => {
+          const gridItemContainer = document.createElement('div');
+          gridItemContainer.classList.add('grid-item');
+          gridItemContainer.append(e);
+
+          // Apply layout, from layout name at the end of the opening tag.
+          if (layoutOpeningTag.textContent.endsWith('two-up-')) {
+            // Two-up
+            gridItemContainer.classList.add('grid-item--50');
+          } else if (layoutOpeningTag.textContent.endsWith('three-up-')) {
+            // Three-up
+            gridItemContainer.classList.add('grid-item--30');
+          } else if (layoutOpeningTag.textContent.endsWith('70-30-')) {
+            // 70/30
+            (idx % 2 === 0)
+              ? gridItemContainer.classList.add('grid-item--66')
+              : gridItemContainer.classList.add('grid-item--33');
+          } else if (layoutOpeningTag.textContent.endsWith('four-up-')) {
+            // Four-up
+            gridItemContainer.classList.add('grid-item--25');
+          }
+
+          layoutContainer.append(gridItemContainer);
+        });
+      }
       layoutWrapper.after(layoutContainer);
 
       layoutOpeningTag.remove();
