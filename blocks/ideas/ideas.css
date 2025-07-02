@@ -120,7 +120,7 @@
 }
 
 /* Appended cards on mobile display differently, including a side-by-side layout. */
-@media (max-width: 31.9999rem) {
+@media not all and (min-width: 32rem) {
   .ideas .grid-item[data-added="true"] {
     grid-column: span 8;
     border-top: 1px solid var(--spectrum-gray-400);
