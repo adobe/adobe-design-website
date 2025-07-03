@@ -23,7 +23,7 @@ const buildArticleTags = () => {
   tagsWrapper.classList.add("tags-aside");
 
   const heading = document.createElement("h2");
-  heading.classList.add("util-body-s");
+  heading.classList.add("util-title-s");
   heading.textContent = "Tags:";
   tagsWrapper.append(heading);
 
