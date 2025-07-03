@@ -763,7 +763,7 @@ a.card:hover {
   padding: 1.25rem 1rem;
   color: var(--color-text);
 
-  @container card-container (min-width: 24rem) {
+  @container card-container (min-width: 22.5rem) {
     min-height: 9rem;
   }
 
@@ -782,8 +782,20 @@ a.card:hover {
 .card__title {
   margin-block-end: 0.25rem;
 
-  @container card-container (min-width: 24rem) {
+  @container card-container (min-width: 22.5rem) {
     font-size: var(--spectrum-font-size-300);
+  }
+
+  @media (min-width: 48rem) {
+    @container card-container (min-width: 22.5rem) {
+      font-size: var(--spectrum-font-size-400);
+    }
+  }
+
+  @media (min-width: 80rem) {
+    @container card-container (min-width: 22.5rem) {
+      font-size: var(--spectrum-font-size-500);
+    }
   }
 
   @container card-container (min-width: 36rem) {
@@ -802,12 +814,30 @@ a.card:hover {
 }
 
 .card__description {
-  @container card-container (min-width: 24rem) {
+  @container card-container (min-width: 22.5rem) {
     font-size: var(--spectrum-font-size-200);
+  }
+
+  @media (min-width: 48rem) {
+    @container card-container (min-width: 22.5rem) {
+      font-size: var(--spectrum-font-size-300);
+    }
+  }
+
+  @media (min-width: 80rem) {
+    @container card-container (min-width: 22.5rem) {
+      font-size: var(--spectrum-font-size-400);
+    }
   }
 
   @container card-container (min-width: 36rem) {
     font-size: var(--spectrum-font-size-300);
+  }
+
+  @media (min-width: 80rem) {
+    @container card-container (min-width: 36rem) {
+      font-size: var(--spectrum-font-size-400);
+    }
   }
 
   @container card-container (min-width: 42rem) {
@@ -957,7 +987,7 @@ a.card:hover {
 
 .tags-list {
   list-style-type: none;
-  margin: 0.25rem 0;
+  margin-block-start: 0.5rem;
   padding: 0;
   display: flex;
   flex-wrap: wrap;

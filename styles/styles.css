@@ -431,12 +431,12 @@ h6 {
 }
 
 h1,
-h2,
-h3 {
+h2 {
   font-family: var(--heading-font-family);
   line-height: var(--heading-line-height);
 }
 
+h3,
 h4,
 h5,
 h6 {
@@ -445,8 +445,8 @@ h6 {
 }
 
 h1 {
-  font-size: var(--spectrum-heading-size-xl);
-  font-weight: var(--spectrum-heading-weight-xl);
+  font-size: var(--spectrum-heading-size-xxl);
+  font-weight: var(--spectrum-heading-weight-xxl);
 }
 
 h2 {
@@ -455,23 +455,23 @@ h2 {
 }
 
 h3 {
-  font-size: var(--spectrum-heading-size-s);
-  font-weight: var(--spectrum-heading-weight-s);
+  font-size: var(--spectrum-title-size-xxxl);
+  font-weight: var(--spectrum-title-weight-xxxl);
 }
 
 h4 {
+  font-size: var(--spectrum-title-size-xxl);
+  font-weight: var(--spectrum-title-weight-xxl);
+}
+
+h5 {
   font-size: var(--spectrum-title-size-xl);
   font-weight: var(--spectrum-title-weight-xl);
 }
 
-h5 {
-  font-size: var(--spectrum-title-size-m);
-  font-weight: var(--spectrum-title-weight-m);
-}
-
 h6 {
-  font-size: var(--spectrum-title-size-s);
-  font-weight: var(--spectrum-title-weight-s);
+  font-size: var(--spectrum-title-size-l);
+  font-weight: var(--spectrum-title-weight-l);
 }
 
 input,
