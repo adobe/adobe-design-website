@@ -13,6 +13,7 @@ export const blocksWithoutCSS = [
     "image-with-caption",
     "job-listing",
     "lede",
+    "plaintext",
     "recent-ideas",
     "search",
 ];
