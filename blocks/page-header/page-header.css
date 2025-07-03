@@ -104,10 +104,6 @@
   }
 
   @media (min-width: 48rem) {
-    h1 {
-      font-size: var(--spectrum-heading-size-l);
-    }
-
     .page-header__description--with-byline {
       font-size: var(--spectrum-title-size-l);
     }
