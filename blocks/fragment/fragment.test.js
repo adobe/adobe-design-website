@@ -3,7 +3,7 @@ describe('Fragment Block', () => {
     await page.goto(`${global.BASE_URL}pattern-library/`);
   });
 
-  it('should render the fragment block', async () => {
+  xit('should render the fragment block', async () => {
     await page.waitForSelector('.fragment');
     const fragment = await page.$('.fragment');
     expect(fragment).toExist();

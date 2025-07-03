@@ -31,11 +31,11 @@ describe('Link-List Block', () => {
       if (linkListItemWithjobLink) {
         const linkListItemWithJobLinkChildren = await linkListItemWithjobLink.$$('span');
 
-        linkListItemWithJobLinkChildren.forEach(async (child) => {
+        for (const child of linkListItemWithJobLinkChildren) {
           const classes = await child.evaluate((el) => el.classList);
           const hasJobClass = classes[0].startsWith('link-list-item__job');
           expect(hasJobClass).toBe(true);
-        });
+        }
       } else {
         console.log('No link-list-items with job links found.');
       };
