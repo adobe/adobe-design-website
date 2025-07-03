@@ -20,7 +20,7 @@ export default async function decorate(block) {
 
   // there should always be a title, so create it as an h1
   const pageTitle = document.createElement("h1");
-  pageTitle.classList.add("page-header__title", "util-heading-xl");
+  pageTitle.classList.add("page-header__title", "util-heading-l");
   pageTitle.innerText = pageHeaderData.title;
   pageHeaderContent.append(pageTitle);
 

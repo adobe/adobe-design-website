@@ -91,7 +91,7 @@
 .page-header {
   @media (min-width: 22.5rem) {
     h1 {
-      font-size: var(--spectrum-heading-size-xxl);
+      font-size: var(--spectrum-heading-size-xl);
     }
 
     .page-header__description {
@@ -105,21 +105,21 @@
 
   @media (min-width: 48rem) {
     h1 {
-      font-size: var(--spectrum-heading-size-xxl);
-    }
-
-    .page-header__description {
-      font-size: var(--spectrum-body-size-xl);
+      font-size: var(--spectrum-heading-size-l);
     }
 
     .page-header__description--with-byline {
-      font-size: var(--spectrum-title-size-xl);
+      font-size: var(--spectrum-title-size-l);
     }
   }
 
   @media (min-width: 80rem) {
     h1 {
       font-size: var(--spectrum-heading-size-xl);
+    }
+
+    .page-header__description {
+      font-size: var(--spectrum-body-size-xl);
     }
 
     .page-header__description--with-byline {
