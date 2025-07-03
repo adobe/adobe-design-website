@@ -463,7 +463,7 @@
 
     & .image-with-caption__image img {
       width: calc(100vw - 4rem);
-      max-width: 120rem;
+      max-width: 102rem;
       margin-inline-start: 50%;
       transform: translateX(-50%);
       border-radius: var(--spectrum-corner-radius-800);
