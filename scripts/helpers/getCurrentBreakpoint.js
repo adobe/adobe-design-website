@@ -2,9 +2,9 @@
  * Breakpoint ranges. Should match what is used in the CSS.
  */
 const breakpointQueries = [
-  ['sm', '(max-width: 47.9999rem)'],
-  ['md', '(min-width: 48rem) and (max-width: 79.9999rem)'],
-  ['lg', '(min-width: 80rem) and (max-width: 104.9999rem)'],
+  ['sm', '(max-width: 47.999rem)'],
+  ['md', '(min-width: 48rem) and (max-width: 79.999rem)'],
+  ['lg', '(min-width: 80rem) and (max-width: 104.999rem)'],
   ['xl', '(min-width: 105rem)']
 ];
 
