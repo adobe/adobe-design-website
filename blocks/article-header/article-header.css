@@ -36,20 +36,24 @@
       }
     }
 
-    & :is(h3, h4, h5, h6):not(.author-meta__name) {
-      font-size: var(--spectrum-heading-size-s);
+    & :is(h3):not(.author-meta__name) {
+      font-size: var(--spectrum-title-size-xl);
+      font-weight: var(--spectrum-title-weight-xl);
+    }
 
-      @media (min-width: 22.5rem) {
-        font-size: var(--spectrum-body-size-l);
-      }
+    & :is(h4):not(.author-meta__name) {
+      font-size: var(--spectrum-title-size-l);
+      font-weight: var(--spectrum-title-weight-l);
+    }
 
-      @media (min-width: 48rem) {
-        font-size: var(--spectrum-body-size-xl);
-      }
+    & :is(h5):not(.author-meta__name) {
+      font-size: var(--spectrum-title-size-m);
+      font-weight: var(--spectrum-title-weight-m);
+    }
 
-      @media (min-width: 80rem) {
-        font-size: var(--spectrum-title-size-xl);
-      }
+    & :is(h6):not(.author-meta__name) {
+      font-size: var(--spectrum-title-size-s);
+      font-weight: var(--spectrum-title-weight-s);
     }
 
     & p:not(.author-description p) {
