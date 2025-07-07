@@ -133,6 +133,15 @@ main picture:not([class]) > img:not([class]) {
     cursor: unset;
   }
 
+  &:active {
+    transform:
+      perspective(max(
+        var(--spectrum-downstate-height, 2.0rem),
+        var(--spectrum-downstate-width, 150px) * var(--spectrum-component-size-width-ratio-down)
+      ))
+      translateZ(var(--spectrum-component-size-difference-down));
+  }
+
   @media (min-width: 22.5rem) {
     width: fit-content;
     white-space: nowrap;

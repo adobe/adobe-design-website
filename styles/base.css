@@ -616,6 +616,10 @@
   --spectrum-animation-ease-out: cubic-bezier(0, 0, 0.4, 1);
   --spectrum-animation-ease-linear: cubic-bezier(0, 0, 1, 1);
 
+  --spectrum-component-size-width-ratio-down: 0.3333;
+  --spectrum-component-size-minimum-perspective-down: 1.5rem;
+  --spectrum-component-size-difference-down: -2px;
+
   /* ** PAGE LEVEL ** */
   --page-background: var(--color-background);
   --page-background-nav: var(--spectrum-gray-25);
