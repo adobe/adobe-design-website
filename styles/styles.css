@@ -341,7 +341,7 @@ main picture:not([class]) > img:not([class]) {
 
 :root:has(#color-scheme:checked) .button--accent {
   --color-button-background-accent: var(--spectrum-blue-800);
-  --color-button-background-accent-hover: var(--spectrum-blue-900);
+  --color-button-background-accent-hover: var(--spectrum-blue-700);
 }
 
 .button--ghost {
