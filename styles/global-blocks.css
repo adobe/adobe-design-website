@@ -611,6 +611,15 @@
     .nav--large-screens & {
       display: flex;
     }
+
+    &:active {
+      transform:
+        perspective(max(
+          var(--spectrum-downstate-height, 2.0rem),
+          var(--spectrum-downstate-width, 150px) * var(--spectrum-component-size-width-ratio-down)
+        ))
+        translateZ(var(--spectrum-component-size-difference-down));
+    }
   }
 
   .search__button:hover,
