@@ -17,16 +17,9 @@ export const buildThemeToggle = () => {
   themeSelectLabel.classList.add("theme-toggle__label", "util-detail-m");
   themeSelectLabel.htmlFor = "color-scheme";
 
-  // Determine whether dark mode toggled is checked or not.
-  // If toggle has been interacted with, use that saved setting. Otherwise use preferred system setting.
-  const darkModeStorageName = "useDarkMode";
-  let darkModeChecked = false; 
-  const useDarkModeSetting = localStorage.getItem(darkModeStorageName);
-  if (useDarkModeSetting !== null) {
-    darkModeChecked = useDarkModeSetting === "true";
-  } else {
-    darkModeChecked = window.matchMedia("(prefers-color-scheme: dark)").matches;
-  }
+  // Determine whether dark mode toggle is checked or not.
+  // @see decorateTemplateAndTheme() for color scheme body class. 
+  const darkModeChecked = document.body.classList.contains("color-scheme-dark");
 
   // Create the input, and check the toggle if using dark mode.
   const toggleInput = document.createElement("input");
@@ -36,9 +29,10 @@ export const buildThemeToggle = () => {
   toggleInput.id = "color-scheme";
   if (darkModeChecked) toggleInput.checked = true;
 
-  // On change, save in local storage.
+  // On change, save in local storage and update body class.
   toggleInput.addEventListener("change", () => {
-    localStorage.setItem(darkModeStorageName, toggleInput.checked);
+    document.body.classList.toggle("color-scheme-dark", toggleInput.checked);
+    localStorage.setItem("useDarkMode", toggleInput.checked);
   });
 
   const toggleSwitchSpan = document.createElement("span");
