@@ -613,11 +613,7 @@
     }
 
     &:active {
-      transform:
-        perspective(max(
-          var(--spectrum-downstate-height, 2.0rem),
-          var(--spectrum-downstate-width, 150px) * var(--spectrum-component-size-width-ratio-down)
-        ))
+      transform: perspective(var(--spectrum-component-size-minimum-perspective-down))
         translateZ(var(--spectrum-component-size-difference-down));
     }
   }
