@@ -179,7 +179,24 @@ async function loadLazy(doc) {
   // loads the footer component, along with its stylesheet
   loadFooter(doc.querySelector('footer'));
   cleanEmptyDivs(main);
+
+  // Down state: include widths and heights for elements that use S2 calculated perspective.
+  setCalculatedPerspective();
+  const setCalcPerspectiveDebounced = debounce(() => { setCalculatedPerspective() });
+  window.addEventListener("resize", setCalcPerspectiveDebounced);
 }
+
+/**
+ * Down state: include widths and heights for elements that use S2 calculated perspective.
+ * Sets custom property values used by the perspective CSS.
+ */
+const setCalculatedPerspective = () => {
+  const elements = document.querySelectorAll('.button, .filter-group__button');
+  elements.forEach(el => {
+    el.style.setProperty('--spectrum-downstate-width', el.offsetWidth + 'px');
+    el.style.setProperty('--spectrum-downstate-height', el.offsetHeight + 'px');
+  });
+};
 
 /**
  * Loads everything that happens a lot later,

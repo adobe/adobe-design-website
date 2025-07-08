@@ -567,6 +567,10 @@
       background: var(--icon-cancel-sm) center no-repeat;
     }
 
+    &:hover {
+      border-color: var(--spectrum-gray-400);
+    }
+
     &:active,
     &:focus,
     &:focus-visible {
@@ -606,6 +610,11 @@
 
     .nav--large-screens & {
       display: flex;
+    }
+
+    &:active {
+      transform: perspective(var(--spectrum-component-size-minimum-perspective-down))
+        translateZ(var(--spectrum-component-size-difference-down));
     }
   }
 

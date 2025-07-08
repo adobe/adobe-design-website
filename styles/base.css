@@ -80,6 +80,7 @@
   --spectrum-blue-300: rgb(203 226 254);
   --spectrum-blue-400: rgb(172 207 253);
   --spectrum-blue-500: rgb(142 185 252);
+  --spectrum-blue-700: rgb(93 137 255);
   --spectrum-blue-800: rgb(75 117 255);
   --spectrum-blue-900: rgb(59 99 251);
   --spectrum-blue-1000: rgb(39 77 234);
@@ -139,6 +140,7 @@
     --spectrum-blue-300: rgb(12 33 117);
     --spectrum-blue-400: rgb(26 58 195);
     --spectrum-blue-500: rgb(26 58 195);
+    --spectrum-blue-700: rgb(52 91 248);
     --spectrum-blue-800: rgb(64 105 253);
     --spectrum-blue-900: rgb(86 129 255);
     --spectrum-blue-1000: rgb(105 149 254);
@@ -615,6 +617,10 @@
   --spectrum-animation-ease-in: cubic-bezier(0.5, 0, 1, 1);
   --spectrum-animation-ease-out: cubic-bezier(0, 0, 0.4, 1);
   --spectrum-animation-ease-linear: cubic-bezier(0, 0, 1, 1);
+
+  --spectrum-component-size-width-ratio-down: 0.3333;
+  --spectrum-component-size-minimum-perspective-down: 1.5rem;
+  --spectrum-component-size-difference-down: -2px;
 
   /* ** PAGE LEVEL ** */
   --page-background: var(--color-background);

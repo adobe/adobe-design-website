@@ -126,7 +126,8 @@
   font-weight: var(--spectrum-medium-font-weight);
   width: auto;
 
-  &:hover {
+  &:hover,
+  &:focus-visible {
     color: var(--footer-link-color-text-hover);
     text-decoration: underline;
   }
@@ -149,7 +150,8 @@
     font-size: var(--spectrum-font-size-300);
     font-weight: var(--spectrum-bold-font-weight);
 
-    &:hover {
+    &:hover,
+    &:focus-visible {
       border-color: var(--footer-link-color-border-hover);
       background-color: var(--footer-link-background-hover);
       color: var(--footer-link-color-text-hover);

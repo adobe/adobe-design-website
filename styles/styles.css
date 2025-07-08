@@ -133,6 +133,15 @@ main picture:not([class]) > img:not([class]) {
     cursor: unset;
   }
 
+  &:active {
+    transform:
+      perspective(max(
+        var(--spectrum-downstate-height, 2.0rem),
+        var(--spectrum-downstate-width, 150px) * var(--spectrum-component-size-width-ratio-down)
+      ))
+      translateZ(var(--spectrum-component-size-difference-down));
+  }
+
   @media (min-width: 22.5rem) {
     width: fit-content;
     white-space: nowrap;
@@ -158,7 +167,8 @@ main picture:not([class]) > img:not([class]) {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
-  &:hover {
+  &:hover,
+  &:focus-visible {
     background-color: var(--color-button-background-primary-hover);
     color: var(--color-button-text-primary);
   }
@@ -199,7 +209,8 @@ main picture:not([class]) > img:not([class]) {
   border: 2px solid var(--color-button-border-primary-outline);
   color: var(--color-button-text-primary-outline);
 
-  &:hover {
+  &:hover,
+  &:focus-visible {
     border-color: var(--color-button-border-primary-outline-hover);
     background-color: var(--color-button-background-primary-outline-hover);
     color: var(--color-button-text-primary-outline-hover);
@@ -245,7 +256,8 @@ main picture:not([class]) > img:not([class]) {
   border: 2px solid var(--color-button-border-static-black);
   color: var(--color-button-text-static-black);
 
-  &:hover {
+  &:hover,
+  &:focus-visible {
     border-color: var(--color-button-border-static-black-hover);
     background-color: var(--color-button-background-static-black-hover);
     color: var(--color-button-text-static-black-hover);
@@ -284,7 +296,8 @@ main picture:not([class]) > img:not([class]) {
   border: 2px solid var(--color-button-border-static-white);
   color: var(--color-button-text-static-white);
 
-  &:hover {
+  &:hover,
+  &:focus-visible {
     border-color: var(--color-button-border-static-white-hover);
     background-color: var(--color-button-background-static-white-hover);
     color: var(--color-button-text-static-white-hover);
@@ -314,7 +327,8 @@ main picture:not([class]) > img:not([class]) {
   background-color: var(--color-button-background-accent);
   color: var(--color-button-text-accent);
 
-  &:hover {
+  &:hover,
+  &:focus-visible {
     background-color: var(--color-button-background-accent-hover);
     color: var(--color-button-text-accent);
   }
@@ -327,7 +341,7 @@ main picture:not([class]) > img:not([class]) {
 
 :root:has(#color-scheme:checked) .button--accent {
   --color-button-background-accent: var(--spectrum-blue-800);
-  --color-button-background-accent-hover: var(--spectrum-blue-900);
+  --color-button-background-accent-hover: var(--spectrum-blue-700);
 }
 
 .button--ghost {
@@ -338,7 +352,8 @@ main picture:not([class]) > img:not([class]) {
   font-size: var(--spectrum-font-size-200);
   font-weight: var(--spectrum-medium-font-weight);
 
-  &:hover {
+  &:hover,
+  &:focus-visible {
     color: var(--color-button-text-ghost-hover);
     text-decoration: underline;
   }

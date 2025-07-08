@@ -213,9 +213,6 @@ a.nav__home-link {
 
 /* theme switcher */
 .theme-toggle {
-  --spectrum-component-size-minimum-perspective-down: 1.5rem;
-  --spectrum-component-size-difference-down: -2px;
-
   --spectrum-switch-label-color-default: var(--spectrum-gray-800);
   --spectrum-switch-label-color-hover: var(--spectrum-gray-900);
   --spectrum-switch-label-color-down: var(--spectrum-gray-900);
