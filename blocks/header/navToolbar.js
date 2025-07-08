@@ -17,17 +17,35 @@ export const buildThemeToggle = () => {
   themeSelectLabel.classList.add("theme-toggle__label", "util-detail-m");
   themeSelectLabel.htmlFor = "color-scheme";
 
-  // create the input, and check the toggle if a user has system set to dark mode
-  const toggleInput = window.matchMedia("(prefers-color-scheme: dark)").matches
-    ? `<input type="checkbox" role="switch" class="theme-toggle__input" id="color-scheme" checked>`
-    : `<input type="checkbox" role="switch" class="theme-toggle__input" id="color-scheme">`;
-  toggle.innerHTML = `
-    ${toggleInput}
-    <span class="theme-toggle__switch"></span>
-  `;
+  // Determine whether dark mode toggled is checked or not.
+  // If toggle has been interacted with, use that saved setting. Otherwise use preferred system setting.
+  const darkModeStorageName = "useDarkMode";
+  let darkModeChecked = false; 
+  const useDarkModeSetting = localStorage.getItem(darkModeStorageName);
+  if (useDarkModeSetting !== null) {
+    darkModeChecked = useDarkModeSetting === "true";
+  } else {
+    darkModeChecked = window.matchMedia("(prefers-color-scheme: dark)").matches;
+  }
+
+  // Create the input, and check the toggle if using dark mode.
+  const toggleInput = document.createElement("input");
+  toggleInput.classList.add("theme-toggle__input");
+  toggleInput.type = "checkbox";
+  toggleInput.role = "switch";
+  toggleInput.id = "color-scheme";
+  if (darkModeChecked) toggleInput.checked = true;
+
+  // On change, save in local storage.
+  toggleInput.addEventListener("change", () => {
+    localStorage.setItem(darkModeStorageName, toggleInput.checked);
+  });
+
+  const toggleSwitchSpan = document.createElement("span");
+  toggleSwitchSpan.classList.add("theme-toggle__switch");
 
   // all together now
-  toggle.append(themeSelectLabel);
+  toggle.append(toggleInput, toggleSwitchSpan, themeSelectLabel);
   toggle.classList.add("nav-toolbar__toggle");
   return toggle;
 };
