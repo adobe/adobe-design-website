@@ -123,7 +123,7 @@
   }
 }
 
-:root:has(#color-scheme:checked) .filter-group__button {
+body.color-scheme-dark .filter-group__button {
   --color-background-button-filters-default: var(
     --spectrum-transparent-white-200
   );

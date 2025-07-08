@@ -717,7 +717,7 @@
   }
 }
 
-:root:has(#color-scheme:checked) .search .search__results-container {
+body.color-scheme-dark .search .search__results-container {
   background: var(--spectrum-black);
   border: 2px solid var(--spectrum-gray-300);
 }

@@ -72,7 +72,7 @@ body.js-has-sticky-footer {
   }
 }
 
-:root:has(#color-scheme:checked) body {
+body.color-scheme-dark {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -179,7 +179,7 @@ main picture:not([class]) > img:not([class]) {
   }
 }
 
-:root:has(#color-scheme:checked) .button--primary {
+body.color-scheme-dark .button--primary {
   --color-button-background-primary: var(--spectrum-transparent-white-800);
   --color-button-background-primary-hover: var(
     --spectrum-transparent-white-900
@@ -223,7 +223,7 @@ main picture:not([class]) > img:not([class]) {
   }
 }
 
-:root:has(#color-scheme:checked) .button--primary-outline {
+body.color-scheme-dark .button--primary-outline {
   --color-button-border-primary-outline: var(--spectrum-transparent-white-800);
   --color-button-border-primary-outline-hover: var(
     --spectrum-transparent-white-900
@@ -270,7 +270,7 @@ main picture:not([class]) > img:not([class]) {
   }
 }
 
-:root:has(#color-scheme:checked) .button--static-black {
+body.color-scheme-dark .button--static-black {
   --color-button-text-static-black: var(--spectrum-gray-25);
   --color-button-text-static-black-hover: var(--spectrum-gray-25);
   --color-button-text-static-black-disabled: var(--spectrum-gray-700);
@@ -310,7 +310,7 @@ main picture:not([class]) > img:not([class]) {
   }
 }
 
-:root:has(#color-scheme:checked) .button--static-white {
+body.color-scheme-dark .button--static-white {
   --color-button-text-static-white: var(--spectrum-gray-900);
   --color-button-text-static-white-hover: var(--spectrum-gray-900);
   --color-button-text-static-white-disabled: var(--spectrum-gray-400);
@@ -339,7 +339,7 @@ main picture:not([class]) > img:not([class]) {
   }
 }
 
-:root:has(#color-scheme:checked) .button--accent {
+body.color-scheme-dark .button--accent {
   --color-button-background-accent: var(--spectrum-blue-800);
   --color-button-background-accent-hover: var(--spectrum-blue-700);
 }
@@ -1161,7 +1161,7 @@ main > .section.small-screen-cta-container > .grid-container {
   --page-gradient-start-color: var(--gradient-indigo-start);
   --shape-diamond-fill: rgb(116 91 252);
 
-  &:has(#color-scheme:checked) {
+  &.color-scheme-dark {
     --shape-diamond-fill: rgb(99 56 238);
   }
 }
