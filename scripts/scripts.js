@@ -127,10 +127,6 @@ async function loadEager(doc) {
   // Make sure theme and color-scheme classes are ready on the body, which affects loading appearance.
   decorateTemplateAndTheme();
 
-  if (getMetadata('breadcrumbs').toLowerCase() === 'true') {
-    doc.body.dataset.breadcrumbs = true;
-  }
-
   const main = doc.querySelector('main');
   if (main) {
     decorateMain(main);
