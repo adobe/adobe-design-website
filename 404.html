@@ -49,14 +49,14 @@
       const randomImagePicture = randomImageContainer.querySelector("img");
       const randomImageCaption = randomImageContainer.querySelector("figcaption");
       const buttons = document.querySelectorAll(".not-found .button");
-  
+
       if (window.location.pathname.includes("/careers/")) {
         heading.classList.add("not-found__heading--careers");
         heading.textContent = "The job listing you are looking for cannot be found or is no longer active.";
         description.remove();
         randomImageContainer.remove();
         buttons[0].setAttribute("href", "/careers/");
-        buttons[0].innerText = "See current job openings";
+        buttons[0].innerText = "See current job listings";
         buttons[1].setAttribute("href", "/");
         buttons[1].innerText = "Go back home";
       } else {
@@ -191,7 +191,7 @@
       </figure>
       <div class="button-group">
         <a href="/" class="button button--accent">Go back home</a>
-        <a href="/careers/" class="button button--primary-outline">See current job openings</a>
+        <a href="/careers/" class="button button--primary-outline">See current job listings</a>
       </div>
     </section>
   </main>
