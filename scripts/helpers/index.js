@@ -21,7 +21,7 @@ export { createFocusTrap } from "./createFocusTrap.js";
 // Full-page logic
 export { appendLiveRegion } from "./appendLiveRegion.js";
 export { decorateThemeBackgroundVisuals } from "./themeBackgrounds.js";
-export { buildCareersListingPage } from "./buildCareersListingPage.js";
+export { buildJobListingPage } from "./buildJobListingPage.js";
 export { buildArticlePage } from "./buildArticlePage.js";
 export { buildSiteContentPage } from "./buildSiteContentPage.js";
 
