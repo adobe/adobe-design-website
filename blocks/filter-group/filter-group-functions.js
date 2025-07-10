@@ -4,7 +4,7 @@
 import { fetchAndBuildIdeas, debounce } from "../../scripts/helpers/index.js";
 import { updateFilter, getCurrentFiltersArray } from "./filter-group-utils.js";
 import {
-  initialMaxIdeas,
+  initialMaxArticles,
   calculateGroupTotal,
   rearrangeFeatures,
   updateLoadButtonState,
@@ -40,7 +40,7 @@ const refreshArticleContent = async (selectedFilters = []) => {
   const groupTotal = calculateGroupTotal(layoutType === "two-up");
   const fragment = await fetchAndBuildIdeas({
     tagName: selectedFilters,
-    maxArticles: initialMaxIdeas(features?.length ?? 0, groupTotal),
+    maxArticles: initialMaxArticles(features?.length ?? 0, groupTotal),
     gridItemClass: layoutType === "two-up" ? "grid-item--50" : "grid-item--25",
     hasHorizontalScroll: false,
   });

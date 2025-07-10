@@ -94,7 +94,7 @@ export const buildIdeasFeature = (featureContent) => {
  * @param {number} groupTotal How many cards before or after a feature.
  * @returns {number}
  */
-export const initialMaxIdeas = (totalFeatures, groupTotal) => {
+export const initialMaxArticles = (totalFeatures, groupTotal) => {
   const minTotalWithFeatures = (totalFeatures + 1) * groupTotal;
   // Include a larger minimum of 3x the grouping, so the total is never too small.
   return Math.max(minTotalWithFeatures, groupTotal * 3);
