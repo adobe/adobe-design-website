@@ -413,6 +413,13 @@
     display: block;
     color: var(--spectrum-gray-600);
 
+    > * {
+      font-family: var(--detail-font-family);
+      line-height: var(--detail-line-height);
+      font-size: var(--spectrum-detail-size-s);
+      font-weight: var(--detail-font-weight);
+    }
+
     & a {
       color: currentColor;
       text-decoration: underline;
@@ -450,7 +457,10 @@
   }
 
   & .image-with-caption__caption {
+    align-self: center;
     margin-inline: var(--page-gutters);
+    width: calc(100% - (var(--page-gutters) * 2));
+    max-width: var(--page-constrained-text);
   }
 }
 

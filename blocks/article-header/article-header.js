@@ -80,7 +80,7 @@ export default async function decorate(block) {
 
     if (articleHeaderData.caption) {
       const imageCaption = document.createElement('figcaption');
-      imageCaption.classList.add('util-detail-s', 'image-with-caption__caption');
+      imageCaption.classList.add('image-with-caption__caption');
       imageCaption.innerHTML = articleHeaderData.caption;
       imageContainer.append(imageCaption);
     }
