@@ -1295,7 +1295,7 @@ main > .section.small-screen-cta-container > .grid-container {
         inset: -40px -100px auto auto;
       }
 
-      @media (min-width: 105rem) {
+      @media (min-width: 120rem) {
         inset: 0 0 auto auto;
       }
 
