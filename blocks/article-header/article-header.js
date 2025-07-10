@@ -36,7 +36,7 @@ export default async function decorate(block) {
 
   // if there is a subtitle, add it as an h2
   if (articleHeaderData.subtitle) {
-    const pageSubtitle = document.createElement("h2");
+    const pageSubtitle = document.createElement("p");
     pageSubtitle.classList.add("article-header__subtitle", "util-title-m");
     pageSubtitle.innerText = articleHeaderData.subtitle;
     articleHeader.append(pageSubtitle);

@@ -101,6 +101,10 @@
   }
 }
 
+.article-header__subtitle {
+  margin-block: 0;
+}
+
 /* adjust font sizes */
 .article-header {
   @media (min-width: 22.5rem) {
