@@ -654,7 +654,7 @@
   }
 
   @media (min-width: 100rem) {
-    /* breakpoint-xl, content should max-width */
+    /* breakpoint-xl, content should max-width. Keep "px" unit to ensure calcs work. */
     --page-gutters: 0px;
   }
 }
