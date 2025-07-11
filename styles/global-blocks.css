@@ -533,6 +533,7 @@
   }
 
   .search__box--expanded .search__input-wrapper {
+    margin-inline-end: var(--search-input-margin-block-end);
     width: 100%;
     opacity: 1;
 
@@ -561,7 +562,6 @@
 
     .nav--large-screens & {
       display: none;
-      margin-inline-end: var(--search-input-margin-block-end);
     }
 
     &::placeholder {
@@ -632,6 +632,48 @@
   .search__box--expanded .search__button {
     background-color: var(--spectrum-gray-200);
   }
+
+  .search__clear-button {
+    display: none;
+    box-sizing: border-box;
+    border-radius: var(--spectrum-corner-radius-1000);
+    height: 2rem;
+    width: 2rem;
+    position: absolute;
+    inset: 0 0 auto auto;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+
+    & svg {
+      width: 0.5rem;
+      height: 0.5rem;
+    }
+
+    &:active {
+      transform: perspective(var(--spectrum-component-size-minimum-perspective-down))
+        translateZ(var(--spectrum-component-size-difference-down));
+    }
+  }
+
+  .search__input.search__input--populated {
+    padding-inline-end: 2.0rem;
+
+    /* Hide browser native clear button. */
+    &::-webkit-search-decoration,
+    &::-webkit-search-cancel-button,
+    &::-webkit-search-results-button,
+    &::-webkit-search-results-decoration {
+      display: none;
+    }
+
+    /* Show custom clear button. */
+    & + .search__clear-button {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  } 
 
   .search__results-container {
     --search-results-item-padding: 0.75rem;
