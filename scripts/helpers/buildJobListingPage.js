@@ -12,7 +12,7 @@ import {
  * @return {void}
  */
 
-export const buildCareersListingPage = async () => {
+export const buildJobListingPage = async () => {
   if (window.errorCode === "404") return;
 
   const listingMetadata = getListingMetadata();

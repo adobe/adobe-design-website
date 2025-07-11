@@ -2,7 +2,7 @@ import { fetchAndBuildIdeas } from "../../scripts/helpers/index.js";
 import {
   buildIdeasFeature,
   calculateGroupTotal,
-  initialMaxIdeas,
+  initialMaxArticles,
   handleLoadMore,
   rearrangeFeatures,
 } from "./ideas-functions.js";
@@ -74,7 +74,7 @@ export default function decorate(block) {
   const fetchAndAppend = async () => {
     const fragment = await fetchAndBuildIdeas({
       tagName: settings.tags.split(","),
-      maxArticles: initialMaxIdeas(features.length, groupTotal),
+      maxArticles: initialMaxArticles(features.length, groupTotal),
       gridItemClass:
         settings.layoutType === "two-up" ? "grid-item--50" : "grid-item--25",
       hasHorizontalScroll: false,

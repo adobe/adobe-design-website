@@ -20,7 +20,7 @@ import {
   debounce,
   isSubPageOf,
   buildArticlePage,
-  buildCareersListingPage,
+  buildJobListingPage,
   buildSiteContentPage,
   appendLiveRegion,
 } from './helpers/index.js';
@@ -167,7 +167,7 @@ async function loadLazy(doc) {
   };
 
   // decorate careers listing page
-  if (isSubPageOf('careers')) buildCareersListingPage();
+  if (isSubPageOf('careers')) buildJobListingPage();
 
   // decorate site content page
   if (window.location.pathname === "/pattern-library/site-content") buildSiteContentPage();
