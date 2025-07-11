@@ -34,11 +34,19 @@
 }
 
 .link-list--jobs {
+  & .link-list-item {
+    padding: 1rem 0;
+  }
+
   @media (min-width: 48rem) {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 2rem;
     margin-block-end: 2.5rem;
+
+    & .link-list-item {
+      padding: 0;
+    }
 
     .link-list-item::after {
       background: none;
@@ -83,6 +91,14 @@
 
   & span {
     display: block;
+  }
+
+  @media (min-width: 80rem) {
+    padding-block: 1.5rem;
+  }
+
+  @media (min-width: 105rem) {
+    padding-block: 1.875rem;
   }
 }
 

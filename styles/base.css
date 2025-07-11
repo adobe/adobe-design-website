@@ -274,9 +274,9 @@
     0 0 0 / var(--spectrum-drop-shadow-color-300-opacity)
   );
 
-  --spectrum-drop-shadow-x-100: 0;
-  --spectrum-drop-shadow-x-200: 0;
-  --spectrum-drop-shadow-x-300: 0;
+  --spectrum-drop-shadow-x-100: 0px;
+  --spectrum-drop-shadow-x-200: 0px;
+  --spectrum-drop-shadow-x-300: 0px;
   --spectrum-drop-shadow-y-100: 1px;
   --spectrum-drop-shadow-y-200: 2px;
   --spectrum-drop-shadow-y-300: 6px;
@@ -393,7 +393,7 @@
   --spectrum-border-width-400: 4px;
 
   /* ** CORNER ROUNDING ** */
-  --spectrum-corner-radius-0: 0;
+  --spectrum-corner-radius-0: 0px;
   --spectrum-corner-radius-75: 3px;
   --spectrum-corner-radius-100: 4px;
   --spectrum-corner-radius-200: 5px;
@@ -654,7 +654,7 @@
   }
 
   @media (min-width: 100rem) {
-    /* breakpoint-xl, content should max-width */
-    --page-gutters: 0;
+    /* breakpoint-xl, content should max-width. Keep "px" unit to ensure calcs work. */
+    --page-gutters: 0px;
   }
 }

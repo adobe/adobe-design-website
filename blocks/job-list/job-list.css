@@ -1,8 +1,21 @@
 .job-list {
   --color-text: var(--spectrum-gray-900);
   --color-border: var(--spectrum-gray-400);
-  margin-block-end: 2rem;
   grid-row-gap: 0rem;
+}
+
+.section .job-list.grid-container {
+  margin-block: 4rem;
+
+  @media (min-width: 80rem) {
+    margin-block: 6.5rem;
+  }
+
+  @media (min-width: 120rem) {
+    &:has(~ .job-list) {
+      margin-block-end: 11.5rem;
+    }
+  }
 }
 
 .job-list__heading {
@@ -30,16 +43,8 @@
 .job-list__listings {
   display: block;
 
-  @media (min-width: 48rem) {
-    grid-column: span 12;
-  }
-
   & .job-listing {
     border-top: 1px solid var(--color-border);
-
-    @media (min-width: 80rem) {
-      padding-block-start: 0;
-    }
   }
 
   & .job-listing:first-child {
@@ -47,6 +52,7 @@
   }
 
   @media (min-width: 48rem) {
+    grid-column: span 12;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 2rem;
@@ -61,7 +67,12 @@
   }
 
   @media (min-width: 80rem) {
+    gap: 2.5rem;
     grid-column: span 8;
     grid-template-columns: repeat(2, 1fr);
+
+    & .job-listing {
+      padding-block: 0;
+    }
   }
 }

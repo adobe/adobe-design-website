@@ -55,5 +55,7 @@ export default function decorate(block) {
 
   jobList.append(jobListings);
   block.textContent = '';
-  block.replaceWith(jobList);
+
+  // Replace wrapper div parent with new block.
+  block?.parentElement?.classList?.length === 0 ? block.parentElement.replaceWith(jobList) : block.replaceWith(jobList);;
 }
