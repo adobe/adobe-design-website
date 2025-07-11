@@ -12,7 +12,7 @@
   }
 
   @media (min-width: 120rem) {
-    &:not(:last-child) {
+    &:has(~ .job-list) {
       margin-block-end: 11.5rem;
     }
   }
