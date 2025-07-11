@@ -1150,10 +1150,6 @@ main > .section.small-screen-cta-container > .grid-container {
   @media (min-width: 80rem) {
     --page-background-height: 71.5rem;
   }
-
-  @media (min-width: 105rem) {
-    --page-background-height: 83.375rem;
-  }
 }
 
 /* Backdrop gradients and shape positioning */
@@ -1295,12 +1291,8 @@ main > .section.small-screen-cta-container > .grid-container {
         inset: -40px -100px auto auto;
       }
 
-      @media (min-width: 120rem) {
-        inset: 0 0 auto auto;
-      }
-
       @media (min-width: 140rem) {
-        width: calc(50dvw + 960px);
+        width: calc(50dvw + 800px);
       }
     }
   }
