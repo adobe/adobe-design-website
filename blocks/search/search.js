@@ -17,17 +17,17 @@ function sectionNameFromPath(path) {
   let sectionName = '';
   if (pathParts.length < 3 || path.endsWith('/')) {
     // Landing or single pages
-    sectionName = "Pages";
+    sectionName = "Page";
   } else {
     // Default to the root directory name.
     sectionName = rootDir;
 
     // Custom sub-page name adjustments.
     if (sectionName === "ideas") {
-      sectionName = "Articles";
+      sectionName = "Article";
     }
     if (sectionName === "careers") {
-      sectionName = "Job Listings";
+      sectionName = "Job Listing";
     }
   }
 
