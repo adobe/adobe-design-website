@@ -649,6 +649,7 @@
     background: transparent;
     border: none;
     cursor: pointer;
+    color: var(--color-text);
 
     & svg {
       width: 0.5rem;
