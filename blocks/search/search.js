@@ -47,11 +47,11 @@ function renderResult(result) {
   a.href = result.path;
 
   const title = document.createElement('div');
-  title.className = 'search__results-title util-title-xs';
+  title.className = 'search__results-title util-title-s';
   title.textContent = result.title;
 
   const description = document.createElement('div');
-  description.className = 'search__results-description util-body-xs';
+  description.className = 'search__results-description util-body-s';
   const descriptionText = sectionNameFromPath(result.path);
   if (descriptionText) description.textContent = descriptionText;
 
@@ -265,10 +265,14 @@ function createSearchBox(block, config) {
 
   /**
    * Handle escape or clear button. Collapse, clear search value, and clear search results.
+   * 
+   * @param {boolean} collapseExpanded Whether to collapse the expanded large screen search.
    */
-  const handleClearEvent = () => {
-    box.classList.remove('search__box--expanded');
-    toggleButton.toggleAttribute('aria-expanded');
+  const handleClearEvent = (collapseExpanded = false) => {
+    if (collapseExpanded){
+      box.classList.remove('search__box--expanded');
+      toggleButton.toggleAttribute('aria-expanded', false);
+    }
     searchInput.value = '';
     searchInput.classList.remove('search__input--populated');
     clearSearchResults(block);
@@ -280,14 +284,17 @@ function createSearchBox(block, config) {
    */
   block.addEventListener('keyup', (e) => {
     if (e.code === 'Escape') {
-      handleClearEvent();
+      handleClearEvent(true);
     }
   });
 
   /**
    * Handle click on clear button.
    */
-  clearButton.addEventListener('click', handleClearEvent);
+  clearButton.addEventListener('click', (e) => {
+    e.stopPropagation();
+    handleClearEvent(false);
+  });
 
   /**
    * Collapse and clear search after clicking somewhere else.

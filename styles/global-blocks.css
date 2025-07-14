@@ -716,7 +716,7 @@
     list-style: none;
     margin: 0;
     padding: 0;
-    font-size: var(--spectrum-font-size-200);
+    font-size: var(--spectrum-font-size-300);
   }
 
   .search__results--no-results {
@@ -759,6 +759,7 @@
 
   .search__results-title {
     color: var(--color-text-dark);
+    font-size: var(--spectrum-font-size-300);
 
     .nav--large-screens & {
       margin-bottom: 0.25rem;
@@ -767,6 +768,7 @@
 
   .search__results-description {
     color: var(--spectrum-gray-700);
+    font-size: var(--spectrum-font-size-300);
 
     &::first-letter {
       text-transform: uppercase;
