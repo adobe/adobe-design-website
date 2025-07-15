@@ -149,7 +149,7 @@
 
     .article-header__date,
     .article-header__byline {
-      font-size: var(--spectrum-body-size-sm);
+      font-size: var(--spectrum-body-size-s);
     }
 
     .article-header__author {
