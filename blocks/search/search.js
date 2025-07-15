@@ -2,6 +2,12 @@ import { dataStore, debounce } from "../../scripts/helpers/index.js";
 
 const searchParams = new URLSearchParams(window.location.search);
 const SEARCH_INPUT_ICON = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" focusable="false" aria-hidden="true" roll="img"><path fill="currentColor" d="M16.9 15.5c2.4-3.2 2.2-7.7-.7-10.6-3.1-3.1-8.1-3.1-11.3 0-3.1 3.2-3.1 8.3 0 11.4 2.9 2.9 7.5 3.1 10.6.6v.1l4.2 4.2c.5.4 1.1.4 1.5 0 .4-.4.4-1 0-1.4l-4.3-4.3zm-2.1-9.2c2.3 2.3 2.3 6.1 0 8.5-2.3 2.3-6.1 2.3-8.5 0C4 12.5 4 8.7 6.3 6.3c2.4-2.3 6.2-2.3 8.5 0z"/></svg>`;
+const SEARCH_CLEAR_ICON = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 8 8" focusable="false" aria-hidden="true" role="img"><path fill="currentColor" d="m5.238 4 2.456-2.457A.875.875 0 1 0 6.456.306L4 2.763 1.543.306A.875.875 0 0 0 .306 1.544L2.763 4 .306 6.457a.875.875 0 1 0 1.238 1.237L4 5.237l2.456 2.457a.875.875 0 1 0 1.238-1.237z"></path></svg>`;
+
+// Root directory names for main sections (without slashes).
+const articleRoot = "ideas";
+const authorRoot = "authors";
+const jobListingRoot = "careers";
 
 /**
  * Create section name to be used for descriptive text under search result title.
@@ -15,17 +21,17 @@ function sectionNameFromPath(path) {
   let sectionName = '';
   if (pathParts.length < 3 || path.endsWith('/')) {
     // Landing or single pages
-    sectionName = "Pages";
+    sectionName = "Page";
   } else {
     // Default to the root directory name.
     sectionName = rootDir;
 
     // Custom sub-page name adjustments.
-    if (sectionName === "ideas") {
-      sectionName = "Articles";
+    if (sectionName === articleRoot) {
+      sectionName = "Article";
     }
-    if (sectionName === "careers") {
-      sectionName = "Job Listings";
+    if (sectionName === jobListingRoot) {
+      sectionName = "Job Listing";
     }
   }
 
@@ -45,11 +51,11 @@ function renderResult(result) {
   a.href = result.path;
 
   const title = document.createElement('div');
-  title.className = 'search__results-title util-title-xs';
+  title.className = 'search__results-title util-title-s';
   title.textContent = result.title;
 
   const description = document.createElement('div');
-  description.className = 'search__results-description util-body-xs';
+  description.className = 'search__results-description util-body-s';
   const descriptionText = sectionNameFromPath(result.path);
   if (descriptionText) description.textContent = descriptionText;
 
@@ -67,12 +73,9 @@ function clearSearchResults(block) {
 }
 
 /**
- * Clear search entirely; remove from URL params and results markup.
- * @param {HTMLElement} block The main search block element.
+ * Clear search from URL params and update history.
  */
-function clearSearch(block) {
-  clearSearchResults(block);
-  // Remove query param from URL and update browser history.
+function clearSearchURLParam() {
   if (window.history.replaceState) {
     const url = new URL(window.location.href);
     url.search = '';
@@ -127,12 +130,12 @@ function filterData(searchTerms, data) {
     let minIdx = -1;
 
     // Leave home page and author pages off of results.
-    if (result?.path === '/' || result?.path.startsWith('/authors/')) return;
+    if (result?.path === '/' || result?.path.startsWith("/" + authorRoot + "/")) return;
 
-    // Search within meta `title`, `description`, and the words in the last part of the `path`.
-    const metaContents = `${result.title} ${!result.path.startsWith('/authors/') ? result.description : ''} ${result.path.split('/').pop()}`.toLowerCase();
+    // Search within meta `title`, `description`, the words in the last part of the `path`, and the author name on articles.
+    const textToSearch = `${result.title} ${result.description} ${result.path.split('/').pop()} ${result.path.startsWith("/" + articleRoot + "/") ? result.author : ''}`.toLowerCase();
     searchTerms.forEach((term) => {
-      const idx = metaContents.indexOf(term);
+      const idx = textToSearch.indexOf(term);
       if (idx < 0) return;
       if (minIdx < idx) minIdx = idx;
     });
@@ -164,7 +167,8 @@ async function handleSearch(inputElement, block, config) {
   }
 
   if (searchValue.length < 3) {
-    clearSearch(block);
+    clearSearchResults(block);
+    clearSearchURLParam();
     return;
   }
 
@@ -225,6 +229,14 @@ function createSearchBox(block, config) {
   searchInput.append(searchIconInInput);
   inputWrapper.append(searchInput);
 
+  // Clear button.
+  const clearButton = document.createElement('button');
+  clearButton.ariaLabel = "Clear search";
+  clearButton.classList.add("search__clear-button");
+  clearButton.tabIndex = "-1";
+  clearButton.innerHTML = SEARCH_CLEAR_ICON;
+  inputWrapper.append(clearButton);
+
   box.append(inputWrapper, toggleButton, resultsContainer);
 
   /**
@@ -236,7 +248,8 @@ function createSearchBox(block, config) {
     if (box.classList.contains('search__box--expanded')) {
       searchInput.focus();
     } else {
-      clearSearch(block);
+      clearSearchResults(block);
+      clearSearchURLParam();
     }
   });
 
@@ -245,6 +258,9 @@ function createSearchBox(block, config) {
    */
   const debouncedHandleSearch = debounce((e) => handleSearch(e?.target, block, config), 200);
   searchInput.addEventListener('input', debouncedHandleSearch);
+  searchInput.addEventListener('input', () => {
+    searchInput.classList.toggle('search__input--populated', Boolean(searchInput.value.length))
+  });
 
   /**
    * Kick off search if search field already has a value when it gains focus.
@@ -252,27 +268,60 @@ function createSearchBox(block, config) {
   searchInput.addEventListener('focus', (e) => handleSearch(e?.target, block, config));
 
   /**
-   * Handle escape being pressed on input or when focused on a result.
+   * Handle escape or clear button. Collapse, clear search value, and clear search results.
+   * 
+   * @param {boolean} collapseExpanded Whether to collapse the expanded large screen search.
+   */
+  const handleClearEvent = (collapseExpanded = false) => {
+    if (collapseExpanded){
+      box.classList.remove('search__box--expanded');
+      toggleButton.toggleAttribute('aria-expanded', false);
+    }
+    searchInput.value = '';
+    searchInput.classList.remove('search__input--populated');
+    clearSearchResults(block);
+    clearSearchURLParam();
+  };
+
+  /**
+   * Handle escape or enter being pressed on input or when focused on a result.
    */
   block.addEventListener('keyup', (e) => {
-    // Collapse and clear search after pressing Escape.
+    // Clear on escape.
     if (e.code === 'Escape') {
-      box.classList.remove('search__box--expanded');
-      toggleButton.toggleAttribute('aria-expanded');
-      searchInput.value = '';
-      clearSearch(block);
+      handleClearEvent(false);
+    }
+
+    // Focus results if enter pressed. Helpful to close keyboard on mobile.
+    if (e.key === 'Enter') {
+      const firstLink = resultsContainer.querySelector("a");
+      if (firstLink !== null) {
+        firstLink.focus();
+      }
     }
   });
+
+  /**
+   * Handle click on clear button.
+   */
+  clearButton.addEventListener('click', (e) => {
+    e.stopPropagation();
+    handleClearEvent(false);
+  });
+
+  /**
+   * Collapse expanded search and clear search results.
+   */
+  const collapseAndClear = () => {
+    box.classList.remove('search__box--expanded');
+    clearSearchResults(block);
+    clearSearchURLParam();
+  };
 
   /**
    * Collapse and clear search after clicking somewhere else.
    */
   document.addEventListener('click', (e) => {
-    const collapseAndClear = () => {
-      box.classList.remove('search__box--expanded');
-      clearSearch(block);
-    };
-
     if (box.closest('.nav')?.classList.contains('nav--large-screens')) {
       if (!box.contains(e.target) && box.classList.contains('search__box--expanded')) {
         collapseAndClear();
@@ -283,6 +332,17 @@ function createSearchBox(block, config) {
       }
     }
   });
+
+  /**
+   * Make sure change in keyboard (tab) focus to another element outside of search also collapses and clears the search results.
+   * Important for mobile menu focus moving from search to the nav.
+   */
+  box.addEventListener('blur', function(e) {
+      // Check if the element that gained focus (relatedTarget) is outside the search.
+      if (!box.contains(e.relatedTarget)) {
+        collapseAndClear();
+      }
+  }, true);
 
   return box;
 }
