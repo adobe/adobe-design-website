@@ -293,7 +293,7 @@ function createSearchBox(block, config) {
     }
 
     // Focus results if enter pressed. Helpful to close keyboard on mobile.
-    if (e.code === 'Enter') {
+    if (e.key === 'Enter') {
       const firstLink = resultsContainer.querySelector("a");
       if (firstLink !== null) {
         firstLink.focus();
