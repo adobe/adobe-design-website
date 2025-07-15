@@ -327,6 +327,9 @@ body.color-scheme-dark .button--static-white {
   background-color: var(--color-button-background-accent);
   color: var(--color-button-text-accent);
 
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
   &:hover,
   &:focus-visible {
     background-color: var(--color-button-background-accent-hover);
