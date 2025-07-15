@@ -562,6 +562,15 @@
     --spectrum-body-size-xs: var(--spectrum-font-size-200);
   }
 
+  @media (min-width: 80rem) {
+    --spectrum-body-size-m: var(--spectrum-font-size-500);
+  }
+
+  @media (min-width: 105rem) {
+    --spectrum-body-size-m: var(--spectrum-font-size-600);
+  }
+
+
   /* functional */
 
   /* ** LAYOUT ** */
