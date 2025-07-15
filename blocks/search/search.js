@@ -284,11 +284,20 @@ function createSearchBox(block, config) {
   };
 
   /**
-   * Handle escape being pressed on input or when focused on a result.
+   * Handle escape or enter being pressed on input or when focused on a result.
    */
   block.addEventListener('keyup', (e) => {
+    // Clear on escape.
     if (e.code === 'Escape') {
-      handleClearEvent(true);
+      handleClearEvent(false);
+    }
+
+    // Focus results if enter pressed. Helpful to close keyboard on mobile.
+    if (e.code === 'Enter') {
+      const firstLink = resultsContainer.querySelector("a");
+      if (firstLink !== null) {
+        firstLink.focus();
+      }
     }
   });
 
@@ -301,15 +310,18 @@ function createSearchBox(block, config) {
   });
 
   /**
+   * Collapse expanded search and clear search results.
+   */
+  const collapseAndClear = () => {
+    box.classList.remove('search__box--expanded');
+    clearSearchResults(block);
+    clearSearchURLParam();
+  };
+
+  /**
    * Collapse and clear search after clicking somewhere else.
    */
   document.addEventListener('click', (e) => {
-    const collapseAndClear = () => {
-      box.classList.remove('search__box--expanded');
-      clearSearchResults(block);
-      clearSearchURLParam();
-    };
-
     if (box.closest('.nav')?.classList.contains('nav--large-screens')) {
       if (!box.contains(e.target) && box.classList.contains('search__box--expanded')) {
         collapseAndClear();
@@ -320,6 +332,17 @@ function createSearchBox(block, config) {
       }
     }
   });
+
+  /**
+   * Make sure change in keyboard (tab) focus to another element outside of search also collapses and clears the search results.
+   * Important for mobile menu focus moving from search to the nav.
+   */
+  box.addEventListener('blur', function(e) {
+      // Check if the element that gained focus (relatedTarget) is outside the search.
+      if (!box.contains(e.relatedTarget)) {
+        collapseAndClear();
+      }
+  }, true);
 
   return box;
 }
