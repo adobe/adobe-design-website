@@ -119,14 +119,21 @@
   line-height: var(--title-line-height);
 }
 
-.link-list-item__job-department {
+.link-list-item__job-department,
+.link-list-item__job-location {
   font-size: var(--spectrum-detail-size-s);
-  font-weight: var(--detail-font-weight);
-  line-height: var(--detail-line-height);
+
+  @media (min-width: 80rem) {
+    font-size: var(--spectrum-detail-size-m);
+  }
+}
+
+.link-list-item__job-department {
+  margin: 0.25rem 0 0;
 }
 
 .link-list-item__job-location {
-  font-size: var(--spectrum-body-size-xs);
+  margin-block-start: 0.25rem;
 }
 
 .link-list-footer-link {
