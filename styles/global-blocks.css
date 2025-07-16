@@ -963,8 +963,8 @@ a.card:hover {
   margin: 0;
 
   @media (min-width: 48rem) {
-    font-size: var(--spectrum-title-size-xl);
-    font-weight: var(--spectrum-title-weight-xl);
+    font-size: var(--spectrum-title-size-l);
+    font-weight: var(--spectrum-title-weight-l);
   }
 
   @media (min-width: 80rem) {
@@ -980,10 +980,14 @@ a.card:hover {
 .job-listing__subheading,
 .job-listing__detail {
   display: block;
-  font-size: var(--spectrum-detail-size-s);
+  font-size: var(--spectrum-font-size-100);
 
-  @media (min-width: 80rem) {
-    font-size: var(--spectrum-detail-size-m);
+  @media (min-width: 48rem) {
+    font-size: var(--spectrum-font-size-200);
+  }
+
+  @media (min-width: 105rem) {
+    font-size: var(--spectrum-font-size-300);
   }
 }
 

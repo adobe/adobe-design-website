@@ -121,10 +121,14 @@
 
 .link-list-item__job-department,
 .link-list-item__job-location {
-  font-size: var(--spectrum-detail-size-s);
+  font-size: var(--spectrum-font-size-100);
 
-  @media (min-width: 80rem) {
-    font-size: var(--spectrum-detail-size-m);
+  @media (min-width: 48rem) {
+    font-size: var(--spectrum-font-size-200);
+  }
+
+  @media (min-width: 105rem) {
+    font-size: var(--spectrum-font-size-300);
   }
 }
 
