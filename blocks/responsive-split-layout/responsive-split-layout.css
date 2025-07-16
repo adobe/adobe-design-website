@@ -1,24 +1,30 @@
 .responsive-split-layout {
+  --split-layout-spacing: 2rem;
+  --split-layout-heading-to-text: 0.25rem;
+
   display: flex;
   flex-direction: column;
   gap: 1.25rem;
-  margin-block-end: 2rem;
+  margin-block-end: var(--split-layout-spacing);
 
   @media (min-width: 48rem) {
     flex-direction: row;
     gap: 2rem;
-    margin-block-end: 0;
-    padding-block: 4rem;
+    --split-layout-spacing: 4rem;
+    margin-block-start: var(--split-layout-spacing);
+    margin-block-end: calc(var(--split-layout-spacing) * 2);
   }
 
   @media (min-width: 80rem) {
     gap: 3rem;
-    padding-block: 5rem;
+    --split-layout-spacing: 5rem;
+    --split-layout-heading-to-text: 0.5rem;
   }
 
   @media (min-width: 105rem) {
     gap: 12.625rem;
-    padding-block: 6.5rem;
+    --split-layout-spacing: 6.5rem;
+    --split-layout-heading-to-text: 2rem;
   }
 
   & .responsive-split-layout__image,
@@ -37,6 +43,11 @@
     flex-direction: column;
     justify-content: center;
     gap: 0.25rem;
+
+    & h2 + p, 
+    & h3 + p {
+      margin-top: var(--split-layout-heading-to-text);
+    }
   }
 
   & .responsive-split-layout__content--reverse {
@@ -49,11 +60,12 @@
     margin-block: 0;
   }
 
+  /* Last sibling with class */
   &:not(:has(+ .responsive-split-layout)) {
     margin-block-end: var(--spacing-global-block-end-small-screen);
 
     @media (min-width: 48rem) {
-      margin-block-end: 0;
+      margin-block-end: var(--split-layout-spacing);
     }
   }
 }
