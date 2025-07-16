@@ -66,7 +66,7 @@
   }
 }
 
-:root:has(#color-scheme:checked) .feature-layout {
+body.color-scheme-dark .feature-layout {
   -webkit-font-smoothing: auto;
   -moz-osx-font-smoothing: auto;
 }

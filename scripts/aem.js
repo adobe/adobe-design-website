@@ -315,6 +315,12 @@ function decorateTemplateAndTheme() {
     });
   };
 
+  // Add color scheme class based on stored or system dark/light mode setting.
+  const useDarkModeSetting = localStorage.getItem("useDarkMode");
+  if (useDarkModeSetting === "true" || (useDarkModeSetting === null && window.matchMedia("(prefers-color-scheme: dark)").matches)) {
+    document.body.classList.add("color-scheme-dark");
+  }
+
   // Add template class(es) to body from metadata.
   const template = getMetadata('template');
   if (template) {

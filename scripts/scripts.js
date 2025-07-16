@@ -120,19 +120,25 @@ const reloadHeader = async (headerElement, onBreakpointChangeOnly = false) => {
  */
 async function loadEager(doc) {
   doc.documentElement.lang = 'en';
+
+  // Ensure ARIA live region is added to DOM as early as possible.
   appendLiveRegion();
+
+  // Make sure theme and color-scheme classes are ready on the body, which affects loading appearance.
   decorateTemplateAndTheme();
-  if (getMetadata('breadcrumbs').toLowerCase() === 'true') {
-    doc.body.dataset.breadcrumbs = true;
-  }
+
   const main = doc.querySelector('main');
   if (main) {
     decorateMain(main);
     main.id = "main-content";
+
+    // Add class to display body that was hidden until this point.
     doc.body.classList.add('appear');
+
+    // Wait for first image to load within main sections before loading header.
     await loadSection(main.querySelector('.section'), waitForFirstImage);
 
-    // loads the header component, along with its stylesheet
+    // Load the header component, along with its stylesheet.
     const headerElement = doc.querySelector('header');
     loadHeader(headerElement);
   }
@@ -206,14 +212,13 @@ function loadDelayed() {
   // eslint-disable-next-line import/no-cycle
   window.setTimeout(() => import('./delayed.js'), 3000);
   // load anything that can be postponed to the latest here
-
   loadCSS(`${window.hlx.codeBasePath}/styles/delayed-styles.css`);
 }
 
 async function loadPage() {
   await loadEager(document);
   await loadLazy(document);
-  loadDelayed();
+  // loadDelayed();
 }
 
 loadPage();

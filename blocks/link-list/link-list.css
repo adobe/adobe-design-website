@@ -190,7 +190,7 @@
   }
 }
 
-:root:has(#color-scheme:checked) .link-list-footer-link {
+body.color-scheme-dark .link-list-footer-link {
   @media (min-width: 48rem) {
     --footer-link-color-border: var(--spectrum-transparent-white-800);
     --footer-link-color-border-hover: var(--spectrum-transparent-white-900);
