@@ -639,16 +639,19 @@
     --page-background-height: 38.5rem;
   }
 
-  /* smallest screens */
   --page-gutters: 1.25rem;
 
   @media (min-width: 22.5rem) {
-    /* breakpoint small - large */
     --page-gutters: 2rem;
   }
 
-  @media (min-width: 100rem) {
-    /* breakpoint-xl, content should max-width. Keep "px" unit to ensure calcs work. */
+  @media (min-width: 80rem) {
+    --page-gutters: 4rem;
+  }
+
+  /* Page max width plus the page gutters. Breakpoint where main content max-widths can become the --page-max-width.  */
+  @media (min-width: 105.5rem) {
+    /* Keep "px" unit to ensure calcs work. */
     --page-gutters: 0px;
   }
 }

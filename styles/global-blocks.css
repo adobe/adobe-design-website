@@ -119,7 +119,7 @@
   width: 100vw;
   margin-inline: calc(-1 * var(--page-gutters));
 
-  @media (min-width: 100rem) {
+  @media (min-width: 105.5rem) {
     margin-inline: calc(-0.5 * calc(100vw - var(--page-max-width)));
   }
 }

@@ -33,7 +33,7 @@
     padding-block: 6rem;
   }
 
-  @media (min-width: 100rem) {
+  @media (min-width: 105.5rem) {
     margin-inline: calc(-0.5 * calc(100vw - var(--page-max-width)));
   }
 
@@ -99,7 +99,7 @@ body.color-scheme-dark .feature-layout {
     }
   }
 
-  @media (min-width: 100rem) {
+  @media (min-width: 105.5rem) {
     margin-inline: auto;
   }
 }

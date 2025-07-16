@@ -60,7 +60,7 @@
   }
 }
 
-@media (min-width: 100rem) {
+@media (min-width: 105.5rem) {
   .footer-content .section {
     display: flex;
     flex-wrap: wrap;
