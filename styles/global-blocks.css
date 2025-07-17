@@ -249,16 +249,34 @@
     flex-direction: column;
   }
 
-  .button {
+  .listing-details__button {
     grid-area: button;
 
-    @media (min-width: 36rem) {
-      align-self: start;
-      width: auto;
+    &.listing-details__button--first {
+      display: inline-flex;
+
+      @media (min-width: 36rem) {
+        display: none;
+      }
+
+      @media (min-width: 67.5rem) {
+        display: inline-flex;
+        margin-block-end: 3rem;
+      }
     }
 
-    @media (min-width: 67.5rem) {
-      margin-block-end: 3rem;
+    &.listing-details__button--last {
+      display: none;
+
+      @media (min-width: 36rem) {
+        display: inline-flex;
+        align-self: start;
+        width: auto;
+      }
+
+      @media (min-width: 67.5rem) {
+        display: none;
+      }
     }
   }
 }
