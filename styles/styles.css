@@ -82,10 +82,11 @@ main {
 }
 
 main > .section {
-  max-width: var(--page-max-width);
+  max-width: calc(var(--page-max-width) + (var(--page-gutters) * 2));
   margin-inline: var(--page-gutters);
 
-  @media (min-width: 100rem) {
+  /* Page max width plus the page gutters. */
+  @media (min-width: 105.5rem) {
     margin-inline: auto;
     max-width: var(--page-max-width);
   }
@@ -326,6 +327,9 @@ body.color-scheme-dark .button--static-white {
 
   background-color: var(--color-button-background-accent);
   color: var(--color-button-text-accent);
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 
   &:hover,
   &:focus-visible {
@@ -806,7 +810,7 @@ main > .section.small-screen-cta-container > .grid-container {
   max-width: 100%;
   margin-inline: var(--page-gutters);
 
-  @media (min-width: 100rem) {
+  @media (min-width: 105.5rem) {
     margin-inline: auto;
     max-width: var(--page-max-width);
   }

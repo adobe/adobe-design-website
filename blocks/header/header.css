@@ -31,7 +31,12 @@
   width: 100%;
   margin-inline: auto;
   position: relative;
-  max-width: var(--page-max-width);
+  max-width: calc(var(--page-max-width) + (var(--page-gutters) * 2));
+
+  /* Page max width plus the page gutters. */
+  @media (min-width: 105.5rem) {
+    max-width: var(--page-max-width);
+  }
 }
 
 .nav__menu-button {
