@@ -1,13 +1,5 @@
 import { prepURL } from "./index.js";
 
-/**
- * Fetches data from the author's page, and if not found, will return
- * the Adobe Design author profile data.
- *
- * @return {Object|undefined} an object containing author data,
- * including their name, job title, picture, and bio.
- */
-
 const FALLBACK_AUTHOR_URL = "/authors/adobe-design.plain.html";
 const FALLBACK_AUTHOR_DATA = {
   name: "Adobe Design",
@@ -19,11 +11,18 @@ const FALLBACK_AUTHOR_DATA = {
   ],
 };
 
+/**
+ * Fetches data from the author's page.
+ *
+ * @param {string} url
+ * @return {Object|undefined} an object containing author data,
+ * including their name, job title, picture, and bio.
+ */
 const fetchAuthorData = async (url) => {
   const resp = await fetch(url);
 
   if (!resp.ok) {
-    console.warn(`We could not fetch author data for ${authorName} — Status ${resp.status}`);
+    console.warn(`We could not retrieve author data for ${authorName} — Status ${resp.status}`);
   };
 
   const dataHTML = await resp.text();
@@ -34,13 +33,36 @@ const fetchAuthorData = async (url) => {
     name: dataContainer.querySelector('h1')?.innerText,
     title: dataContainer.querySelector('h2')?.innerText,
     // the HTML picture element
-    image: dataContainer.querySelector('picture') || undefined,
+    image: dataContainer.querySelector('picture'),
     // support for multiple paragraphs
     // sliced due to the image originally contained within a `p`
     description: [...dataContainer.querySelectorAll('p')]?.slice(1),
   };
 }
 
+/**
+ * Fetches data from the Adobe Design author page. If the fetch
+ * operation fails, then hardcoded values will be used.
+ *
+ * @return {Object} an object containing author data,
+ * including their name, bio, and an image if successful.
+ */
+const getFallBackAuthorData = async () => {
+  try {
+    return await fetchAuthorData(FALLBACK_AUTHOR_URL);
+  } catch (err) {
+    console.warn(`We couldn't retrieve fallback author data. - Error ${err}`);
+    return FALLBACK_AUTHOR_DATA;
+  };
+}
+
+/**
+ * Fetches the data for all authors listed in the metadata, or
+ * returns the fallback author data if fetching fails.
+ *
+ * @return {Array|undefined} an array containing objects containing
+ * author info for each author.
+ */
 export const getAuthorData = async () => {
   try {
     const authors = document.head.querySelector("meta[name='author']")?.content.split(",");
@@ -51,13 +73,8 @@ export const getAuthorData = async () => {
         try {
           return await fetchAuthorData(`/authors/${authorName}.plain.html`);
         } catch (err) {
-          console.warn(`We couldn't retreieve author data for ${authorName}. Displaying fallback author. - Error ${err}`);
-          try {
-            return await fetchAuthorData(FALLBACK_AUTHOR_URL);
-          } catch (fallbackErr) {
-            console.warn(`We couldn't retreieve fallback author data. - Error ${fallbackErr}`);
-            return FALLBACK_AUTHOR_DATA;
-          };
+          console.warn(`We couldn't retrieve author data for ${authorName}. Displaying fallback author. - Error ${err}`);
+          return await getFallBackAuthorData();
         };
       })
     );
