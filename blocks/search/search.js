@@ -268,7 +268,7 @@ function createSearchBox(block, config) {
   searchInput.addEventListener('focus', (e) => handleSearch(e?.target, block, config));
 
   /**
-   * Handle escape or clear button. Collapse, clear search value, and clear search results.
+   * Handle escape or clear button. Optional collapse, clear search value, and clear search results.
    * 
    * @param {boolean} collapseExpanded Whether to collapse the expanded large screen search.
    */
@@ -314,6 +314,7 @@ function createSearchBox(block, config) {
    */
   const collapseAndClear = () => {
     box.classList.remove('search__box--expanded');
+    toggleButton.toggleAttribute('aria-expanded', false);
     clearSearchResults(block);
     clearSearchURLParam();
   };
@@ -334,12 +335,13 @@ function createSearchBox(block, config) {
   });
 
   /**
-   * Make sure change in keyboard (tab) focus to another element outside of search also collapses and clears the search results.
+   * Make sure change in keyboard (tab) focus to another element outside of search also clears the search results.
    * Important for mobile menu focus moving from search to the nav.
    */
-  box.addEventListener('blur', function(e) {
+  box.addEventListener('focusout', function(e) {
       // Check if the element that gained focus (relatedTarget) is outside the search.
-      if (!box.contains(e.relatedTarget)) {
+      // Note: relatedTarget will be null in Safari when reaching expand/collapse button.
+      if (e.relatedTarget !== null && !box.contains(e.relatedTarget)) {
         collapseAndClear();
       }
   }, true);
