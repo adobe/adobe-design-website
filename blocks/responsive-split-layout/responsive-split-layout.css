@@ -1,6 +1,6 @@
 .responsive-split-layout {
-  --split-layout-spacing: 2rem;
-  --split-layout-heading-to-text: 0.25rem;
+  --split-layout-spacing: 1.5rem;
+  --split-layout-content-spacing: 0.5rem;
 
   display: flex;
   flex-direction: column;
@@ -10,21 +10,20 @@
   @media (min-width: 48rem) {
     flex-direction: row;
     gap: 2rem;
-    --split-layout-spacing: 4rem;
+    --split-layout-spacing: 2rem;
     margin-block-start: var(--split-layout-spacing);
     margin-block-end: calc(var(--split-layout-spacing) * 2);
   }
 
   @media (min-width: 80rem) {
     gap: 3rem;
-    --split-layout-spacing: 5rem;
-    --split-layout-heading-to-text: 0.5rem;
+    --split-layout-spacing: 4rem;
+    --split-layout-content-spacing: 1.0rem;
   }
 
   @media (min-width: 105rem) {
     gap: 12.625rem;
-    --split-layout-spacing: 6.5rem;
-    --split-layout-heading-to-text: 2rem;
+    --split-layout-spacing: 5rem;
   }
 
   & .responsive-split-layout__image,
@@ -42,12 +41,7 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    gap: 0.25rem;
-
-    & h2 + p, 
-    & h3 + p {
-      margin-top: var(--split-layout-heading-to-text);
-    }
+    gap: var(--split-layout-content-spacing);
   }
 
   & .responsive-split-layout__content--reverse {
