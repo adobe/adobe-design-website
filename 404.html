@@ -108,21 +108,6 @@
       }
     }
 
-    .not-found__description,
-    .not-found__image {
-      @media (min-width: 48rem) {
-        max-width: 25.5rem;
-      }
-
-      @media (min-width: 80rem) {
-        max-width: 33rem;
-      }
-
-      @media (min-width: 105rem) {
-        max-width: 34.5rem;
-      }
-    }
-
     .not-found__description {
       font-family: var(--spectrum-sans-serif-font);
       font-weight: var(--spectrum-bold-font-weight);
@@ -130,6 +115,7 @@
       line-height: 1.3;
       margin-block-start: 0;
       margin-block-end: 1rem;
+      max-width: 40ch;
 
       @media (min-width: 48rem) {
         font-size: var(--spectrum-font-size-500);
@@ -161,8 +147,13 @@
       }
     }
 
+    .not-found__image img {
+      max-height: 40vh;
+    }
+
     .not-found__image figcaption {
-      margin-block-start: 0.25rem;
+      margin-block-start: 0.5rem;
+      max-width: 60ch;
 
       @media (min-width: 48rem) {
         margin-block-start: 0.5rem;
@@ -170,6 +161,7 @@
 
       @media (min-width: 80rem) {
         margin-block-start: 1rem;
+        font-size: var(--spectrum-font-size-200);
       }
     }
   </style>

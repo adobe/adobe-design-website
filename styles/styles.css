@@ -535,6 +535,10 @@ main > .section.small-screen-cta-container > .grid-container {
   @media (min-width: 22.5rem) {
     margin-block-end: 2.5rem;
   }
+
+  @media (min-width: 80rem) {
+    margin-block-end: var(--spacing-global-block-end-large-screen);
+  }
 }
 
 .grid-container {
