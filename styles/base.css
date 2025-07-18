@@ -466,7 +466,7 @@
   --spectrum-heading-size-s: var(--spectrum-font-size-700);
   --spectrum-heading-weight-s: var(--spectrum-extra-bold-font-weight);
 
-  @media (min-width: 22.5rem) {
+  @media (min-width: 36rem) {
     --spectrum-heading-size-xxl: var(--spectrum-font-size-1300);
     --spectrum-heading-size-xl: var(--spectrum-font-size-1200);
     --spectrum-heading-size-l: var(--spectrum-font-size-1000);

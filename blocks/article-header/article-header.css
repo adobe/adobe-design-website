@@ -23,7 +23,7 @@
     & :is(h1, h2, h3, h4, h5, h6):not(.author-meta__name) {
       margin-block-start: var(--spacing-heading-block-start-small-screen);
 
-      @media (min-width: 22.5rem) {
+      @media (min-width: 36rem) {
         margin-block-start: var(--spacing-heading-block-start-medium-screen);
       }
 
@@ -75,7 +75,7 @@
   margin-block-end: var(--spacing-global-block-end-small-screen);
   row-gap: 2rem;
 
-  @media (min-width: 22.5rem) {
+  @media (min-width: 36rem) {
     margin-block-end: var(--spacing-global-block-end-medium-screen);
   }
 
@@ -134,7 +134,7 @@
 
 /* adjust font sizes */
 .article-header {
-  @media (min-width: 22.5rem) {
+  @media (min-width: 36rem) {
     .article-header__eyebrow {
       font-size: var(--spectrum-detail-size-l);
     }
