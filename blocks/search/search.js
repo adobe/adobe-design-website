@@ -342,7 +342,7 @@ function createSearchBox(block, config) {
       // Check if the element that gained focus (relatedTarget) is outside the search.
       // Note: relatedTarget will be null in Safari when reaching expand/collapse button.
       if (e.relatedTarget !== null && !box.contains(e.relatedTarget)) {
-        collapseAndClear();
+        clearSearchResults(block);
       }
   }, true);
 
