@@ -1,0 +1,32 @@
+.embed {
+  padding: 0;
+  margin-inline: 0;
+  margin-block: var(--spacing-global-block-end-small-screen);
+
+  @media (min-width: 48rem) {
+    margin-block: var(--spacing-global-block-end-medium-screen);
+  }
+
+  @media (min-width: 80rem) {
+    margin-block: var(--spacing-global-block-end-large-screen);
+  }
+}
+
+.embed__iframe {
+  width: 100%;
+  aspect-ratio: 16/9;
+}
+
+.embed__iframe--no-aspect-ratio {
+  aspect-ratio: auto;
+}
+
+.embed__caption {
+  margin-block-start: 0.5rem;
+  font-size: var(--spectrum-font-size-100);
+
+  @media (min-width: 80rem) {
+    margin-block-start: 1rem;
+    font-size: var(--spectrum-font-size-200);
+  }
+}
