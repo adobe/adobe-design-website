@@ -1,8 +1,8 @@
 export default async function decorate(block) {
   // Get embed data
   const embed = {
-    code: block.children?.[0]?.children?.[0]?.children?.[0]?.innerText,
-    caption: block.children?.[0]?.children?.[0]?.children?.[1]?.innerText,
+    code: block.children?.[0]?.innerText.trim(),
+    caption: block.children?.[1]?.innerText.trim(),
   };
 
   // Create a figure and populate it with the embed code
