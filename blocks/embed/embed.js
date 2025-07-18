@@ -12,8 +12,10 @@ export default async function decorate(block) {
 
   // Apply classes to the iframe
   const iframe = figure.querySelector("iframe");
+  iframe.removeAttribute("width");
+  iframe.removeAttribute("height");
   iframe.classList.add("embed__iframe");
-  if (embed.code.includes("spotify")) iframe.classList.add("embed__iframe--no-aspect-ratio");
+  if (embed.code.includes("spotify")) iframe.classList.add("embed__iframe--spotify");
 
   // Create a figcaption, if it exists, and append to the figure
   if (embed.caption) {

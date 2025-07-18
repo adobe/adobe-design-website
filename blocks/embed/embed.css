@@ -17,16 +17,25 @@
   aspect-ratio: 16/9;
 }
 
-.embed__iframe--no-aspect-ratio {
+.embed__iframe--spotify {
   aspect-ratio: auto;
+  height: 22rem;
 }
 
 .embed__caption {
-  margin-block-start: 0.5rem;
-  font-size: var(--spectrum-font-size-100);
+  display: block;
+  color: var(--spectrum-gray-600);
+  font-family: var(--detail-font-family);
+  line-height: var(--detail-line-height);
+  font-size: var(--spectrum-detail-size-s);
+  font-weight: var(--detail-font-weight);
 
-  @media (min-width: 80rem) {
-    margin-block-start: 1rem;
-    font-size: var(--spectrum-font-size-200);
+  & a {
+    color: currentColor;
+    text-decoration: underline;
+
+    &:hover {
+      text-decoration: none;
+    }
   }
 }
