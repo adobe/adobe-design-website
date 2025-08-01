@@ -1,22 +1,20 @@
 /* this class styles the #main-content selector text within the article page */
 .article-content {
-  &
-    article
-    > :is(
-      div,
-      figure:not(.image-with-caption--full-bleed),
-      p,
-      h1,
-      h2,
-      h3,
-      h4,
-      h5,
-      h6,
-      ul,
-      ol,
-      dl,
-      aside
-    ):not(.article-header):not(.article-prefooter) {
+  & article > :is(
+    div,
+    figure:not(.image-with-caption--full-bleed),
+    p,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    ul,
+    ol,
+    dl,
+    aside
+  ):not(.article-header, .article-prefooter) {
     max-width: var(--page-constrained-text);
     margin-inline: auto;
 
@@ -43,7 +41,7 @@
       }
     }
 
-    & :is(h3):not(.author-meta__name) {
+    & h3:not(.author-meta__name) {
       font-size: var(--spectrum-title-size-xl);
       font-weight: var(--spectrum-title-weight-xl);
 
@@ -52,22 +50,22 @@
       }
     }
 
-    & :is(h4):not(.author-meta__name) {
+    & h4:not(.author-meta__name) {
       font-size: var(--spectrum-title-size-l);
       font-weight: var(--spectrum-title-weight-l);
     }
 
-    & :is(h5):not(.author-meta__name) {
+    & h5:not(.author-meta__name) {
       font-size: var(--spectrum-title-size-m);
       font-weight: var(--spectrum-title-weight-m);
     }
 
-    & :is(h6):not(.author-meta__name) {
+    & h6:not(.author-meta__name) {
       font-size: var(--spectrum-title-size-s);
       font-weight: var(--spectrum-title-weight-s);
     }
 
-    & p:not(.author-description p) {
+    & p:not(.author-description p, .quote__quotation) {
       margin-block-start: 0.5rem;
     }
   }
