@@ -72,14 +72,15 @@
   max-width: 66rem;
   margin-inline: auto;
   margin-block-end: var(--spacing-global-block-end-small-screen);
-  row-gap: 2rem;
+  row-gap: 1.25rem;
 
   @media (min-width: 36rem) {
+    row-gap: 1.5rem;
     margin-block-end: var(--spacing-global-block-end-medium-screen);
   }
 
   @media (min-width: 48rem) {
-    row-gap: 4rem;
+    row-gap: 2rem;
     margin-block-end: var(--spacing-global-block-end-large-screen);
   }
 
@@ -112,7 +113,15 @@
 }
 
 .article-header__byline-group {
-  row-gap: 0.5rem;
+  row-gap: 1.25rem;
+
+  @media (min-width: 36rem) {
+    row-gap: 1.5rem;
+  }
+
+  @media (min-width: 48rem) {
+    row-gap: 2rem;
+  }
 }
 
 .article-header__eyebrow {
