@@ -67,7 +67,7 @@ body.js-has-sticky-footer {
     margin-block-end: 10rem;
   }
 
-  @media (min-width: 80rem) {
+  @media (min-width: 67.5rem) {
     margin-block-end: 0;
   }
 }
@@ -509,6 +509,14 @@ a {
 a:hover {
   color: var(--color-text-link-hover);
   text-decoration: underline;
+}
+
+:where(ol, ul, p) {
+  margin-block: 1em;
+}
+
+:where(main ol > li, main ul > li) {
+  margin-block: 1rem;
 }
 
 /* **  Objects ** */

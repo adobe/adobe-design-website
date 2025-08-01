@@ -2,13 +2,22 @@
   --color-text: var(--spectrum-gray-700);
   --color-border: var(--spectrum-gray-400);
   position: relative;
-  margin: var(--spectrum-spacing-800) auto;
-  padding-block: 4.5rem;
+  margin: 2.0rem auto;
+  padding-block: 2.0rem;
   font-family: var(--spectrum-serif-font);
   line-height: 1.4;
   letter-spacing: 0;
   color: var(--color-text);
   border-block: 1px solid var(--color-border);
+
+  @media (min-width: 48rem) {
+    margin-block: 2.5rem;
+  }
+
+  @media (min-width: 80rem) {
+    padding-block: 4.5rem;
+    margin-block: 4.0rem;
+  }
 }
 
 .quote__quotation {
@@ -16,7 +25,7 @@
 }
 
 .quote__attribution {
-  margin-block-start: 0.5rem;
+  margin-block: 0.5rem 0;
 
   & a {
     font-style: normal;
