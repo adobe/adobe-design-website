@@ -67,7 +67,7 @@ body.js-has-sticky-footer {
     margin-block-end: 10rem;
   }
 
-  @media (min-width: 80rem) {
+  @media (min-width: 67.5rem) {
     margin-block-end: 0;
   }
 }
