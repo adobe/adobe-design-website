@@ -101,14 +101,10 @@
 }
 
 .article-header__headline-group {
-  row-gap: 0.5rem;
-
-  @media (min-width: 48rem) {
-    row-gap: 0.75rem;
-  }
+  row-gap: 1.0rem;
 
   @media (min-width: 80rem) {
-    row-gap: 1rem;
+    row-gap: 1.25rem;
   }
 }
 
