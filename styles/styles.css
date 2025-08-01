@@ -511,6 +511,14 @@ a:hover {
   text-decoration: underline;
 }
 
+:where(ol, ul, p) {
+  margin-block: 1em;
+}
+
+:where(main ol > li, main ul > li) {
+  margin-block: 1rem;
+}
+
 /* **  Objects ** */
 main > .section > .grid-container {
   margin-block-start: 0;

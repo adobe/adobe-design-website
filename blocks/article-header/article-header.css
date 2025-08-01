@@ -59,11 +59,6 @@
     & p:not(.author-description p) {
       margin-block-start: 0.5rem;
     }
-
-    & ul > li:not(:last-of-type),
-    & ol > li:not(:last-of-type) {
-      margin-block-end: 1rem;
-    }
   }
 }
 
