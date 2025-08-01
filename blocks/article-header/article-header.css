@@ -39,6 +39,10 @@
     & :is(h3):not(.author-meta__name) {
       font-size: var(--spectrum-title-size-xl);
       font-weight: var(--spectrum-title-weight-xl);
+
+      @media (min-width: 80rem) {
+        font-size: var(--spectrum-title-size-xxxl);
+      }
     }
 
     & :is(h4):not(.author-meta__name) {
