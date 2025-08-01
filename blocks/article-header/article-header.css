@@ -20,9 +20,9 @@
 
     & :is(h3, h4, h5, h6):not(.author-meta__name) {
       --spacing-heading-block-start-small-screen: 1.75rem;
-      --spacing-heading-block-start-medium-screen: 1.75rem;
-      --spacing-heading-block-start-large-screen: 2.0rem;
-      --spacing-heading-block-start-xl-screen: 2.25rem;
+      --spacing-heading-block-start-medium-screen: 2.0rem;
+      --spacing-heading-block-start-large-screen: 2.25rem;
+      --spacing-heading-block-start-xl-screen: 2.5rem;
     }
 
     & :is(h1, h2, h3, h4, h5, h6):not(.author-meta__name) {
