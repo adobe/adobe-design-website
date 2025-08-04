@@ -1,6 +1,6 @@
 /**
  * Takes a URL string and prepares it to be used as a URL slug
- * by making it lower case, removing non-alphanumeric characters,
+ * by making it lower case, removing non-alphanumeric characters other than dashes,
  * and replacing spaces with dashes.
  * @function
  * @param {string} string - The piece of text to be translated
@@ -10,7 +10,7 @@
 export const prepURL = (string) => {
   const slug = string
     .toLowerCase()
-    .replace(/[^a-z0-9\s]/g, '')
+    .replace(/[^a-z0-9\s-]/g, '')
     .trim()
     .replace(/\s+/g, "-");
   return slug;
