@@ -65,7 +65,7 @@
       font-weight: var(--spectrum-title-weight-s);
     }
 
-    & p:not(.author-description p, .quote__quotation) {
+    & p:not(.author-description p, .quote__quotation, figcaption p) {
       margin-block-start: 0.5rem;
     }
   }
