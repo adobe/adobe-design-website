@@ -8,7 +8,7 @@ export default function decorate(block) {
   const imageData = {
     firstImage: block.children?.[0]?.children?.[0]?.firstElementChild,
     secondImage: block.children?.[0]?.children?.[1]?.firstElementChild,
-    caption: block.children?.[1]?.children?.[0]?.textContent?.trim(),
+    caption: block.children?.[1]?.children?.[0]?.innerHTML,
     altText: block.children?.[2]?.children?.[0]?.textContent?.trim(),
     secondAltText: block.children?.[2]?.children?.[1]?.textContent?.trim(),
     fullWidth: block.children?.[3]?.children?.[0]?.textContent?.trim(),
@@ -33,7 +33,7 @@ export default function decorate(block) {
   if (imageData.caption) {
     const imageCaption = document.createElement('figcaption');
     imageCaption.classList.add('util-detail-s', 'image-with-caption__caption');
-    imageCaption.innerText = imageData.caption;
+    imageCaption.innerHTML = imageData.caption;
     imageContainer.append(imageCaption);
   }
 

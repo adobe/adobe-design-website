@@ -22,11 +22,16 @@
 
 .quote__quotation {
   margin: 0;
+
+  & + .quote__quotation {
+    margin-top: 0.5em;
+  }
 }
 
 .quote__attribution {
   margin-block: 0.5rem 0;
 
+  & cite,
   & a {
     font-style: normal;
   }
