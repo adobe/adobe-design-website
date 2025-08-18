@@ -638,7 +638,7 @@ main > .section.small-screen-cta-container > .grid-container:has(+ .call-to-acti
   }
 }
 
-.callout-container .grid-item,
+.callout-container .grid-item:has(.callout-wrapper),
 .card-container .grid-item,
 .card-container.grid-item {
   align-self: stretch;
