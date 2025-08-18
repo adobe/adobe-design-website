@@ -533,7 +533,8 @@ main > .section > .grid-container {
   }
 }
 
-main > .section.button-group-container > .grid-container {
+/* Less vertical space between buttons and previous grid container. */
+main > .section.button-group-container > .grid-container:has(+ div > .button-group) {
   margin-block-end: 1.25rem;
 
   @media (min-width: 22.5rem) {
@@ -541,7 +542,8 @@ main > .section.button-group-container > .grid-container {
   }
 }
 
-main > .section.small-screen-cta-container > .grid-container {
+/* Less space below page header when followed by small screen only CTA (e.g. homepage). */
+main > .section.small-screen-cta-container > .grid-container:has(+ .call-to-action) {
   margin-block-end: 1.25rem;
 
   @media (min-width: 22.5rem) {
