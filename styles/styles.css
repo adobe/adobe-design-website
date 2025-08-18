@@ -1118,11 +1118,7 @@ main > .section.small-screen-cta-container > .grid-container:has(+ .call-to-acti
   }
 
   @media (min-width: 80rem) {
-    --page-background-height: 36.563rem;
-  }
-
-  @media (min-width: 105rem) {
-    --page-background-height: 55.938rem;
+    --page-background-height: 50rem;
   }
 }
 
@@ -1206,6 +1202,7 @@ main > .section.small-screen-cta-container > .grid-container:has(+ .call-to-acti
 
   @media (min-width: 105rem) {
     inset: 0 0 auto auto;
+    height: 100%;
   }
 
   @media (min-width: 120rem) {
