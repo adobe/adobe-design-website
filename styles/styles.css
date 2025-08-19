@@ -1139,7 +1139,7 @@ main > .section.small-screen-cta-container > .grid-container:has(+ .call-to-acti
 }
 
 .theme--backdrop-seafoam {
-  --page-background-height: 21.75rem;
+  --page-background-height: 30rem;
 
   @media (min-width: 48rem) {
     --page-background-height: 39.313rem;
@@ -1265,10 +1265,10 @@ main > .section.small-screen-cta-container > .grid-container:has(+ .call-to-acti
 
   .background-visuals .shape--faded-wave {
     position: absolute;
-    inset: auto -550px -120px auto;
+    inset: auto -880px -300px auto;
 
     @media (min-width: 48rem) {
-      inset: auto -550px -120px auto;
+      inset: auto -880px -300px auto;
     }
 
     @media (min-width: 80rem) {
