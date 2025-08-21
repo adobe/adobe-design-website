@@ -1,5 +1,4 @@
 .footer-copyright {
-  background-color: var(--color-background);
   padding: 1.5rem var(--page-gutters) 3rem;
 
   @media (min-width: 48rem) {
