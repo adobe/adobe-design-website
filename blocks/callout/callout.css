@@ -100,20 +100,20 @@
   .callout__title {
     font-family: var(--spectrum-display-font);
     font-weight: var(--spectrum-extra-bold-font-weight);
-    font-size: var(--spectrum-font-size-700);
+    font-size: var(--spectrum-font-size-600);
     line-height: 1.25;
     margin-block-end: 0;
 
     @container callout-wrapper (min-width: 35.5rem) {
-      font-size: var(--spectrum-font-size-900);
+      font-size: var(--spectrum-font-size-800);
     }
 
     @container callout-wrapper (min-width: 44rem) {
-      font-size: var(--spectrum-font-size-1000);
+      font-size: var(--spectrum-font-size-900);
     }
 
     @container callout-wrapper (min-width: 49rem) {
-      font-size: var(--spectrum-font-size-1100);
+      font-size: var(--spectrum-font-size-1000);
     }
   }
 }
