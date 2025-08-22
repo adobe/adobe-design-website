@@ -145,11 +145,6 @@ main picture:not([class]) > img:not([class]) {
 
   @media (min-width: 22.5rem) {
     width: fit-content;
-    white-space: nowrap;
-  }
-
-  @media (min-width: 48rem) {
-    white-space: nowrap;
   }
 }
 
