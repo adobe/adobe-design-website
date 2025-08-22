@@ -451,22 +451,30 @@
   --heading-font-family: var(--spectrum-display-font);
   --heading-line-height: 1.25;
 
-  --spectrum-heading-size-xxl: var(--spectrum-font-size-1200);
-  --spectrum-heading-weight-xxl: var(--spectrum-black-font-weight);
+  --spectrum-heading-size-xxl: var(--spectrum-font-size-1000);
+  --spectrum-heading-weight-xxl: var(--spectrum-extra-bold-font-weight);
 
-  --spectrum-heading-size-xl: var(--spectrum-font-size-1100);
-  --spectrum-heading-weight-xl: var(--spectrum-black-font-weight);
+  --spectrum-heading-size-xl: var(--spectrum-font-size-900);
+  --spectrum-heading-weight-xl: var(--spectrum-extra-bold-font-weight);
 
-  --spectrum-heading-size-l: var(--spectrum-font-size-900);
+  --spectrum-heading-size-l: var(--spectrum-font-size-800);
   --spectrum-heading-weight-l: var(--spectrum-black-font-weight);
 
-  --spectrum-heading-size-m: var(--spectrum-font-size-800);
+  --spectrum-heading-size-m: var(--spectrum-font-size-700);
   --spectrum-heading-weight-m: var(--spectrum-extra-bold-font-weight);
 
-  --spectrum-heading-size-s: var(--spectrum-font-size-700);
+  --spectrum-heading-size-s: var(--spectrum-font-size-600);
   --spectrum-heading-weight-s: var(--spectrum-extra-bold-font-weight);
 
   @media (min-width: 36rem) {
+    --spectrum-heading-size-xxl: var(--spectrum-font-size-1100);
+    --spectrum-heading-size-xl: var(--spectrum-font-size-1000);
+    --spectrum-heading-size-l: var(--spectrum-font-size-900);
+    --spectrum-heading-size-m: var(--spectrum-font-size-800);
+    --spectrum-heading-size-s: var(--spectrum-font-size-700);
+  }
+
+  @media (min-width: 48rem) {
     --spectrum-heading-size-xxl: var(--spectrum-font-size-1300);
     --spectrum-heading-size-xl: var(--spectrum-font-size-1200);
     --spectrum-heading-size-l: var(--spectrum-font-size-1000);
@@ -474,20 +482,12 @@
     --spectrum-heading-size-s: var(--spectrum-font-size-800);
   }
 
-  @media (min-width: 48rem) {
+  @media (min-width: 80rem) {
     --spectrum-heading-size-xxl: var(--spectrum-font-size-1400);
     --spectrum-heading-size-xl: var(--spectrum-font-size-1300);
     --spectrum-heading-size-l: var(--spectrum-font-size-1100);
     --spectrum-heading-size-m: var(--spectrum-font-size-1000);
     --spectrum-heading-size-s: var(--spectrum-font-size-900);
-  }
-
-  @media (min-width: 80rem) {
-    --spectrum-heading-size-xxl: var(--spectrum-font-size-1500);
-    --spectrum-heading-size-xl: var(--spectrum-font-size-1400);
-    --spectrum-heading-size-l: var(--spectrum-font-size-1200);
-    --spectrum-heading-size-m: var(--spectrum-font-size-1100);
-    --spectrum-heading-size-s: var(--spectrum-font-size-1000);
   }
 
   /* title */
@@ -548,13 +548,21 @@
   --body-line-height: 1.5;
   --body-font-weight: var(--spectrum-regular-font-weight);
 
-  --spectrum-body-size-xl: var(--spectrum-font-size-500);
-  --spectrum-body-size-l: var(--spectrum-font-size-400);
-  --spectrum-body-size-m: var(--spectrum-font-size-300);
-  --spectrum-body-size-s: var(--spectrum-font-size-200);
+  --spectrum-body-size-xl: var(--spectrum-font-size-400);
+  --spectrum-body-size-l: var(--spectrum-font-size-300);
+  --spectrum-body-size-m: var(--spectrum-font-size-200);
+  --spectrum-body-size-s: var(--spectrum-font-size-100);
   --spectrum-body-size-xs: var(--spectrum-font-size-100);
 
-  @media (min-width: 80rem) {
+  @media (min-width: 30rem) {
+    --spectrum-body-size-xl: var(--spectrum-font-size-500);
+    --spectrum-body-size-l: var(--spectrum-font-size-400);
+    --spectrum-body-size-m: var(--spectrum-font-size-300);
+    --spectrum-body-size-s: var(--spectrum-font-size-200);
+    --spectrum-body-size-xs: var(--spectrum-font-size-100);
+  }
+
+  @media (min-width: 48rem) {
     --spectrum-body-size-xl: var(--spectrum-font-size-600);
     --spectrum-body-size-l: var(--spectrum-font-size-500);
     --spectrum-body-size-m: var(--spectrum-font-size-400);

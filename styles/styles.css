@@ -452,7 +452,6 @@ h6 {
 h1,
 h2 {
   font-family: var(--heading-font-family);
-  line-height: var(--heading-line-height);
 }
 
 h3,
@@ -464,33 +463,35 @@ h6 {
 }
 
 h1 {
-  font-size: var(--spectrum-heading-size-xxl);
-  font-weight: var(--spectrum-heading-weight-xxl);
+  font-size: var(--spectrum-heading-size-xl);
+  font-weight: var(--spectrum-heading-weight-xl);
+  line-height: 1.13;
 }
 
 h2 {
   font-size: var(--spectrum-heading-size-m);
   font-weight: var(--spectrum-heading-weight-m);
+  line-height: 1.15;
 }
 
 h3 {
-  font-size: var(--spectrum-title-size-xxxl);
-  font-weight: var(--spectrum-title-weight-xxxl);
-}
-
-h4 {
   font-size: var(--spectrum-title-size-xxl);
   font-weight: var(--spectrum-title-weight-xxl);
 }
 
+h4 {
+  font-size: var(--spectrum-title-size-l);
+  font-weight: var(--spectrum-title-weight-l);
+}
+
 h5 {
-  font-size: var(--spectrum-title-size-xl);
-  font-weight: var(--spectrum-title-weight-xl);
+  font-size: var(--spectrum-title-size-m);
+  font-weight: var(--spectrum-title-weight-m);
 }
 
 h6 {
-  font-size: var(--spectrum-title-size-l);
-  font-weight: var(--spectrum-title-weight-l);
+  font-size: var(--spectrum-title-size-s);
+  font-weight: var(--spectrum-title-weight-s);
 }
 
 input,
@@ -854,28 +855,28 @@ main > .section.small-screen-cta-container > .grid-container:has(+ .call-to-acti
 
 .util-heading-xxl {
   font-family: var(--heading-font-family);
-  line-height: var(--heading-line-height);
+  line-height: 1.13;
   font-size: var(--spectrum-heading-size-xxl);
   font-weight: var(--spectrum-heading-weight-xxl);
 }
 
 .util-heading-xl {
   font-family: var(--heading-font-family);
-  line-height: var(--heading-line-height);
+  line-height: 1.13;
   font-size: var(--spectrum-heading-size-xl);
   font-weight: var(--spectrum-heading-weight-xl);
 }
 
 .util-heading-l {
   font-family: var(--heading-font-family);
-  line-height: var(--heading-line-height);
+  line-height: 1.13;
   font-size: var(--spectrum-heading-size-l);
   font-weight: var(--spectrum-heading-weight-l);
 }
 
 .util-heading-m {
   font-family: var(--heading-font-family);
-  line-height: var(--heading-line-height);
+  line-height: 1.15;
   font-size: var(--spectrum-heading-size-m);
   font-weight: var(--spectrum-heading-weight-m);
 }
@@ -893,15 +894,15 @@ main > .section.small-screen-cta-container > .grid-container:has(+ .call-to-acti
   font-weight: var(--spectrum-medium-font-weight);
 
   @media (min-width: 48rem) {
-    font-size: var(--spectrum-font-size-700);
+    font-size: var(--spectrum-font-size-600);
   }
 
   @media (min-width: 80rem) {
-    font-size: var(--spectrum-font-size-800);
+    font-size: var(--spectrum-font-size-700);
   }
 
   @media (min-width: 105rem) {
-    font-size: var(--spectrum-font-size-900);
+    font-size: var(--spectrum-font-size-800);
   }
 }
 

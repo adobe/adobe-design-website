@@ -41,30 +41,6 @@
       }
     }
 
-    & h3:not(.author-meta__name) {
-      font-size: var(--spectrum-title-size-xl);
-      font-weight: var(--spectrum-title-weight-xl);
-
-      @media (min-width: 80rem) {
-        font-size: var(--spectrum-title-size-xxl);
-      }
-    }
-
-    & h4:not(.author-meta__name) {
-      font-size: var(--spectrum-title-size-l);
-      font-weight: var(--spectrum-title-weight-l);
-    }
-
-    & h5:not(.author-meta__name) {
-      font-size: var(--spectrum-title-size-m);
-      font-weight: var(--spectrum-title-weight-m);
-    }
-
-    & h6:not(.author-meta__name) {
-      font-size: var(--spectrum-title-size-s);
-      font-weight: var(--spectrum-title-weight-s);
-    }
-
     & p:not(.author-description p, .quote__quotation, figcaption p) {
       margin-block-start: 0.5rem;
     }
@@ -139,6 +115,7 @@
 
 .article-header__subtitle {
   margin-block: 0;
+  font-weight: var(--spectrum-medium-font-weight);
 }
 
 /* adjust font sizes */
@@ -177,6 +154,7 @@
 
     .article-header__subtitle {
       font-size: var(--spectrum-heading-size-s);
+      line-height: 1.2;
     }
 
     .article-header__date {
