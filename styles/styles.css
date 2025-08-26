@@ -878,7 +878,7 @@ main > .section.small-screen-cta-container > .grid-container:has(+ .call-to-acti
 
 .util-heading-s {
   font-family: var(--heading-font-family);
-  line-height: var(--heading-line-height);
+  line-height: 1.25;
   font-size: var(--heading-size-s);
   font-weight: var(--spectrum-heading-weight-s);
 }
