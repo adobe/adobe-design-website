@@ -7,20 +7,20 @@
   width: 100%;
   max-width: 100%;
   border-collapse: collapse;
-  font-size: var(--spectrum-body-size-xs);
+  font-size: var(--body-size-xs);
 }
 
 @media (min-width: 37.5rem) {
   /* !! min-width MQ needs refactor */
   .table table {
-    font-size: var(--spectrum-body-size-s);
+    font-size: var(--body-size-s);
   }
 }
 
 @media (min-width: 48rem) {
   /* !! min-width MQ needs refactor */
   .table table {
-    font-size: var(--spectrum-body-size-m);
+    font-size: var(--body-size-m);
   }
 }
 

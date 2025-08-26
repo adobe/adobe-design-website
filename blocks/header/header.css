@@ -196,7 +196,7 @@ a.nav__home-link {
 
     .theme-toggle__label {
       /* keep the font size aligned with the page links */
-      font-size: var(--spectrum-body-size-xs);
+      font-size: var(--body-size-xs);
     }
   }
 }

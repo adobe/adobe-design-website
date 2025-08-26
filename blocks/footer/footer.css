@@ -4,7 +4,7 @@
   background-color: var(--color-background-highlighted-element);
   color: var(--color-text-dark);
   overflow-x: hidden;
-  font-size: max(var(--spectrum-font-size-200), var(--spectrum-body-size-s));
+  font-size: max(var(--spectrum-font-size-200), var(--body-size-s));
 }
 
 /* padding is on the elements instead of the container so we don't have to add more nested divs */

@@ -433,7 +433,7 @@
     > * {
       font-family: var(--detail-font-family);
       line-height: var(--detail-line-height);
-      font-size: var(--spectrum-detail-size-s);
+      font-size: var(--detail-size-s);
       font-weight: var(--detail-font-weight);
 
       &:first-child {
@@ -956,22 +956,22 @@ a.card:hover {
 .job-listing__title {
   font-family: var(--spectrum-sans-serif-font);
   display: block;
-  font-size: var(--spectrum-title-size-m);
+  font-size: var(--title-size-m);
   font-weight: var(--spectrum-title-weight-m);
   margin: 0;
 
   @media (min-width: 48rem) {
-    font-size: var(--spectrum-title-size-l);
+    font-size: var(--title-size-l);
     font-weight: var(--spectrum-title-weight-l);
   }
 
   @media (min-width: 80rem) {
-    font-size: var(--spectrum-title-size-l);
+    font-size: var(--title-size-l);
     font-weight: var(--spectrum-title-weight-l);
   }
 
   @media (min-width: 105rem) {
-    font-size: var(--spectrum-title-size-xl);
+    font-size: var(--title-size-xl);
   }
 }
 

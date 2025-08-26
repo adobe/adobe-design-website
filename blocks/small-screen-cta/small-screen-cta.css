@@ -31,6 +31,6 @@
   }
 
   @media (min-width: 48rem) {
-    font-size: var(--spectrum-title-size-xxl);
+    font-size: var(--title-size-xxl);
   }
 }

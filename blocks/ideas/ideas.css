@@ -53,10 +53,10 @@
 
 .ideas__feature-heading {
   margin-block: 0 0.5rem;
-  font-size: var(--spectrum-heading-size-s);
+  font-size: var(--heading-size-s);
 
   @media (min-width: 48rem) {
-    font-size: var(--spectrum-heading-size-xl);
+    font-size: var(--heading-size-xl);
   }
 }
 

@@ -65,7 +65,7 @@
     font-weight: var(--spectrum-bold-font-weight);
 
     @media (min-width: 36rem) {
-      font-size: var(--spectrum-detail-size-l);
+      font-size: var(--detail-size-l);
     }
   }
 
@@ -90,22 +90,22 @@
 .page-header {
   @media (min-width: 36rem) {
     h1 {
-      font-size: var(--spectrum-heading-size-xl);
+      font-size: var(--heading-size-xl);
     }
 
     .page-header__description {
-      font-size: var(--spectrum-body-size-l);
+      font-size: var(--body-size-l);
       line-height: 1.2;
     }
 
     .page-header__description--with-byline {
-      font-size: var(--spectrum-title-size-xxl);
+      font-size: var(--title-size-xxl);
     }
   }
 
   @media (min-width: 48rem) {
     .page-header__description--with-byline {
-      font-size: var(--spectrum-title-size-l);
+      font-size: var(--title-size-l);
     }
   }
 
@@ -116,25 +116,25 @@
         font-size: var(--spectrum-font-size-1100);
       }
       .page-header__description--with-byline {
-        font-size: var(--spectrum-title-size-m);
+        font-size: var(--title-size-m);
       }
       .page-header-byline__author {
-        font-size: var(--spectrum-title-size-s);
+        font-size: var(--title-size-s);
       }
     }
   }
 
   @media (min-width: 80rem) {
     h1 {
-      font-size: var(--spectrum-heading-size-xl);
+      font-size: var(--heading-size-xl);
     }
 
     .page-header__description {
-      font-size: var(--spectrum-body-size-xl);
+      font-size: var(--body-size-xl);
     }
 
     .page-header__description--with-byline {
-      font-size: var(--spectrum-title-size-xl);
+      font-size: var(--title-size-xl);
     }
   }
 }
