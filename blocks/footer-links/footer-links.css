@@ -6,6 +6,7 @@
   justify-content: flex-start;
   flex-wrap: wrap;
   gap: 0.5rem;
+  font-size: var(--spectrum-font-size-200);
 
   & li {
     flex: 1 0 45%;
