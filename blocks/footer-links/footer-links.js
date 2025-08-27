@@ -29,7 +29,7 @@ const buildFooterLink = ({textContent, url}) => {
 export default async function decorate(block) {
   block.parentElement.classList.add('footer-links');
   const footerLinkList = document.createElement('ul');
-  footerLinkList.classList.add('footer-links__list', 'util-body-xs');
+  footerLinkList.classList.add('footer-links__list');
 
   const footerLinksData = [...block.children].map(row => ({
     textContent: row.children[0].children[0].innerText,

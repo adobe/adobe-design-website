@@ -16,7 +16,7 @@ export default async function decorate(block) {
 
   // create the footer from that fragment
   const footer = document.createElement('div');
-  footer.classList.add('footer-content', 'util-body-s');
+  footer.classList.add('footer-content');
   while (fragment.firstElementChild) footer.append(fragment.firstElementChild);
 
   block.replaceWith(footer);

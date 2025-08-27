@@ -41,30 +41,6 @@
       }
     }
 
-    & h3:not(.author-meta__name) {
-      font-size: var(--spectrum-title-size-xl);
-      font-weight: var(--spectrum-title-weight-xl);
-
-      @media (min-width: 80rem) {
-        font-size: var(--spectrum-title-size-xxl);
-      }
-    }
-
-    & h4:not(.author-meta__name) {
-      font-size: var(--spectrum-title-size-l);
-      font-weight: var(--spectrum-title-weight-l);
-    }
-
-    & h5:not(.author-meta__name) {
-      font-size: var(--spectrum-title-size-m);
-      font-weight: var(--spectrum-title-weight-m);
-    }
-
-    & h6:not(.author-meta__name) {
-      font-size: var(--spectrum-title-size-s);
-      font-weight: var(--spectrum-title-weight-s);
-    }
-
     & p:not(.author-description p, .quote__quotation, figcaption p) {
       margin-block-start: 0.5rem;
     }
@@ -95,7 +71,7 @@
   }
 
   h1 {
-    font-size: var(--spectrum-heading-size-m);
+    font-size: var(--heading-size-m);
   }
 }
 
@@ -139,58 +115,60 @@
 
 .article-header__subtitle {
   margin-block: 0;
+  font-weight: var(--spectrum-medium-font-weight);
 }
 
 /* adjust font sizes */
 .article-header {
   @media (min-width: 36rem) {
     .article-header__eyebrow {
-      font-size: var(--spectrum-detail-size-l);
+      font-size: var(--detail-size-l);
     }
 
     h1 {
-      font-size: var(--spectrum-heading-size-xl);
+      font-size: var(--heading-size-xl);
     }
 
     .article-header__subtitle {
-      font-size: var(--spectrum-title-size-xl);
+      font-size: var(--title-size-xl);
     }
 
     .article-header__date,
     .article-header__byline {
-      font-size: var(--spectrum-body-size-s);
+      font-size: var(--body-size-s);
     }
 
     .article-header__author {
-      font-size: var(--spectrum-title-size-xl);
+      font-size: var(--title-size-xl);
     }
   }
 
   @media (min-width: 48rem) {
     .article-header__eyebrow {
-      font-size: var(--spectrum-detail-size-m);
+      font-size: var(--detail-size-m);
     }
 
     h1 {
-      font-size: var(--spectrum-heading-size-xxl);
+      font-size: var(--heading-size-xxl);
     }
 
     .article-header__subtitle {
-      font-size: var(--spectrum-heading-size-s);
+      font-size: var(--heading-size-s);
+      line-height: 1.2;
     }
 
     .article-header__date {
-      font-size: var(--spectrum-detail-size-m);
+      font-size: var(--detail-size-m);
     }
 
     .article-header__byline {
-      font-size: var(--spectrum-title-size-xs);
+      font-size: var(--title-size-xs);
     }
   }
 
   @media (min-width: 80rem) {
     h1 {
-      font-size: var(--spectrum-heading-size-xl);
+      font-size: var(--heading-size-xl);
     }
   }
 }

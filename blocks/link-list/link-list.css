@@ -100,6 +100,7 @@
 
   @media (min-width: 105rem) {
     padding-block: 1.875rem;
+    font-size: var(--spectrum-font-size-500);
   }
 }
 
@@ -115,7 +116,7 @@
 }
 
 .link-list-item__job-title {
-  font-size: var(--spectrum-title-size-m);
+  font-size: var(--title-size-m);
   font-weight: var(--spectrum-title-weight-m);
   line-height: var(--title-line-height);
 }

@@ -9,8 +9,16 @@
 
   @media (min-width: 48rem) {
     row-gap: 0;
-    column-gap: 4rem;
+    column-gap: 2.5rem;
     margin-block-end: var(--spacing-global-block-end-large-screen);
+  }
+
+  @media (min-width: 80rem) {
+    column-gap: 3rem;
+  }
+
+  @media (min-width: 105rem) {
+    column-gap: 4rem;
   }
 
   &:not(:has(.page-header__image)) {
@@ -34,6 +42,10 @@
     }
   }
 
+  .page-header__description {
+    font-weight: var(--spectrum-medium-font-weight);
+  }
+
   .page-header__description,
   .page-header__byline {
     margin-block-end: 1.25rem;
@@ -49,6 +61,12 @@
 
   .page-header-byline__author {
     margin-block-end: 0.25rem;
+    font-size: var(--spectrum-font-size-300);
+    font-weight: var(--spectrum-bold-font-weight);
+
+    @media (min-width: 36rem) {
+      font-size: var(--detail-size-l);
+    }
   }
 
   .page-header-byline__title {
@@ -66,49 +84,57 @@
     height: auto;
     border-radius: 1rem;
   }
-
 }
 
 /* adjust font sizes */
 .page-header {
   @media (min-width: 36rem) {
     h1 {
-      font-size: var(--spectrum-heading-size-xl);
+      font-size: var(--heading-size-xl);
     }
 
     .page-header__description {
-      font-size: var(--spectrum-body-size-l);
+      font-size: var(--body-size-l);
+      line-height: 1.2;
     }
 
     .page-header__description--with-byline {
-      font-size: var(--spectrum-title-size-xxxl);
+      font-size: var(--title-size-xxl);
     }
   }
 
   @media (min-width: 48rem) {
     .page-header__description--with-byline {
-      font-size: var(--spectrum-title-size-l);
+      font-size: var(--title-size-l);
     }
   }
 
-  @media (min-width: 48rem) and (max-width:60rem) {
+  @media (min-width: 48rem) and (max-width: 65rem) {
     /* Reduce font size at the start of this breakpoint for the 50/50 layout. */
-    .page-header__content.grid-item.grid-item--50 h1 {
-      font-size: var(--spectrum-font-size-1200);
+    .page-header__content.grid-item.grid-item--50 {
+      h1 {
+        font-size: var(--spectrum-font-size-1100);
+      }
+      .page-header__description--with-byline {
+        font-size: var(--title-size-m);
+      }
+      .page-header-byline__author {
+        font-size: var(--title-size-s);
+      }
     }
   }
 
   @media (min-width: 80rem) {
     h1 {
-      font-size: var(--spectrum-heading-size-xl);
+      font-size: var(--heading-size-xl);
     }
 
     .page-header__description {
-      font-size: var(--spectrum-body-size-xl);
+      font-size: var(--body-size-xl);
     }
 
     .page-header__description--with-byline {
-      font-size: var(--spectrum-title-size-xxl);
+      font-size: var(--title-size-xl);
     }
   }
 }

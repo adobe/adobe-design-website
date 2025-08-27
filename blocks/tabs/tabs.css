@@ -2,21 +2,21 @@
   display: flex;
   gap: 0.5ch;
   max-width: 100%;
-  font-size: var(--spectrum-body-size-xs);
+  font-size: var(--body-size-xs);
   overflow-x: auto;
 }
 
 @media (min-width: 37.5rem) {
   /* !! min-width MQ needs refactor */
   .tabs .tabs-list {
-    font-size: var(--spectrum-body-size-s);
+    font-size: var(--body-size-s);
   }
 }
 
 @media (min-width: 48rem) {
   /* !! min-width MQ needs refactor */
   .tabs .tabs-list {
-    font-size: var(--spectrum-body-size-m);
+    font-size: var(--body-size-m);
   }
 }
 

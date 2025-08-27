@@ -46,7 +46,7 @@
 .form label,
 .form fieldset > legend {
   margin-bottom: 0.25em;
-  font-size: var(--spectrum-body-size-s);
+  font-size: var(--body-size-s);
   font-weight: var(--spectrum-bold-font-weight);
 }
 
@@ -67,7 +67,7 @@
   border: 1px solid var(--spectrum-gray-500);
   background-color: var(--color-background);
   color: var(--color-text);
-  font-size: var(--spectrum-body-size-s);
+  font-size: var(--body-size-s);
   transition: border-color 200ms;
 }
 

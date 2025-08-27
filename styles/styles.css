@@ -52,7 +52,7 @@ body {
   font-family: var(--body-font-family);
   line-height: 1.5;
   font-weight: var(--spectrum-body-font-weight);
-  font-size: var(--spectrum-body-size-m);
+  font-size: var(--body-size-m);
 }
 
 body.js-no-scroll {
@@ -145,11 +145,6 @@ main picture:not([class]) > img:not([class]) {
 
   @media (min-width: 22.5rem) {
     width: fit-content;
-    white-space: nowrap;
-  }
-
-  @media (min-width: 48rem) {
-    white-space: nowrap;
   }
 }
 
@@ -452,7 +447,6 @@ h6 {
 h1,
 h2 {
   font-family: var(--heading-font-family);
-  line-height: var(--heading-line-height);
 }
 
 h3,
@@ -464,33 +458,35 @@ h6 {
 }
 
 h1 {
-  font-size: var(--spectrum-heading-size-xxl);
-  font-weight: var(--spectrum-heading-weight-xxl);
+  font-size: var(--heading-size-xl);
+  font-weight: var(--spectrum-heading-weight-xl);
+  line-height: 1.13;
 }
 
 h2 {
-  font-size: var(--spectrum-heading-size-m);
+  font-size: var(--heading-size-m);
   font-weight: var(--spectrum-heading-weight-m);
+  line-height: 1.15;
 }
 
 h3 {
-  font-size: var(--spectrum-title-size-xxxl);
-  font-weight: var(--spectrum-title-weight-xxxl);
-}
-
-h4 {
-  font-size: var(--spectrum-title-size-xxl);
+  font-size: var(--title-size-xxl);
   font-weight: var(--spectrum-title-weight-xxl);
 }
 
+h4 {
+  font-size: var(--title-size-l);
+  font-weight: var(--spectrum-title-weight-l);
+}
+
 h5 {
-  font-size: var(--spectrum-title-size-xl);
-  font-weight: var(--spectrum-title-weight-xl);
+  font-size: var(--title-size-m);
+  font-weight: var(--spectrum-title-weight-m);
 }
 
 h6 {
-  font-size: var(--spectrum-title-size-l);
-  font-weight: var(--spectrum-title-weight-l);
+  font-size: var(--title-size-s);
+  font-weight: var(--spectrum-title-weight-s);
 }
 
 input,
@@ -806,7 +802,7 @@ main > .section.small-screen-cta-container > .grid-container:has(+ .call-to-acti
 
     /* importants override default link style */
     text-decoration: underline !important;
-    font-size: var(--spectrum-body-size-m);
+    font-size: var(--body-size-m);
   }
 
   &:hover {
@@ -854,36 +850,36 @@ main > .section.small-screen-cta-container > .grid-container:has(+ .call-to-acti
 
 .util-heading-xxl {
   font-family: var(--heading-font-family);
-  line-height: var(--heading-line-height);
-  font-size: var(--spectrum-heading-size-xxl);
+  line-height: 1.13;
+  font-size: var(--heading-size-xxl);
   font-weight: var(--spectrum-heading-weight-xxl);
 }
 
 .util-heading-xl {
   font-family: var(--heading-font-family);
-  line-height: var(--heading-line-height);
-  font-size: var(--spectrum-heading-size-xl);
+  line-height: 1.13;
+  font-size: var(--heading-size-xl);
   font-weight: var(--spectrum-heading-weight-xl);
 }
 
 .util-heading-l {
   font-family: var(--heading-font-family);
-  line-height: var(--heading-line-height);
-  font-size: var(--spectrum-heading-size-l);
+  line-height: 1.13;
+  font-size: var(--heading-size-l);
   font-weight: var(--spectrum-heading-weight-l);
 }
 
 .util-heading-m {
   font-family: var(--heading-font-family);
-  line-height: var(--heading-line-height);
-  font-size: var(--spectrum-heading-size-m);
+  line-height: 1.15;
+  font-size: var(--heading-size-m);
   font-weight: var(--spectrum-heading-weight-m);
 }
 
 .util-heading-s {
   font-family: var(--heading-font-family);
-  line-height: var(--heading-line-height);
-  font-size: var(--spectrum-heading-size-s);
+  line-height: 1.25;
+  font-size: var(--heading-size-s);
   font-weight: var(--spectrum-heading-weight-s);
 }
 
@@ -893,120 +889,120 @@ main > .section.small-screen-cta-container > .grid-container:has(+ .call-to-acti
   font-weight: var(--spectrum-medium-font-weight);
 
   @media (min-width: 48rem) {
-    font-size: var(--spectrum-font-size-700);
+    font-size: var(--spectrum-font-size-600);
   }
 
   @media (min-width: 80rem) {
-    font-size: var(--spectrum-font-size-800);
+    font-size: var(--spectrum-font-size-700);
   }
 
   @media (min-width: 105rem) {
-    font-size: var(--spectrum-font-size-900);
+    font-size: var(--spectrum-font-size-800);
   }
 }
 
 .util-title-xxxl {
   font-family: var(--title-font-family);
   line-height: var(--title-line-height);
-  font-size: var(--spectrum-title-size-xxxl);
+  font-size: var(--title-size-xxxl);
   font-weight: var(--spectrum-title-weight-xl);
 }
 
 .util-title-xxl {
   font-family: var(--title-font-family);
   line-height: var(--title-line-height);
-  font-size: var(--spectrum-title-size-xxl);
+  font-size: var(--title-size-xxl);
   font-weight: var(--spectrum-title-weight-xxl);
 }
 
 .util-title-xl {
   font-family: var(--title-font-family);
   line-height: var(--title-line-height);
-  font-size: var(--spectrum-title-size-xl);
+  font-size: var(--title-size-xl);
   font-weight: var(--spectrum-title-weight-xl);
 }
 
 .util-title-l {
   font-family: var(--title-font-family);
   line-height: var(--title-line-height);
-  font-size: var(--spectrum-title-size-l);
+  font-size: var(--title-size-l);
   font-weight: var(--spectrum-title-weight-l);
 }
 
 .util-title-m {
   font-family: var(--title-font-family);
   line-height: var(--title-line-height);
-  font-size: var(--spectrum-title-size-m);
+  font-size: var(--title-size-m);
   font-weight: var(--spectrum-title-weight-m);
 }
 
 .util-title-s {
   font-family: var(--title-font-family);
   line-height: var(--title-line-height);
-  font-size: var(--spectrum-title-size-s);
+  font-size: var(--title-size-s);
   font-weight: var(--spectrum-title-weight-s);
 }
 
 .util-title-xs {
   font-family: var(--title-font-family);
   line-height: var(--title-line-height);
-  font-size: var(--spectrum-title-size-xs);
+  font-size: var(--title-size-xs);
   font-weight: var(--spectrum-title-weight-xs);
 }
 
 .util-detail-l {
   font-family: var(--detail-font-family);
   line-height: var(--detail-line-height);
-  font-size: var(--spectrum-detail-size-l);
+  font-size: var(--detail-size-l);
   font-weight: var(--detail-font-weight);
 }
 
 .util-detail-m {
   font-family: var(--detail-font-family);
   line-height: var(--detail-line-height);
-  font-size: var(--spectrum-detail-size-m);
+  font-size: var(--detail-size-m);
   font-weight: var(--detail-font-weight);
 }
 
 .util-detail-s {
   font-family: var(--detail-font-family);
   line-height: var(--detail-line-height);
-  font-size: var(--spectrum-detail-size-s);
+  font-size: var(--detail-size-s);
   font-weight: var(--detail-font-weight);
 }
 
 .util-body-xl {
   font-family: var(--body-font-family);
   line-height: var(--body-line-height);
-  font-size: var(--spectrum-body-size-xl);
+  font-size: var(--body-size-xl);
   font-weight: var(--body-font-weight);
 }
 
 .util-body-l {
   font-family: var(--body-font-family);
   line-height: var(--body-line-height);
-  font-size: var(--spectrum-body-size-l);
+  font-size: var(--body-size-l);
   font-weight: var(--body-font-weight);
 }
 
 .util-body-m {
   font-family: var(--body-font-family);
   line-height: var(--body-line-height);
-  font-size: var(--spectrum-body-size-m);
+  font-size: var(--body-size-m);
   font-weight: var(--body-font-weight);
 }
 
 .util-body-s {
   font-family: var(--body-font-family);
   line-height: var(--body-line-height);
-  font-size: var(--spectrum-body-size-s);
+  font-size: var(--body-size-s);
   font-weight: var(--body-font-weight);
 }
 
 .util-body-xs {
   font-family: var(--body-font-family);
   line-height: var(--body-line-height);
-  font-size: var(--spectrum-body-size-xs);
+  font-size: var(--body-size-xs);
   font-weight: var(--body-font-weight);
 }
 
