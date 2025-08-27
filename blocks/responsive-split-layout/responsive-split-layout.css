@@ -32,10 +32,6 @@
     --split-layout-spacing: 2.5rem;
     --split-layout-gradient-color: var(--split-layout-gradient-color-light, transparent);
 
-    body.color-scheme-dark & {
-      --split-layout-gradient-color: var(--split-layout-gradient-color-dark, transparent);
-    }
-
     @media (min-width: 48rem) {
       --split-layout-column-gap: 2rem;
       --split-layout-spacing: 3.25rem;
@@ -51,13 +47,17 @@
     }
 
     background: linear-gradient(to left, transparent, var(--split-layout-gradient-color));
+    
+    body.color-scheme-dark & {
+      --split-layout-gradient-color: var(--split-layout-gradient-color-dark, transparent);
+    }
 
     &.responsive-split-layout--reverse {
       background: linear-gradient(to right, transparent, var(--split-layout-gradient-color));
     }
 
     & .responsive-split-layout__content {
-      max-width: 647px;
+      max-width: 40.5rem;
     }
 
     & .responsive-split-layout__inner {
