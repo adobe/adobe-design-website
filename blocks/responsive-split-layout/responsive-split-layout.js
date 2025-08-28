@@ -7,19 +7,34 @@
 
 export default async function decorate(block) {
   const data = {
-    imageContent: block.children[0]?.children[0],
-    altText: block.children[0]?.children[1] || "",
-    textContent: block.children[1]?.children[0]?.children,
-    reverseOrderOnMedium: Boolean(block.children[2]?.innerText?.trim()),
+    imageContent: block.children?.[0]?.children?.[0],
+    altText: block.children?.[0]?.children?.[1] || "",
+    textContent: block.children?.[1]?.children?.[0]?.children,
+    reverseOrderOnMedium: Boolean(block.children?.[2]?.innerText?.trim().toLowerCase() == "reverse"),
+    gradientColorLight: block.children?.[3]?.children?.[0]?.innerText?.trim() ?? '',
+    gradientColorDark: block.children?.[3]?.children?.[1]?.innerText?.trim() ?? '',
   };
 
   const wrapper = document.createElement("div");
   wrapper.classList.add("responsive-split-layout");
 
+  if (data.reverseOrderOnMedium) {
+    wrapper.classList.add("responsive-split-layout--reverse");
+  }
+
+  if (data.gradientColorLight && data.gradientColorDark) {
+    wrapper.classList.add("responsive-split-layout--gradient");
+    wrapper.style.setProperty('--split-layout-gradient-color-light', data.gradientColorLight);
+    wrapper.style.setProperty('--split-layout-gradient-color-dark', data.gradientColorDark);
+  }
+
+  const inner = document.createElement("div");
+  inner.classList.add("responsive-split-layout__inner");
+
   if (data.imageContent) {
     data.imageContent.classList.add("responsive-split-layout__image");
     if (data.reverseOrderOnMedium) data.imageContent.classList.add("responsive-split-layout__image--reverse");
-    wrapper.append(data.imageContent);
+    inner.append(data.imageContent);
   };
 
   if (data.textContent) {
@@ -29,8 +44,9 @@ export default async function decorate(block) {
     [...data.textContent].forEach((part) => {
       textContentWrapper.append(part);
     });
-    wrapper.append(textContentWrapper);
+    inner.append(textContentWrapper);
   };
 
+  wrapper.append(inner);
   block.parentElement.replaceWith(wrapper);
 }

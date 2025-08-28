@@ -1,29 +1,93 @@
 .responsive-split-layout {
   --split-layout-spacing: 1.5rem;
   --split-layout-content-spacing: 0.5rem;
+  --split-layout-column-gap: 1.25rem;
 
-  display: flex;
-  flex-direction: column;
-  gap: 1.25rem;
-  margin-block-end: var(--split-layout-spacing);
+  width: 100vw;
+  margin-inline: calc(-1 * var(--page-gutters));
 
   @media (min-width: 48rem) {
-    flex-direction: row;
-    gap: 2rem;
+    --split-layout-column-gap: 2rem;
     --split-layout-spacing: 2rem;
-    margin-block-start: var(--split-layout-spacing);
-    margin-block-end: calc(var(--split-layout-spacing) * 2);
   }
 
   @media (min-width: 80rem) {
-    gap: 3rem;
+    --split-layout-column-gap: 3rem;
     --split-layout-spacing: 4rem;
     --split-layout-content-spacing: 1.0rem;
   }
 
   @media (min-width: 105rem) {
-    gap: 12.625rem;
     --split-layout-spacing: 5rem;
+    --split-layout-column-gap: 12.625rem;
+    margin-inline: calc(-0.5 * calc(100vw - var(--page-max-width)));
+  }
+
+  /* 
+    Optional gradient background variant (Who We Are page).
+    - Gradient color applied to custom property via content and JS.
+    - Additional padding around contents, wider image, and less column gap.
+  */
+  &.responsive-split-layout--gradient {
+    --split-layout-spacing: 2.5rem;
+    --split-layout-gradient-color: var(--split-layout-gradient-color-light, transparent);
+
+    @media (min-width: 48rem) {
+      --split-layout-column-gap: 2rem;
+      --split-layout-spacing: 3.25rem;
+    }
+
+    @media (min-width: 80rem) {
+      --split-layout-spacing: 4rem;
+    }
+
+    @media (min-width: 105rem) {
+      --split-layout-column-gap: 4.75rem;
+      --split-layout-spacing: 5rem;
+    }
+
+    background: linear-gradient(to left, transparent, var(--split-layout-gradient-color));
+    
+    body.color-scheme-dark & {
+      --split-layout-gradient-color: var(--split-layout-gradient-color-dark, transparent);
+    }
+
+    &.responsive-split-layout--reverse {
+      background: linear-gradient(to right, transparent, var(--split-layout-gradient-color));
+    }
+
+    & .responsive-split-layout__content {
+      max-width: 40.5rem;
+    }
+
+    & .responsive-split-layout__inner {
+      padding-block: var(--split-layout-spacing);
+      margin-block: var(--split-layout-spacing) 0;
+    }
+  
+    & + .responsive-split-layout .responsive-split-layout__inner {
+      margin-block: 0;
+    }
+  }
+
+  .responsive-split-layout__inner {
+    display: flex;
+    flex-direction: column;
+    gap: var(--split-layout-column-gap);
+    max-width: calc(var(--page-max-width) + (var(--page-gutters) * 2));
+    margin-inline: var(--page-gutters);
+    margin-block-end: var(--split-layout-spacing);
+
+    @media (min-width: 48rem) {
+      flex-direction: row;
+      margin-block-start: var(--split-layout-spacing);
+      margin-block-end: calc(var(--split-layout-spacing) * 2);
+    }
+
+    @media (min-width: 105.5rem) {
+      margin-inline: auto;
+      max-width: var(--page-max-width);
+    }
   }
 
   & .responsive-split-layout__image,
@@ -55,11 +119,14 @@
   }
 
   /* Last sibling with class */
-  &:not(:has(+ .responsive-split-layout)) {
-    margin-block-end: var(--spacing-global-block-end-small-screen);
+  &:not(:has(+ .responsive-split-layout)),
+  &.responsive-split-layout--gradient:not(:has(+ .responsive-split-layout)) {
+    & .responsive-split-layout__inner {
+      margin-block-end: var(--spacing-global-block-end-small-screen);
 
-    @media (min-width: 48rem) {
-      margin-block-end: var(--split-layout-spacing);
+      @media (min-width: 48rem) {
+        margin-block-end: var(--split-layout-spacing);
+      }
     }
   }
 }
