@@ -18,6 +18,7 @@ export default async function decorate(block) {
     url: block.children?.[1]?.children?.[0]?.textContent?.trim(),
     buttonLabel: block.children?.[1]?.children[1]?.textContent?.trim(),
     altText: block.children?.[1]?.children?.[2]?.textContent?.trim(),
+    buttonHasIcon: block.children?.[1]?.children?.[3]?.textContent?.trim(),
     calloutTheme: block.children?.[2]?.children?.[0]?.textContent?.trim()
   };
 
@@ -49,7 +50,7 @@ export default async function decorate(block) {
     calloutButton.classList.add("button", "button--static-white");
     calloutButton.href = calloutData.url;
     calloutButton.innerHTML = `
-      ${PAPER_PLANE_ICON_SVG}
+      ${calloutData.buttonHasIcon ? PAPER_PLANE_ICON_SVG : ''}
       <span>${calloutData.buttonLabel}</span>
     `;
     if (calloutData.altText) calloutButton.setAttribute("aria-label", calloutData.altText);
