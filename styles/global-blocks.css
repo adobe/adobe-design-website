@@ -331,12 +331,13 @@
 
 .listing-detail {
   .listing-detail__name {
+    font-weight: var(--spectrum-extra-bold-font-weight);
+
     @media (min-width: 36rem) {
       font-size: var(--spectrum-font-size-400);
     }
 
     @media (min-width: 67.5rem) {
-      font-weight: var(--spectrum-extra-bold-font-weight);
       font-size: var(--spectrum-font-size-600);
     }
   }
