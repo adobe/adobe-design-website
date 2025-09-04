@@ -50,7 +50,7 @@ const buildLinkListItem = ({ textContent, url, altText }) => {
 
 const buildLinkListFooterLink = ({ textContent, url, altText }) => {
   const footerLink = document.createElement("a");
-  footerLink.classList.add("button", "link-list-footer-link");
+  footerLink.classList.add("button", "button--primary-outline", "link-list-footer-link");
   footerLink.textContent = textContent;
   footerLink.href = url;
   if (altText) footerLink.setAttribute("aria-label", altText);

@@ -44,6 +44,7 @@
 
   .page-header__description {
     font-weight: var(--spectrum-medium-font-weight);
+    line-height: 1.5;
   }
 
   .page-header__description,
@@ -95,7 +96,6 @@
 
     .page-header__description {
       font-size: var(--body-size-l);
-      line-height: 1.2;
     }
 
     .page-header__description--with-byline {
