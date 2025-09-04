@@ -284,20 +284,20 @@ function createSearchBox(block, config) {
   };
 
   /**
-   * Handle escape or enter being pressed on input or when focused on a result.
+   * Handle escape being pressed on input or when focused on a result.
    */
   block.addEventListener('keyup', (e) => {
-    // Clear on escape.
     if (e.code === 'Escape') {
       handleClearEvent(false);
     }
+  });
 
-    // Focus results if enter pressed. Helpful to close keyboard on mobile.
+  /**
+   * Go to search results page if enter is pressed while the input is focused.
+   */
+  searchInput.addEventListener('keyup', (e) => {
     if (e.key === 'Enter') {
-      const firstLink = resultsContainer.querySelector("a");
-      if (firstLink !== null) {
-        firstLink.focus();
-      }
+      window.location.href = `/search-results?q=${encodeURIComponent(searchInput.value)}`;
     }
   });
 
