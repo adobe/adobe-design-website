@@ -12,9 +12,10 @@ const jobListingRoot = "careers";
 /**
  * Create section name to be used for descriptive text under search result title.
  * @param {string} path 
+ * @param {string} author
  * @return {string}
  */
-function sectionNameFromPath(path) {
+export function sectionNameFromPath(path, author = "") {
   const pathParts = path?.split('/');
   const rootDir = pathParts?.[1] ?? '';
 
@@ -28,7 +29,13 @@ function sectionNameFromPath(path) {
 
     // Custom sub-page name adjustments.
     if (sectionName === articleRoot) {
-      sectionName = "Article";
+      if (author) {
+        sectionName = "Article";
+      } else {
+        // Tag / story pack pages have the same parent as articles.
+        // The only way they can currently be differentiated is that they have no author.
+        sectionName = "Page";
+      }
     }
     if (sectionName === jobListingRoot) {
       sectionName = "Job Listing";
@@ -56,7 +63,7 @@ function renderResult(result) {
 
   const description = document.createElement('div');
   description.className = 'search__results-description util-body-s';
-  const descriptionText = sectionNameFromPath(result.path);
+  const descriptionText = sectionNameFromPath(result.path, result?.author);
   if (descriptionText) description.textContent = descriptionText;
 
   a.append(title, description);
@@ -117,13 +124,23 @@ function compareFound(hit1, hit2) {
 }
 
 /**
+ * Array of unique search terms from the search string (that were separated by a space). Used by `filterData`.
+ * @param {string} searchValue 
+ * @returns {string[]}
+ */
+export const getSearchTermsArray = (searchValue) => searchValue.toLowerCase().split(/\s+/).filter((term) => !!term);
+
+/**
  * Searches data for search terms and returns data with matches.
  * @param {string[]} searchTerms 
  * @param {object} data 
- * @returns 
+ * @returns {object[]}
  */
-function filterData(searchTerms, data) {
+export function filterData(searchTerms, data) {
   const foundInMeta = [];
+  if (searchTerms == null || searchTerms.length == 0) {
+    return foundInMeta;
+  }
 
   data?.forEach((result) => {
     // Position of the first instance of the searched text substring.
@@ -172,10 +189,8 @@ async function handleSearch(inputElement, block, config) {
     return;
   }
 
-  // Array of unique search terms from the search string (that were separated by a space).
-  const searchTerms = searchValue.toLowerCase().split(/\s+/).filter((term) => !!term);
-
   // Query data, search it, and render the results.
+  const searchTerms = getSearchTermsArray(searchValue);
   const results = await dataStore.getData(config.source);
   const filteredData = filterData(searchTerms, results?.data);
   await renderResults(block, config, filteredData, searchTerms);
