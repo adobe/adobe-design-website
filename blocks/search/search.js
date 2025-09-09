@@ -80,18 +80,6 @@ function clearSearchResults(block) {
 }
 
 /**
- * Clear search from URL params and update history.
- */
-function clearSearchURLParam() {
-  if (window.history.replaceState) {
-    const url = new URL(window.location.href);
-    url.search = '';
-    searchParams.delete('q');
-    window.history.replaceState({}, '', url.toString());
-  }
-}
-
-/**
  * Create and append all search results markup based on the data.
  */
 async function renderResults(block, config, filteredData) {
@@ -175,17 +163,9 @@ export function filterData(searchTerms, data) {
 async function handleSearch(inputElement, block, config) {
   if (!inputElement) return;
   const searchValue = inputElement.value.trim();
-  searchParams.set('q', searchValue);
-
-  if (window.history.replaceState) {
-    const url = new URL(window.location.href);
-    url.search = searchParams.toString();
-    window.history.replaceState({}, '', url.toString());
-  }
 
   if (searchValue.length < 3) {
     clearSearchResults(block);
-    clearSearchURLParam();
     return;
   }
 
@@ -264,7 +244,6 @@ function createSearchBox(block, config) {
       searchInput.focus();
     } else {
       clearSearchResults(block);
-      clearSearchURLParam();
     }
   });
 
@@ -295,7 +274,6 @@ function createSearchBox(block, config) {
     searchInput.value = '';
     searchInput.classList.remove('search__input--populated');
     clearSearchResults(block);
-    clearSearchURLParam();
   };
 
   /**
@@ -331,7 +309,6 @@ function createSearchBox(block, config) {
     box.classList.remove('search__box--expanded');
     toggleButton.toggleAttribute('aria-expanded', false);
     clearSearchResults(block);
-    clearSearchURLParam();
   };
 
   /**
@@ -380,7 +357,7 @@ export default async function decorate(block) {
     createSearchBox(block, { source, placeholders })
   );
 
-  // Kick off search initially if it's in a query param in the URL.
+  // Set search value initially if it's a query param, and kick off initial search.
   if (searchParams.get('q')) {
     const input = block.querySelector('input');
     input.value = searchParams.get('q');
