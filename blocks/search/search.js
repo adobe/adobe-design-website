@@ -217,6 +217,7 @@ function createSearchBox(block, config) {
   searchIconInInput.classList.add('icon', 'search__search-icon');
   searchIconInInput.innerHTML = SEARCH_INPUT_ICON;
 
+  // Toggle button (show/hide at large screen)
   const toggleButton = document.createElement('button');
   toggleButton.classList.add('search__button');
   toggleButton.setAttribute('type', 'button');
@@ -236,7 +237,13 @@ function createSearchBox(block, config) {
   clearButton.innerHTML = SEARCH_CLEAR_ICON;
   inputWrapper.append(clearButton);
 
-  box.append(inputWrapper, toggleButton, resultsContainer);
+  // Mobile search submit button.
+  const submitButton = document.createElement('button');
+  submitButton.textContent = "Search";
+  submitButton.classList.add("button", "button--primary", "search__submit-button");
+
+  // Append elements.
+  box.append(inputWrapper, toggleButton, submitButton, resultsContainer);
 
   /**
    * Clicking the search icon toggles the expanded search field.
@@ -290,13 +297,27 @@ function createSearchBox(block, config) {
   });
 
   /**
+   * Go to search results page if input has a value.
+   */
+  const goToSearchResults = () => {
+    if (searchInput.value.trim().length > 0) {
+      window.location.href = `/search-results?q=${encodeURIComponent(searchInput.value)}`;
+    }
+  };
+
+  /**
    * Go to search results page if enter is pressed while the input is focused.
    */
   searchInput.addEventListener('keyup', (e) => {
-    if (e.key === 'Enter' && searchInput.value.trim().length > 0) {
-      window.location.href = `/search-results?q=${encodeURIComponent(searchInput.value)}`;
+    if (e.key === 'Enter') { 
+      goToSearchResults();
     }
   });
+
+  /**
+   * Mobile search button; go to search results page.
+   */
+  submitButton.addEventListener('click', goToSearchResults);
 
   /**
    * Handle click on clear button.
