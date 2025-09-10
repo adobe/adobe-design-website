@@ -8,6 +8,7 @@ const SEARCH_CLEAR_ICON = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 
 const articleRoot = "ideas";
 const authorRoot = "authors";
 const jobListingRoot = "careers";
+const searchResultsSlug = "search-results";
 
 /**
  * Create section name to be used for descriptive text under search result title.
@@ -315,13 +316,15 @@ function createSearchBox(block, config) {
    * Collapse and clear search after clicking somewhere else.
    */
   document.addEventListener('click', (e) => {
+    const isSearchResultsPage = window.location.pathname.endsWith(searchResultsSlug);
+
     if (box.closest('.nav')?.classList.contains('nav--large-screens')) {
       if (!box.contains(e.target) && box.classList.contains('search__box--expanded')) {
-        collapseAndClear();
+        !isSearchResultsPage ? collapseAndClear() : clearSearchResults(block);
       }
     } else {
       if (inputWrapper !== e.target && !inputWrapper.contains(e.target) && resultsContainer !== e.target && !resultsContainer.contains(e.target)) {
-        collapseAndClear();
+        !isSearchResultsPage ? collapseAndClear() : clearSearchResults(block);
       }
     }
   });
@@ -362,5 +365,11 @@ export default async function decorate(block) {
     const input = block.querySelector('input');
     input.value = searchParams.get('q');
     input.dispatchEvent(new Event('input'));
+
+    // Start with expanding search open (e.g. for search results page).
+    const searchButton = block.querySelector('.search__button');
+    if (searchButton) {
+      searchButton.click();
+    }
   }
 }

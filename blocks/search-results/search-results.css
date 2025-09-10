@@ -89,6 +89,7 @@ body.color-scheme-dark .search-results__item {
     height: 6.25rem;
     border-radius: 0 0 var(--spectrum-corner-radius-400) var(--spectrum-corner-radius-400);
     border-top: 1px solid var(--spectrum-gray-75);
+    background: var(--spectrum-gray-75);
 
     @media (min-width: 60rem) {
         height: auto;

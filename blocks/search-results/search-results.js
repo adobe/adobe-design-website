@@ -73,6 +73,7 @@ const buildresultsGrid = (results, titleHeadingLevel = 'h2') => {
       const image = document.createElement('img');
       image.src = result.image;
       image.alt = "";
+      image.loading = "lazy";
       imageWrap.append(image);
       anchor.append(imageWrap);
     }
