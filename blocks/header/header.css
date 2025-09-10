@@ -210,10 +210,6 @@ a.nav__home-link {
   .nav.nav--large-screens & {
     padding: 0;
   }
-
-  .nav:not(.nav--large-screens) &:has(.search__results-container li) {
-    height: calc(var(--page-viewport-height) - var(--page-nav-height));
-  }
 }
 
 /* theme switcher */

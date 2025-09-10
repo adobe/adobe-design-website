@@ -155,14 +155,17 @@ export function filterData(searchTerms, data) {
 }
 
 /**
- * Initiate search functionality and displays results.
+ * Initiate search functionality and displays results in overlay, for large screens.
  * Only searches if inputted text has 3 characters or more.
  * @param {HTMLInputElement} inputElement 
  * @param {HTMLElement} block 
  * @param {object} config
  */
 async function handleSearch(inputElement, block, config) {
-  if (!inputElement) return;
+  if (!inputElement || !inputElement.closest('.nav')?.classList.contains('nav--large-screens')) {
+    return;
+  }
+
   const searchValue = inputElement.value.trim();
 
   if (searchValue.length < 3) {
@@ -290,7 +293,7 @@ function createSearchBox(block, config) {
    * Go to search results page if enter is pressed while the input is focused.
    */
   searchInput.addEventListener('keyup', (e) => {
-    if (e.key === 'Enter') {
+    if (e.key === 'Enter' && searchInput.value.trim().length > 0) {
       window.location.href = `/search-results?q=${encodeURIComponent(searchInput.value)}`;
     }
   });
@@ -322,16 +325,11 @@ function createSearchBox(block, config) {
       if (!box.contains(e.target) && box.classList.contains('search__box--expanded')) {
         !isSearchResultsPage ? collapseAndClear() : clearSearchResults(block);
       }
-    } else {
-      if (inputWrapper !== e.target && !inputWrapper.contains(e.target) && resultsContainer !== e.target && !resultsContainer.contains(e.target)) {
-        !isSearchResultsPage ? collapseAndClear() : clearSearchResults(block);
-      }
     }
   });
 
   /**
    * Make sure change in keyboard (tab) focus to another element outside of search also clears the search results.
-   * Important for mobile menu focus moving from search to the nav.
    */
   box.addEventListener('focusout', function(e) {
       // Check if the element that gained focus (relatedTarget) is outside the search.
