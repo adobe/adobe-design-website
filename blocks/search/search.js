@@ -383,7 +383,7 @@ export default async function decorate(block) {
   if (searchParams.get('q')) {
     const input = block.querySelector('input');
     input.value = searchParams.get('q');
-    input.dispatchEvent(new Event('input'));
+    input.classList.toggle('search__input--populated', Boolean(input.value.length));
 
     // Start with expanding search open (e.g. for search results page).
     const searchButton = block.querySelector('.search__button');
