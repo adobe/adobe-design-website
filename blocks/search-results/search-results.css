@@ -129,3 +129,10 @@ body.color-scheme-dark .search-results__item {
 .search-results__department {
     font-weight: var(--spectrum-medium-font-weight);
 }
+
+/* "Go back home" link at top in content. */
+@media not all and (min-width: 80rem) {
+    .search-results-container:first-child > div:first-child > p:first-child {
+        margin-top: -2.0rem;
+    }
+}
