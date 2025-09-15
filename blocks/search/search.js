@@ -219,9 +219,11 @@ function createSearchBox(block, config) {
   const box = document.createElement('div');
   box.classList.add('search__box');
 
+  // Wrapper that holds search icon, input, and clear button.
   const inputWrapper = document.createElement('div');
   inputWrapper.className = 'search__input-wrapper';
 
+  // Search input.
   const searchInput = document.createElement('input');
   searchInput.setAttribute('type', 'search');
   searchInput.setAttribute('autocomplete', 'off');
@@ -230,22 +232,17 @@ function createSearchBox(block, config) {
   const searchPlaceholder = config?.placeholders?.searchPlaceholder || DEFAULT_CONTENT.inputPlaceholder;
   searchInput.placeholder = searchPlaceholder;
   searchInput.setAttribute('aria-label', searchPlaceholder);
-
-  const searchIconInInput = document.createElement('span');
-  searchIconInInput.classList.add('icon', 'search__search-icon');
-  searchIconInInput.innerHTML = SEARCH_INPUT_ICON;
+  inputWrapper.append(searchInput);
 
   // Toggle button (show/hide at large screen)
   const toggleButton = document.createElement('button');
   toggleButton.classList.add('search__button');
   toggleButton.setAttribute('type', 'button');
   toggleButton.setAttribute('aria-label', DEFAULT_CONTENT.toggleAriaLabel);
-  toggleButton.innerHTML = searchIconInInput.innerHTML;
+  toggleButton.innerHTML = SEARCH_INPUT_ICON;
 
+  // Search overlay results
   const resultsContainer = createSearchResultsContainer();
-
-  searchInput.append(searchIconInInput);
-  inputWrapper.append(searchInput);
 
   // Clear button.
   const clearButton = document.createElement('button');
