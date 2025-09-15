@@ -56,6 +56,15 @@ export function sectionNameFromPath(path, author = "") {
 }
 
 /**
+ * Check if the large screen nav is currently being displayed.
+ * @param {HTMLElement} elementWithinNav 
+ * @returns {boolean}
+ */
+const isLargeScreenNav = (elementWithinNav) => {
+  return elementWithinNav?.closest('.nav')?.classList.contains('nav--large-screens') ?? false;
+};
+
+/**
  * Create the markup for a single search result.
  * @param {object} result
  * @returns {HTMLLIElement}
@@ -171,7 +180,7 @@ export function filterData(searchTerms, data) {
  * @param {object} config
  */
 async function handleSearch(inputElement, block, config) {
-  if (!inputElement || !inputElement.closest('.nav')?.classList.contains('nav--large-screens')) {
+  if (!inputElement || !isLargeScreenNav(inputElement)) {
     return;
   }
 
@@ -350,8 +359,7 @@ function createSearchBox(block, config) {
    */
   document.addEventListener('click', (e) => {
     const isSearchResultsPage = window.location.pathname.endsWith(SEARCH_RESULTS_SLUG);
-
-    if (box.closest('.nav')?.classList.contains('nav--large-screens')) {
+    if (isLargeScreenNav(box)) {
       if (!box.contains(e.target) && box.classList.contains('search__box--expanded')) {
         !isSearchResultsPage ? collapseAndClear() : clearSearchResults(block);
       }
