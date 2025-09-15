@@ -117,12 +117,13 @@ body.color-scheme-dark .search-results__item {
 
 .search-results__badge {
     display: inline-block;
+    vertical-align: top;
     font-size: 0.75rem;
     background: var(--spectrum-blue-200);
     color: var(--spectrum-gray-1000);
     border-radius: var(--spectrum-corner-radius-400);
     padding: 0.25rem 0.625rem;
-    margin-block-end: 1.0rem;
+    margin-block: 0 1.0rem;
 
     @media (min-width: 105rem) {
        margin-block-end: 1.5rem;
