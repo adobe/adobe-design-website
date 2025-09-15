@@ -95,7 +95,7 @@ const buildresultsGrid = (results, titleHeadingLevel = 'h2') => {
 export default function decorate(block) {
   const settings = {
     headingResults: block.children?.[0]?.children?.[0]?.children,
-    headingNoResults: block.children?.[1]?.children?.[0].children,
+    headingNoResults: block.children?.[1]?.children?.[0]?.children,
     resultText: block.children?.[3]?.children?.[0]?.textContent?.trim() ?? "Result",
     resultTextPlural: block.children?.[3]?.children?.[1]?.textContent?.trim() ?? "Results",
   };
@@ -112,7 +112,7 @@ export default function decorate(block) {
 
   // Fetch results.
   const searchParams = new URLSearchParams(window.location.search);
-  const searchValue = searchParams.get('q') ?? '';
+  const searchValue = searchParams.get('q')?.trim() ?? '';
   const searchTerms = getSearchTermsArray(searchValue);
   
   (async () => {
@@ -123,7 +123,7 @@ export default function decorate(block) {
 
     // Header above results.
     const headerText = hasResults ? settings.headingResults : settings.headingNoResults;
-    for (const child of headerText) {
+    for (const child of headerText ?? []) {
       // Replace constant in content with actual search term.
       child.textContent = child.textContent.replace("[SEARCH_TERMS]", searchValue);
     }
@@ -133,7 +133,7 @@ export default function decorate(block) {
     if (!hasResults) {
       // Display page content from partial. Append sections beside existing section(s).
       const fragment = await loadFragment(noSearchResultsPartial);
-      while (fragment.firstChild) {
+      while (fragment?.firstChild) {
         blockContainer.parentElement.parentElement.append(fragment.firstChild);
       };
       return;
