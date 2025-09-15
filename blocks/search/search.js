@@ -10,6 +10,15 @@ const AUTHOR_ROOT = "authors";
 const JOB_LISTING_ROOT = "careers";
 const SEARCH_RESULTS_SLUG = "search-results";
 
+// Text content used throughout markup.
+const DEFAULT_CONTENT = {
+  searchSubmit: "Search",
+  clearAriaLabel: "Clear search",
+  noResults: "No results found.",
+  inputPlaceholder: "Search",
+  toggleAriaLabel: "Toggle search",
+};
+
 /**
  * Create section name to be used for descriptive text under search result title.
  * @param {string} path 
@@ -95,7 +104,7 @@ async function renderResults(block, config, filteredData) {
     // No results; display message.
     const noResultsMessage = document.createElement('li');
     searchResults.classList.add('search__results--no-results');
-    noResultsMessage.textContent = config?.placeholders?.searchNoResults || 'No results found.';
+    noResultsMessage.textContent = config?.placeholders?.searchNoResults || DEFAULT_CONTENT.noResults;
     searchResults.append(noResultsMessage);
   }
 }
@@ -209,7 +218,7 @@ function createSearchBox(block, config) {
   searchInput.setAttribute('autocomplete', 'off');
   searchInput.name = 'search';
   searchInput.className = 'search__input';
-  const searchPlaceholder = config?.placeholders?.searchPlaceholder || 'Search';
+  const searchPlaceholder = config?.placeholders?.searchPlaceholder || DEFAULT_CONTENT.inputPlaceholder;
   searchInput.placeholder = searchPlaceholder;
   searchInput.setAttribute('aria-label', searchPlaceholder);
 
@@ -221,7 +230,7 @@ function createSearchBox(block, config) {
   const toggleButton = document.createElement('button');
   toggleButton.classList.add('search__button');
   toggleButton.setAttribute('type', 'button');
-  toggleButton.setAttribute('aria-label', 'Toggle search');
+  toggleButton.setAttribute('aria-label', DEFAULT_CONTENT.toggleAriaLabel);
   toggleButton.innerHTML = searchIconInInput.innerHTML;
 
   const resultsContainer = createSearchResultsContainer();
@@ -231,7 +240,7 @@ function createSearchBox(block, config) {
 
   // Clear button.
   const clearButton = document.createElement('button');
-  clearButton.ariaLabel = "Clear search";
+  clearButton.ariaLabel = DEFAULT_CONTENT.clearAriaLabel;
   clearButton.classList.add("search__clear-button");
   clearButton.tabIndex = "-1";
   clearButton.innerHTML = SEARCH_CLEAR_ICON;
@@ -239,7 +248,7 @@ function createSearchBox(block, config) {
 
   // Mobile search submit button.
   const submitButton = document.createElement('button');
-  submitButton.textContent = "Search";
+  submitButton.textContent = DEFAULT_CONTENT.searchSubmit;
   submitButton.classList.add("button", "button--primary", "search__submit-button");
 
   // Append elements.
