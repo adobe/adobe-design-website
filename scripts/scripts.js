@@ -199,6 +199,7 @@ async function loadLazy(doc) {
 const setCalculatedPerspective = () => {
   const elements = document.querySelectorAll('.button, .filter-group__button');
   elements.forEach(el => {
+    if (el.offsetWidth == 0 || el.offsetHeight == 0) return;
     el.style.setProperty('--spectrum-downstate-width', el.offsetWidth + 'px');
     el.style.setProperty('--spectrum-downstate-height', el.offsetHeight + 'px');
   });
