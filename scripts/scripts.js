@@ -108,6 +108,13 @@ const reloadHeader = async (headerElement, onBreakpointChangeOnly = false) => {
     if (newColorSchemeInput) newColorSchemeInput.checked = colorSchemeValue;
   }
 
+  // Keep any existing inputted value of search.
+  const searchValue = headerElement.querySelector("input.search__input")?.value;
+  if (typeof searchValue !== "undefined") {
+    const newSearchInput = tempHeader.querySelector("input.search__input");
+    if (newSearchInput) newSearchInput.value = searchValue;
+  }
+
   // Make sure page is scrollable if mobile menu was previously open.
   document.body.classList.remove("js-no-scroll");
 
