@@ -5,10 +5,10 @@ const SEARCH_INPUT_ICON = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 
 const SEARCH_CLEAR_ICON = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 8 8" focusable="false" aria-hidden="true" role="img"><path fill="currentColor" d="m5.238 4 2.456-2.457A.875.875 0 1 0 6.456.306L4 2.763 1.543.306A.875.875 0 0 0 .306 1.544L2.763 4 .306 6.457a.875.875 0 1 0 1.238 1.237L4 5.237l2.456 2.457a.875.875 0 1 0 1.238-1.237z"></path></svg>`;
 
 // Root directory names for main sections (without slashes).
-const articleRoot = "ideas";
-const authorRoot = "authors";
-const jobListingRoot = "careers";
-const searchResultsSlug = "search-results";
+const ARTICLE_ROOT = "ideas";
+const AUTHOR_ROOT = "authors";
+const JOB_LISTING_ROOT = "careers";
+const SEARCH_RESULTS_SLUG = "search-results";
 
 /**
  * Create section name to be used for descriptive text under search result title.
@@ -29,7 +29,7 @@ export function sectionNameFromPath(path, author = "") {
     sectionName = rootDir;
 
     // Custom sub-page name adjustments.
-    if (sectionName === articleRoot) {
+    if (sectionName === ARTICLE_ROOT) {
       if (author) {
         sectionName = "Article";
       } else {
@@ -38,7 +38,7 @@ export function sectionNameFromPath(path, author = "") {
         sectionName = "Page";
       }
     }
-    if (sectionName === jobListingRoot) {
+    if (sectionName === JOB_LISTING_ROOT) {
       sectionName = "Job Listing";
     }
   }
@@ -136,10 +136,10 @@ export function filterData(searchTerms, data) {
     let minIdx = -1;
 
     // Leave home page and author pages off of results.
-    if (result?.path === '/' || result?.path.startsWith("/" + authorRoot + "/")) return;
+    if (result?.path === '/' || result?.path.startsWith("/" + AUTHOR_ROOT + "/")) return;
 
     // Search within meta `title`, `description`, the words in the last part of the `path`, and the author name on articles.
-    const textToSearch = `${result.title} ${result.description} ${result.path.split('/').pop()} ${result.path.startsWith("/" + articleRoot + "/") ? result.author : ''}`.toLowerCase();
+    const textToSearch = `${result.title} ${result.description} ${result.path.split('/').pop()} ${result.path.startsWith("/" + ARTICLE_ROOT + "/") ? result.author : ''}`.toLowerCase();
     searchTerms.forEach((term) => {
       const idx = textToSearch.indexOf(term);
       if (idx < 0) return;
@@ -340,7 +340,7 @@ function createSearchBox(block, config) {
    * Collapse and clear search after clicking somewhere else.
    */
   document.addEventListener('click', (e) => {
-    const isSearchResultsPage = window.location.pathname.endsWith(searchResultsSlug);
+    const isSearchResultsPage = window.location.pathname.endsWith(SEARCH_RESULTS_SLUG);
 
     if (box.closest('.nav')?.classList.contains('nav--large-screens')) {
       if (!box.contains(e.target) && box.classList.contains('search__box--expanded')) {
