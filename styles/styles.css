@@ -561,8 +561,10 @@ main > .section.small-screen-cta-container > .grid-container:has(+ .call-to-acti
   @media (min-width: 22.5rem) {
     flex-wrap: wrap;
   }
+}
 
-  @supports (display: grid) {
+@supports (display: grid) {
+  .grid-container {
     display: grid;
     align-items: center;
     max-width: 100%;
@@ -605,9 +607,11 @@ main > .section.small-screen-cta-container > .grid-container:has(+ .call-to-acti
     padding-inline-end: var(--page-gutters);
     max-width: calc(100% + var(--page-gutters));
   }
+}
 
-  @supports (display: grid) {
-    @media not all and (min-width: 36rem) {
+@supports (display: grid) {
+  @media not all and (min-width: 36rem) {
+    .grid-container--with-scroll {
       grid-auto-flow: column;
       grid-auto-columns: var(--horizontal-scroll-block-width);
       grid-template-columns: none;
