@@ -60,15 +60,17 @@ body.js-no-scroll {
   height: var(--page-viewport-height);
 }
 
-body.js-has-sticky-footer {
-  margin-block-end: 8rem;
+@media (min-height: 40rem) {
+  body.js-has-sticky-footer {
+    margin-block-end: 8rem;
 
-  @media (min-width: 48rem) {
-    margin-block-end: 10rem;
-  }
+    @media (min-width: 48rem) {
+      margin-block-end: 10rem;
+    }
 
-  @media (min-width: 67.5rem) {
-    margin-block-end: 0;
+    @media (min-width: 67.5rem) {
+      margin-block-end: 0;
+    }
   }
 }
 

@@ -126,16 +126,23 @@
 
 .listing-cta {
   background: var(--color-background-highlighted-element);
-  position: fixed;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  border-radius: 1.5rem 1.5rem 0 0;
+  border-radius: 1.5rem;
   padding: 1.5rem 1.25rem 2rem;
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
   box-shadow: var(--drop-shadow-emphasized);
+  margin-block-start: 2.0rem;
+
+  /* Fixed at the bottom of the page, only if the screen is not too small (i.e. not mobile in landscape). */
+  @media (min-height: 40rem) {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    border-radius: 1.5rem 1.5rem 0 0;
+    margin-block-start: 0;
+  }
 
   @media (min-width: 36rem) {
     padding: 1.5rem 2rem 2rem;
