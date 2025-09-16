@@ -210,10 +210,6 @@ a.nav__home-link {
   .nav.nav--large-screens & {
     padding: 0;
   }
-
-  .nav:not(.nav--large-screens) &:has(.search__results-container li) {
-    height: calc(var(--page-viewport-height) - var(--page-nav-height));
-  }
 }
 
 /* theme switcher */
@@ -261,6 +257,7 @@ a.nav__home-link {
   --spectrum-switch-handle-background-color-focus: var(--spectrum-gray-50);
   --spectrum-switch-handle-background-color-disabled: var(--spectrum-gray-50);
   --switch-handle-border-color: var(--spectrum-gray-600);
+  --switch-handle-border-color-hover: var(--spectrum-gray-800);
 
   --spectrum-switch-handle-background-color-selected: var(--spectrum-gray-50);
   --spectrum-switch-handle-background-color-selected-disabled: var(
@@ -401,8 +398,7 @@ a.nav__home-link {
 /* Switch color changes */
 .theme-toggle {
   &:hover .theme-toggle__switch {
-    background-color: var(--spectrum-switch-background-color-selected-focus);
-    border-color: var(--spectrum-switch-border-color-selected-focus);
+    border-color: var(--spectrum-switch-border-color-focus);
   }
 
   &:active .theme-toggle__switch {
@@ -413,6 +409,7 @@ a.nav__home-link {
     border-color: var(--spectrum-switch-border-color-focus);
   }
 
+  /* Selected / checked: */
   .theme-toggle__input:checked + .theme-toggle__switch {
     background-color: var(--spectrum-switch-background-color-selected-default);
     border-color: var(--spectrum-switch-border-color-selected-default);
@@ -423,7 +420,7 @@ a.nav__home-link {
     border-color: var(--spectrum-switch-border-color-selected-hover);
   }
 
-  &:active .theme-toggle__switch {
+  &:active .theme-toggle__input:checked + .theme-toggle__switch {
     background-color: var(--spectrum-switch-background-color-selected-down);
     border-color: var(--spectrum-switch-border-color-selected-down);
   }
@@ -433,18 +430,17 @@ a.nav__home-link {
 .theme-toggle {
   &:hover .theme-toggle__switch::before {
     background-color: var(--spectrum-switch-handle-background-color-hover);
+    border-color: var(--switch-handle-border-color-hover);
   }
 
   &:active .theme-toggle__switch::before {
     background-color: var(--spectrum-switch-handle-background-color-down);
+    border-color: var(--switch-handle-border-color-hover);
   }
 
   .theme-toggle__input:focus-visible + .theme-toggle__switch::before {
     background-color: var(--spectrum-switch-handle-background-color-focus);
-  }
-
-  &:hover .theme-toggle__switch::before {
-    background-color: var(--spectrum-switch-handle-background-color-selected);
+    border-color: var(--switch-handle-border-color-hover);
   }
 }
 
@@ -456,6 +452,7 @@ a.nav__home-link {
 
 .theme-toggle__input:checked + .theme-toggle__switch::before {
   --switch-handle-border-color: var(--switch-handle-border-color--selected);
+  --switch-handle-border-color-hover: var(--switch-handle-border-color--selected);
 
   background-color: var(--spectrum-switch-handle-background-color-selected);
 

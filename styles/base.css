@@ -70,6 +70,7 @@
 	--spectrum-transparent-black-800: rgb(var(--spectrum-black--unformatted) / 0.84);
 	--spectrum-transparent-black-900: rgb(var(--spectrum-black--unformatted) / 0.93);
 
+  --spectrum-blue-200: rgb(229 240 254);
   --spectrum-blue-300: rgb(203 226 254);
   --spectrum-blue-400: rgb(172 207 253);
   --spectrum-blue-500: rgb(142 185 252);
@@ -81,6 +82,7 @@
 
   --spectrum-gray-25: rgb(255 255 255);
   --spectrum-gray-50: rgb(248 248 248);
+  --spectrum-gray-75: rgb(243 243 243);
   --spectrum-gray-100: rgb(233 233 233);
   --spectrum-gray-200: rgb(225 225 225);
   --spectrum-gray-300: rgb(218 218 218);
@@ -130,6 +132,7 @@
   --spectrum-cinnamon-500: rgb(229 170 136);
 
   &:has(body.color-scheme-dark) {
+    --spectrum-blue-200: rgb(15 28 82);
     --spectrum-blue-300: rgb(12 33 117);
     --spectrum-blue-400: rgb(26 58 195);
     --spectrum-blue-500: rgb(26 58 195);
@@ -141,6 +144,7 @@
 
     --spectrum-gray-25: rgb(17 17 17);
     --spectrum-gray-50: rgb(27 27 27);
+    --spectrum-gray-75: rgb(34 34 34);
     --spectrum-gray-100: rgb(44 44 44);
     --spectrum-gray-200: rgb(50 50 50);
     --spectrum-gray-300: rgb(57 57 57);

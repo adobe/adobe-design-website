@@ -13,7 +13,7 @@ export const buildThemeToggle = () => {
 
   // create the label
   const themeSelectLabel = document.createElement("label");
-  themeSelectLabel.innerText = "Enable Dark Mode";
+  themeSelectLabel.innerText = "Dark mode";
   themeSelectLabel.classList.add("theme-toggle__label", "util-detail-m");
   themeSelectLabel.htmlFor = "color-scheme";
 
