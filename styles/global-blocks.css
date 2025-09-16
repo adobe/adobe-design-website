@@ -48,7 +48,7 @@
       flex-direction: column;
       gap: 0.25rem;
 
-      > .author-meta__name {
+      & > .author-meta__name {
         margin-block: 0;
 
         @media (min-width: 48rem) {
@@ -67,11 +67,11 @@
   }
 
   .author-description {
-    p:first-of-type {
+    & p:first-of-type {
       margin-block-start: 0;
     }
 
-    p:last-of-type {
+    & p:last-of-type {
       margin-block-end: 0;
     }
   }
@@ -155,7 +155,7 @@
     display: none;
   }
 
-  span {
+  & span {
     color: var(--color-text);
 
     @media (min-width: 36rem) {
@@ -180,7 +180,7 @@
       "content . details";
   }
 
-  > h1 {
+  & > h1 {
     margin-block-end: 1rem;
 
     @media (min-width: 36rem) {
@@ -225,7 +225,7 @@
       }
     }
 
-    > h2:first-of-type {
+    & > h2:first-of-type {
       margin-block-start: 0;
     }
 
@@ -401,7 +401,7 @@
   margin: 0;
   margin-block-end: 1.5rem;
 
-  .image-with-caption--full-bleed {
+  & .image-with-caption--full-bleed {
     margin-block-end: 2.5rem;
   }
 
@@ -413,32 +413,18 @@
     margin-block-end: 4rem;
   }
 
-  div:has(p):not([class]) + & {
-    margin-block-start: 2rem;
-
-    @media (min-width: 48rem) {
-      margin-block-start: 2.5rem;
-    }
-
-    @media (min-width: 80rem) {
-      margin-block-start: 4rem;
-    }
-  }
-
-  & .image-with-caption__image {
-    & img {
-      display: block;
-      width: 100%;
-      height: auto;
-      border-radius: var(--spectrum-corner-radius-800);
-    }
+  & .image-with-caption__image img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: var(--spectrum-corner-radius-800);
   }
 
   & .image-with-caption__caption {
     display: block;
     color: var(--spectrum-gray-600);
 
-    > * {
+    & > * {
       font-family: var(--detail-font-family);
       line-height: var(--detail-line-height);
       font-size: var(--detail-size-s);
@@ -463,6 +449,18 @@
   }
 }
 
+.image-with-caption div:has(p):not([class]) + .image-with-caption {
+  margin-block-start: 2rem;
+
+  @media (min-width: 48rem) {
+    margin-block-start: 2.5rem;
+  }
+
+  @media (min-width: 80rem) {
+    margin-block-start: 4rem;
+  }
+}
+
 .image-with-caption--two-up {
   @media (min-width: 48rem) {
     flex-direction: row;
@@ -482,10 +480,8 @@
   width: 100vw;
   transform: translateX(calc(var(--page-gutters) * -1));
 
-  & .image-with-caption__image {
-    & img {
-      border-radius: 0;
-    }
+  & .image-with-caption__image img {
+    border-radius: 0;
   }
 
   & .image-with-caption__caption {
@@ -861,7 +857,7 @@ a.card:hover {
     flex: 1 0 50%;
   }
 
-  img {
+  & img {
     aspect-ratio: unset;
     display: block;
     height: 100%;
@@ -888,7 +884,7 @@ a.card:hover {
     padding: 3rem 1.5rem;
   }
 
-  span {
+  & span {
     display: block;
   }
 }
@@ -1079,7 +1075,7 @@ a.card:hover {
   flex-wrap: wrap;
   gap: 0.5rem;
 
-  li {
+  & li {
     padding: 0;
     margin: 0;
   }
