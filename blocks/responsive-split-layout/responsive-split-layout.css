@@ -47,10 +47,6 @@
     }
 
     background: linear-gradient(to left, transparent, var(--split-layout-gradient-color));
-    
-    body.color-scheme-dark & {
-      --split-layout-gradient-color: var(--split-layout-gradient-color-dark, transparent);
-    }
 
     &.responsive-split-layout--reverse {
       background: linear-gradient(to right, transparent, var(--split-layout-gradient-color));
@@ -129,4 +125,8 @@
       }
     }
   }
+}
+
+body.color-scheme-dark .responsive-split-layout.responsive-split-layout--gradient  {
+  --split-layout-gradient-color: var(--split-layout-gradient-color-dark, transparent);
 }

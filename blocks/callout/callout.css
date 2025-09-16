@@ -37,12 +37,12 @@
   .button {
     margin-block-start: 1.5rem;
   
-    svg {
+    & svg {
       margin-inline-end: 0.5rem;
       flex-shrink: 0;
     }
 
-    span {
+    & span {
       @container callout-wrapper (min-width: 49rem) {
         width: max-content;
       }
@@ -87,7 +87,7 @@
 .callout__content {
   color: var(--spectrum-white);
 
-  span {
+  & span {
     display: block;
     font-size: var(--spectrum-font-size-300);
     line-height: 1.5;
@@ -106,7 +106,7 @@
     }
   }
 
-  span:not(.callout__title) + span {
+  & span:not(.callout__title) + span {
     margin-block-start: 0.5rem;
   }
 

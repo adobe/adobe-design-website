@@ -628,11 +628,6 @@
   --page-nav-height: 4rem;
 
   --page-viewport-height: 100vh;
-
-  @supports (height: 100dvh) {
-    --page-viewport-height: 100dvh;
-  }
-
   --page-background-height: 28.75rem;
 
   @media (min-width: 48rem) {
@@ -657,5 +652,11 @@
   @media (min-width: 105.5rem) {
     /* Keep "px" unit to ensure calcs work. */
     --page-gutters: 0px;
+  }
+}
+
+@supports (height: 100dvh) {
+  :root {
+    --page-viewport-height: 100dvh;
   }
 }

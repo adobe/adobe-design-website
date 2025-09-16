@@ -90,7 +90,7 @@
 /* adjust font sizes */
 .page-header {
   @media (min-width: 36rem) {
-    h1 {
+    & h1 {
       font-size: var(--heading-size-xl);
     }
 
@@ -112,7 +112,7 @@
   @media (min-width: 48rem) and (max-width: 65rem) {
     /* Reduce font size at the start of this breakpoint for the 50/50 layout. */
     .page-header__content.grid-item.grid-item--50 {
-      h1 {
+      & h1 {
         font-size: var(--spectrum-font-size-1100);
       }
       .page-header__description--with-byline {
@@ -125,7 +125,7 @@
   }
 
   @media (min-width: 80rem) {
-    h1 {
+    & h1 {
       font-size: var(--heading-size-xl);
     }
 

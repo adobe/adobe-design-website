@@ -65,12 +65,12 @@
     margin-block-end: var(--spacing-global-block-end-large-screen);
   }
 
-  h1,
-  h2 {
+  & h1,
+  & h2 {
     margin: 0;
   }
 
-  h1 {
+  & h1 {
     font-size: var(--heading-size-m);
   }
 }
@@ -125,7 +125,7 @@
       font-size: var(--detail-size-l);
     }
 
-    h1 {
+    & h1 {
       font-size: var(--heading-size-xl);
     }
 
@@ -148,7 +148,7 @@
       font-size: var(--detail-size-m);
     }
 
-    h1 {
+    & h1 {
       font-size: var(--heading-size-xxl);
     }
 
@@ -167,7 +167,7 @@
   }
 
   @media (min-width: 80rem) {
-    h1 {
+    & h1 {
       font-size: var(--heading-size-xl);
     }
   }
