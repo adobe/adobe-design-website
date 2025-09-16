@@ -60,7 +60,7 @@
     cursor: pointer;
   }
 
-  svg {
+  & svg {
     height: 100%;
   }
 
@@ -98,7 +98,8 @@ a.nav__home-link {
     color: var(--color-text-dark);
   }
 
-  svg {
+  & svg {
+    width: auto;
     max-width: 100%;
     flex: 1 0 auto;
   }
