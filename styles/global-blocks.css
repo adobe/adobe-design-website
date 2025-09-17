@@ -830,6 +830,7 @@ body.color-scheme-dark .search .search__results-container {
 }
 
 .card {
+  --card-image-aspect-ratio: 4 / 3;
   display: flex;
   flex-direction: column;
   box-shadow: var(--drop-shadow-emphasized);
@@ -838,6 +839,7 @@ body.color-scheme-dark .search .search__results-container {
   overflow: hidden;
 
   @container card-container (min-width: 28rem) {
+    --card-image-aspect-ratio: auto;
     flex-direction: row;
   }
 }
@@ -853,13 +855,17 @@ a.card:hover {
 }
 
 .card__image {
+  aspect-ratio: var(--card-image-aspect-ratio, auto);
+  overflow: hidden;
+  background: var(--spectrum-gray-75);
+
   @container card-container (min-width: 28rem) {
     order: 2;
     flex: 1 0 50%;
   }
 
   & img {
-    aspect-ratio: unset;
+    aspect-ratio: auto;
     display: block;
     height: 100%;
     width: 100%;
