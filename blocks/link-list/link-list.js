@@ -1,5 +1,17 @@
 import { isExternalURL } from '../../scripts/helpers/index.js';
 
+// Root directory name without slashes.
+const JOB_LISTING_ROOT = "careers";
+
+/**
+ * Check if HREF URL is to an internal job listing page.
+ * @param {string} url 
+ * @returns {boolean}
+ */
+const urlIsJobListing = (url) => {
+  return url.startsWith(`https://adobe.design/${JOB_LISTING_ROOT}/`) || url.startsWith(`/${JOB_LISTING_ROOT}/`);
+};
+
 /**
  * Creates a decorated set of link list items.
  * @param {string} textContent the desired link text
@@ -29,7 +41,7 @@ const buildLinkListItem = ({ textContent, url, altText }) => {
     itemContent.append(itemContentPart);
   });
 
-  if (url.startsWith("https://adobe.design/careers/")) {
+  if (urlIsJobListing(url)) {
     itemContent.children[0].className = "link-list-item__job-title";
     itemContent.children[1].className =
       "link-list-item__job-department";
@@ -81,8 +93,10 @@ export default async function decorate(block) {
     altText: block.children[0]?.children[2]?.innerText,
   };
 
-  if (linksData.every((link) => link.url.startsWith("https://adobe.design/careers/")))
+  if (linksData.every((link) => urlIsJobListing(link.url))) {
     linkList.classList.add("link-list--jobs");
+  }
+
   linksData.forEach((row) => {
     const linkListItem = buildLinkListItem(row);
     linkList.append(linkListItem);
