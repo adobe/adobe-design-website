@@ -170,6 +170,7 @@
   }
 }
 
+/* Job listing page */
 .listing-container {
   @media (min-width: 67.5rem) {
     display: grid;
@@ -424,9 +425,13 @@
     display: block;
     color: var(--spectrum-gray-600);
 
+    em {
+      font-style: normal;
+    }
+
     & > * {
       font-family: var(--detail-font-family);
-      line-height: var(--detail-line-height);
+      line-height: 1.3;
       font-size: var(--detail-size-s);
       font-weight: var(--detail-font-weight);
 
