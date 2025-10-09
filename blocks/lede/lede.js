@@ -11,7 +11,7 @@ export default function decorate(block) {
     // Move just the content elements we want into our fragment and add some classes.
     while (ledeContent.firstChild) {
         const element = fragment.appendChild(ledeContent.firstChild);
-        element.className = 'util-heading-quote util-bold-font-weight';
+        element.className = 'util-heading-quote';
     }
 
     // Replace all children of the block element with the contents of the fragment.
