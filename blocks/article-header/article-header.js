@@ -35,14 +35,14 @@ export default async function decorate(block) {
 
   // there should always be a title, so create it as an h1
   const pageTitle = document.createElement("h1");
-  pageTitle.classList.add("article-header__title", "util-heading-xl");
+  pageTitle.classList.add("article-header__title");
   pageTitle.innerText = articleHeaderData.title;
   headlineGroup.append(pageTitle);
 
   // if there is a subtitle, add it as an h2
   if (articleHeaderData.subtitle) {
     const pageSubtitle = document.createElement("p");
-    pageSubtitle.classList.add("article-header__subtitle", "util-title-m");
+    pageSubtitle.classList.add("article-header__subtitle");
     pageSubtitle.innerText = articleHeaderData.subtitle;
     headlineGroup.append(pageSubtitle);
   }
@@ -58,7 +58,7 @@ export default async function decorate(block) {
     if (articleHeaderData.pubDate) {
       // create a time element
       const pubDate = document.createElement("time");
-      pubDate.classList.add("article-header__date", "util-body-xs");
+      pubDate.classList.add("article-header__date");
       pubDate.innerText = articleHeaderData.pubDate;
 
       // find the UTC string of the date string provided
@@ -75,8 +75,8 @@ export default async function decorate(block) {
     if (articleHeaderData.author) {
       const byLine = document.createElement("div");
       byLine.innerHTML = `
-        <div class="article-header__byline util-body-xs">Words by</div>
-        <div class="article-header__author util-title-m">${articleHeaderData.author}</div>
+        <div class="article-header__byline">Words by</div>
+        <div class="article-header__author">${articleHeaderData.author}</div>
       `;
       bylineGroup.append(byLine);
     }
