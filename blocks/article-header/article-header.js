@@ -14,7 +14,6 @@ export default async function decorate(block) {
     subtitle:
       block.children?.[1]?.children?.[0]?.children?.[0]?.textContent?.trim(),
     author: getMetadata('author'),
-    pubDate: getMetadata('publication-date'),
     image: block.children?.[2]?.children?.[0]?.firstElementChild,
     caption: block.children?.[2]?.children?.[1]?.innerHTML,
     altText: block.children?.[2]?.children?.[2]?.textContent?.trim(),
@@ -47,29 +46,12 @@ export default async function decorate(block) {
     headlineGroup.append(pageSubtitle);
   }
 
-  // if there is either a publication date or author,
-  if (articleHeaderData.pubDate || articleHeaderData.author) {
+  // if there is an author
+  if (articleHeaderData.author) {
     // create the byline group container element
     const bylineGroup = document.createElement("div");
     bylineGroup.classList.add("article-header__byline-group");
     articleHeader.append(bylineGroup);
-
-    // if there is a publication date,
-    if (articleHeaderData.pubDate) {
-      // create a time element
-      const pubDate = document.createElement("time");
-      pubDate.classList.add("article-header__date");
-      pubDate.innerText = articleHeaderData.pubDate;
-
-      // find the UTC string of the date string provided
-      const pubDateRaw = Date.parse(articleHeaderData.pubDate);
-      const preppedDate = new Date(pubDateRaw).toUTCString();
-
-      // add that to our time element
-      pubDate.setAttribute('datetime', preppedDate);
-
-      bylineGroup.append(pubDate);
-    }
 
     // if there is an author, build a byline
     if (articleHeaderData.author) {
