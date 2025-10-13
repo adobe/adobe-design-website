@@ -44,6 +44,36 @@
     & p:not(.author-description p, .quote__quotation, figcaption p) {
       margin-block-start: 0.5rem;
     }
+
+    /* Article specific heading sizes */
+    & :is(h2) {
+      line-height: 1.15;
+      font-size: var(--spectrum-font-size-500);
+      font-weight: var(--spectrum-extra-bold-font-weight);
+
+      @media (min-width: 48rem) {
+        font-weight: var(--spectrum-black-font-weight);
+        font-size: var(--spectrum-font-size-600);
+      }
+
+      @media (min-width: 80rem) {
+        font-size: var(--spectrum-font-size-700);
+      }
+    }
+
+    & :is(h3) {
+      line-height: 1.15;
+      font-size: var(--spectrum-font-size-300);
+      font-weight: var(--spectrum-extra-bold-font-weight);
+
+      @media (min-width: 48rem) {
+        font-size: var(--spectrum-font-size-500);
+      }
+
+      @media (min-width: 80rem) {
+        font-size: var(--spectrum-font-size-600);
+      }
+    }
   }
 }
 
