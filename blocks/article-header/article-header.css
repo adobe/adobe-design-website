@@ -90,7 +90,7 @@
   flex-direction: column;
   max-width: 66rem;
   margin-inline: auto;
-  margin-block-end: 2.0rem;
+  margin-block-end: 2rem;
   row-gap: 1.25rem;
 
   @media (min-width: 36rem) {
@@ -98,7 +98,7 @@
   }
 
   @media (min-width: 48rem) {
-    margin-block-end: 4.0rem;
+    margin-block-end: 4rem;
     row-gap: 2rem;
   }
 
