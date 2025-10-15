@@ -566,12 +566,20 @@
     --body-size-xs: var(--spectrum-font-size-100);
   }
 
-  @media (min-width: 48rem) {
+  @media (min-width: 80rem) {
     --body-size-xl: var(--spectrum-font-size-600);
     --body-size-l: var(--spectrum-font-size-500);
     --body-size-m: var(--spectrum-font-size-400);
     --body-size-s: var(--spectrum-font-size-300);
     --body-size-xs: var(--spectrum-font-size-200);
+  }
+
+  @media (min-width: 105rem) {
+    --body-size-xl: var(--spectrum-font-size-700);
+    --body-size-l: var(--spectrum-font-size-600);
+    --body-size-m: var(--spectrum-font-size-500);
+    --body-size-s: var(--spectrum-font-size-400);
+    --body-size-xs: var(--spectrum-font-size-300);
   }
 
 

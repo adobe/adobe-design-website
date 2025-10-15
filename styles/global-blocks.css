@@ -50,23 +50,37 @@
 
       & > .author-meta__name {
         margin-block: 0;
+        line-height: 1.25;
+        font-size: var(--spectrum-font-size-300);
+        font-weight: var(--spectrum-bold-font-weight);
 
-        @media (min-width: 48rem) {
-          font-size: var(--spectrum-font-size-500);
+        @media (min-width: 80rem) {
+          font-weight: var(--spectrum-extra-bold-font-weight);
+        }
+
+        @media (min-width: 105rem) {
+          font-size: var(--spectrum-font-size-400);
         }
       }
 
       & .author-meta__title {
+        font-size: var(--spectrum-font-size-100);
+        font-weight: var(--spectrum-medium-font-weight);
         color: var(--spectrum-gray-600);
-
-        @media (min-width: 48rem) {
-          font-size: var(--spectrum-font-size-200);
-        }
       }
     }
   }
 
   .author-description {
+    & p {
+      @media (min-width: 80rem) {
+        font-size: var(--spectrum-font-size-300);
+      }
+      @media (min-width: 105rem) {
+        font-size: var(--spectrum-font-size-400);
+      }
+    }
+
     & p:first-of-type {
       margin-block-start: 0;
     }
@@ -170,6 +184,7 @@
   }
 }
 
+/* Job listing page */
 .listing-container {
   @media (min-width: 67.5rem) {
     display: grid;
@@ -424,9 +439,13 @@
     display: block;
     color: var(--spectrum-gray-600);
 
+    em {
+      font-style: normal;
+    }
+
     & > * {
       font-family: var(--detail-font-family);
-      line-height: var(--detail-line-height);
+      line-height: 1.3;
       font-size: var(--detail-size-s);
       font-weight: var(--detail-font-weight);
 
@@ -1071,6 +1090,24 @@ a.card:hover {
   > .grid-container .grid-item:has(.section-header),
   > .grid-container .grid-item:has(.image-with-caption) {
     align-self: center;
+  }
+}
+
+.article-date {
+  display: block;
+  font-size: var(--spectrum-font-size-100);
+  margin-block: 1rem;
+
+  @media (min-width: 80rem) {
+    margin-block: 1.5rem;
+  }
+}
+
+.tags-aside__heading {
+  margin-block-start: 2rem;
+
+  @media (min-width: 105rem) {
+    margin-block-start: 4rem;
   }
 }
 

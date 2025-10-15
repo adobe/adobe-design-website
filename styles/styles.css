@@ -890,20 +890,17 @@ main > .section.small-screen-cta-container > .grid-container:has(+ .call-to-acti
 }
 
 .util-heading-quote {
-  font-family: var(--spectrum-serif-font-family-stack);
+  font-family: var(--spectrum-display-font);
   font-size: var(--spectrum-font-size-400);
-  font-weight: var(--spectrum-medium-font-weight);
+  font-weight: var(--spectrum-regular-font-weight);
+  line-height: 1.3;
 
-  @media (min-width: 48rem) {
+  @media (min-width: 80rem) {
     font-size: var(--spectrum-font-size-600);
   }
 
-  @media (min-width: 80rem) {
-    font-size: var(--spectrum-font-size-700);
-  }
-
   @media (min-width: 105rem) {
-    font-size: var(--spectrum-font-size-800);
+    font-size: var(--spectrum-font-size-700);
   }
 }
 

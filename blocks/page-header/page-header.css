@@ -99,12 +99,6 @@
     }
 
     .page-header__description--with-byline {
-      font-size: var(--title-size-xxl);
-    }
-  }
-
-  @media (min-width: 48rem) {
-    .page-header__description--with-byline {
       font-size: var(--title-size-l);
     }
   }

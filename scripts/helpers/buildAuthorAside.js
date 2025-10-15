@@ -33,13 +33,13 @@ export const buildAuthorAside = (authors) => {
     };
   
     const authorName = document.createElement("h3");
-    authorName.classList.add("author-meta__name", "util-title-m");
+    authorName.classList.add("author-meta__name");
     authorName.innerText = name;
     authorInfo.append(authorName);
   
     if (title) {
       const authorJobTitle = document.createElement("span");
-      authorJobTitle.classList.add("author-meta__title", "util-detail-s");
+      authorJobTitle.classList.add("author-meta__title");
       authorJobTitle.innerText = title;
       authorInfo.append(authorJobTitle);
     };

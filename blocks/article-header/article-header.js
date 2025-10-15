@@ -14,7 +14,6 @@ export default async function decorate(block) {
     subtitle:
       block.children?.[1]?.children?.[0]?.children?.[0]?.textContent?.trim(),
     author: getMetadata('author'),
-    pubDate: getMetadata('publication-date'),
     image: block.children?.[2]?.children?.[0]?.firstElementChild,
     caption: block.children?.[2]?.children?.[1]?.innerHTML,
     altText: block.children?.[2]?.children?.[2]?.textContent?.trim(),
@@ -35,48 +34,31 @@ export default async function decorate(block) {
 
   // there should always be a title, so create it as an h1
   const pageTitle = document.createElement("h1");
-  pageTitle.classList.add("article-header__title", "util-heading-xl");
+  pageTitle.classList.add("article-header__title");
   pageTitle.innerText = articleHeaderData.title;
   headlineGroup.append(pageTitle);
 
   // if there is a subtitle, add it as an h2
   if (articleHeaderData.subtitle) {
     const pageSubtitle = document.createElement("p");
-    pageSubtitle.classList.add("article-header__subtitle", "util-title-m");
+    pageSubtitle.classList.add("article-header__subtitle");
     pageSubtitle.innerText = articleHeaderData.subtitle;
     headlineGroup.append(pageSubtitle);
   }
 
-  // if there is either a publication date or author,
-  if (articleHeaderData.pubDate || articleHeaderData.author) {
+  // if there is an author
+  if (articleHeaderData.author) {
     // create the byline group container element
     const bylineGroup = document.createElement("div");
     bylineGroup.classList.add("article-header__byline-group");
     articleHeader.append(bylineGroup);
 
-    // if there is a publication date,
-    if (articleHeaderData.pubDate) {
-      // create a time element
-      const pubDate = document.createElement("time");
-      pubDate.classList.add("article-header__date", "util-body-xs");
-      pubDate.innerText = articleHeaderData.pubDate;
-
-      // find the UTC string of the date string provided
-      const pubDateRaw = Date.parse(articleHeaderData.pubDate);
-      const preppedDate = new Date(pubDateRaw).toUTCString();
-
-      // add that to our time element
-      pubDate.setAttribute('datetime', preppedDate);
-
-      bylineGroup.append(pubDate);
-    }
-
     // if there is an author, build a byline
     if (articleHeaderData.author) {
       const byLine = document.createElement("div");
       byLine.innerHTML = `
-        <div class="article-header__byline util-body-xs">Words by</div>
-        <div class="article-header__author util-title-m">${articleHeaderData.author}</div>
+        <div class="article-header__byline">Words by</div>
+        <div class="article-header__author">${articleHeaderData.author}</div>
       `;
       bylineGroup.append(byLine);
     }
