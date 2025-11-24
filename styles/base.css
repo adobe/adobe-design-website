@@ -208,9 +208,6 @@
   &:has(body.color-scheme-dark) {
     --color-background-default: var(--spectrum-gray-25);
     --color-background-highlighted-element: var(--spectrum-gray-50);
-
-    --color-text-link: var(--spectrum-blue-800);
-    --color-text-link-hover: var(--spectrum-blue-900);
   }
 
   /* Gradients */
