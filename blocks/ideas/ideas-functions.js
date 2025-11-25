@@ -22,7 +22,7 @@ import { getCurrentFiltersArray } from "../filter-group/filter-group-utils.js";
  * Create markup for ideas feature section from data/content, and return it.
  * Title text is required.
  * @param {IdeasFeatureContent} featureContent
- * @returns {HTMLDivElement|null} Markup of feature, or null if missing required content.
+ * @returns {HTMLElement|null} Markup of feature, or null if missing required content.
  */
 export const buildIdeasFeature = (featureContent) => {
   // Check for required content.
@@ -32,7 +32,7 @@ export const buildIdeasFeature = (featureContent) => {
 
   // Create markup.
   // This element is both a grid item for the larger page layout, and a grid container for its children.
-  const feature = document.createElement("div");
+  const feature = document.createElement("aside");
   feature.classList.add("grid-item", "grid-item--100", "ideas__feature");
 
   // Content side which contains text elements and button.
