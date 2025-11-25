@@ -53,7 +53,7 @@
 
   .page-header__description,
   .page-header__byline {
-    margin-block-end: 1.25rem;
+    margin-block: 0 1.25rem;
 
     @media (min-width: 48rem) {
       margin-block-end: 1.875rem;
