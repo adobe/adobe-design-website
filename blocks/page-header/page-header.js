@@ -26,7 +26,7 @@ export default async function decorate(block) {
 
   // if there is a description, add it as an h2
   if (pageHeaderData.description) {
-    const pageDescription = document.createElement("div");
+    const pageDescription = document.createElement("p");
     pageDescription.classList.add("page-header__description");
 
     // if there is a byline, the description uses

@@ -43,13 +43,17 @@
   }
 
   .page-header__description {
-    font-weight: var(--spectrum-medium-font-weight);
+    font-weight: var(--spectrum-body-font-weight);
     line-height: 1.5;
+  }
+
+  .page-header__description--with-byline {
+    font-weight: var(--spectrum-medium-font-weight);
   }
 
   .page-header__description,
   .page-header__byline {
-    margin-block-end: 1.25rem;
+    margin-block: 0 1.25rem;
 
     @media (min-width: 48rem) {
       margin-block-end: 1.875rem;
@@ -95,7 +99,7 @@
     }
 
     .page-header__description {
-      font-size: var(--body-size-l);
+      font-size: var(--body-size-m);
     }
 
     .page-header__description--with-byline {
@@ -109,9 +113,11 @@
       & h1 {
         font-size: var(--spectrum-font-size-1100);
       }
+
       .page-header__description--with-byline {
         font-size: var(--title-size-m);
       }
+
       .page-header-byline__author {
         font-size: var(--title-size-s);
       }
@@ -121,10 +127,6 @@
   @media (min-width: 80rem) {
     & h1 {
       font-size: var(--heading-size-xl);
-    }
-
-    .page-header__description {
-      font-size: var(--body-size-xl);
     }
 
     .page-header__description--with-byline {
