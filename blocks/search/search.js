@@ -385,7 +385,7 @@ export default async function decorate(block) {
   const placeholders = {};
 
   // Endpoint for search data.
-  const source = dataStore.commonEndpoints.queryIndex;
+  const source = dataStore.commonEndpoints.ideas;
   
   // Build block markup.
   block.innerHTML = '';

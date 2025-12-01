@@ -117,7 +117,7 @@ export default function decorate(block) {
   
   (async () => {
     // Query all data and search it.
-    const allFetchedData = await dataStore.getData(dataStore.commonEndpoints.queryIndex);
+    const allFetchedData = await dataStore.getData(dataStore.commonEndpoints.ideas);
     const results = filterData(searchTerms, allFetchedData?.data);
     const hasResults = results && results.length > 0;
 
