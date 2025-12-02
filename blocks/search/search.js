@@ -67,9 +67,10 @@ const isLargeScreenNav = (elementWithinNav) => {
 /**
  * Create the markup for a single search result.
  * @param {object} result
+ * @param {boolean} showDescription Show smaller text under heading with type of result.
  * @returns {HTMLLIElement}
  */
-function renderResult(result) {
+function renderResult(result, showDescription) {
   const li = document.createElement('li');
   li.className = 'search__results-item';
 
@@ -80,12 +81,16 @@ function renderResult(result) {
   title.className = 'search__results-title util-title-s';
   title.textContent = result.title;
 
-  const description = document.createElement('div');
-  description.className = 'search__results-description util-body-s';
-  const descriptionText = sectionNameFromPath(result.path, result?.author);
-  if (descriptionText) description.textContent = descriptionText;
+  if (showDescription) {
+    const description = document.createElement('div');
+    description.className = 'search__results-description util-body-s';
+    const descriptionText = sectionNameFromPath(result.path, result?.author);
+    if (descriptionText) description.textContent = descriptionText;
+    a.append(title, description);
+  } else {
+    a.append(title);
+  }
 
-  a.append(title, description);
   li.appendChild(a);
   return li;
 }
@@ -108,7 +113,7 @@ async function renderResults(block, config, filteredData) {
   if (filteredData?.length) {
     // Has results; append results to container.
     searchResults.classList.remove('search__results--no-results');
-    filteredData.forEach((result) => searchResults.append(renderResult(result)));
+    filteredData.forEach((result) => searchResults.append(renderResult(result, false)));
   } else {
     // No results; display message.
     const noResultsMessage = document.createElement('li');
