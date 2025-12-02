@@ -31,11 +31,15 @@ const buildresultsGrid = (results, titleHeadingLevel = 'h2') => {
     contentWrap.classList.add('search-results__content');
     anchor.append(contentWrap);
 
-    // Badge with type of result (page / article / etc).
-    const badge = document.createElement('p');
-    badge.classList.add('search-results__badge');
-    badge.textContent = sectionName;
-    contentWrap.append(badge);
+    // Badge with publication date.
+    if (result?.publicationDate) {
+      // Convert Excel serial date (e.g. "45981") to Date object that can be displayed.
+      const publicationDate = new Date(Date.UTC(0, 0, parseInt(result.publicationDate) - 1));
+      const badge = document.createElement('p');
+      badge.classList.add('search-results__badge');
+      badge.textContent = publicationDate.toLocaleDateString('en-US', { timeZone: 'UTC', month: 'short', day: 'numeric', year: 'numeric' });
+      contentWrap.append(badge);
+    }
 
     // Result title.
     const title = document.createElement(titleHeadingLevel);
