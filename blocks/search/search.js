@@ -124,18 +124,6 @@ async function renderResults(block, config, filteredData) {
 }
 
 /**
- * Compare function for used by Array.sort on search results from `filterData`.
- * Sorts by the `minIdx` property, smallest to largest, i.e. when searched text
- * is found closer to the start of the searched text, it appears in results first. 
- * @param {object} hit1
- * @param {object} hit2 
- * @returns 
- */
-function compareFound(hit1, hit2) {
-  return hit1.minIdx - hit2.minIdx;
-}
-
-/**
  * Array of unique search terms from the search string (that were separated by a space). Used by `filterData`.
  * @param {string} searchValue 
  * @returns {string[]}
@@ -146,7 +134,7 @@ export const getSearchTermsArray = (searchValue) => searchValue.toLowerCase().sp
  * Searches data for search terms and returns data with matches.
  * @param {string[]} searchTerms 
  * @param {object} data 
- * @returns {object[]}
+ * @returns {object[]} Objects containing `result` object and `minIdx`.
  */
 export function filterData(searchTerms, data) {
   const foundInMeta = [];
@@ -174,7 +162,10 @@ export function filterData(searchTerms, data) {
     }
   });
 
-  return foundInMeta.sort(compareFound).map((item) => item.result);
+  // Sort by publication date.
+  return foundInMeta
+    .sort((a, b) => parseInt(b.result.publicationDate) - parseInt(a.result.publicationDate))
+    .map((item) => item.result);
 }
 
 /**
