@@ -67,9 +67,10 @@ const isLargeScreenNav = (elementWithinNav) => {
 /**
  * Create the markup for a single search result.
  * @param {object} result
+ * @param {boolean} showDescription Show smaller text under heading with type of result.
  * @returns {HTMLLIElement}
  */
-function renderResult(result) {
+function renderResult(result, showDescription) {
   const li = document.createElement('li');
   li.className = 'search__results-item';
 
@@ -80,12 +81,16 @@ function renderResult(result) {
   title.className = 'search__results-title util-title-s';
   title.textContent = result.title;
 
-  const description = document.createElement('div');
-  description.className = 'search__results-description util-body-s';
-  const descriptionText = sectionNameFromPath(result.path, result?.author);
-  if (descriptionText) description.textContent = descriptionText;
+  if (showDescription) {
+    const description = document.createElement('div');
+    description.className = 'search__results-description util-body-s';
+    const descriptionText = sectionNameFromPath(result.path, result?.author);
+    if (descriptionText) description.textContent = descriptionText;
+    a.append(title, description);
+  } else {
+    a.append(title);
+  }
 
-  a.append(title, description);
   li.appendChild(a);
   return li;
 }
@@ -108,7 +113,7 @@ async function renderResults(block, config, filteredData) {
   if (filteredData?.length) {
     // Has results; append results to container.
     searchResults.classList.remove('search__results--no-results');
-    filteredData.forEach((result) => searchResults.append(renderResult(result)));
+    filteredData.forEach((result) => searchResults.append(renderResult(result, false)));
   } else {
     // No results; display message.
     const noResultsMessage = document.createElement('li');
@@ -116,18 +121,6 @@ async function renderResults(block, config, filteredData) {
     noResultsMessage.textContent = config?.placeholders?.searchNoResults || DEFAULT_CONTENT.noResults;
     searchResults.append(noResultsMessage);
   }
-}
-
-/**
- * Compare function for used by Array.sort on search results from `filterData`.
- * Sorts by the `minIdx` property, smallest to largest, i.e. when searched text
- * is found closer to the start of the searched text, it appears in results first. 
- * @param {object} hit1
- * @param {object} hit2 
- * @returns 
- */
-function compareFound(hit1, hit2) {
-  return hit1.minIdx - hit2.minIdx;
 }
 
 /**
@@ -141,7 +134,7 @@ export const getSearchTermsArray = (searchValue) => searchValue.toLowerCase().sp
  * Searches data for search terms and returns data with matches.
  * @param {string[]} searchTerms 
  * @param {object} data 
- * @returns {object[]}
+ * @returns {object[]} Objects containing `result` object and `minIdx`.
  */
 export function filterData(searchTerms, data) {
   const foundInMeta = [];
@@ -169,7 +162,10 @@ export function filterData(searchTerms, data) {
     }
   });
 
-  return foundInMeta.sort(compareFound).map((item) => item.result);
+  // Sort by publication date.
+  return foundInMeta
+    .sort((a, b) => parseInt(b.result.publicationDate) - parseInt(a.result.publicationDate))
+    .map((item) => item.result);
 }
 
 /**
@@ -385,7 +381,7 @@ export default async function decorate(block) {
   const placeholders = {};
 
   // Endpoint for search data.
-  const source = dataStore.commonEndpoints.queryIndex;
+  const source = dataStore.commonEndpoints.ideas;
   
   // Build block markup.
   block.innerHTML = '';
