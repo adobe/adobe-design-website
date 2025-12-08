@@ -98,7 +98,7 @@ export default async function decorate(block) {
         const embedWrap = document.createElement("figure");
         embedWrap.classList.add("page-header__video", "grid-item", "grid-item--50");
         embedWrap.innerHTML = embedCode;
-        // Adjust iframe element so it is fluid width based on CSS, instead of a fixed width.
+        // Remove size attributes so it is fluid width based on CSS, instead of a fixed width.
         const iframe = embedWrap.querySelector("iframe");
         iframe.removeAttribute("width");
         iframe.removeAttribute("height");
