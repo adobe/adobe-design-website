@@ -62,6 +62,10 @@ indices:
         select: head > meta[name="job-listing"]
         value: |
           attribute(el, 'content')
+      jobDiscipline:
+        select: head > meta[name="discipline"]
+        value: |
+          attribute(el, 'content')
       lastModified:
         select: none
         value: |
