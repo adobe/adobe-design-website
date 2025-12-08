@@ -21,7 +21,7 @@
     column-gap: 4rem;
   }
 
-  &:not(:has(.page-header__image)) {
+  &:not(:has(.page-header__image, .page-header__video)) {
     @media (min-width: 48rem) {
       .page-header__content.grid-item.grid-item--50 {
         grid-column: span 12;
@@ -78,7 +78,8 @@
     margin-block-end: 0;
   }
 
-  .page-header__image {
+  .page-header__image,
+  .page-header__video {
     height: 100%;
   }
 
@@ -88,6 +89,15 @@
     aspect-ratio: auto;
     height: auto;
     border-radius: 1rem;
+  }
+
+  .page-header__video {
+    margin: 0;
+
+    & iframe {
+      width: 100%;
+      aspect-ratio: 16/9;
+    }
   }
 }
 
