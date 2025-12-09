@@ -2,7 +2,7 @@ export default async function decorate(block) {
   // parse data into an object
   const pageHeaderData = {
     title: block.children?.[0]?.children?.[0]?.children?.[0]?.textContent?.trim(),
-    image: block.children?.[1]?.children?.[0]?.firstElementChild,
+    visual: block.children?.[1]?.children?.[0]?.firstElementChild,
     description: block.children?.[2]?.children?.[0]?.children?.[0]?.innerHTML,
     byline: block.children?.[3]?.children?.[0]?.children?.[0]?.textContent?.trim(),
     featuredDescription: block.children?.[3]?.children?.[1]?.children?.[0]?.textContent?.trim(),
@@ -83,11 +83,28 @@ export default async function decorate(block) {
 
   pageHeader.append(pageHeaderContent);
 
-  // if there is an image, add the appropriate attributes
-  if (pageHeaderData.image) {
-    pageHeaderData.image.classList.add('page-header__image', "grid-item", "grid-item--50");
-    pageHeaderData.image.setAttribute('alt', '');
-    pageHeader.append(pageHeaderData.image);
+  // Add image or video if they exist.
+  if (pageHeaderData.visual) {
+    if (pageHeaderData.visual?.nodeName == "PICTURE") {
+      // Image
+      pageHeaderData.visual.classList.add("page-header__image", "grid-item", "grid-item--50");
+      pageHeaderData.visual.setAttribute("alt", "");
+      pageHeader.append(pageHeaderData.visual);
+    } else {
+      // Video
+      const embedCode = pageHeaderData.visual?.innerText?.trim();
+      if (embedCode.startsWith("<iframe")) {
+        // Create a figure and populate it with the embed code.
+        const embedWrap = document.createElement("figure");
+        embedWrap.classList.add("page-header__video", "grid-item", "grid-item--50");
+        embedWrap.innerHTML = embedCode;
+        // Remove size attributes so it is fluid width based on CSS, instead of a fixed width.
+        const iframe = embedWrap.querySelector("iframe");
+        iframe.removeAttribute("width");
+        iframe.removeAttribute("height");
+        pageHeader.append(embedWrap);
+      }
+    }
   }
 
   // replace the parent with our new block

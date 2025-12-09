@@ -10,7 +10,8 @@ export default async function decorate(block) {
   figure.classList.add("embed");
   figure.innerHTML = embed.code;
 
-  // Apply classes to the iframe
+  // Apply classes to the iframe.
+  // Remove size attributes so it is fluid width based on CSS, instead of a fixed width.
   const iframe = figure.querySelector("iframe");
   iframe.removeAttribute("width");
   iframe.removeAttribute("height");
