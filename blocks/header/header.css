@@ -146,23 +146,6 @@ a.nav__home-link {
     }
   }
 
-  a.nav-page-links__link--external {
-    --icon-size: 1.25rem;
-
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 0.375rem;
-
-    &::before {
-      content: "";
-      display: block;
-      min-width: var(--icon-size);
-      height: var(--icon-size);
-      background: var(--icon-external-link) center no-repeat;
-    }
-  }
-
   .nav.nav--large-screens & {
     flex-direction: row;
     gap: 2rem;
