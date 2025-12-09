@@ -98,12 +98,12 @@
   }
 
   @media (min-width: 48rem) {
-    margin-block-end: 4rem;
+    margin-block-end: 3rem;
     row-gap: 2rem;
   }
 
-  @media (min-width: 105rem) {
-    margin-block-end: 6.5rem;
+  @media (min-width: 80rem) {
+    margin-block-end: 4rem;
   }
 
   & h1,
