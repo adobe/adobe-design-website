@@ -54,7 +54,7 @@ export const buildListingDetails = (metadata) => {
     metadata.positionType,
     metadata.reqNumber,
     metadata.discipline,
-    metadata.teamName
+    metadata.department
   ];
   const linkToApply = metadata.jobListing.content;
   const jobTitle = metadata.jobTitle.content;

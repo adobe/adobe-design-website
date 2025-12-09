@@ -27,9 +27,9 @@ export const getListingMetadata = () => {
       label: "Discipline",
       content: document.head.querySelector('meta[name="discipline"]')?.content
     },
-    teamName: {
-      label: "Team name",
-      content: document.head.querySelector('meta[name="team-name"]')?.content
+    department: {
+      label: "Department",
+      content: document.head.querySelector('meta[name="department"]')?.content
     },
     jobListing: {
       label: "Job listing",
