@@ -42,6 +42,10 @@
     }
   }
 
+  a:has(> .page-header__title) {
+    color: var(--color-text);
+  }
+
   .page-header__description {
     font-weight: var(--spectrum-body-font-weight);
     line-height: 1.5;

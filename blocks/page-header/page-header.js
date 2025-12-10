@@ -10,6 +10,7 @@ export default async function decorate(block) {
     buttonStyle: block.children?.[4]?.children?.[1]?.children?.[0]?.textContent?.trim().toLowerCase(),
     altText: block.children?.[4]?.children?.[2]?.children?.[0]?.textContent?.trim(),
   };
+  const anchorHref = pageHeaderData.anchorNode?.href;
 
   // create the container element
   const pageHeader = document.createElement("div");
@@ -19,9 +20,22 @@ export default async function decorate(block) {
   pageHeaderContent.classList.add("page-header__content", "grid-item", "grid-item--50");
 
   // there should always be a title, so create it as an h1
-  const pageTitle = document.createElement("h1");
-  pageTitle.classList.add("page-header__title", "util-heading-xl");
+  let pageTitle = document.createElement("h1");
   pageTitle.innerText = pageHeaderData.title;
+  pageTitle.classList.add("page-header__title", "util-heading-xl");
+
+  if (pageHeaderData.anchorNode && !anchorHref.includes("#")) {
+    // if there's a link, wrap the title in an anchor
+    const wrappingAnchor = document.createElement("a");
+    wrappingAnchor.setAttribute("href", anchorHref);
+    wrappingAnchor.append(pageTitle);
+    const visuallyHiddenText = document.createElement("span");
+    visuallyHiddenText.classList.add("util-visually-hidden");
+    visuallyHiddenText.innerText = "Read the story";
+    wrappingAnchor.append(visuallyHiddenText);
+    pageTitle = wrappingAnchor;
+  }
+
   pageHeaderContent.append(pageTitle);
 
   // if there is a description, add it as an h2
@@ -87,9 +101,20 @@ export default async function decorate(block) {
   if (pageHeaderData.visual) {
     if (pageHeaderData.visual?.nodeName == "PICTURE") {
       // Image
-      pageHeaderData.visual.classList.add("page-header__image", "grid-item", "grid-item--50");
-      pageHeaderData.visual.setAttribute("alt", "");
-      pageHeader.append(pageHeaderData.visual);
+      let pageHeaderVisual = pageHeaderData.visual;
+      // If there's a link, wrap the image in an anchor,
+      // but hide it from assistive technologies
+      if (pageHeaderData.anchorNode) {
+        const wrappingAnchor = document.createElement("a");
+        wrappingAnchor.setAttribute("href", anchorHref);
+        wrappingAnchor.setAttribute("role", "presentation");
+        wrappingAnchor.append(pageHeaderVisual);
+        pageHeaderVisual = wrappingAnchor;
+      } else {
+        pageHeaderVisual.setAttribute("alt", "");
+      }
+      pageHeaderVisual.classList.add("page-header__image", "grid-item", "grid-item--50");
+      pageHeader.append(pageHeaderVisual);
     } else {
       // Video
       const embedCode = pageHeaderData.visual?.innerText?.trim();
