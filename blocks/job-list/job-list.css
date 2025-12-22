@@ -43,6 +43,14 @@
 
 .job-list__listings {
   display: block;
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+
+  & > li {
+    margin: 0;
+    padding: 0;
+  }
 
   & .job-listing {
     border-top: 1px solid var(--color-border);
