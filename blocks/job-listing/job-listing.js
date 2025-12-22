@@ -1,3 +1,7 @@
+/**
+ * Display a single job listing item.
+ * @param {Element} block 
+ */
 export default function decorate(block) {
   const jobListing = document.createElement('a');
   jobListing.className = 'job-listing';

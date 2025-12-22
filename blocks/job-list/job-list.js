@@ -70,15 +70,17 @@ export default function decorate(block) {
       headingElement.textContent = heading;
 
       // Job list under this heading.
-      const jobsListingsWrap = document.createElement('div');
+      const jobsListingsWrap = document.createElement('ul');
       jobsListingsWrap.classList.add('job-list__listings', 'grid-item', 'grid-item--66');
 
       // Display each job (using "job-listing" component styles).
       jobs.forEach(row => {
         const {jobTitle, department, location, path} = row;
 
+        const jobListItem = document.createElement('li');
         const jobItem = document.createElement('a');
         jobItem.classList.add('job-listing');
+        jobListItem.append(jobItem);
 
         // Link to job page.
         if (path) {
@@ -111,7 +113,7 @@ export default function decorate(block) {
         }
 
         // Append job.
-        jobsListingsWrap.append(jobItem);
+        jobsListingsWrap.append(jobListItem);
       });
 
       // Append grouping with heading and its jobs.
