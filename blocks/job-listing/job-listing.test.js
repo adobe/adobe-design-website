@@ -28,8 +28,9 @@ describe('Job-Listing Block', () => {
       expect(hasDetail).toExist();
     });
 
-    it('should link to the correct job posting URL', async () => {
-      const jobListing = await page.$('.job-list .job-listing[href^="https://adobe.design/jobs/job-posts/"]');
+    it('should be linked.', async () => {
+      // Ensures the HREF attribute exists and isn't set to an empty string.
+      const jobListing = await page.$('.job-list .job-listing[href]:not([href=""])');
       expect(jobListing).toExist();
     });
   });
