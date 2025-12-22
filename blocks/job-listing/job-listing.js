@@ -8,16 +8,23 @@ export default function decorate(block) {
 
   const row = block.firstElementChild;
   if (row) {
-    const [title, subheading, detail, jobId] = row.children;
+    // Content settings, from each column.
+    const [title, subheading, detail] = row.children;
     
     const contentWrapper = document.createElement('span');
     contentWrapper.className = 'job-listing__content';
-    
+
     if (title) {
       const titleEl = document.createElement('span');
       titleEl.className = 'job-listing__title';
       titleEl.textContent = title.textContent;
       contentWrapper.append(titleEl);
+
+      // Job link from linked title text.
+      const href = title.querySelector('a')?.href;
+      if (href) {
+        jobListing.href = href;
+      }
     }
 
     if (subheading) {
@@ -35,10 +42,6 @@ export default function decorate(block) {
     }
 
     jobListing.append(contentWrapper);
-
-    if (jobId) {
-      jobListing.href = `https://adobe.design/jobs/job-posts/${jobId.textContent.trim()}`;
-    }
   }
 
   block.textContent = '';
