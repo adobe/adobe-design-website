@@ -19,24 +19,20 @@ export default async function decorate(block) {
   const pageHeaderContent = document.createElement("div");
   pageHeaderContent.classList.add("page-header__content", "grid-item", "grid-item--50");
 
-  // there should always be a title, so create it as an h1
+  // There should always be a title, so create it as an h1
   let pageTitle = document.createElement("h1");
   pageTitle.innerText = pageHeaderData.title;
   pageTitle.classList.add("page-header__title", "util-heading-xl");
 
   if (pageHeaderData.anchorNode && !anchorHref.includes("#")) {
-    // if there's a link, wrap the title in an anchor
+    // If there's a link to another page, wrap the title in an anchor.
     const wrappingAnchor = document.createElement("a");
     wrappingAnchor.setAttribute("href", anchorHref);
     wrappingAnchor.append(pageTitle);
-    const visuallyHiddenText = document.createElement("span");
-    visuallyHiddenText.classList.add("util-visually-hidden");
-    visuallyHiddenText.innerText = "Read the story";
-    wrappingAnchor.append(visuallyHiddenText);
-    pageTitle = wrappingAnchor;
+    pageHeaderContent.append(wrappingAnchor);
+  } else {
+    pageHeaderContent.append(pageTitle);
   }
-
-  pageHeaderContent.append(pageTitle);
 
   // if there is a description, add it as an h2
   if (pageHeaderData.description) {
@@ -102,17 +98,18 @@ export default async function decorate(block) {
     if (pageHeaderData.visual?.nodeName == "PICTURE") {
       // Image
       let pageHeaderVisual = pageHeaderData.visual;
-      // If there's a link, wrap the image in an anchor,
-      // but hide it from assistive technologies
+
+      // If there's a link, wrap the image in an anchor.
       if (pageHeaderData.anchorNode) {
         const wrappingAnchor = document.createElement("a");
         wrappingAnchor.setAttribute("href", anchorHref);
-        wrappingAnchor.setAttribute("role", "presentation");
+        // Remove from tab order and hide it from assistive tech; avoid repeating the title for screen readers.
+        wrappingAnchor.setAttribute("tabindex","-1");
+        wrappingAnchor.setAttribute("aria-hidden","true");
         wrappingAnchor.append(pageHeaderVisual);
         pageHeaderVisual = wrappingAnchor;
-      } else {
-        pageHeaderVisual.setAttribute("alt", "");
       }
+    
       pageHeaderVisual.classList.add("page-header__image", "grid-item", "grid-item--50");
       pageHeader.append(pageHeaderVisual);
     } else {
