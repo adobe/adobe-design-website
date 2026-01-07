@@ -98,31 +98,24 @@ export default async function decorate(block) {
   // Add image or video if they exist.
   if (pageHeaderData.visual) {
     if (pageHeaderData.visual?.nodeName == "PICTURE") {
-      // Image
-      let pageHeaderVisual = pageHeaderData.visual;
+      // Image:
+      const visualWrapper = document.createElement("div");
+      visualWrapper.classList.add("page-header__image", "grid-item", "grid-item--50");
 
-      // If there's a link, wrap the image in an anchor.
+      // If there's a link, add it adjacent to image.
       if (pageHeaderData.anchorNode) {
-        const wrappingAnchor = document.createElement("a");
-        wrappingAnchor.setAttribute("href", anchorHref);
-
-        // Give the link a proper accessible name.
-        wrappingAnchor.setAttribute("aria-label", pageHeaderData.altText ? pageHeaderData.altText : pageHeaderData.title);
-
-        // Treat image as decorative. It is already described by the adjacent text.
-        const imgElement = pageHeaderVisual.querySelector('img');
-        if (imgElement) {
-          imgElement.setAttribute("alt","");
-        }
-
-        wrappingAnchor.append(pageHeaderVisual);
-        pageHeaderVisual = wrappingAnchor;
+        const imageAnchor = document.createElement("a");
+        imageAnchor.setAttribute("href", anchorHref);
+        // Allows clicking image but prevents repetitive link text from being read.
+        imageAnchor.setAttribute("aria-hidden", "true");
+        imageAnchor.setAttribute("tabindex", "-1");
+        visualWrapper.append(imageAnchor);
       }
-    
-      pageHeaderVisual.classList.add("page-header__image", "grid-item", "grid-item--50");
-      pageHeader.append(pageHeaderVisual);
+
+      visualWrapper.append(pageHeaderData.visual);
+      pageHeader.append(visualWrapper);
     } else {
-      // Video
+      // Video:
       const embedCode = pageHeaderData.visual?.innerText?.trim();
       if (embedCode.startsWith("<iframe")) {
         // Create a figure and populate it with the embed code.
