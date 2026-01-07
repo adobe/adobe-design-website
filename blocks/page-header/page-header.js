@@ -20,19 +20,21 @@ export default async function decorate(block) {
   pageHeaderContent.classList.add("page-header__content", "grid-item", "grid-item--50");
 
   // There should always be a title, so create it as an h1
-  let pageTitle = document.createElement("h1");
-  pageTitle.innerText = pageHeaderData.title;
+  const pageTitle = document.createElement("h1");
   pageTitle.classList.add("page-header__title", "util-heading-xl");
 
   if (pageHeaderData.anchorNode && !anchorHref.includes("#")) {
-    // If there's a link to another page, wrap the title in an anchor.
+    // If there's a link to another page, include an anchor within the title.
     const wrappingAnchor = document.createElement("a");
     wrappingAnchor.setAttribute("href", anchorHref);
     wrappingAnchor.append(pageTitle);
-    pageHeaderContent.append(wrappingAnchor);
+    wrappingAnchor.textContent = pageHeaderData.title;
+    pageTitle.append(wrappingAnchor);
   } else {
-    pageHeaderContent.append(pageTitle);
+    pageTitle.innerText = pageHeaderData.title;
   }
+
+  pageHeaderContent.append(pageTitle);
 
   // if there is a description, add it as an h2
   if (pageHeaderData.description) {
