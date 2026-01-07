@@ -105,9 +105,16 @@ export default async function decorate(block) {
       if (pageHeaderData.anchorNode) {
         const wrappingAnchor = document.createElement("a");
         wrappingAnchor.setAttribute("href", anchorHref);
-        // Remove from tab order and hide it from assistive tech; avoid repeating the title for screen readers.
-        wrappingAnchor.setAttribute("tabindex","-1");
-        wrappingAnchor.setAttribute("aria-hidden","true");
+
+        // Give the link a proper accessible name.
+        wrappingAnchor.setAttribute("aria-label", pageHeaderData.altText ? pageHeaderData.altText : pageHeaderData.title);
+
+        // Treat image as decorative. It is already described by the adjacent text.
+        const imgElement = pageHeaderVisual.querySelector('img');
+        if (imgElement) {
+          imgElement.setAttribute("alt","");
+        }
+
         wrappingAnchor.append(pageHeaderVisual);
         pageHeaderVisual = wrappingAnchor;
       }
