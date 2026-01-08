@@ -33,6 +33,14 @@
   .page-header__title {
     margin-block: 0 0.25rem;
 
+    & > a {
+      color: var(--color-text);
+
+      &:focus-visible {
+        text-decoration: underline;
+      }
+    }
+
     @media (min-width: 48rem) {
       margin-block-end: 0.5rem;
     }
@@ -81,6 +89,21 @@
   .page-header__image,
   .page-header__video {
     height: 100%;
+  }
+
+  .page-header__image {
+    position: relative;
+  }
+
+  .page-header__image > a::after {
+    content: "";
+    display: block;
+    inset: 0;
+    position: absolute;
+  }
+
+  .page-header__image picture {
+    display: block;
   }
 
   .page-header__image img {

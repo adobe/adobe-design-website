@@ -10,6 +10,7 @@ export default async function decorate(block) {
     buttonStyle: block.children?.[4]?.children?.[1]?.children?.[0]?.textContent?.trim().toLowerCase(),
     altText: block.children?.[4]?.children?.[2]?.children?.[0]?.textContent?.trim(),
   };
+  const anchorHref = pageHeaderData.anchorNode?.href;
 
   // create the container element
   const pageHeader = document.createElement("div");
@@ -18,10 +19,21 @@ export default async function decorate(block) {
   const pageHeaderContent = document.createElement("div");
   pageHeaderContent.classList.add("page-header__content", "grid-item", "grid-item--50");
 
-  // there should always be a title, so create it as an h1
+  // There should always be a title, so create it as an h1
   const pageTitle = document.createElement("h1");
   pageTitle.classList.add("page-header__title", "util-heading-xl");
-  pageTitle.innerText = pageHeaderData.title;
+
+  if (pageHeaderData.anchorNode && !anchorHref.includes("#")) {
+    // If there's a link to another page, include an anchor within the title.
+    const wrappingAnchor = document.createElement("a");
+    wrappingAnchor.setAttribute("href", anchorHref);
+    wrappingAnchor.append(pageTitle);
+    wrappingAnchor.textContent = pageHeaderData.title;
+    pageTitle.append(wrappingAnchor);
+  } else {
+    pageTitle.innerText = pageHeaderData.title;
+  }
+
   pageHeaderContent.append(pageTitle);
 
   // if there is a description, add it as an h2
@@ -86,12 +98,24 @@ export default async function decorate(block) {
   // Add image or video if they exist.
   if (pageHeaderData.visual) {
     if (pageHeaderData.visual?.nodeName == "PICTURE") {
-      // Image
-      pageHeaderData.visual.classList.add("page-header__image", "grid-item", "grid-item--50");
-      pageHeaderData.visual.setAttribute("alt", "");
-      pageHeader.append(pageHeaderData.visual);
+      // Image:
+      const visualWrapper = document.createElement("div");
+      visualWrapper.classList.add("page-header__image", "grid-item", "grid-item--50");
+
+      // If there's a link, add it adjacent to image.
+      if (pageHeaderData.anchorNode) {
+        const imageAnchor = document.createElement("a");
+        imageAnchor.setAttribute("href", anchorHref);
+        // Allows clicking image but prevents repetitive link text from being read.
+        imageAnchor.setAttribute("aria-hidden", "true");
+        imageAnchor.setAttribute("tabindex", "-1");
+        visualWrapper.append(imageAnchor);
+      }
+
+      visualWrapper.append(pageHeaderData.visual);
+      pageHeader.append(visualWrapper);
     } else {
-      // Video
+      // Video:
       const embedCode = pageHeaderData.visual?.innerText?.trim();
       if (embedCode.startsWith("<iframe")) {
         // Create a figure and populate it with the embed code.
