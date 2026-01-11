@@ -20,5 +20,11 @@ export const buildHomePageLink = (anchorNode) => {
   headingLink.href = headingLinkURL;
   headingLink.classList.add("nav__home-link");
 
+  // --- A11Y FIX: hide the decorative logo SVG from assistive tech
+  const svgEl = headingLink.querySelector("svg");
+  if (svgEl) {
+    svgEl.setAttribute("aria-hidden", "true");
+  }
+
   return headingLink;
 };
