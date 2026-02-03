@@ -196,3 +196,7 @@
     line-height: 1.25;
   }
 }
+
+.article-header + .image-with-caption {
+  margin-block-start: 0;
+}
