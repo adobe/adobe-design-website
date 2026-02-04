@@ -19,11 +19,9 @@ export default function decorate(block) {
     <span class="util-visually-hidden">${headingLinkText}</span>
     ${logoSVG}
   `;
-  // mark the SVG as decorative so it doesn’t need its own name
   const svgElem = headingLink.querySelector('svg');
   if (svgElem) {
     svgElem.setAttribute('aria-hidden', 'true');
-    svgElem.setAttribute('focusable', 'false');
   }
   headingLink.href = headingLinkURL;
   headingLink.classList.add('footer-heading__link');
