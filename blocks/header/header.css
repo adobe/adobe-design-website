@@ -147,19 +147,26 @@ a.nav__home-link {
   }
 
   a.nav-page-links__link--external {
-    --icon-size: 1.25rem;
+    --icon-size: 0.625rem;
 
     display: flex;
     flex-direction: row;
-    align-items: center;
+    align-items: baseline;
     gap: 0.375rem;
 
     &::after {
       content: "";
       display: block;
-      min-width: var(--icon-size);
+      width: var(--icon-size);
       height: var(--icon-size);
-      background: var(--icon-external-link) center no-repeat;
+      background: var(--icon-external-link-alt) center no-repeat;
+      background-size: cover;
+      transition: transform ease-out 130ms;
+    }
+
+    &:hover::after,
+    &:focus-visible::after {
+      transform: translate(0.125rem, -0.125rem);
     }
   }
 
