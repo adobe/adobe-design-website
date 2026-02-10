@@ -23,6 +23,12 @@ export const buildPageLinks = (links) => {
 
     if (isExternalURL(link.href)) {
       anchorNode.classList.add("nav-page-links__link--external");
+      anchorNode.setAttribute("target", "_blank");
+      // Screen reader notice about target _blank (WCAG SC 3.2.5)
+      const newTabNotice = document.createElement("span");
+      newTabNotice.classList.add("util-visually-hidden");
+      newTabNotice.textContent = " (external, opens in a new tab)";
+      anchorNode.append(newTabNotice);
     }
 
     listItem.append(anchorNode);

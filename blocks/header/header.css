@@ -154,7 +154,7 @@ a.nav__home-link {
     align-items: center;
     gap: 0.375rem;
 
-    &::before {
+    &::after {
       content: "";
       display: block;
       min-width: var(--icon-size);
