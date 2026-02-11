@@ -4,8 +4,8 @@ This project contains code that is featured in the [AEM Block Collection](https:
 
 ## Environments
 
-- Preview: https://main--adobe-design-website--adobe.hlx.page/
-- Live: https://main--adobe-design-website--adobe.hlx.live/
+- Preview: https://main--adobe-design-website--adobe.aem.page/
+- Live: https://main--adobe-design-website--adobe.aem.live/
 
 ## Quick Start
 

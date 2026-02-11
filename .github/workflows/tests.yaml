@@ -25,7 +25,7 @@ jobs:
         run: |
           BRANCH_NAME="${GITHUB_HEAD_REF:-${GITHUB_REF##*/}}"
           echo "Branch Name: ${BRANCH_NAME}"
-          BASE_URL="https://${BRANCH_NAME}--adobe-design-website--adobe.hlx.page/"
+          BASE_URL="https://${BRANCH_NAME}--adobe-design-website--adobe.aem.page/"
           echo "BASE_URL=${BASE_URL}"
           echo "BASE_URL=${BASE_URL}" >> $GITHUB_ENV
 
