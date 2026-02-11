@@ -147,7 +147,8 @@ a.nav__home-link {
   }
 
   a.nav-page-links__link--external {
-    --icon-size: 0.625rem;
+    /* Correspond with font size, with ratio of 10px at 18px font size. */
+    --icon-size: 0.625em;
 
     display: flex;
     flex-direction: row;
@@ -160,7 +161,7 @@ a.nav__home-link {
       width: var(--icon-size);
       height: var(--icon-size);
       background: var(--icon-external-link-alt) center no-repeat;
-      background-size: cover;
+      background-size: contain;
       transition: transform ease-out 130ms;
     }
 
