@@ -19,6 +19,10 @@ export default function decorate(block) {
     <span class="util-visually-hidden">${headingLinkText}</span>
     ${logoSVG}
   `;
+  const svgElem = headingLink.querySelector('svg');
+  if (svgElem) {
+    svgElem.setAttribute('aria-hidden', 'true');
+  }
   headingLink.href = headingLinkURL;
   headingLink.classList.add('footer-heading__link');
 

@@ -20,5 +20,10 @@ export const buildHomePageLink = (anchorNode) => {
   headingLink.href = headingLinkURL;
   headingLink.classList.add("nav__home-link");
 
+  const svgElem = headingLink.querySelector("svg");
+  if (svgElem) {
+    svgElem.setAttribute("aria-hidden", "true");
+  }
+
   return headingLink;
 };
