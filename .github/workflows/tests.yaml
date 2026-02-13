@@ -11,12 +11,12 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v6
 
       - name: Setup Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v6
         with:
-          node-version: 18
+          node-version: 24
 
       - name: Install dependencies
         run: npm install
@@ -25,7 +25,7 @@ jobs:
         run: |
           BRANCH_NAME="${GITHUB_HEAD_REF:-${GITHUB_REF##*/}}"
           echo "Branch Name: ${BRANCH_NAME}"
-          BASE_URL="https://${BRANCH_NAME}--adobe-design-website--adobe.hlx.page/"
+          BASE_URL="https://${BRANCH_NAME}--adobe-design-website--adobe.aem.page/"
           echo "BASE_URL=${BASE_URL}"
           echo "BASE_URL=${BASE_URL}" >> $GITHUB_ENV
 

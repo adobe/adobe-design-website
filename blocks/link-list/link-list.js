@@ -9,7 +9,13 @@ const JOB_LISTING_ROOT = "careers";
  * @returns {boolean}
  */
 const urlIsJobListing = (url) => {
-  return url.startsWith(`https://adobe.design/${JOB_LISTING_ROOT}/`) || url.startsWith(`/${JOB_LISTING_ROOT}/`);
+  try {
+    const urlObject = new URL(url, 'https://adobe.design');
+    return ['adobe.design','adobe.aem.live', 'adobe.aem.page'].some(suffix => urlObject.hostname.endsWith(suffix)) &&
+      urlObject.pathname.startsWith(`/${JOB_LISTING_ROOT}/`);
+  } catch {
+    return false;
+  }
 };
 
 /**
@@ -19,7 +25,6 @@ const urlIsJobListing = (url) => {
  * @param {string} [altText] the link aria-label
  * @returns {Element}
  */
-
 const buildLinkListItem = ({ textContent, url, altText }) => {
   const item = document.createElement("li");
   const itemAnchor = document.createElement("a");
@@ -72,7 +77,6 @@ const buildLinkListFooterLink = ({ textContent, url, altText }) => {
 
 /**
  * Loads and decorates the link list block.
- * @function
  * @param {Element} block the block element
  * @returns {Element}
  */
@@ -93,6 +97,7 @@ export default async function decorate(block) {
     altText: block.children[0]?.children[2]?.innerText,
   };
 
+  // If Link List contains all job listing links, it has a different layout.
   if (linksData.every((link) => urlIsJobListing(link.url))) {
     linkList.classList.add("link-list--jobs");
   }
