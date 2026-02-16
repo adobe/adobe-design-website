@@ -146,6 +146,31 @@ a.nav__home-link {
     }
   }
 
+  a.nav-page-links__link--external {
+    /* Correspond with font size, with ratio of 10px at 18px font size. */
+    --icon-size: 0.625em;
+
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+    gap: 0.375rem;
+
+    &::after {
+      content: "";
+      display: block;
+      width: var(--icon-size);
+      height: var(--icon-size);
+      background: var(--icon-external-link-alt) center no-repeat;
+      background-size: contain;
+      transition: transform ease-out 130ms;
+    }
+
+    &:hover::after,
+    &:focus-visible::after {
+      transform: translate(0.125rem, -0.125rem);
+    }
+  }
+
   .nav.nav--large-screens & {
     flex-direction: row;
     gap: 2rem;

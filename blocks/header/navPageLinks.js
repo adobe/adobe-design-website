@@ -1,3 +1,5 @@
+import { isExternalURL } from "../../scripts/helpers/index.js";
+
 /**
  * Creates a link list node from a set of anchor elements.
  * @function
@@ -18,6 +20,16 @@ export const buildPageLinks = (links) => {
     anchorNode.href = link.href;
     anchorNode.innerText = link.innerText.trim();
     anchorNode.classList.add("nav-page-links__link");
+
+    if (isExternalURL(link.href)) {
+      anchorNode.classList.add("nav-page-links__link--external");
+      anchorNode.setAttribute("target", "_blank");
+      // Screen reader notice about target _blank (WCAG SC 3.2.5)
+      const newTabNotice = document.createElement("span");
+      newTabNotice.classList.add("util-visually-hidden");
+      newTabNotice.textContent = " (external, opens in a new tab)";
+      anchorNode.append(newTabNotice);
+    }
 
     listItem.append(anchorNode);
     navLinks.append(listItem);
