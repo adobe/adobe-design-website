@@ -124,8 +124,11 @@
 
   --spectrum-turquoise-200: rgb(209 245 245);
 
+  --spectrum-pink-400: rgb(255 181 230);
+
   --spectrum-red-500: rgb(255 157 145);
   --spectrum-red-600: rgb(255 118 101);
+  --spectrum-red-700: rgb(255 81 61);
   --spectrum-red-1400: rgb(80 16 6);
 
   --spectrum-brown-1400: rgb(52 37 13);
@@ -186,8 +189,11 @@
 
     --spectrum-turquoise-200: rgb(0 37 41);
 
+    --spectrum-pink-400: rgb(115 7 75);
+
     --spectrum-red-500: rgb(147 31 17);
     --spectrum-red-600: rgb(177 38 23);
+    --spectrum-red-700: rgb(205 46 29);
     --spectrum-red-1400: rgb(255 222 219);
 
     --spectrum-brown-1400: rgb(242 227 206);
