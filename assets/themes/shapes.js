@@ -1,8 +1,8 @@
 /**
- * @file SVG strings for the page header backgrounds. 
+ * @file SVG strings for the page header backgrounds.
  */
 
-export const roundedDiamond = 
+export const roundedDiamond =
 `<svg role="presentation" class="shape shape--diamond" width="1292" height="895" viewBox="0 0 1292 895" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
     <g opacity="0.56">
         <mask id="mask0_2047_12900" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="-114" width="2823" height="1826">
@@ -20,7 +20,7 @@ export const roundedDiamond =
     </defs>
 </svg>`;
 
-export const slopes = 
+export const slopes =
 `<svg class="shape shape--slopes" width="2183" height="900" viewBox="0 0 2183 900" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
     <mask id="mask0_2675_5947" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="297" y="-1178" width="1986" height="1544">
         <ellipse cx="992.547" cy="771.748" rx="992.547" ry="771.748" transform="matrix(0.999995 -0.00289327 0.00607683 0.999985 293.028 -1174.9)" fill="url(#paint0_radial_2675_5947)"/>
@@ -60,7 +60,7 @@ export const slopes =
     </defs>
 </svg>`;
 
-export const fadedWave = 
+export const fadedWave =
 `<svg class="shape shape--faded-wave" width="1453" height="592" viewBox="0 0 1453 592" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
     <g opacity="0.33">
         <mask id="mask0_2047_13068" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="2471" height="1109">
@@ -78,7 +78,7 @@ export const fadedWave =
     </defs>
 </svg>`;
 
-export const wavesAndGlow = 
+export const wavesAndGlow =
 `<svg class="shape shape--waves-and-glow" width="1616" height="876" viewBox="0 0 1616 876" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
     <path d="M625.077 -556.806C733.711 -524.751 819.132 -451.719 869.434 -359.719C969.967 -175.476 1088.06 -140.496 1272.44 -240.406C1364.74 -290.726 1476.28 -305.772 1585.04 -273.681C1802.39 -209.414 1926.64 18.2916 1862.63 235.235C1798.61 452.178 1570.69 575.836 1353.3 511.69C1244.3 479.528 1158.83 406.216 1108.63 313.851C1008.08 130.13 890.03 95.4301 705.581 195.583C613.356 245.66 502.006 260.498 393.372 228.444C176.104 164.334 51.8564 -63.3716 115.834 -280.193C179.812 -497.015 407.809 -620.916 625.077 -556.806Z" fill="url(#paint0_linear_2716_6071)" fill-opacity="0.5"/>
     <mask id="mask0_2716_6071" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="835" y="-616" width="1492" height="1492">
@@ -109,9 +109,38 @@ export const wavesAndGlow =
     </defs>
 </svg>`;
 
+export const fade =
+`<svg class="shape shape--fade" width="1426" height="587" viewBox="0 0 1426 587" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+  <g clip-path="url(#fadeClip">
+    <rect width="1426" height="587" fill="light-dark(var(--spectrum-gray-50, #F8F8F8), var(--spectrum-gray-25, #111111))"/>
+    <g opacity="0.6" filter="url(#filterBlur)">
+      <path d="M1642.25 1343.38C1782.6 936.29 1840.42 123.806 1431.73 136.139C1023.04 148.472 1094.89 1099.13 842.266 1160.89C526.482 1238.1 91.4015 887.158 -189.295 641.497C-469.992 395.837 -561.219 269.497 -799.811 199.309C-1038.4 129.12 -1515.59 430.931 -1733.13 795.913C-1950.67 1160.89 -1543.66 2290.93 -701.567 2466.4C140.523 2641.88 1501.9 1750.48 1642.25 1343.38Z" fill="light-dark(var(--spectrum-indigo-1000, #6338EE), var(--spectrum-indigo-1000, #8B8DFE))"/>
+    </g>
+    <g opacity="0.9" filter="url(#filterBlur)">
+      <path d="M859.539 57.6609C678.414 189.083 754.157 317.22 938.575 491.355C1059.33 620.588 1362.74 873.795 1610.38 852.767C1919.94 826.483 1755.28 718.059 1580.75 632.635C1406.21 547.21 1376.57 491.355 1363.4 363.218C1350.22 235.081 1452.31 235.081 1564.28 -17.907C1676.25 -270.895 1531.35 -543.597 1402.91 -533.74C1274.48 -523.884 1462.19 -431.888 1323.88 -221.612C1185.56 -11.3359 1040.66 -73.7616 859.539 57.6609Z" fill="url(#fadeLinearGradient)"/>
+    </g>
+  </g>
+  <defs>
+    <filter id="filterBlur" x="437.919" y="-852.081" width="1664.16" height="2024.16" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+      <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+      <feGaussianBlur stdDeviation="159.04" result="effect1_foregroundBlur_4971_97"/>
+    </filter>
+    <linearGradient id="fadeLinearGradient" x1="902.035" y1="413.032" x2="1629.54" y2="-172.627" gradientUnits="userSpaceOnUse">
+      <stop stop-color="light-dark(var(--spectrum-cyan-400, #8AD5FF), var(--spectrum-cyan-400, #004058))"/>
+      <stop offset="0.509615" stop-color="light-dark(var(--spectrum-pink-500, #FF94DB), var(--spectrum-pink-400, #73074B))"/>
+      <stop offset="1" stop-color="light-dark(var(--spectrum-red-600, #FF7665), var(--spectrum-red-700, #CD2E1D))"/>
+    </linearGradient>
+    <clipPath id="fadeClip">
+      <rect width="1426" height="587" fill="transparent"/>
+    </clipPath>
+  </defs>
+</svg>`;
+
 export const allShapes = {
     roundedDiamond,
     slopes,
     fadedWave,
     wavesAndGlow,
+    fade,
 };
