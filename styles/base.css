@@ -458,6 +458,9 @@
   --heading-font-family: var(--spectrum-display-font);
   --heading-line-height: 1.25;
 
+  --heading-size-xxxl: var(--spectrum-font-size-1100);
+  --spectrum-heading-weight-xxxl: var(--spectrum-extra-bold-font-weight);
+
   --heading-size-xxl: var(--spectrum-font-size-1000);
   --spectrum-heading-weight-xxl: var(--spectrum-extra-bold-font-weight);
 
@@ -474,6 +477,7 @@
   --spectrum-heading-weight-s: var(--spectrum-extra-bold-font-weight);
 
   @media (min-width: 36rem) {
+    --heading-size-xxxl: var(--spectrum-font-size-1200);
     --heading-size-xxl: var(--spectrum-font-size-1100);
     --heading-size-xl: var(--spectrum-font-size-1000);
     --heading-size-l: var(--spectrum-font-size-900);
@@ -482,6 +486,7 @@
   }
 
   @media (min-width: 48rem) {
+    --heading-size-xxxl: var(--spectrum-font-size-1400);
     --heading-size-xxl: var(--spectrum-font-size-1300);
     --heading-size-xl: var(--spectrum-font-size-1200);
     --heading-size-l: var(--spectrum-font-size-1000);
@@ -490,6 +495,7 @@
   }
 
   @media (min-width: 80rem) {
+    --heading-size-xxxl: var(--spectrum-font-size-1500);
     --heading-size-xxl: var(--spectrum-font-size-1400);
     --heading-size-xl: var(--spectrum-font-size-1300);
     --heading-size-l: var(--spectrum-font-size-1100);

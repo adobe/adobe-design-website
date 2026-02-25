@@ -172,7 +172,7 @@
   --page-constrained-text: 100%;
 
   max-width: 60.125rem;
-  margin: auto;
+  margin-inline: auto;
 
   &:not(:has(.page-header__image, .page-header__video)) {
     .page-header__content.grid-item.grid-item--50 {
@@ -182,6 +182,11 @@
   }
 
   .page-header__title {
-    font-size: var(--heading-size-xxl);
+    font-size: var(--heading-size-xxxl) !important;
+    margin-block: var(--spectrum-spacing-500) var(--spectrum-spacing-400);
+  }
+
+  .page-header__description {
+    font-size: var(--body-size-xl) !important;
   }
 }
