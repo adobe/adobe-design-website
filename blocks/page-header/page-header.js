@@ -23,7 +23,7 @@ export default async function decorate(block) {
   const pageTitle = document.createElement("h1");
   pageTitle.classList.add("page-header__title", "util-heading-xl");
 
-  if (pageHeaderData.anchorNode && !anchorHref.includes("#")) {
+  if (pageHeaderData.anchorNode && !anchorHref.includes("#") && pageHeaderData.visual) {
     // If there's a link to another page, include an anchor within the title.
     const wrappingAnchor = document.createElement("a");
     wrappingAnchor.setAttribute("href", anchorHref);
