@@ -9,12 +9,18 @@ export default async function decorate(block) {
     anchorNode: block.children?.[4]?.children?.[0]?.firstChild?.firstChild,
     buttonStyle: block.children?.[4]?.children?.[1]?.children?.[0]?.textContent?.trim().toLowerCase(),
     altText: block.children?.[4]?.children?.[2]?.children?.[0]?.textContent?.trim(),
+    additionalClasses: block.children?.[5]?.children?.[0]?.textContent.split(" "),
   };
   const anchorHref = pageHeaderData.anchorNode?.href;
+  const classes = ["grid-container", "page-header"];
+
+  if (pageHeaderData.additionalClasses) {
+    classes.push(...pageHeaderData.additionalClasses);
+  }
 
   // create the container element
   const pageHeader = document.createElement("div");
-  pageHeader.classList.add("grid-container", "page-header");
+  pageHeader.classList.add(...classes);
 
   const pageHeaderContent = document.createElement("div");
   pageHeaderContent.classList.add("page-header__content", "grid-item", "grid-item--50");

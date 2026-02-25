@@ -167,3 +167,21 @@
     }
   }
 }
+
+.page-header--constrained {
+  --page-constrained-text: 100%;
+
+  max-width: 60.125rem;
+  margin: auto;
+
+  &:not(:has(.page-header__image, .page-header__video)) {
+    .page-header__content.grid-item.grid-item--50 {
+      grid-column: span 12;
+      max-width: var(--page-constrained-text);
+    }
+  }
+
+  .page-header__title {
+    font-size: var(--heading-size-xxl);
+  }
+}
