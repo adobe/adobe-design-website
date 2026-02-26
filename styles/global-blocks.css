@@ -859,6 +859,11 @@ body.color-scheme-dark .search .search__results-container {
   }
 }
 
+a.card {
+  /* Ensure base focus styles are overridden. */
+  border-radius: 1rem;
+}
+
 a.card:hover {
   color: var(--color-text);
   cursor: pointer;
