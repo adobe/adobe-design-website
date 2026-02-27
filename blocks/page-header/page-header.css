@@ -182,11 +182,6 @@
   }
 
   .page-header__title {
-    font-size: var(--heading-size-xxxl) !important;
     margin-block: var(--spectrum-spacing-500) var(--spectrum-spacing-400);
-  }
-
-  .page-header__description {
-    font-size: var(--body-size-xl) !important;
   }
 }
