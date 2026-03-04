@@ -112,7 +112,6 @@ export const wavesAndGlow =
 export const fade =
 `<svg class="shape shape--fade" width="1426" height="587" viewBox="0 0 1426 587" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
   <g clip-path="url(#fadeClip">
-    <rect width="1426" height="587" fill="light-dark(var(--spectrum-gray-25, #FFFFFF), var(--spectrum-gray-25, #111111))"/>
     <g opacity="0.6" filter="url(#filterBlur)">
       <path d="M1642.25 1343.38C1782.6 936.29 1840.42 123.806 1431.73 136.139C1023.04 148.472 1094.89 1099.13 842.266 1160.89C526.482 1238.1 91.4015 887.158 -189.295 641.497C-469.992 395.837 -561.219 269.497 -799.811 199.309C-1038.4 129.12 -1515.59 430.931 -1733.13 795.913C-1950.67 1160.89 -1543.66 2290.93 -701.567 2466.4C140.523 2641.88 1501.9 1750.48 1642.25 1343.38Z" fill="light-dark(var(--spectrum-indigo-1000, #6338EE), var(--spectrum-indigo-1000, #8B8DFE))"/>
     </g>
