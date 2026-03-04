@@ -113,7 +113,7 @@ export const fade =
 `<svg class="shape shape--fade" width="1426" height="587" viewBox="0 0 1426 587" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
   <g clip-path="url(#fadeClip">
     <g opacity="0.6" filter="url(#filterBlur)">
-      <path d="M1642.25 1343.38C1782.6 936.29 1840.42 123.806 1431.73 136.139C1023.04 148.472 1094.89 1099.13 842.266 1160.89C526.482 1238.1 91.4015 887.158 -189.295 641.497C-469.992 395.837 -561.219 269.497 -799.811 199.309C-1038.4 129.12 -1515.59 430.931 -1733.13 795.913C-1950.67 1160.89 -1543.66 2290.93 -701.567 2466.4C140.523 2641.88 1501.9 1750.48 1642.25 1343.38Z" fill="light-dark(var(--spectrum-indigo-1000, #6338EE), var(--spectrum-indigo-1000, #8B8DFE))"/>
+      <path d="M1642.25 1343.38C1782.6 936.29 1840.42 123.806 1431.73 136.139C1023.04 148.472 1094.89 1099.13 842.266 1160.89C526.482 1238.1 91.4015 887.158 -189.295 641.497C-469.992 395.837 -561.219 269.497 -799.811 199.309C-1038.4 129.12 -1515.59 430.931 -1733.13 795.913C-1950.67 1160.89 -1543.66 2290.93 -701.567 2466.4C140.523 2641.88 1501.9 1750.48 1642.25 1343.38Z" fill="var(--spectrum-indigo-1000, #6338EE)"/>
     </g>
     <g opacity="0.9" filter="url(#filterBlur)">
       <path d="M859.539 57.6609C678.414 189.083 754.157 317.22 938.575 491.355C1059.33 620.588 1362.74 873.795 1610.38 852.767C1919.94 826.483 1755.28 718.059 1580.75 632.635C1406.21 547.21 1376.57 491.355 1363.4 363.218C1350.22 235.081 1452.31 235.081 1564.28 -17.907C1676.25 -270.895 1531.35 -543.597 1402.91 -533.74C1274.48 -523.884 1462.19 -431.888 1323.88 -221.612C1185.56 -11.3359 1040.66 -73.7616 859.539 57.6609Z" fill="url(#fadeLinearGradient)"/>
@@ -126,9 +126,9 @@ export const fade =
       <feGaussianBlur stdDeviation="159.04" result="effect1_foregroundBlur_4971_97"/>
     </filter>
     <linearGradient id="fadeLinearGradient" x1="902.035" y1="413.032" x2="1629.54" y2="-172.627" gradientUnits="userSpaceOnUse">
-      <stop stop-color="light-dark(var(--spectrum-cyan-400, #8AD5FF), var(--spectrum-cyan-400, #004058))"/>
-      <stop offset="0.509615" stop-color="light-dark(var(--spectrum-pink-400, #FFB5E6), var(--spectrum-pink-400, #73074B))"/>
-      <stop offset="1" stop-color="light-dark(var(--spectrum-red-700, #FF513D), var(--spectrum-red-700, #CD2E1D))"/>
+      <stop stop-color="var(--spectrum-cyan-400, #8AD5FF)"/>
+      <stop offset="0.509615" stop-color="var(--spectrum-pink-400, #FFB5E6)"/>
+      <stop offset="1" stop-color="var(--spectrum-red-700, #FF513D)"/>
     </linearGradient>
     <clipPath id="fadeClip">
       <rect width="1426" height="587" fill="transparent"/>
