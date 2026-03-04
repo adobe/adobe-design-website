@@ -1314,7 +1314,15 @@ main > .section.small-screen-cta-container > .grid-container:has(+ .call-to-acti
 }
 
 .theme--backdrop-blue-purple-fade {
-  --page-background-height: 100%;
+  --page-background-height: 100dvh;
+
+  @media (min-width: 48rem) {
+    --page-background-height: 37.5rem;
+  }
+
+  @media (min-width: 105rem) {
+    --page-background-height: 40rem;
+  }
 
   .shape {
     width: 100%;
