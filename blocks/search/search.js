@@ -214,6 +214,7 @@ function createSearchResultsContainer() {
 function createSearchBox(block, config) {
   const box = document.createElement('div');
   box.classList.add('search__box');
+  box.id = 'nav-search';
 
   // Wrapper that holds search icon, input, and clear button.
   const inputWrapper = document.createElement('div');
@@ -235,6 +236,8 @@ function createSearchBox(block, config) {
   toggleButton.classList.add('search__button');
   toggleButton.setAttribute('type', 'button');
   toggleButton.setAttribute('aria-label', DEFAULT_CONTENT.toggleAriaLabel);
+  toggleButton.setAttribute('aria-expanded', 'false');
+  toggleButton.setAttribute('aria-controls', 'nav-search');
   toggleButton.innerHTML = SEARCH_INPUT_ICON;
 
   // Search overlay results
@@ -260,9 +263,10 @@ function createSearchBox(block, config) {
    * Clicking the search icon toggles the expanded search field.
    */
   toggleButton.addEventListener('click', () => {
-    box.classList.toggle('search__box--expanded');
-    toggleButton.toggleAttribute('aria-expanded');
-    if (box.classList.contains('search__box--expanded')) {
+    const isExpanding = !box.classList.contains('search__box--expanded');
+    box.classList.toggle('search__box--expanded', isExpanding);
+    toggleButton.setAttribute('aria-expanded', isExpanding ? 'true' : 'false');
+    if (isExpanding) {
       searchInput.focus();
     } else {
       clearSearchResults(block);
