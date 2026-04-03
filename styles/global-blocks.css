@@ -430,7 +430,7 @@
     display: block;
     color: var(--spectrum-gray-600);
 
-    em {
+    & em {
       font-style: normal;
     }
 
@@ -661,6 +661,7 @@
 
     & svg {
       flex: 1 0 auto;
+      max-width: 100%;
     }
 
     .nav--large-screens & {
