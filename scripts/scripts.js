@@ -14,6 +14,7 @@ import {
   loadSection,
   loadSections,
   loadCSS,
+  loadScript,
   sampleRUM,
 } from './aem.js';
 import {
