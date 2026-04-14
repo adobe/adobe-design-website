@@ -217,16 +217,16 @@ const setCalculatedPerspective = () => {
  * without impacting the user experience.
  */
 function loadDelayed() {
-  // eslint-disable-next-line import/no-cycle
-  window.setTimeout(() => import('./delayed.js'), 3000);
-  // load anything that can be postponed to the latest here
-  loadCSS(`${window.hlx.codeBasePath}/styles/delayed-styles.css`);
+  setTimeout(() => {
+    // Adobe analytics.
+    loadScript('https://assets.adobedtm.com/a7d65461e54e/9ee19a80de10/launch-882c01867cbb.min.js');
+  }, 4000);
 }
 
 async function loadPage() {
   await loadEager(document);
   await loadLazy(document);
-  // loadDelayed();
+  loadDelayed();
 }
 
 loadPage();
