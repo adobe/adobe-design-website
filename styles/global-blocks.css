@@ -130,11 +130,11 @@
 }
 
 .horizontal-rule--full {
-  width: 100vw;
+  width: 100cqw;
   margin-inline: calc(-1 * var(--page-gutters));
 
   @media (min-width: 105.5rem) {
-    margin-inline: calc(-0.5 * calc(100vw - var(--page-max-width)));
+    margin-inline: calc(-0.5 * calc(100cqw - var(--page-max-width)));
   }
 }
 
@@ -492,7 +492,7 @@
 }
 
 .image-with-caption--full-bleed {
-  width: 100vw;
+  width: 100cqw;
   transform: translateX(calc(var(--page-gutters) * -1));
 
   & .image-with-caption__image img {
@@ -515,7 +515,7 @@
     transform: none;
 
     & .image-with-caption__image img {
-      width: calc(100vw - 4rem);
+      width: calc(100cqw - 4rem);
       max-width: 66rem;
       margin-inline-start: 50%;
       transform: translateX(-50%);
