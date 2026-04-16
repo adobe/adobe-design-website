@@ -81,6 +81,9 @@ body.color-scheme-dark {
 
 main {
   padding-block-start: 4rem;
+  /* Set as a query container to allow our full-bleed components to use `cqw` units (to account for scrollbars). */
+  container-type: inline-size;
+  container-name: site-main;
 }
 
 main > .section {

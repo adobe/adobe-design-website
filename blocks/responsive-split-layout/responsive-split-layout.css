@@ -3,7 +3,7 @@
   --split-layout-content-spacing: 0.5rem;
   --split-layout-column-gap: 1.25rem;
 
-  width: 100vw;
+  width: 100cqw;
   margin-inline: calc(-1 * var(--page-gutters));
 
   @media (min-width: 48rem) {
@@ -20,7 +20,7 @@
   @media (min-width: 105rem) {
     --split-layout-spacing: 5rem;
     --split-layout-column-gap: 12.625rem;
-    margin-inline: calc(-0.5 * calc(100vw - var(--page-max-width)));
+    margin-inline: calc(-0.5 * calc(100cqw - var(--page-max-width)));
   }
 
   /* 
