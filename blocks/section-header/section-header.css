@@ -1,9 +1,5 @@
 .section-header {
-  grid-row-gap: 0.75rem;
-
-  @media (min-width: 80rem) {
-    grid-row-gap: 1rem;
-  }
+  grid-row-gap: 0.25rem;
 }
 
 main > .section > .section-header {
