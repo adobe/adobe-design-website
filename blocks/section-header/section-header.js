@@ -39,7 +39,7 @@ export default async function decorate(block) {
     const sectionHeaderButton = document.createElement("a");
     sectionHeaderButton.classList.add(
       "button",
-      "button--primary-outline",
+      "button--ghost",
       "section-header__button",
       "grid-item",
       "grid-item--33"
