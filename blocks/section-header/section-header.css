@@ -19,6 +19,16 @@ main > .section > .section-header {
   margin-block-start: 0;
 }
 
+.section-header__button.button--ghost {
+  margin-bottom: -0.5rem;
+  margin-right: -0.25rem;
+
+  @media (min-width: 80rem) {
+    font-size: var(--spectrum-font-size-300);
+  }
+}
+
+/* For mobile, uses an adjacent mobile-only button component in the content (as it has a different location). */
 .section-header__button--hide-at-small {
   display: none;
 
