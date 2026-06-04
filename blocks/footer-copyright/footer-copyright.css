@@ -1,5 +1,6 @@
 .footer-copyright {
   padding: 1.5rem var(--page-gutters) 3rem;
+  color: var(--spectrum-gray-600);
 
   @media (min-width: 48rem) {
     padding: 1.125rem var(--page-gutters);
@@ -11,6 +12,6 @@
   }
 
   & a {
-    color: var(--color-text-dark);
+    color: var(--spectrum-gray-600);
   }
 }
