@@ -897,7 +897,7 @@ a.card:hover {
 .card__content {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   padding: 1.25rem 1rem;
   color: var(--color-text);
 
