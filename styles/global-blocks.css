@@ -1037,7 +1037,7 @@ a.card:hover {
 
 .job-listing__detail {
   margin-block-start: 0.25rem;
-  color: var(--spectrum-gray-700);
+  color: var(--spectrum-gray-600);
 }
 
 @media (min-width: 48rem) {
