@@ -131,7 +131,6 @@ a.nav__home-link {
     display: block;
     padding-block: 2rem;
     padding-inline: var(--page-gutters);
-    font-size: var(--spectrum-font-size-200);
 
     &:hover {
       color: var(--spectrum-gray-900);
@@ -175,6 +174,7 @@ a.nav__home-link {
   .nav.nav--large-screens & {
     flex-direction: row;
     gap: 2rem;
+    font-size: var(--spectrum-font-size-200);
 
     & a.nav-page-links__link {
       padding: 0;
