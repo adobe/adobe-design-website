@@ -131,6 +131,7 @@ a.nav__home-link {
     display: block;
     padding-block: 2rem;
     padding-inline: var(--page-gutters);
+    font-size: var(--spectrum-font-size-200);
 
     &:hover {
       color: var(--spectrum-gray-900);
@@ -205,7 +206,7 @@ a.nav__home-link {
 
     .theme-toggle__label {
       /* keep the font size aligned with the page links */
-      font-size: var(--body-size-xs);
+      font-size: var(--spectrum-font-size-200);
     }
   }
 }

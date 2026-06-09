@@ -74,13 +74,16 @@
 }
 
 .callout--with-link {
+  text-decoration-line: none;
+
   &:hover {
     color: var(--spectrum-white);
-    text-decoration: none;
-  }
+    text-decoration-line: none;
 
-  &:hover .callout__title {
-    text-decoration: underline;
+    & .callout__title {
+      text-decoration: underline var(--link-underline-thickness);
+      text-underline-offset: var(--link-underline-thickness);
+    }
   }
 }
 

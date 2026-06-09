@@ -84,7 +84,7 @@
 .form input:focus,
 .form select:focus,
 .form textarea:focus {
-  outline: 2px solid var(--color-text-link);
+  outline: 2px solid var(--spectrum-blue-900);
   outline-offset: 2px;
 }
 
@@ -161,11 +161,11 @@
 }
 
 .form .toggle-wrapper input:checked + .slider {
-  background-color: var(--color-text-link);
+  background-color: var(--spectrum-blue-900);
 }
 
 .form .toggle-wrapper input:focus + .slider {
-  outline: 2px solid var(--color-text-link);
+  outline: 2px solid var(--spectrum-blue-900);
   outline-offset: 2px;
 }
 

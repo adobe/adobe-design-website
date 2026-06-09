@@ -55,6 +55,7 @@
         flex-direction: column;
         justify-content: space-between;
         color: var(--color-text);
+        text-decoration: none;
 
         @media (min-width: 42rem) {
             min-height: 100%;
@@ -62,6 +63,10 @@
 
         @media (min-width: 60rem) {
             flex-direction: row;
+        }
+
+        &:hover {
+            text-decoration: underline;
         }
     }
 
