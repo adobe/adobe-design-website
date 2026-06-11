@@ -139,7 +139,7 @@
 }
 
 .link-list-item__job-location {
-  color: var(--spectrum-gray-700);
+  color: var(--spectrum-gray-600);
   margin-block-start: 0.25rem;
 }
 
