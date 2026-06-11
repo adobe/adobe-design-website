@@ -16,7 +16,8 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v6
         with:
-          node-version: 24
+          # Use 24.15 as a workaround for Puppeteer Chrome install issue 14957, until fully upgrading to Puppeteer 25+.
+          node-version: 24.15
 
       - name: Install dependencies
         run: npm install
