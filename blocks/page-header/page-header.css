@@ -35,9 +35,11 @@
 
     & > a {
       color: var(--color-text);
+      text-decoration-line: none;
 
+      &:hover,
       &:focus-visible {
-        text-decoration: underline;
+        text-decoration-line: underline;
       }
     }
 

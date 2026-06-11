@@ -78,7 +78,12 @@
   display: flex;
   align-items: center;
   padding: 1rem 0;
-  text-decoration: none;
+  text-decoration-line: none;
+
+  &:hover,
+  &:focus-visible {
+    text-decoration: underline var(--link-underline-thickness); 
+  }
 
   &::after {
     --icon-size: 0.875rem;

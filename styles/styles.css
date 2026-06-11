@@ -502,14 +502,23 @@ button {
 }
 
 a {
-  color: var(--color-text-link);
-  text-decoration: none;
+  color: currentcolor;
   overflow-wrap: break-word;
+  text-decoration: underline var(--link-underline-thickness); 
+  text-underline-offset: var(--link-underline-thickness);
+}
+
+u {
+  text-decoration: underline var(--link-underline-thickness); 
+  text-underline-offset: var(--link-underline-thickness);
+}
+
+:where(a) u {
+  text-decoration: none;
 }
 
 a:hover {
-  color: var(--color-text-link-hover);
-  text-decoration: underline;
+  color: currentcolor;
 }
 
 :where(ol, ul, p) {

@@ -387,10 +387,11 @@
     --spectrum-overlay-opacity: 0.6;
   }
 
-  /* ** BORDER ** */
+  /* ** BORDER AND UNDERLINE ** */
   --spectrum-border-width-100: 1px;
   --spectrum-border-width-200: 2px;
   --spectrum-border-width-400: 4px;
+  --link-underline-thickness: 0.0625em;
 
   /* ** CORNER ROUNDING ** */
   --spectrum-corner-radius-0: 0px;
