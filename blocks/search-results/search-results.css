@@ -27,101 +27,13 @@
 .search-results__list {
     box-sizing: border-box;
     list-style: none;
-    display: grid;
-    grid-template-columns: minmax(0, 1fr);
-    gap: 2rem;
     margin: 1.5rem 0;
     padding: 0;
-
-    @media (min-width: 42rem) {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-
-    @media (min-width: 85rem) {
-       grid-template-columns: repeat(3, minmax(0, 1fr));
-    }
-}
-
-.search-results__item {
-    box-sizing: border-box;
-    display: block;
-    margin: 0;
-    border-radius: var(--spectrum-corner-radius-400);
-    background: var(--spectrum-white);
-    box-shadow: var(--drop-shadow-emphasized);
-
-    & a {
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        color: var(--color-text);
-        text-decoration: none;
-
-        @media (min-width: 42rem) {
-            min-height: 100%;
-        }
-
-        @media (min-width: 60rem) {
-            flex-direction: row;
-        }
-
-        &:hover {
-            text-decoration: underline;
-        }
-    }
-
-    & :where(p) {
-        margin-block: 0.25rem 0;
-    }
-
-    & span {
-        display: block;
-    }
-}
-
-body.color-scheme-dark .search-results__item {
-    background: var(--spectrum-gray-50);
-}
-
-.search-results__content {
-    padding: 1.25rem;
-
-    @media (min-width: 60rem) {
-        padding: 1.5rem;
-    }
-}
-
-.search-results__visual {
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    aspect-ratio: 3.25;
-    max-height: 10rem;
-    border-radius: 0 0 var(--spectrum-corner-radius-400) var(--spectrum-corner-radius-400);
-    border-top: 1px solid var(--spectrum-gray-75);
-    background: var(--spectrum-gray-75);
-
-    @media (min-width: 60rem) {
-        height: auto;
-        max-height: none;
-        aspect-ratio: auto;
-        flex: 0 0 19.5%;
-        min-width: 5.5rem;
-        border-radius: 0 var(--spectrum-corner-radius-400) var(--spectrum-corner-radius-400) 0;
-        border-left: 1px solid var(--spectrum-gray-75);
-        border-top: none;
-    }
-
-    & img {
-        display: block;
-        object-fit: cover;
-        height: 100%;
-        width: 100%;
-    }
 }
 
 .search-results__badge {
-    display: inline-block;
+    align-self: flex-start;
+    order: -1;
     vertical-align: top;
     font-size: 0.75rem;
     background: var(--spectrum-blue-200);
@@ -133,14 +45,6 @@ body.color-scheme-dark .search-results__item {
     @media (min-width: 105rem) {
        margin-block-end: 1.5rem;
     }
-}
-
-.search-results__title {
-    margin-block-end: 0.25rem;
-}
-
-.search-results__department {
-    font-weight: var(--spectrum-medium-font-weight);
 }
 
 /* "Go back home" link at top in content. */

@@ -1,4 +1,3 @@
-import { createOptimizedPicture } from "../aem.js";
 import { buildCard } from "../../blocks/card/card.js";
 import { dataStore } from "./dataStore.js";
 
@@ -69,14 +68,17 @@ export const fetchAndBuildIdeas = async (settings) => {
         filteredArticles.forEach((article, idx) => {
             // Create card and append.
             const articleImageUrl = article.image.trim();
-            const card = buildCard({
-                img: articleImageUrl ? createOptimizedPicture(articleImageUrl) : '',
-                textContent: [
-                    article.title,
-                    article.description
-                ],
-                url: article.path.trim(),
-            });
+            const card = buildCard(
+                {
+                    img: articleImageUrl ?? '',
+                    textContent: [
+                        article.title,
+                        article.description
+                    ],
+                    url: article.path.trim(),
+                },
+                'div'
+            );
             card.classList.add('grid-item', settings.gridItemClass);
 
             // If article is last available, mark it with a data attribute.

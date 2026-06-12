@@ -384,7 +384,7 @@ export default async function decorate(block) {
   // Placeholder strings; not currently in use.
   const placeholders = {};
 
-  // Endpoint for search data.
+  // Endpoint for search data. Only search articles.
   const source = dataStore.commonEndpoints.ideas;
   
   // Build block markup.

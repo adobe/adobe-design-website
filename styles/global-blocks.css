@@ -834,6 +834,8 @@ body.color-scheme-dark .search .search__results-container {
 .card-container {
   container-type: inline-size;
   container-name: card-container;
+  margin: 0;
+  padding: 0;
 }
 
 .card {
