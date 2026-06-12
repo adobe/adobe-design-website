@@ -26,13 +26,15 @@ export function buildCard(cardData, cardContainerElement = 'div') {
   }
 
   // Append image.
-  if (cardData?.img && cardData.img) {
+  if (cardData?.img) {
+    let picture = cardData.img;
+
     // Create picture element, if arg is the image URL.
-    let picture = null;
     if (typeof cardData.img === 'string') {
       picture = createOptimizedPicture(cardData.img);
     }
 
+    // Modify picture element and append it.
     if (picture instanceof HTMLPictureElement) {
       picture.classList.add('card__image');
       // Set empty alt, to treat images within the card as decorative.
