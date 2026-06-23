@@ -10,6 +10,7 @@ import { dataStore } from "./dataStore.js";
  * @property {string} gridItemClass - Class for each grid item that determines layout; e.g. "grid-item--25" for four-up layout.
  * @property {boolean} hasHorizontalScroll - Has horizontal scroll at mobile.
  * @property {string|null} startAfterPath - Optional; return results older than ideas article matching this path.
+ * @property {string[]} articleSlugs - Optional; fetch specific articles by their slugs.
  */
 
 /**
@@ -44,13 +45,20 @@ export const fetchAndBuildIdeas = async (settings) => {
             );
         }
 
+        // Filter by slug(s) if this option was used to display specific articles.
+        if (settings?.articleSlugs && settings.articleSlugs.length > 0) {
+            filteredArticles = filteredArticles.filter(item =>
+                settings.articleSlugs.some(slug => item?.path?.endsWith(slug) ?? false)
+            );
+        }
+
         // Exclude the current path, so we don't show the same article on an article page.
         filteredArticles = filteredArticles.filter(item => item?.path !== window.location.pathname);
 
         // Sort by published date (serial number or timestamp), with the latest dates first.
         filteredArticles = filteredArticles.sort((a, b) => parseInt(b.publishedDate, 10) - parseInt(a.publishedDate, 10));
 
-        // Need to return next set of results starting from article with this path?
+        // Pagination/load more; setting for returning the next set of results starting from the article with this path.
         let startFromIndex = 0;
         if (settings?.startAfterPath) {
             const foundIndex = filteredArticles.findIndex(article => article?.path.trim() === settings.startAfterPath);
