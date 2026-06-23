@@ -1,6 +1,7 @@
 import { dataStore } from "../../scripts/helpers/index.js";
 import { filterData, getSearchTermsArray, sectionNameFromPath } from "../search/search.js";
 import { loadFragment } from '../fragment/fragment.js';
+import { buildCard } from "../card/card.js";
 
 /* Path to page containing the content displayed when there are no results. */
 const noSearchResultsPartial = '/partials/no-search-results';
@@ -9,80 +10,55 @@ const noSearchResultsPartial = '/partials/no-search-results';
  * Build grid of search results from returned data.
  * 
  * @param {object} results Results of search.
- * @param {string} titleHeadingLevel Which element to create for the results item title.
  * @returns {HTMLUListElement}
  */
-const buildresultsGrid = (results, titleHeadingLevel = 'h2') => {
+const buildResultsGrid = (results) => {
+  // Parent list of all results.
   const resultsList = document.createElement('ul');
-  resultsList.classList.add('search-results__list');
+  resultsList.classList.add('search-results__list', 'grid-container');
 
+  // Build and append a card for each result.
   results.forEach((result) => {
     const sectionName = sectionNameFromPath(result.path, result?.author);
     const hasImage = sectionName == "Article" && result?.image;
 
-    const listItem = document.createElement('li');
-    listItem.classList.add('search-results__item');
+    // Create base card markup.
+    const card = buildCard(
+      {
+        img: hasImage ? (result?.image?.trim() ?? '') : '',
+        textContent: [
+            result?.title ?? '',
+            result?.description ?? ''
+        ],
+        url: result.path,
+      },
+      'li'
+    );
 
-    const anchor = document.createElement('a');
-    anchor.href = result.path;
-    listItem.append(anchor);
+    // Adjust card markup.
+    card.classList.add('grid-item', 'grid-item--25', 'search-results__item');
 
-    const contentWrap = document.createElement('div');
-    contentWrap.classList.add('search-results__content');
-    anchor.append(contentWrap);
-
-    // Badge with publication date.
+    // Append Badge with publication date.
     if (result?.publicationDate) {
+      const cardContent = card.querySelector('.card__content');
+      if (!cardContent) return;
       // Convert Excel serial date (e.g. "45981") to Date object that can be displayed.
       const publicationDate = new Date(Date.UTC(0, 0, parseInt(result.publicationDate) - 1));
       const badge = document.createElement('p');
       badge.classList.add('search-results__badge');
       badge.textContent = publicationDate.toLocaleDateString('en-US', { timeZone: 'UTC', month: 'short', day: 'numeric', year: 'numeric' });
-      contentWrap.append(badge);
+
+      // Have screen readers pause after reading the date.
+      const srOnlyPause = document.createElement('span');
+      srOnlyPause.classList.add('util-visually-hidden');
+      srOnlyPause.textContent = ".";
+      badge.append(srOnlyPause);
+
+      cardContent.prepend(badge);
     }
 
-    // Result title.
-    const title = document.createElement(titleHeadingLevel);
-    title.classList.add('util-title-xl','search-results__title');
-    title.textContent = result.title;
-    contentWrap.append(title);
-
-    // Page description or job listing department and location.
-    if (sectionName == "Job Listing") {
-      if (result?.department) {
-        const desc = document.createElement('p');
-        desc.classList.add('util-body-s', 'search-results__department');
-        desc.textContent = result.department;
-        contentWrap.append(desc);
-      }
-      if (result?.location) {
-        const desc = document.createElement('p');
-        desc.classList.add('util-body-xs');
-        desc.textContent = result.location;
-        contentWrap.append(desc);
-      }
-    } else {
-      if (result?.description) {
-        const desc = document.createElement('p');
-        desc.classList.add('util-body-s');
-        desc.textContent = result.description;
-        contentWrap.append(desc);
-      }
-    }
-
-    // Image for articles.
-    if (hasImage) {
-      const imageWrap = document.createElement('figure');
-      imageWrap.classList.add('search-results__visual');
-      const image = document.createElement('img');
-      image.src = result.image;
-      image.alt = "";
-      image.loading = "lazy";
-      imageWrap.append(image);
-      anchor.append(imageWrap);
-    }
-
-    resultsList.append(listItem);
+    // Append card to parent list.
+    resultsList.append(card);
   });
 
   return resultsList;
@@ -120,7 +96,7 @@ export default function decorate(block) {
   const searchTerms = getSearchTermsArray(searchValue);
   
   (async () => {
-    // Query all data and search it.
+    // Query all data and search it. Only search articles.
     const allFetchedData = await dataStore.getData(dataStore.commonEndpoints.ideas);
     const results = filterData(searchTerms, allFetchedData?.data);
     const hasResults = results && results.length > 0;
@@ -152,7 +128,7 @@ export default function decorate(block) {
     blockContainer.append(resultsTotal);
 
     // Build search results grid.
-    const resultsGrid = buildresultsGrid(results, 'h2');
+    const resultsGrid = buildResultsGrid(results, 'h2');
     blockContainer.append(resultsGrid);
   })();
 }
