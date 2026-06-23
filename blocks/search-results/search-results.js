@@ -47,7 +47,14 @@ const buildResultsGrid = (results) => {
       const badge = document.createElement('p');
       badge.classList.add('search-results__badge');
       badge.textContent = publicationDate.toLocaleDateString('en-US', { timeZone: 'UTC', month: 'short', day: 'numeric', year: 'numeric' });
-      cardContent.append(badge);
+
+      // Have screen readers pause after reading the date.
+      const srOnlyPause = document.createElement('span');
+      srOnlyPause.classList.add('util-visually-hidden');
+      srOnlyPause.textContent = ".";
+      badge.append(srOnlyPause);
+
+      cardContent.prepend(badge);
     }
 
     // Append card to parent list.
