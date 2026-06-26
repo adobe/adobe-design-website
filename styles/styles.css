@@ -1128,6 +1128,26 @@ main > .section.small-screen-cta-container > .grid-container:has(+ .call-to-acti
   }
 }
 
+.theme--backdrop-indigo {
+  --themed-text-color: var(--spectrum-indigo-1200, currentcolor);
+}
+
+.theme--backdrop-green {
+  --themed-text-color: var(--spectrum-green-1200, currentcolor);
+}
+
+.theme--backdrop-blue-circles {
+  --themed-text-color: var(--spectrum-blue-1200, currentcolor);
+}
+
+.theme--backdrop-seafoam {
+  --themed-text-color: var(--spectrum-seafoam-1200, currentcolor);
+}
+
+.theme--backdrop-blue-green-wave {
+  --themed-text-color: var(--spectrum-blue-1200, currentcolor);
+}
+
 /* Backdrop heights */
 .theme--backdrop-indigo,
 .theme--backdrop-green {
