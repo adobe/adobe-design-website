@@ -78,6 +78,7 @@
   --spectrum-blue-800: rgb(75 117 255);
   --spectrum-blue-900: rgb(59 99 251);
   --spectrum-blue-1000: rgb(39 77 234);
+  --spectrum-blue-1200: rgb(21 50 173);
   --spectrum-blue-1400: rgb(12 31 105);
 
   --spectrum-gray-25: rgb(255 255 255);
@@ -98,10 +99,12 @@
   --spectrum-indigo-400: rgb(192 201 255);
   --spectrum-indigo-500: rgb(167 178 255);
   --spectrum-indigo-1000: rgb(99 56 238);
+  --spectrum-indigo-1200: rgb(69 19 191);
 
   --spectrum-cyan-400: rgb(138 213 255);
   --spectrum-cyan-500: rgb(92 192 255);
   --spectrum-cyan-600: rgb(48 167 254);
+  --spectrum-cyan-1200: rgb(0 71 98);
   --spectrum-cyan-1400: rgb(0 43 59);
 
   --spectrum-green-300: rgb(173 238 197);
@@ -111,15 +114,18 @@
 
   --spectrum-fuchsia-400: rgb(247 181 255);
   --spectrum-fuchsia-500: rgb(243 147 255);
+  --spectrum-fuchsia-1200: rgb(113 15 131);
   --spectrum-fuchsia-1400: rgb(72 0 88);
 
   --spectrum-orange-400: rgb(255 193 94);
   --spectrum-orange-800: rgb(199 82 0);
+  --spectrum-orange-1200: rgb(118 41 0);
   --spectrum-orange-1400: rgb(73 24 0);
 
   --spectrum-seafoam-300: rgb(169 237 216);
   --spectrum-seafoam-400: rgb(92 225 194);
   --spectrum-seafoam-600: rgb(13 181 149);
+  --spectrum-seafoam-1200: rgb(1 75 67);
   --spectrum-seafoam-1400: rgb(0 46 40);
 
   --spectrum-turquoise-200: rgb(209 245 245);
@@ -129,10 +135,12 @@
   --spectrum-red-500: rgb(255 157 145);
   --spectrum-red-600: rgb(255 118 101);
   --spectrum-red-700: rgb(255 81 61);
+  --spectrum-red-1200: rgb(129 27 14);
   --spectrum-red-1400: rgb(80 16 6);
 
   --spectrum-brown-1400: rgb(52 37 13);
   --spectrum-cinnamon-500: rgb(229 170 136);
+  --spectrum-cinnamon-1200: rgb(110 48 21);
 
   &:has(body.color-scheme-dark) {
     --spectrum-blue-200: rgb(15 28 82);
@@ -143,6 +151,7 @@
     --spectrum-blue-800: rgb(64 105 253);
     --spectrum-blue-900: rgb(86 129 255);
     --spectrum-blue-1000: rgb(105 149 254);
+    --spectrum-blue-1200: rgb(152 192 252);
     --spectrum-blue-1400: rgb(213 231 254);
 
     --spectrum-gray-25: rgb(17 17 17);
@@ -163,10 +172,12 @@
     --spectrum-indigo-400: rgb(62 12 174);
     --spectrum-indigo-500: rgb(79 30 209);
     --spectrum-indigo-1000: rgb(139 141 254);
+    --spectrum-indigo-1200: rgb(176 186 255);
 
     --spectrum-cyan-400: rgb(0 64 88);
     --spectrum-cyan-500: rgb(0 82 113);
     --spectrum-cyan-600: rgb(3 99 140);
+    --spectrum-cyan-1200: rgb(107 199 255);
     --spectrum-cyan-1400: rgb(195 236 252);
 
     --spectrum-green-300: rgb(0 51 38);
@@ -176,15 +187,18 @@
 
     --spectrum-fuchsia-400: rgb(102 9 120);
     --spectrum-fuchsia-500: rgb(127 23 146);
+    --spectrum-fuchsia-1200: rgb(245 159 255);
     --spectrum-fuchsia-1400: rgb(251 219 255);
 
     --spectrum-orange-400: rgb(106 36 0);
     --spectrum-orange-800: rgb(212 91 0);
+    --spectrum-orange-1200: rgb(255 173 45);
     --spectrum-orange-1400: rgb(255 225 178);
 
     --spectrum-seafoam-300: rgb(0 50 44);
     --spectrum-seafoam-400: rgb(0 67 59);
     --spectrum-seafoam-600: rgb(4 105 89);
+    --spectrum-seafoam-1200: rgb(29 214 176);
     --spectrum-seafoam-1400: rgb(186 241 222);
 
     --spectrum-turquoise-200: rgb(0 37 41);
@@ -194,10 +208,12 @@
     --spectrum-red-500: rgb(147 31 17);
     --spectrum-red-600: rgb(177 38 23);
     --spectrum-red-700: rgb(205 46 29);
+    --spectrum-red-1200: rgb(255 167 157);
     --spectrum-red-1400: rgb(255 222 219);
 
     --spectrum-brown-1400: rgb(242 227 206);
     --spectrum-cinnamon-500: rgb(122 57 28);
+    --spectrum-cinnamon-1200: rgb(232 179 149);
   }
 
   /* functional colors */
