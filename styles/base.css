@@ -246,7 +246,7 @@
   /* Unique theme backgrounds that are used in tandem with shapes. */
   --gradient-backdrop-green-start: var(--spectrum-green-300);
   --gradient-backdrop-seafoam-start: rgb(142 233 214);
-  --gradient-backdrop-seaform-end: rgb(233 246 245);
+  --gradient-backdrop-seafoam-end: rgb(233 246 245);
   --gradient-backdrop-blue-green-wave-start: rgb(142 210 253);
 
   /* Multi-colored gradients */
@@ -263,7 +263,7 @@
     --gradient-orange-start: var(--spectrum-orange-800);
 
     --gradient-backdrop-seafoam-start: rgb(3 55 50);
-    --gradient-backdrop-seaform-end: rgb(17 33 34);
+    --gradient-backdrop-seafoam-end: rgb(17 33 34);
     --gradient-backdrop-blue-green-wave-start: rgb(8 63 68);
   }
 
