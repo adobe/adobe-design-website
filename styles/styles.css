@@ -1133,7 +1133,7 @@ main > .section.small-screen-cta-container > .grid-container:has(+ .call-to-acti
 }
 
 .theme--backdrop-green {
-  --themed-text-color: var(--spectrum-green-1200, currentcolor);
+  --themed-text-color: var(--spectrum-seafoam-1200, currentcolor);
 }
 
 .theme--backdrop-blue-circles {
