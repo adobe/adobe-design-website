@@ -1061,34 +1061,42 @@ main > .section.small-screen-cta-container > .grid-container:has(+ .call-to-acti
 /* -- Simple color themes with only a gradient. -- */
 .theme--blue {
   --page-gradient-start-color: var(--gradient-blue-start);
+  --themed-text-color: var(--spectrum-blue-1200, currentcolor);
 }
 
 .theme--cyan {
   --page-gradient-start-color: var(--gradient-cyan-start);
+  --themed-text-color: var(--spectrum-cyan-1200, currentcolor);
 }
 
 .theme--indigo {
   --page-gradient-start-color: var(--gradient-indigo-start);
+  --themed-text-color: var(--spectrum-indigo-1200, currentcolor);
 }
 
 .theme--fuchsia {
   --page-gradient-start-color: var(--gradient-fuchsia-start);
+  --themed-text-color: var(--spectrum-fuchsia-1200, currentcolor);
 }
 
 .theme--red {
   --page-gradient-start-color: var(--gradient-red-start);
+  --themed-text-color: var(--spectrum-red-1200, currentcolor);
 }
 
 .theme--seafoam {
   --page-gradient-start-color: var(--gradient-seafoam-start);
+  --themed-text-color: var(--spectrum-seafoam-1200, currentcolor);
 }
 
 .theme--cinnamon {
   --page-gradient-start-color: var(--gradient-cinnamon-start);
+  --themed-text-color: var(--spectrum-cinnamon-1200, currentcolor);
 }
 
 .theme--orange {
   --page-gradient-start-color: var(--gradient-orange-start);
+  --themed-text-color: var(--spectrum-orange-1200, currentcolor);
 }
 
 .theme--no-color {
@@ -1118,6 +1126,26 @@ main > .section.small-screen-cta-container > .grid-container:has(+ .call-to-acti
     height: 225px;
     background: linear-gradient(180deg, rgb(from var(--color-background) r g b / 0) 0%, var(--color-background) 100%);
   }
+}
+
+.theme--backdrop-indigo {
+  --themed-text-color: var(--spectrum-indigo-1200, currentcolor);
+}
+
+.theme--backdrop-green {
+  --themed-text-color: var(--spectrum-seafoam-1200, currentcolor);
+}
+
+.theme--backdrop-blue-circles {
+  --themed-text-color: var(--spectrum-blue-1200, currentcolor);
+}
+
+.theme--backdrop-seafoam {
+  --themed-text-color: var(--spectrum-seafoam-1200, currentcolor);
+}
+
+.theme--backdrop-blue-green-wave {
+  --themed-text-color: var(--spectrum-blue-1200, currentcolor);
 }
 
 /* Backdrop heights */
