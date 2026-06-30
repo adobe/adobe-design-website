@@ -1,6 +1,5 @@
 .quote blockquote {
   --color-text: var(--themed-text-color, var(--spectrum-gray-700));
-  --color-border: var(--spectrum-gray-400);
 
   position: relative;
   margin: 1.5rem auto;
