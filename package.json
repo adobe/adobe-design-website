@@ -33,7 +33,7 @@
     "jest-environment-jsdom": "^29.7.0",
     "puppeteer": "^24.4.0",
     "stylelint": "16.26.1",
-    "stylelint-config-standard": "38.0.0",
+    "stylelint-config-standard": "40.0.0",
     "stylelint-stylus": "^1.0.0"
   }
 }
